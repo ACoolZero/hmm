@@ -1,0 +1,13 @@
+{
+  "common": {
+    "app_name": "Hmm",
+    "notification": "Thông báo",
+    "cancel": "Hủy",
+    "submit": "Đồng ý",
+    "network_failure": "Kiểm tra kết nối và khởi động lại ứng dụng",
+    "logout_request": "Bạn có muốn đăng xuất tài khoản?",
+    "login": "Đăng nhập",
+    "logout": "Đăng xuất",
+    "empty_list": "Không có dữ liệu để hiển thị"
+  }
+}
