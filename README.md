@@ -33,7 +33,7 @@
 ├── e2e                             # handle automation test
 ├── patches                         # contain overrided package
 ├── src                             # source code
-|   ├── assets                      # contain assets (image, lottie, font, ...)
+│   ├── assets                      # contain assets (image, lottie, font, ...)
 │   ├── components                  # contain reusable components
 │   ├── hooks                       # contain custom hooks
 │   ├── i18n                        # support multiple languages
