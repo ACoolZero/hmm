@@ -7,6 +7,11 @@ export const ICONS = {
   close: require('./icons/close.png'),
   checkbox: require('./icons/checkbox.png'),
   plus: require('./icons/plus.png'),
+  apple: require('./icons/apple.png'),
+  google: require('./icons/google.png'),
+  twitter: require('./icons/twitter.png'),
 };
 
-export const IMAGES = {};
+export const IMAGES = {
+  logo: require('./images/logo.png'),
+};

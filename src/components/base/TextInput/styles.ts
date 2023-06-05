@@ -11,7 +11,7 @@ export default StyleSheet.create({
     paddingVertical: 0,
   },
   defaultStyles: {
-    fontFamily: FONTS.fontFamily.regular,
+    fontWeight: FONTS.fontWeight.regular,
     minHeight: getSize.m(38),
   },
   inputContainer: {
@@ -20,8 +20,8 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     borderWidth: 1,
     backgroundColor: COLORS.white,
-    borderRadius: getSize.s(6),
-    height: getSize.s(40),
+    borderRadius: getSize.s(8),
+    height: getSize.s(48),
     paddingRight: getSize.m(12),
   },
   leftIcon: {

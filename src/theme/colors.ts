@@ -1,25 +1,37 @@
+export const DARK_THEME_SCHEME = {
+  text: '#FFFFFF',
+  light_text: '#FFFFFF',
+  background: '#22343C',
+  placeholder: '#BFBFBF',
+  border: '#BFBFBF',
+};
+
+export const LIGHT_THEME_SCHEME = {
+  text: '#262626',
+  light_text: '#595959',
+  background: '#F5F5F5',
+  placeholder: '#BFBFBF',
+  border: '#BFBFBF',
+};
+
 const COLORS = {
   /**
    * @base
    */
   primary: '#518EF8',
   success: '#10B981',
-  error: '#EA580C',
+  error: '#FF4D4F',
 
   /**
    * @common
    */
-  text: '#172737',
-  light_text: '#FFFFA9',
-  background: '#F9FAFB',
-  smoke: '#E6E6E6',
+  text: '#262626',
+  light_text: '#595959',
+  background: '#F5F5F5',
   white: '#ffffff',
   black: '#000000',
-  placeholder: '#9DA3AF',
-  blue: '#002795',
-  green: '#60BF61',
-  orange: '#FFB442',
-  border: '#E5E7EB',
+  placeholder: '#BFBFBF',
+  border: '#BFBFBF',
 
   /**
    * @gray
