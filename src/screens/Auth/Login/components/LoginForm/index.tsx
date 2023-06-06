@@ -1,4 +1,4 @@
-import {Block, Button, FormInput, Text} from '@components';
+import {Block, FormInput, GradientButton, Text} from '@components';
 import {yupResolver} from '@hookform/resolvers/yup';
 import React from 'react';
 import {useForm} from 'react-hook-form';
@@ -27,7 +27,7 @@ const LoginForm = () => {
       <FormInput
         control={control}
         name="username"
-        placeholder="Your full name"
+        placeholder="Your email"
         containerInputStyle={styles.containerInputStyle}
       />
       <FormInput
@@ -49,7 +49,7 @@ const LoginForm = () => {
           </Text>
         </Pressable>
       </Block>
-      <Button isValid={isValid} title="Sign in" onPress={handleSubmit(_onSubmit)} />
+      <GradientButton isValid={true} title="Sign in" onPress={handleSubmit(_onSubmit)} />
       <SocialLoginForm />
     </Block>
   );
