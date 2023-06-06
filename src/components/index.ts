@@ -21,4 +21,5 @@ export {default as WebView} from './base/WebView';
 export {default as Button} from './common/Button';
 export {default as EmptyList} from './common/EmptyList';
 export {default as FAB} from './common/FAB';
+export {default as GradientText} from './common/GradientText';
 export {default as Loading} from './common/Loading';

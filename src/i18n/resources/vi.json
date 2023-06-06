@@ -9,5 +9,9 @@
     "login": "Đăng nhập",
     "logout": "Đăng xuất",
     "empty_list": "Không có dữ liệu để hiển thị"
+  },
+  "validate": {
+    "username_empty": "Tài khoản không được để trống",
+    "password_empty": "Mật khẩu không được để trống"
   }
 }

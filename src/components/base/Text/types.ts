@@ -29,7 +29,7 @@ export interface TextProps extends RNTextProps {
   marginVertical?: number;
   marginHorizontal?: number;
   style?: StyleProp<TextStyle>;
-  type?: keyof typeof FONTS.fontFamily;
+  type?: keyof typeof FONTS.fontWeight;
   lineHeight?: number;
   textDecorationLine?: string;
   children?: any;

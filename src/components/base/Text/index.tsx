@@ -64,7 +64,7 @@ const Text: React.FC<TextProps> = props => {
     marginHorizontal && {marginHorizontal: getSize.m(marginHorizontal)},
     marginVertical && {marginVertical: getSize.m(marginVertical)},
     isNumber(lineHeight) && {lineHeight: getSize.m(lineHeight)},
-    {fontFamily: (FONTS.fontFamily as any)[type]},
+    {fontWeight: (FONTS.fontWeight as any)[type]},
     textDecorationLine && {textDecorationLine},
     {fontSize: getSize.m(size)},
     sm && {fontSize: getSize.m(12)},

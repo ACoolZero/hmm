@@ -7,7 +7,7 @@ export interface TextInputProps extends RNTextInputProps {
   labelStyle?: TextStyle | TextStyle[];
   containerInputStyle?: ViewStyle | ViewStyle[];
   autoCapitalize?: any;
-  type?: keyof typeof FONTS.fontFamily;
+  type?: keyof typeof FONTS.fontWeight;
   color?: string;
   borderColor?: string;
   size?: number;

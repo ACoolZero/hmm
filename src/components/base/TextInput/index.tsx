@@ -49,7 +49,7 @@ const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
     color && {color: (COLORS as any)[color]},
     color && !(COLORS as any)[color] && {color: color},
     styles.defaultStyles,
-    {fontFamily: FONTS.fontFamily[type]},
+    {fontWeight: FONTS.fontWeight[type]},
     isSecure && {paddingRight: getSize.m(50)},
     rightIcon && {paddingRight: getSize.m(16)},
     leftIcon && {paddingLeft: getSize.m(38)},
@@ -129,7 +129,7 @@ const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
     if (isFocus && !isDirty) {
       return borderColor;
     }
-    return COLORS.gray_300;
+    return COLORS.border;
   };
 
   return (

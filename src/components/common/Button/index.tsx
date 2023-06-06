@@ -51,9 +51,8 @@ const Button: React.FC<ButtonProps> = ({
         row
         justifyCenter
         alignCenter
-        marginVertical={12}
-        radius={6}
-        height={45}
+        radius={8}
+        height={48}
         overflow="hidden"
         backgroundColor={isValid ? backgroundColor : 'gray_300'}
         style={containerStyle}>
