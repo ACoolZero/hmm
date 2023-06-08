@@ -11,6 +11,7 @@ export const ICONS = {
   google: require('./icons/google.png'),
   twitter: require('./icons/twitter.png'),
   back: require('./icons/back.png'),
+  calendar: require('./icons/calendar.png'),
 };
 
 export const IMAGES = {
