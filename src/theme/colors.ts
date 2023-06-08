@@ -3,7 +3,7 @@ export const DARK_THEME_SCHEME = {
   light_text: '#FFFFFF',
   background: '#22343C',
   placeholder: '#BFBFBF',
-  border: '#BFBFBF',
+  border: '#D9D9D9',
 };
 
 export const LIGHT_THEME_SCHEME = {
@@ -11,7 +11,7 @@ export const LIGHT_THEME_SCHEME = {
   light_text: '#595959',
   background: '#F5F5F5',
   placeholder: '#BFBFBF',
-  border: '#BFBFBF',
+  border: '#D9D9D9',
 };
 
 const COLORS = {
@@ -28,8 +28,8 @@ const COLORS = {
   text: '#262626',
   light_text: '#595959',
   background: '#F5F5F5',
-  white: '#ffffff',
-  black: '#000000',
+  white: '#FFFFFF',
+  black: '#262626',
   placeholder: '#BFBFBF',
   border: '#BFBFBF',
 

@@ -39,6 +39,7 @@ const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
     disabled,
     errorContainerStyle,
     pointerEvents,
+    shadow,
     ...inputProps
   } = props;
   const [isFocus, setIsFocus] = useState(false);
@@ -133,7 +134,7 @@ const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
   };
 
   return (
-    <Block flexShrink pointerEvents={pointerEvents} style={containerInputStyle}>
+    <Block flexShrink shadow={shadow} paddingHorizontal={2} pointerEvents={pointerEvents} style={containerInputStyle}>
       {!isEmpty(label) && _renderLabel()}
       <Block
         radius={7}
