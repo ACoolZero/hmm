@@ -29,7 +29,7 @@ const COLORS = {
   light_text: '#595959',
   background: '#F5F5F5',
   white: '#FFFFFF',
-  black: '#000000',
+  black: '#262626',
   placeholder: '#BFBFBF',
   border: '#BFBFBF',
 

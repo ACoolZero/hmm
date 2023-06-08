@@ -33,7 +33,7 @@ const GradientButton: React.FC<GradientButtonProps> = ({
   return (
     <Pressable style={style} disabled={disabled || !isValid} onPress={onPress}>
       <LinearGradient
-        colors={isValid ? backgroundColor : ['#BFBFBF', '#BFBFBF']}
+        colors={isValid ? backgroundColor : ['#D1D5DB', '#D1D5DB']}
         start={{x: 0, y: 0}}
         end={{x: 1, y: 0}}
         style={styles.container}>

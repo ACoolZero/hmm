@@ -10,6 +10,7 @@ export const ICONS = {
   apple: require('./icons/apple.png'),
   google: require('./icons/google.png'),
   twitter: require('./icons/twitter.png'),
+  back: require('./icons/back.png'),
 };
 
 export const IMAGES = {

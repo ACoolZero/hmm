@@ -26,4 +26,5 @@ export interface TextInputProps extends RNTextInputProps {
   disabled?: boolean;
   errorContainerStyle?: ViewStyle | ViewStyle[];
   pointerEvents?: 'box-none' | 'none' | 'box-only' | 'auto';
+  shadow?: boolean;
 }
