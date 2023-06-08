@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import {ICONS} from '@assets';
 import {Block, GradientButton, Image, TextInput} from '@components';
-import {goBack, navigate} from '@navigation/NavigationServices';
+import {goBack, reset} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import Header from '@screens/Auth/components/Header';
 import React from 'react';
@@ -43,7 +43,7 @@ const RegisterStep4 = () => {
             title="Continue"
             style={{flex: 1}}
             onPress={() => {
-              navigate(routes.REGISTER_STEP5_SCREEN);
+              reset(0, routes.REGISTER_STEP5_SCREEN);
             }}
           />
         </Block>

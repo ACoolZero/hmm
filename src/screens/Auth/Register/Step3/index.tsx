@@ -1,13 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
 import {ICONS} from '@assets';
-import {Block, GradientButton, Image, TextInput} from '@components';
+import {Block, GradientButton, Image, Text} from '@components';
 import {goBack, navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import Header from '@screens/Auth/components/Header';
 import React from 'react';
 import {Pressable} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import styles from '../styles';
 
 const RegisterStep3 = () => {
   const {top} = useSafeAreaInsets();
@@ -22,7 +21,23 @@ const RegisterStep3 = () => {
       </Block>
       <Block style={{flex: 2}}>
         <Block height={200}>
-          <TextInput shadow placeholder="Date of birth" containerInputStyle={styles.containerInputStyle} />
+          <Block radius={8} borderWidth={1} borderColor="border" backgroundColor="white">
+            <Pressable>
+              <Block row alignCenter height={48} paddingHorizontal={16} space="between">
+                <Text>Male</Text>
+                <Block alignCenter justifyCenter round={20} borderWidth={2} borderColor="primary">
+                  <Block round={10} backgroundColor="primary" />
+                </Block>
+              </Block>
+            </Pressable>
+            <Block height={1} backgroundColor="border" />
+            <Pressable>
+              <Block row alignCenter height={48} paddingHorizontal={16} space="between">
+                <Text>Female</Text>
+                <Block round={20} borderWidth={2} borderColor="border" />
+              </Block>
+            </Pressable>
+          </Block>
         </Block>
         <Block row>
           <Pressable onPress={goBack}>

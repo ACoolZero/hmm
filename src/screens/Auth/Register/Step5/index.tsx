@@ -1,4 +1,6 @@
 import {Block, GradientButton, Text} from '@components';
+import {navigate} from '@navigation/NavigationServices';
+import routes from '@navigation/routes';
 import Header from '@screens/Auth/components/Header';
 import React from 'react';
 
@@ -9,7 +11,12 @@ const RegisterStep5 = () => {
       <Text md marginBottom={60} color="light_text">
         Thank you for using the app
       </Text>
-      <GradientButton title="Continue" onPress={() => {}} />
+      <GradientButton
+        title="Continue"
+        onPress={() => {
+          navigate(routes.LOGIN_SCREEN);
+        }}
+      />
     </Block>
   );
 };
