@@ -13,7 +13,7 @@ const RegisterStep3 = () => {
 
   return (
     <Block flex padding={24} backgroundColor="background">
-      <Block flex paddingTop={top + 24} justifyCenter space="between">
+      <Block flex paddingTop={top} justifyCenter space="between">
         {/* <Pressable onPress={goBack}>
           <Image source={ICONS.back} square={20} tintColor="black" resizeMode="contain" />
         </Pressable> */}

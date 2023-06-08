@@ -14,7 +14,6 @@ interface GradientButtonProps {
   backgroundColor?: string[];
   titleStyle?: TextStyle;
   loadingTintColor?: string;
-  containerStyle?: ViewStyle;
   onPress?: () => void;
   style?: ViewStyle;
 }

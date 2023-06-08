@@ -4,10 +4,10 @@ import {Block, GradientButton, Image, TextInput} from '@components';
 import {goBack, navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import Header from '@screens/Auth/components/Header';
+import {getSize} from '@utils/responsive';
 import React from 'react';
 import {Pressable} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import styles from '../styles';
 
 const RegisterStep2 = () => {
   const {top} = useSafeAreaInsets();
@@ -18,7 +18,7 @@ const RegisterStep2 = () => {
 
   return (
     <Block flex padding={24} backgroundColor="background">
-      <Block flex paddingTop={top + 24} justifyCenter space="between">
+      <Block flex paddingTop={top} justifyCenter space="between">
         {/* <Pressable onPress={goBack}>
           <Image source={ICONS.back} square={20} tintColor="black" resizeMode="contain" />
         </Pressable> */}
@@ -31,7 +31,7 @@ const RegisterStep2 = () => {
             pointerEvents="none"
             placeholder="Date of birth"
             rightIcon={_rightIcon}
-            containerInputStyle={styles.containerInputStyle}
+            containerInputStyle={{marginBottom: getSize.m(16)}}
           />
         </Block>
         <Block row>
