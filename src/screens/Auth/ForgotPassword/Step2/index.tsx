@@ -1,6 +1,7 @@
 import {ICONS} from '@assets';
 import {Block, Image, Text} from '@components';
-import {goBack} from '@navigation/NavigationServices';
+import {goBack, navigate} from '@navigation/NavigationServices';
+import routes from '@navigation/routes';
 import Header from '@screens/Auth/components/Header';
 import React from 'react';
 import {Pressable} from 'react-native';
@@ -22,9 +23,23 @@ const ForgotPasswordStep2 = () => {
           Please enter the OTP sent to your email to reset your password
         </Text>
       </Block>
-      <Block>
-        <Block height={50} width={100} backgroundColor="primary" />
+      <Block row marginBottom={24}>
+        <Block shadow radius={8} square={48} marginRight={12} backgroundColor="white" />
+        <Block shadow radius={8} square={48} marginRight={12} backgroundColor="white" />
+        <Block shadow radius={8} square={48} marginRight={12} backgroundColor="white" />
+        <Block shadow radius={8} square={48} marginRight={12} backgroundColor="white" />
       </Block>
+      <Pressable
+        onPress={() => {
+          navigate(routes.FORGOT_PASSWORD_STEP3_SCREEN);
+        }}>
+        <Text color="light_text">
+          Did not receive the OTP code?{' '}
+          <Text color="primary" type="medium">
+            Try again
+          </Text>
+        </Text>
+      </Pressable>
     </Block>
   );
 };
