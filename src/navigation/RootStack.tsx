@@ -16,6 +16,22 @@ const RootStack = () => {
         <Stack.Screen name={routes.REGISTER_STEP3_SCREEN} component={auth[routes.REGISTER_STEP3_SCREEN]} />
         <Stack.Screen name={routes.REGISTER_STEP4_SCREEN} component={auth[routes.REGISTER_STEP4_SCREEN]} />
         <Stack.Screen name={routes.REGISTER_STEP5_SCREEN} component={auth[routes.REGISTER_STEP5_SCREEN]} />
+        <Stack.Screen
+          name={routes.FORGOT_PASSWORD_STEP1_SCREEN}
+          component={auth[routes.FORGOT_PASSWORD_STEP1_SCREEN]}
+        />
+        <Stack.Screen
+          name={routes.FORGOT_PASSWORD_STEP2_SCREEN}
+          component={auth[routes.FORGOT_PASSWORD_STEP2_SCREEN]}
+        />
+        <Stack.Screen
+          name={routes.FORGOT_PASSWORD_STEP3_SCREEN}
+          component={auth[routes.FORGOT_PASSWORD_STEP3_SCREEN]}
+        />
+        <Stack.Screen
+          name={routes.FORGOT_PASSWORD_STEP4_SCREEN}
+          component={auth[routes.FORGOT_PASSWORD_STEP4_SCREEN]}
+        />
       </Stack.Group>
       {/** Screens are disabled swipe back action */}
       <Stack.Group screenOptions={{gestureEnabled: false}}>

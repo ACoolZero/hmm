@@ -1,4 +1,8 @@
 import routes from '@navigation/routes';
+import ForgotPasswordStep1 from './Auth/ForgotPassword/Step1';
+import ForgotPasswordStep2 from './Auth/ForgotPassword/Step2';
+import ForgotPasswordStep3 from './Auth/ForgotPassword/Step3';
+import ForgotPasswordStep4 from './Auth/ForgotPassword/Step4';
 import Login from './Auth/Login';
 import RegisterStep1 from './Auth/Register/Step1';
 import RegisterStep2 from './Auth/Register/Step2';
@@ -13,6 +17,10 @@ export const auth = {
   [routes.REGISTER_STEP3_SCREEN]: RegisterStep3,
   [routes.REGISTER_STEP4_SCREEN]: RegisterStep4,
   [routes.REGISTER_STEP5_SCREEN]: RegisterStep5,
+  [routes.FORGOT_PASSWORD_STEP1_SCREEN]: ForgotPasswordStep1,
+  [routes.FORGOT_PASSWORD_STEP2_SCREEN]: ForgotPasswordStep2,
+  [routes.FORGOT_PASSWORD_STEP3_SCREEN]: ForgotPasswordStep3,
+  [routes.FORGOT_PASSWORD_STEP4_SCREEN]: ForgotPasswordStep4,
 };
 
 export const common = {};

@@ -47,7 +47,7 @@ const LoginForm = () => {
             Register
           </Text>
         </Pressable>
-        <Pressable>
+        <Pressable onPress={() => navigate(routes.FORGOT_PASSWORD_STEP1_SCREEN)}>
           <Text md color="primary">
             Forgot password?
           </Text>
