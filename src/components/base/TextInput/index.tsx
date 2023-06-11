@@ -18,7 +18,7 @@ const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
     labelStyle,
     containerInputStyle,
     autoCapitalize = 'none',
-    type = 'regular',
+    type = 'semibold',
     color = 'text',
     borderColor = 'primary',
     size = 14,

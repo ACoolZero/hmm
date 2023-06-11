@@ -1,7 +1,6 @@
 import {COLORS} from '@theme';
 import {getSize} from '@utils/responsive';
 import React from 'react';
-import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
@@ -14,13 +13,9 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Octicons from 'react-native-vector-icons/Octicons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-import icoMoonConfig from './selection.json';
 import {IconProps} from './types';
 
-const Youmed = createIconSetFromIcoMoon(icoMoonConfig);
-
 const Icons = {
-  Youmed,
   FontAwesome,
   FontAwesome5,
   AntDesign,
