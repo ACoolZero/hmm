@@ -22,7 +22,9 @@ const LoginForm = () => {
     defaultValues: INITIAL_VALUES,
   });
 
-  const _onSubmit = () => {};
+  const _onSubmit = () => {
+    navigate(routes.BOTTOM_TAB);
+  };
 
   return (
     <Block paddingVertical={24}>

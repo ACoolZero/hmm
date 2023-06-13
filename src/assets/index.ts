@@ -12,6 +12,10 @@ export const ICONS = {
   twitter: require('./icons/twitter.png'),
   back: require('./icons/back.png'),
   calendar: require('./icons/calendar.png'),
+  bottom_favourite: require('./icons/bottom_favourite.png'),
+  bottom_chat: require('./icons/bottom_chat.png'),
+  bottom_home: require('./icons/bottom_home.png'),
+  bottom_notification: require('./icons/bottom_notification.png'),
 };
 
 export const IMAGES = {

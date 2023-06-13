@@ -1,6 +1,7 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {auth} from '@screens';
 import React from 'react';
+import BottomTabNavigation from './BottomTabNavigation';
 import routes from './routes';
 
 const Stack = createNativeStackNavigator();
@@ -33,6 +34,7 @@ const RootStack = () => {
           component={auth[routes.FORGOT_PASSWORD_STEP4_SCREEN]}
         />
       </Stack.Group>
+      <Stack.Screen name={routes.BOTTOM_TAB} component={BottomTabNavigation} />
       {/** Screens are disabled swipe back action */}
       <Stack.Group screenOptions={{gestureEnabled: false}}>
         {/**

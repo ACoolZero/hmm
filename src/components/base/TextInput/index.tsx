@@ -134,7 +134,7 @@ const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
   };
 
   return (
-    <Block flexShrink shadow={shadow} paddingHorizontal={2} pointerEvents={pointerEvents} style={containerInputStyle}>
+    <Block flexShrink paddingHorizontal={2} pointerEvents={pointerEvents} style={containerInputStyle}>
       {!isEmpty(label) && _renderLabel()}
       <Block
         radius={7}
@@ -142,6 +142,7 @@ const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
         backgroundColor={isFocus ? _getBorderColor() : 'transparent'}
         borderColor={isFocus ? _getBorderColor() : 'transparent'}>
         <Block
+          shadow={shadow}
           style={[
             styles.inputContainer,
             {

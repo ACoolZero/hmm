@@ -9,6 +9,10 @@ import RegisterStep2 from './Auth/Register/Step2';
 import RegisterStep3 from './Auth/Register/Step3';
 import RegisterStep4 from './Auth/Register/Step4';
 import RegisterStep5 from './Auth/Register/Step5';
+import Chat from './Bottom/Chat';
+import Favourite from './Bottom/Favourite';
+import Home from './Bottom/Home';
+import Notification from './Bottom/Notification';
 
 export const auth = {
   [routes.LOGIN_SCREEN]: Login,
@@ -21,6 +25,13 @@ export const auth = {
   [routes.FORGOT_PASSWORD_STEP2_SCREEN]: ForgotPasswordStep2,
   [routes.FORGOT_PASSWORD_STEP3_SCREEN]: ForgotPasswordStep3,
   [routes.FORGOT_PASSWORD_STEP4_SCREEN]: ForgotPasswordStep4,
+};
+
+export const bottom = {
+  [routes.HOME_SCREEN]: Home,
+  [routes.FAVOURITE_SCREEN]: Favourite,
+  [routes.CHAT_SCREEN]: Chat,
+  [routes.NOTIFICATION_SCREEN]: Notification,
 };
 
 export const common = {};
