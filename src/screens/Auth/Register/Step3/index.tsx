@@ -12,7 +12,7 @@ const RegisterStep3 = () => {
   const {top} = useSafeAreaInsets();
 
   return (
-    <Block flex padding={24} backgroundColor="background">
+    <Block flex padding={24} backgroundColor="common_background">
       <Block flex paddingTop={top} justifyCenter space="between">
         {/* <Pressable onPress={goBack}>
           <Image source={ICONS.back} square={20} tintColor="black" resizeMode="contain" />
@@ -24,7 +24,7 @@ const RegisterStep3 = () => {
           <Block radius={8} borderWidth={1} borderColor="border" backgroundColor="white">
             <Pressable>
               <Block row alignCenter height={48} paddingHorizontal={16} space="between">
-                <Text>Male</Text>
+                <Text color="common_text">Male</Text>
                 <Block alignCenter justifyCenter round={20} borderWidth={2} borderColor="primary">
                   <Block round={10} backgroundColor="primary" />
                 </Block>
@@ -33,7 +33,7 @@ const RegisterStep3 = () => {
             <Block height={1} backgroundColor="border" />
             <Pressable>
               <Block row alignCenter height={48} paddingHorizontal={16} space="between">
-                <Text>Female</Text>
+                <Text color="common_text">Female</Text>
                 <Block round={20} borderWidth={2} borderColor="border" />
               </Block>
             </Pressable>

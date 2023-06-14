@@ -1,37 +1,14 @@
-export const DARK_THEME_SCHEME = {
-  text: '#FFFFFF',
-  light_text: '#FFFFFF',
-  background: '#22343C',
-  placeholder: '#BFBFBF',
-  border: '#D9D9D9',
-};
-
-export const LIGHT_THEME_SCHEME = {
-  text: '#262626',
-  light_text: '#595959',
-  background: '#F5F5F5',
-  placeholder: '#BFBFBF',
-  border: '#D9D9D9',
-};
-
 const COLORS = {
-  /**
-   * @base
-   */
   primary: '#518EF8',
   success: '#10B981',
   error: '#FF4D4F',
-
-  /**
-   * @common
-   */
-  text: '#262626',
-  light_text: '#595959',
-  background: '#F5F5F5',
+  placeholder: '#BFBFBF',
+  border: '#D9D9D9',
   white: '#FFFFFF',
   black: '#262626',
-  placeholder: '#BFBFBF',
-  border: '#BFBFBF',
+  common_background: '#F5F5F5',
+  common_text: '#262626',
+  common_light_text: '#595959',
 
   /**
    * @gray
@@ -160,4 +137,18 @@ const COLORS = {
   orange_900: '#7C2D12',
 };
 
-export default COLORS;
+const dark = {
+  text: '#FFFFFF',
+  light_text: '#FFFFFF',
+  background: '#22343C',
+  ...COLORS,
+};
+
+const light = {
+  text: '#262626',
+  light_text: '#595959',
+  background: '#F5F5F5',
+  ...COLORS,
+};
+
+export default {light, dark};

@@ -1,16 +1,18 @@
 import {Block, Text} from '@components';
 import {useStore, useTranslation} from '@hooks';
 import React from 'react';
+import {StatusBar} from 'react-native';
 
-const Notification = () => {
+const Feeds = () => {
   const {t} = useTranslation();
   const {dispatch, useSelector} = useStore();
 
   return (
     <Block flex backgroundColor="#22343C">
+      <StatusBar barStyle="light-content" />
       <Text />
     </Block>
   );
 };
 
-export default Notification;
+export default Feeds;

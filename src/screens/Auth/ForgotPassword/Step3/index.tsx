@@ -12,22 +12,30 @@ const ForgotPasswordStep3 = () => {
   const {top} = useSafeAreaInsets();
 
   return (
-    <Block flex padding={24} backgroundColor="background">
+    <Block flex padding={24} backgroundColor="common_background">
       <Block justifyCenter paddingTop={top} marginBottom={60} space="between">
         <Pressable onPress={() => reset(0, routes.LOGIN_SCREEN)}>
-          <Image
-            source={ICONS.close}
-            square={14}
-            tintColor="light_text"
-            resizeMode="contain"
-            style={{marginBottom: getSize.m(30)}}
-          />
+          <Block marginBottom={40}>
+            <Image source={ICONS.close} square={14} tintColor="common_light_text" resizeMode="contain" />
+          </Block>
         </Pressable>
         <Header content="Create your password" />
       </Block>
       <Block marginBottom={40}>
-        <TextInput shadow isSecure placeholder="Password" containerInputStyle={{marginBottom: getSize.m(16)}} />
-        <TextInput shadow isSecure placeholder="Confirm password" containerInputStyle={{marginBottom: getSize.m(16)}} />
+        <TextInput
+          shadow
+          isSecure
+          placeholder="Password"
+          color="common_text"
+          containerInputStyle={{marginBottom: getSize.m(16)}}
+        />
+        <TextInput
+          shadow
+          isSecure
+          placeholder="Confirm password"
+          color="common_text"
+          containerInputStyle={{marginBottom: getSize.m(16)}}
+        />
       </Block>
       <GradientButton
         title="Create a password"

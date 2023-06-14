@@ -1,7 +1,6 @@
 import {AlertDialog, NetWork} from '@components';
 import {PortalProvider} from '@gorhom/portal';
 import {NavigationContainer} from '@react-navigation/native';
-import {COLORS} from '@theme';
 import React from 'react';
 import {StatusBar} from 'react-native';
 import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
@@ -12,7 +11,7 @@ const RootNavigation = () => {
   return (
     <NavigationContainer ref={navigationRef}>
       <PortalProvider>
-        <StatusBar backgroundColor={COLORS.white} barStyle="dark-content" />
+        <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
         <RootStack />
       </PortalProvider>
       <AlertDialog />

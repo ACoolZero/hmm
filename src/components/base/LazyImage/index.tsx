@@ -1,7 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import {ICONS} from '@assets';
 import {Block} from '@components';
-import {COLORS} from '@theme';
 import React, {useState} from 'react';
 import {Animated, StyleSheet} from 'react-native';
 import FastImage from 'react-native-fast-image';
@@ -72,7 +71,7 @@ const LazyImage: React.FC<LazyImageProps> = ({
               <FastImage
                 source={ICONS.image_holder}
                 style={{height: IMAGE_HOLDER_SIZE, width: IMAGE_HOLDER_SIZE}}
-                tintColor={COLORS.gray_300}
+                tintColor="#D1D5DB"
                 onLoadStart={onThumbnailLoad}
               />
             </Block>

@@ -1,8 +1,9 @@
-import {COLORS, FONTS} from '@theme';
+import {useColors} from '@hooks';
+import {FONTS} from '@theme';
 import {getSize} from '@utils/responsive';
 import {isNumber} from 'lodash';
 import React from 'react';
-import {StyleSheet, Text as RNText} from 'react-native';
+import {Text as RNText, StyleSheet} from 'react-native';
 import {handleMargin, handlePadding} from '../shared';
 import {TextProps} from './types';
 
@@ -40,6 +41,7 @@ const Text: React.FC<TextProps> = props => {
     textDecorationLine,
     ...textProps
   } = props;
+  const {COLORS} = useColors();
 
   const textStyle: any = [
     flex && {flex: 1},

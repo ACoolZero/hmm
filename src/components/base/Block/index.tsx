@@ -1,4 +1,4 @@
-import {COLORS} from '@theme';
+import {useColors} from '@hooks';
 import {getSize} from '@utils/responsive';
 import {isNumber} from 'lodash';
 import React from 'react';
@@ -69,6 +69,7 @@ const Block: React.FC<BlockProps> = ({
   safeBottom,
   ...rest
 }) => {
+  const {COLORS} = useColors();
   const insets = useSafeAreaInsets();
   const blockStyles = [
     flex && styles.block,

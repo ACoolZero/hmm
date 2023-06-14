@@ -1,4 +1,5 @@
-import {COLORS, FONTS} from '@theme';
+import {useColors} from '@hooks';
+import {FONTS} from '@theme';
 import {getSize} from '@utils/responsive';
 import {isEmpty} from 'lodash';
 import React, {forwardRef, useImperativeHandle, useState} from 'react';
@@ -42,6 +43,7 @@ const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
     shadow,
     ...inputProps
   } = props;
+  const {COLORS} = useColors();
   const [isFocus, setIsFocus] = useState(false);
   const [secureEye, setSecureEye] = useState(true);
 

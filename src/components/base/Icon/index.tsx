@@ -1,4 +1,3 @@
-import {COLORS} from '@theme';
 import {getSize} from '@utils/responsive';
 import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -40,7 +39,7 @@ export const getIconComponent = (componentName: IconType) => {
   return Icons[componentName];
 };
 
-const Icon: React.FC<IconProps> = ({type, name, size = 22, color = COLORS.text}) => {
+const Icon: React.FC<IconProps> = ({type, name, size = 22, color = '#000000'}) => {
   const IconComponent = getIconComponent(type);
 
   if (!IconComponent) {

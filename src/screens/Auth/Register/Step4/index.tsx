@@ -13,7 +13,7 @@ const RegisterStep4 = () => {
   const {top} = useSafeAreaInsets();
 
   return (
-    <Block flex padding={24} backgroundColor="background">
+    <Block flex padding={24} backgroundColor="common_background">
       <Block flex paddingTop={top} justifyCenter space="between">
         {/* <Pressable onPress={goBack}>
           <Image source={ICONS.back} square={20} tintColor="black" resizeMode="contain" />
@@ -22,11 +22,18 @@ const RegisterStep4 = () => {
       </Block>
       <Block style={{flex: 2}}>
         <Block height={200}>
-          <TextInput shadow isSecure placeholder="Password" containerInputStyle={{marginBottom: getSize.m(16)}} />
+          <TextInput
+            shadow
+            isSecure
+            placeholder="Password"
+            color="common_text"
+            containerInputStyle={{marginBottom: getSize.m(16)}}
+          />
           <TextInput
             shadow
             isSecure
             placeholder="Confirm password"
+            color="common_text"
             containerInputStyle={{marginBottom: getSize.m(16)}}
           />
         </Block>

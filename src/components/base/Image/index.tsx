@@ -1,4 +1,4 @@
-import {COLORS} from '@theme';
+import {useColors} from '@hooks';
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import FastImage from 'react-native-fast-image';
@@ -16,6 +16,7 @@ const Image: React.FC<ImageProps> = ({
   resizeMode = 'cover',
   ...rest
 }) => {
+  const {COLORS} = useColors();
   const imageStyle = [
     width && {width},
     height && {height},

@@ -6,9 +6,9 @@ import React from 'react';
 
 const RegisterStep5 = () => {
   return (
-    <Block flex justifyCenter padding={24} backgroundColor="background">
+    <Block flex justifyCenter padding={24} backgroundColor="common_background">
       <Header content="It's all set up !!" />
-      <Text md marginBottom={60} color="light_text">
+      <Text md marginBottom={60} color="#96A7AF">
         Thank you for using the app
       </Text>
       <GradientButton

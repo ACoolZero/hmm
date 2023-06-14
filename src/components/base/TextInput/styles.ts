@@ -1,4 +1,4 @@
-import {COLORS, FONTS} from '@theme';
+import {FONTS} from '@theme';
 import {getSize} from '@utils/responsive';
 import {StyleSheet} from 'react-native';
 
@@ -19,7 +19,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     borderWidth: 1,
-    backgroundColor: COLORS.white,
+    backgroundColor: '#FFFFFF',
     borderRadius: getSize.s(8),
     height: getSize.s(48),
     paddingRight: getSize.m(12),

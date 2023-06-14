@@ -1,4 +1,3 @@
-import {COLORS} from '@theme';
 import {getSize} from '@utils/responsive';
 
 export default {
@@ -13,7 +12,7 @@ export default {
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'hidden',
-    backgroundColor: COLORS.white,
+    backgroundColor: '#FFFFFF',
   }),
   icon: (width: number): any => ({
     width: getSize.s(width - 5),

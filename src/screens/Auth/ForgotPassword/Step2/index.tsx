@@ -11,15 +11,15 @@ const ForgotPasswordStep2 = () => {
   const {top} = useSafeAreaInsets();
 
   return (
-    <Block flex padding={24} backgroundColor="background">
+    <Block flex padding={24} backgroundColor="common_background">
       <Block paddingTop={top} marginBottom={40}>
         <Pressable onPress={goBack}>
           <Block marginBottom={40}>
-            <Image source={ICONS.close} square={14} tintColor="light_text" resizeMode="contain" />
+            <Image source={ICONS.close} square={14} tintColor="common_light_text" resizeMode="contain" />
           </Block>
         </Pressable>
         <Header content="OTP sent !!" />
-        <Text lg marginTop={8}>
+        <Text lg marginTop={8} color="common_light_text">
           Please enter the OTP sent to your email to reset your password
         </Text>
       </Block>
@@ -33,7 +33,7 @@ const ForgotPasswordStep2 = () => {
         onPress={() => {
           navigate(routes.FORGOT_PASSWORD_STEP3_SCREEN);
         }}>
-        <Text color="light_text">
+        <Text color="#8C8C8C">
           Did not receive the OTP code?{' '}
           <Text color="primary" type="medium">
             Try again

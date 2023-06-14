@@ -16,10 +16,10 @@ const TabBar: React.FC<any> = ({state, navigation}) => {
         {state.routes.map((route: any, index: number) => {
           const isFocused = state.index === index;
           const icons = {
-            [routes.FAVOURITE_SCREEN]: 'bottom_favourite',
+            [routes.FEEDS_SCREEN]: 'bottom_feeds',
             [routes.HOME_SCREEN]: 'bottom_home',
             [routes.CHAT_SCREEN]: 'bottom_chat',
-            [routes.NOTIFICATION_SCREEN]: 'bottom_notification',
+            [routes.GADGETS_SCREEN]: 'bottom_gadgets',
           };
 
           const _onSelectTab = () => {

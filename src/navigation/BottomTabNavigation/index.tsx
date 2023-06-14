@@ -9,10 +9,10 @@ const Tab = createBottomTabNavigator();
 const BottomTabNavigation: React.FC = () => {
   return (
     <Tab.Navigator screenOptions={{headerShown: false}} tabBar={props => <TabBar {...props} />}>
-      <Tab.Screen name={routes.FAVOURITE_SCREEN} component={bottom[routes.FAVOURITE_SCREEN]} />
+      <Tab.Screen name={routes.FEEDS_SCREEN} component={bottom[routes.FEEDS_SCREEN]} />
       <Tab.Screen name={routes.HOME_SCREEN} component={bottom[routes.HOME_SCREEN]} />
       <Tab.Screen name={routes.CHAT_SCREEN} component={bottom[routes.CHAT_SCREEN]} />
-      <Tab.Screen name={routes.NOTIFICATION_SCREEN} component={bottom[routes.NOTIFICATION_SCREEN]} />
+      <Tab.Screen name={routes.GADGETS_SCREEN} component={bottom[routes.GADGETS_SCREEN]} />
     </Tab.Navigator>
   );
 };
