@@ -9,7 +9,7 @@ const Header: React.FC<{content: String}> = ({content}) => {
   return (
     <Block>
       <Image source={IMAGES.logo} square={LOGO_SIZE} />
-      <GradientText size={46} marginTop={12} type="bold">
+      <GradientText xl marginTop={12} type="bold">
         {content}
       </GradientText>
     </Block>

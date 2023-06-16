@@ -19,7 +19,7 @@ const ForgotPasswordStep2 = () => {
           </Block>
         </Pressable>
         <Header content="OTP sent !!" />
-        <Text lg marginTop={8} color="common_light_text">
+        <Text md marginTop={8} color="common_light_text">
           Please enter the OTP sent to your email to reset your password
         </Text>
       </Block>

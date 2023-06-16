@@ -11,8 +11,8 @@ const TabBar: React.FC<any> = ({state, navigation}) => {
   const TAB_BAR_HEIGHT = bottom ? bottom : 20;
 
   return (
-    <Block backgroundColor="#22343C">
-      <Block row height={60 + TAB_BAR_HEIGHT} radius={32} paddingTop={24} backgroundColor="#30444E">
+    <Block backgroundColor="background">
+      <Block row height={60 + TAB_BAR_HEIGHT} radius={32} paddingTop={24} backgroundColor="light_background">
         {state.routes.map((route: any, index: number) => {
           const isFocused = state.index === index;
           const icons = {

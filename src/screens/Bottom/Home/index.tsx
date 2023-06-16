@@ -1,14 +1,14 @@
-import {Block, Text} from '@components';
-import {useStore, useTranslation} from '@hooks';
+import {Block} from '@components';
 import React from 'react';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {PostList} from './components';
 
-const Home = () => {
-  const {t} = useTranslation();
-  const {dispatch, useSelector} = useStore();
+const Home: React.FC = () => {
+  const {top} = useSafeAreaInsets();
 
   return (
-    <Block flex backgroundColor="#22343C">
-      <Text />
+    <Block flex paddingTop={top + 24} backgroundColor="background">
+      <PostList />
     </Block>
   );
 };

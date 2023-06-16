@@ -8,7 +8,7 @@ const Feeds = () => {
   const {dispatch, useSelector} = useStore();
 
   return (
-    <Block flex backgroundColor="#22343C">
+    <Block flex backgroundColor="background">
       <StatusBar barStyle="light-content" />
       <Text />
     </Block>

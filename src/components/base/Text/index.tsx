@@ -16,7 +16,7 @@ const Text: React.FC<TextProps> = props => {
     flex,
     flexShrink,
     flexGrow,
-    size = 14,
+    size = 16,
     color = 'text',
     center,
     right,
@@ -69,10 +69,10 @@ const Text: React.FC<TextProps> = props => {
     {fontWeight: (FONTS.fontWeight as any)[type]},
     textDecorationLine && {textDecorationLine},
     {fontSize: getSize.m(size)},
-    sm && {fontSize: getSize.m(12)},
-    md && {fontSize: getSize.m(16)},
-    lg && {fontSize: getSize.m(19)},
-    xl && {fontSize: getSize.m(25)},
+    sm && {fontSize: getSize.m(14)},
+    md && {fontSize: getSize.m(20)},
+    lg && {fontSize: getSize.m(32)},
+    xl && {fontSize: getSize.m(46)},
     {...StyleSheet.flatten(style)},
   ];
 

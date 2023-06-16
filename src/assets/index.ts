@@ -16,8 +16,13 @@ export const ICONS = {
   bottom_chat: require('./icons/bottom_chat.png'),
   bottom_home: require('./icons/bottom_home.png'),
   bottom_gadgets: require('./icons/bottom_gadgets.png'),
+  eye_closed: require('./icons/eye_closed.png'),
+  eye_open: require('./icons/eye_open.png'),
 };
 
 export const IMAGES = {
   logo: require('./images/logo.png'),
+  story1: require('./images/story1.jpg'),
+  story2: require('./images/story2.jpg'),
+  article1: require('./images/article1.png'),
 };

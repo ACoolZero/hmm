@@ -13,6 +13,7 @@ import Chat from './Bottom/Chat';
 import Feeds from './Bottom/Feeds';
 import Gadgets from './Bottom/Gadgets';
 import Home from './Bottom/Home';
+import ArticleDetails from './Common/ArticleDetails';
 
 export const auth = {
   [routes.LOGIN_SCREEN]: Login,
@@ -34,4 +35,6 @@ export const bottom = {
   [routes.GADGETS_SCREEN]: Gadgets,
 };
 
-export const common = {};
+export const common = {
+  [routes.ARTICLE_DETAILS_SCREEN]: ArticleDetails,
+};

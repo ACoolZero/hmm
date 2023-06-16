@@ -1,10 +1,10 @@
+import {ICONS} from '@assets';
 import {useColors} from '@hooks';
 import {FONTS} from '@theme';
 import {getSize} from '@utils/responsive';
 import {isEmpty} from 'lodash';
 import React, {forwardRef, useImperativeHandle, useState} from 'react';
 import {TextInput as RNTextInput, StyleSheet, TouchableOpacity} from 'react-native';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Block from '../Block';
 import Image from '../Image';
@@ -22,7 +22,7 @@ const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
     type = 'semibold',
     color = 'text',
     borderColor = 'primary',
-    size = 14,
+    size = 16,
     isSecure,
     rightIcon,
     leftIcon,
@@ -71,7 +71,12 @@ const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
         style={styles.rightIcon}
         hitSlop={{left: 5, right: 5, bottom: 5, top: 5}}
         onPress={() => setSecureEye(!secureEye)}>
-        <FontAwesomeIcon name={secureEye ? 'eye' : 'eye-slash'} color={COLORS.placeholder} size={getSize.m(16)} />
+        <Image
+          source={secureEye ? ICONS.eye_open : ICONS.eye_closed}
+          tintColor={COLORS.placeholder}
+          square={getSize.m(24)}
+        />
+        {/* <FontAwesomeIcon name={secureEye ? 'eye' : 'eye-slash'} color={COLORS.placeholder} size={getSize.m(16)} /> */}
       </TouchableOpacity>
     );
   };

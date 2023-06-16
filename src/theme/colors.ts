@@ -141,6 +141,7 @@ const dark = {
   text: '#FFFFFF',
   light_text: '#FFFFFF',
   background: '#22343C',
+  light_background: '#30444E',
   ...COLORS,
 };
 
@@ -148,6 +149,7 @@ const light = {
   text: '#262626',
   light_text: '#595959',
   background: '#F5F5F5',
+  light_background: '#F5F5F5',
   ...COLORS,
 };
 

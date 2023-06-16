@@ -7,7 +7,7 @@ const Gadgets = () => {
   const {dispatch, useSelector} = useStore();
 
   return (
-    <Block flex backgroundColor="#22343C">
+    <Block flex backgroundColor="background">
       <Text />
     </Block>
   );

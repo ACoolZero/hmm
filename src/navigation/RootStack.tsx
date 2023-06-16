@@ -1,5 +1,5 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {auth} from '@screens';
+import {auth, common} from '@screens';
 import React from 'react';
 import BottomTabNavigation from './BottomTabNavigation';
 import routes from './routes';
@@ -44,7 +44,9 @@ const RootStack = () => {
       {/** Modal screens */}
       <Stack.Group screenOptions={{presentation: 'modal'}}></Stack.Group>
       {/** Common screens */}
-      <Stack.Group></Stack.Group>
+      <Stack.Group>
+        <Stack.Screen name={routes.ARTICLE_DETAILS_SCREEN} component={common[routes.ARTICLE_DETAILS_SCREEN]} />
+      </Stack.Group>
     </Stack.Navigator>
   );
 };

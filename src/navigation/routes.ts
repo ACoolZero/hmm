@@ -17,6 +17,7 @@ const routes = {
   CHAT_SCREEN: 'CHAT_SCREEN',
   GADGETS_SCREEN: 'GADGETS_SCREEN',
   /*__common__*/
+  ARTICLE_DETAILS_SCREEN: 'ARTICLE_DETAILS_SCREEN',
 };
 
 export default routes;
