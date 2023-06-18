@@ -1,9 +1,11 @@
 import {IMAGES} from '@assets';
 import {ArticleCard, Block, ListWrapper, Text} from '@components';
+import {IArticle} from '@screens/Bottom/Home/types';
 import React from 'react';
+import {ListRenderItem} from 'react-native';
 import Stories from '../Stories';
 
-const DATA = [
+const DATA: IArticle[] = [
   {
     id: 1,
     image: IMAGES.article1,
@@ -39,7 +41,7 @@ const DATA = [
 ];
 
 const Articles: React.FC = () => {
-  const _renderItem = ({item}: any) => <ArticleCard item={item} />;
+  const _renderItem: ListRenderItem<IArticle> = ({item}) => <ArticleCard item={item} />;
 
   const _renderHeader = () => {
     return (
@@ -56,7 +58,7 @@ const Articles: React.FC = () => {
     <Block flex>
       <ListWrapper
         data={DATA}
-        keyExtractor={(item: any) => String(item.id)}
+        keyExtractor={(item: IArticle) => String(item.id)}
         renderItem={_renderItem}
         ListHeaderComponent={_renderHeader}
       />

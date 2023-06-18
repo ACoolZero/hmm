@@ -15,7 +15,7 @@ const persistConfig = {
   transforms: [createBlacklistFilter('auth', ['isLoading'])],
 };
 
-const pReducer = persistReducer(persistConfig, rootReducer);
+const pReducer = persistReducer(persistConfig, rootReducer as any);
 
 const middlewares = [];
 const sagaMiddleware = createSagaMiddleware();
@@ -26,7 +26,7 @@ if (__DEV__) {
   middlewares.push(createDebugger());
 }
 
-const store: any = createStore(pReducer, applyMiddleware(...middlewares));
+const store = createStore(pReducer, applyMiddleware(...middlewares));
 
 sagaMiddleware.run(rootSaga);
 

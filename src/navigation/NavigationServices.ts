@@ -3,7 +3,7 @@ import {createRef} from 'react';
 
 export const navigationRef = createRef<NavigationContainerRef<any>>();
 
-export function navigate(name: string, params?: any, key?: string) {
+export function navigate(name: string, params?: object, key?: string) {
   if (key) {
     navigationRef.current?.dispatch(CommonActions.navigate({key, name, params}));
     return;
@@ -15,11 +15,11 @@ export function goBack() {
   navigationRef.current?.goBack();
 }
 
-export function push(name: string, params?: any) {
+export function push(name: string, params?: object) {
   navigationRef.current?.dispatch(StackActions.push(name, params));
 }
 
-export function replace(name: string, params?: any) {
+export function replace(name: string, params?: object) {
   navigationRef.current?.dispatch(StackActions.replace(name, params));
 }
 
@@ -31,7 +31,7 @@ export function pop(count?: number) {
   navigationRef.current?.dispatch(StackActions.pop(count));
 }
 
-export function reset(index: number, name: string, params?: any) {
+export function reset(index: number, name: string, params?: object) {
   navigationRef.current?.dispatch(CommonActions.reset({index, routes: [{name, params}]}));
 }
 
