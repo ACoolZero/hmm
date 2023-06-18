@@ -7,7 +7,7 @@ import React from 'react';
 import {Pressable} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
-const ForgotPasswordStep2 = () => {
+const ForgotPasswordStep2: React.FC = () => {
   const {top} = useSafeAreaInsets();
 
   return (

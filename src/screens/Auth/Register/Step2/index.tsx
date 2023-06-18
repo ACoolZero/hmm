@@ -9,7 +9,7 @@ import React from 'react';
 import {Pressable} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
-const RegisterStep2 = () => {
+const RegisterStep2: React.FC = () => {
   const {top} = useSafeAreaInsets();
 
   const _rightIcon = () => {

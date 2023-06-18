@@ -11,7 +11,7 @@ import {validation} from './validation';
 
 const INITIAL_VALUES = {username: '', password: ''};
 
-const LoginForm = () => {
+const LoginForm: React.FC = () => {
   const {
     control,
     handleSubmit,

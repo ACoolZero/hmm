@@ -3,7 +3,7 @@ import React from 'react';
 import Header from '../components/Header';
 import LoginForm from './components/LoginForm';
 
-const Login = () => {
+const Login: React.FC = () => {
   return (
     <Block flex padding={24} paddingTop={100} backgroundColor="common_background">
       <Header content="Welcome!" />

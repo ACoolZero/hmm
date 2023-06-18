@@ -4,7 +4,7 @@ import routes from '@navigation/routes';
 import Header from '@screens/Auth/components/Header';
 import React from 'react';
 
-const ForgotPasswordStep4 = () => {
+const ForgotPasswordStep4: React.FC = () => {
   return (
     <Block flex justifyCenter padding={24} backgroundColor="common_background">
       <Header content="You’re back !!" />

@@ -9,7 +9,7 @@ import React from 'react';
 import {Pressable} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
-const RegisterStep1 = () => {
+const RegisterStep1: React.FC = () => {
   const {top} = useSafeAreaInsets();
 
   return (

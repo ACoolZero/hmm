@@ -77,7 +77,7 @@ const Text: React.FC<TextProps> = props => {
   ];
 
   return (
-    <RNText style={textStyle} {...textProps}>
+    <RNText allowFontScaling={false} style={textStyle} {...textProps}>
       {props.children}
     </RNText>
   );
