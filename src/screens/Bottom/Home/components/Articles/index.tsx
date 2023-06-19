@@ -1,9 +1,9 @@
 import {IMAGES} from '@assets';
 import {ArticleCard, Block, ListWrapper, Text} from '@components';
+import {EmotionChart, Reaction, Stories} from '@screens/Bottom/Home/components';
 import {IArticle} from '@screens/Bottom/Home/types';
-import React from 'react';
+import React, {memo} from 'react';
 import {ListRenderItem} from 'react-native';
-import Stories from '../Stories';
 
 const DATA: IArticle[] = [
   {
@@ -47,7 +47,9 @@ const Articles: React.FC = () => {
     return (
       <Block>
         <Stories />
-        <Text size={24} marginHorizontal={16} marginVertical={24} type="bold">
+        <Reaction />
+        <EmotionChart />
+        <Text size={24} marginHorizontal={16} marginBottom={24} type="bold">
           Reading list
         </Text>
       </Block>
@@ -66,4 +68,4 @@ const Articles: React.FC = () => {
   );
 };
 
-export default Articles;
+export default memo(Articles);

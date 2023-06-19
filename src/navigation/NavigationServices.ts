@@ -31,8 +31,8 @@ export function pop(count?: number) {
   navigationRef.current?.dispatch(StackActions.pop(count));
 }
 
-export function reset(index: number, name: string, params?: object) {
-  navigationRef.current?.dispatch(CommonActions.reset({index, routes: [{name, params}]}));
+export function reset(name: string, params?: object) {
+  navigationRef.current?.dispatch(CommonActions.reset({index: 0, routes: [{name, params}]}));
 }
 
 export function getCurrentRoute() {

@@ -55,7 +55,7 @@ const RegisterStep4: React.FC = () => {
             title="Continue"
             style={{flex: 1}}
             onPress={() => {
-              reset(0, routes.REGISTER_STEP5_SCREEN);
+              reset(routes.REGISTER_STEP5_SCREEN);
             }}
           />
         </Block>

@@ -3,12 +3,12 @@ const COLORS = {
   success: '#10B981',
   error: '#FF4D4F',
   placeholder: '#BFBFBF',
-  border: '#D9D9D9',
   white: '#FFFFFF',
   black: '#262626',
   common_background: '#F5F5F5',
   common_text: '#262626',
   common_light_text: '#595959',
+  common_border: '#D9D9D9',
 
   /**
    * @gray
@@ -142,6 +142,7 @@ const dark = {
   light_text: '#FFFFFF',
   background: '#22343C',
   light_background: '#30444E',
+  border: '#5C7987',
   ...COLORS,
 };
 
@@ -150,6 +151,7 @@ const light = {
   light_text: '#595959',
   background: '#F5F5F5',
   light_background: '#F5F5F5',
+  border: '#D9D9D9',
   ...COLORS,
 };
 

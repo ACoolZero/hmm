@@ -14,7 +14,7 @@ const ForgotPasswordStep3: React.FC = () => {
   return (
     <Block flex padding={24} backgroundColor="common_background">
       <Block justifyCenter paddingTop={top} marginBottom={60} space="between">
-        <Pressable onPress={() => reset(0, routes.LOGIN_SCREEN)}>
+        <Pressable onPress={() => reset(routes.LOGIN_SCREEN)}>
           <Block marginBottom={40}>
             <Image source={ICONS.close} square={14} tintColor="common_light_text" resizeMode="contain" />
           </Block>
@@ -40,7 +40,7 @@ const ForgotPasswordStep3: React.FC = () => {
       <GradientButton
         title="Create a password"
         onPress={() => {
-          reset(0, routes.FORGOT_PASSWORD_STEP4_SCREEN);
+          reset(routes.FORGOT_PASSWORD_STEP4_SCREEN);
         }}
       />
     </Block>

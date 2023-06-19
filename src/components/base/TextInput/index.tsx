@@ -137,7 +137,7 @@ const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
     if (isFocus && !isDirty) {
       return borderColor;
     }
-    return COLORS.border;
+    return COLORS.common_border;
   };
 
   return (

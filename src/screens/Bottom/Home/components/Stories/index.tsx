@@ -1,7 +1,7 @@
 import {IMAGES} from '@assets';
 import {Block, ListWrapper, StoryCard} from '@components';
 import {IStory} from '@screens/Bottom/Home/types';
-import React from 'react';
+import React, {memo} from 'react';
 import {ListRenderItem} from 'react-native';
 
 const DATA: IStory[] = [
@@ -21,4 +21,4 @@ const Stories: React.FC = () => {
   );
 };
 
-export default Stories;
+export default memo(Stories);
