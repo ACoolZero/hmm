@@ -9,7 +9,7 @@ import React from 'react';
 import {Pressable} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
-const RegisterStep2 = () => {
+const RegisterStep2: React.FC = () => {
   const {top} = useSafeAreaInsets();
 
   const _rightIcon = () => {
@@ -17,7 +17,7 @@ const RegisterStep2 = () => {
   };
 
   return (
-    <Block flex padding={24} backgroundColor="background">
+    <Block flex padding={24} backgroundColor="common_background">
       <Block flex paddingTop={top} justifyCenter space="between">
         {/* <Pressable onPress={goBack}>
           <Image source={ICONS.back} square={20} tintColor="black" resizeMode="contain" />
@@ -31,6 +31,7 @@ const RegisterStep2 = () => {
             pointerEvents="none"
             placeholder="Date of birth"
             rightIcon={_rightIcon}
+            color="common_text"
             containerInputStyle={{marginBottom: getSize.m(16)}}
           />
         </Block>

@@ -2,15 +2,15 @@ import {Block, Text} from '@components';
 import {useStore, useTranslation} from '@hooks';
 import React from 'react';
 
-const Notification = () => {
+const Feeds = () => {
   const {t} = useTranslation();
   const {dispatch, useSelector} = useStore();
 
   return (
-    <Block flex backgroundColor="#22343C">
+    <Block flex backgroundColor="background">
       <Text />
     </Block>
   );
 };
 
-export default Notification;
+export default Feeds;

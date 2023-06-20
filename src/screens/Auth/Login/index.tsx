@@ -3,11 +3,11 @@ import React from 'react';
 import Header from '../components/Header';
 import LoginForm from './components/LoginForm';
 
-const Login = () => {
+const Login: React.FC = () => {
   return (
-    <Block flex padding={24} paddingTop={100} backgroundColor="background">
+    <Block flex padding={24} paddingTop={100} backgroundColor="common_background">
       <Header content="Welcome!" />
-      <Text size={20} marginTop={6} color="light_text">
+      <Text md marginTop={6} color="#595959">
         Sign in to continue
       </Text>
       <FormContainer>

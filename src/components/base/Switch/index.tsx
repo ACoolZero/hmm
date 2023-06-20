@@ -1,5 +1,4 @@
 import {Text} from '@components';
-import {COLORS} from '@theme';
 import {getSize} from '@utils/responsive';
 import React, {useEffect, useRef} from 'react';
 import {Animated, Easing, Pressable, View} from 'react-native';
@@ -12,8 +11,8 @@ const Switch: React.FC<SwitchProps> = ({
   label,
   labelStyle,
   highlight = true,
-  onColor = COLORS.primary,
-  offColor = COLORS.gray_300,
+  onColor = '#518EF8',
+  offColor = '#D1D5DB',
   containerStyle,
   disabled,
   style,

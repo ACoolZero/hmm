@@ -4,7 +4,7 @@ import {width} from '@utils/responsive';
 import React from 'react';
 import {Pressable} from 'react-native';
 
-const SocialLoginForm = () => {
+const SocialLoginForm: React.FC = () => {
   return (
     <Block>
       <Block row alignCenter>

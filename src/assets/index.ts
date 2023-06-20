@@ -12,12 +12,21 @@ export const ICONS = {
   twitter: require('./icons/twitter.png'),
   back: require('./icons/back.png'),
   calendar: require('./icons/calendar.png'),
-  bottom_favourite: require('./icons/bottom_favourite.png'),
   bottom_chat: require('./icons/bottom_chat.png'),
+  bottom_feeds: require('./icons/bottom_feeds.png'),
+  bottom_gadgets: require('./icons/bottom_gadgets.png'),
   bottom_home: require('./icons/bottom_home.png'),
-  bottom_notification: require('./icons/bottom_notification.png'),
+  bottom_chat_selected: require('./icons/bottom_chat_selected.png'),
+  bottom_feeds_selected: require('./icons/bottom_feeds_selected.png'),
+  bottom_gadgets_selected: require('./icons/bottom_gadgets_selected.png'),
+  bottom_home_selected: require('./icons/bottom_home_selected.png'),
+  eye_closed: require('./icons/eye_closed.png'),
+  eye_open: require('./icons/eye_open.png'),
 };
 
 export const IMAGES = {
   logo: require('./images/logo.png'),
+  story1: require('./images/story1.jpg'),
+  story2: require('./images/story2.jpg'),
+  article1: require('./images/article1.png'),
 };

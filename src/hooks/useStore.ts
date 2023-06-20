@@ -6,7 +6,7 @@ export type RootState = ReturnType<typeof rootReducer>;
 const useStore = () => {
   const dispatch = useDispatch();
 
-  const useSelector = (state: string) => useReduxSelector((store: RootState) => store[state]);
+  const useSelector = (state: keyof RootState) => useReduxSelector((store: RootState) => store[state]);
 
   return {dispatch, useSelector};
 };

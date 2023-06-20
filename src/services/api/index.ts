@@ -1,6 +1,6 @@
 import {ACCESS_TOKEN, BASE_URL, DEBUG_LOGGING_ENABLED, TOKEN_EXPIRED} from '@utils/constants';
 import Storage from '@utils/storage';
-import axios, {AxiosRequestConfig} from 'axios';
+import axios, {AxiosRequestConfig, InternalAxiosRequestConfig} from 'axios';
 
 const getAxiosInstance = async () => {
   const instance = axios.create({
@@ -61,7 +61,7 @@ const getAxiosInstance = async () => {
   return instance;
 };
 
-const getRequestBody = (config: any) => {
+const getRequestBody = (config: InternalAxiosRequestConfig) => {
   let data = '';
   if (config.data && config.headers['Content-Type'] === 'application/x-www-form-urlencoded') {
     for (const key in config.data) {

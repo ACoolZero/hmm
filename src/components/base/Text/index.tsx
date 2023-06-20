@@ -1,8 +1,9 @@
-import {COLORS, FONTS} from '@theme';
+import {useColors} from '@hooks';
+import {FONTS} from '@theme';
 import {getSize} from '@utils/responsive';
 import {isNumber} from 'lodash';
 import React from 'react';
-import {StyleSheet, Text as RNText} from 'react-native';
+import {Text as RNText, StyleSheet} from 'react-native';
 import {handleMargin, handlePadding} from '../shared';
 import {TextProps} from './types';
 
@@ -15,7 +16,7 @@ const Text: React.FC<TextProps> = props => {
     flex,
     flexShrink,
     flexGrow,
-    size = 14,
+    size = 16,
     color = 'text',
     center,
     right,
@@ -40,6 +41,7 @@ const Text: React.FC<TextProps> = props => {
     textDecorationLine,
     ...textProps
   } = props;
+  const {COLORS} = useColors();
 
   const textStyle: any = [
     flex && {flex: 1},
@@ -67,15 +69,15 @@ const Text: React.FC<TextProps> = props => {
     {fontWeight: (FONTS.fontWeight as any)[type]},
     textDecorationLine && {textDecorationLine},
     {fontSize: getSize.m(size)},
-    sm && {fontSize: getSize.m(12)},
-    md && {fontSize: getSize.m(16)},
-    lg && {fontSize: getSize.m(19)},
-    xl && {fontSize: getSize.m(25)},
+    sm && {fontSize: getSize.m(14)},
+    md && {fontSize: getSize.m(20)},
+    lg && {fontSize: getSize.m(32)},
+    xl && {fontSize: getSize.m(46)},
     {...StyleSheet.flatten(style)},
   ];
 
   return (
-    <RNText style={textStyle} {...textProps}>
+    <RNText allowFontScaling={false} style={textStyle} {...textProps}>
       {props.children}
     </RNText>
   );

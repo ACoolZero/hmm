@@ -10,9 +10,10 @@ import RegisterStep3 from './Auth/Register/Step3';
 import RegisterStep4 from './Auth/Register/Step4';
 import RegisterStep5 from './Auth/Register/Step5';
 import Chat from './Bottom/Chat';
-import Favourite from './Bottom/Favourite';
+import Feeds from './Bottom/Feeds';
+import Gadgets from './Bottom/Gadgets';
 import Home from './Bottom/Home';
-import Notification from './Bottom/Notification';
+import ArticleDetails from './Common/ArticleDetails';
 
 export const auth = {
   [routes.LOGIN_SCREEN]: Login,
@@ -29,9 +30,11 @@ export const auth = {
 
 export const bottom = {
   [routes.HOME_SCREEN]: Home,
-  [routes.FAVOURITE_SCREEN]: Favourite,
+  [routes.FEEDS_SCREEN]: Feeds,
   [routes.CHAT_SCREEN]: Chat,
-  [routes.NOTIFICATION_SCREEN]: Notification,
+  [routes.GADGETS_SCREEN]: Gadgets,
 };
 
-export const common = {};
+export const common = {
+  [routes.ARTICLE_DETAILS_SCREEN]: ArticleDetails,
+};

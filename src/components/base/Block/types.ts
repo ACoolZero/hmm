@@ -18,6 +18,7 @@ export interface BlockProps extends ViewProps {
   justifyCenter?: boolean;
   justifyEnd?: boolean;
   justifyStart?: boolean;
+  gap?: number;
   paddingTop?: number;
   paddingBottom?: number;
   paddingLeft?: number;

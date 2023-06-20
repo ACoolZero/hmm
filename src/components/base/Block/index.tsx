@@ -1,4 +1,4 @@
-import {COLORS} from '@theme';
+import {useColors} from '@hooks';
 import {getSize} from '@utils/responsive';
 import {isNumber} from 'lodash';
 import React from 'react';
@@ -26,6 +26,7 @@ const Block: React.FC<BlockProps> = ({
   justifyCenter,
   justifyEnd,
   justifyStart,
+  gap,
   paddingTop,
   paddingBottom,
   paddingLeft,
@@ -69,6 +70,7 @@ const Block: React.FC<BlockProps> = ({
   safeBottom,
   ...rest
 }) => {
+  const {COLORS} = useColors();
   const insets = useSafeAreaInsets();
   const blockStyles = [
     flex && styles.block,
@@ -97,6 +99,7 @@ const Block: React.FC<BlockProps> = ({
     justifyStart && styles.justifyStart,
     justifyEnd && styles.justifyEnd,
     space && {justifyContent: `space-${space}`},
+    gap && {gap: getSize.m(gap)},
     paddingTop && {paddingTop: getSize.m(paddingTop)},
     paddingRight && {paddingRight: getSize.m(paddingRight)},
     paddingBottom && {paddingBottom: getSize.m(paddingBottom)},

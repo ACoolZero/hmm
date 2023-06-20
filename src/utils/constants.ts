@@ -10,11 +10,10 @@ export const ENVIRONMENT = {
 /**
  * @todo use for api
  */
-export const FILE_URL = 'https://files.tadalabs.xyz';
 export const BASE_URL = {
-  Test: 'https://rms-dev.tadalabs.xyz',
-  Staging: 'https://rms-staging.tadalabs.xyz',
-  Prod: 'https://rms.tadalabs.xyz',
+  Test: 'http://34.124.241.51:3000',
+  Staging: 'http://34.124.241.51:3000',
+  Prod: 'http://34.124.241.51:3000',
 };
 export const DEBUG_LOGGING_ENABLED = true;
 export const TOKEN_EXPIRED = 401;

@@ -1,6 +1,5 @@
 import {ICONS} from '@assets';
 import {Block, Image, Text} from '@components';
-import {COLORS} from '@theme';
 import React, {useEffect, useRef} from 'react';
 import {Animated, Easing, Pressable, View} from 'react-native';
 import styles from './styles';
@@ -14,7 +13,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({
   value,
   setValue,
   width = 24,
-  activeColor = COLORS.green_500,
+  activeColor = '#10B981',
   onPress,
   labelStyles,
   containerStyles,
@@ -49,7 +48,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({
 
   const borderColor = animatedValue.interpolate({
     inputRange: [0, 1],
-    outputRange: [COLORS.smoke, activeColor],
+    outputRange: ['#D9D9D9', activeColor],
   });
 
   const scale = animatedValue.interpolate({
@@ -65,7 +64,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({
   return (
     <Block style={containerStyles} row alignCenter>
       <AnimatedPressable style={styles.button(borderColor, scale, width)} onPress={_onChange}>
-        <Image source={ICONS.checkbox} tintColor={COLORS.white} style={styles.icon(width)} />
+        <Image source={ICONS.checkbox} tintColor="#FFFFFF" style={styles.icon(width)} />
         <AnimatedView style={styles.background(widthIcon, activeColor)} />
       </AnimatedPressable>
       {title && (

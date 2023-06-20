@@ -11,7 +11,7 @@ import {validation} from './validation';
 
 const INITIAL_VALUES = {username: '', password: ''};
 
-const LoginForm = () => {
+const LoginForm: React.FC = () => {
   const {
     control,
     handleSubmit,
@@ -33,6 +33,7 @@ const LoginForm = () => {
         control={control}
         name="username"
         placeholder="Your email"
+        color="common_text"
         containerInputStyle={styles.containerInputStyle}
       />
       <FormInput
@@ -41,6 +42,7 @@ const LoginForm = () => {
         control={control}
         name="password"
         placeholder="Password"
+        color="common_text"
         containerInputStyle={styles.containerInputStyle}
       />
       <Block row alignCenter marginBottom={40} space="between">

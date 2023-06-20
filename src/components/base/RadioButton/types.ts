@@ -1,5 +1,5 @@
 export interface RadioButtonProps {
-  data?: any[];
+  data?: ItemType[];
   selected?: boolean;
   setSelected?: any;
   onPress?: (e: any) => void;
@@ -8,4 +8,9 @@ export interface RadioButtonProps {
   labelStyle?: any;
   unCheckColor?: string;
   checkedColor?: string;
+}
+
+export interface ItemType {
+  label: string;
+  value: any;
 }

@@ -1,4 +1,3 @@
-import {COLORS} from '@theme';
 import {getSize} from '@utils/responsive';
 import {StyleSheet} from 'react-native';
 
@@ -23,7 +22,7 @@ export default StyleSheet.create({
   highlightToggle: {
     height: getSize.s(8),
     width: getSize.s(2),
-    backgroundColor: COLORS.white,
+    backgroundColor: '#FFFFFF',
     position: 'absolute',
     left: getSize.m(10),
   },

@@ -48,7 +48,7 @@ const alert = produce((state = common.INITIAL_ALERT_STATE, action) => {
   }
 });
 
-const themeMode = produce((state = {mode: 'dark'}, action) => {
+const theme = produce((state = {mode: 'dark'}, action) => {
   switch (action.type) {
     case actions.SWITCH_THEME_MODE:
       state.mode = action.payload.mode;
@@ -59,4 +59,4 @@ const themeMode = produce((state = {mode: 'dark'}, action) => {
   }
 });
 
-export default {general, alert, themeMode};
+export default {general, alert, theme};
