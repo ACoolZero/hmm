@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import {Block, LoadMore} from '@components';
 import React, {forwardRef} from 'react';
-import {FlatList, RefreshControl} from 'react-native';
+import {FlatList, ListRenderItem, RefreshControl} from 'react-native';
 import {ListWrapperProps} from './types';
 
 const ListWrapper = forwardRef<any, ListWrapperProps>((props, ref) => {
@@ -26,7 +26,7 @@ const ListWrapper = forwardRef<any, ListWrapperProps>((props, ref) => {
     return keyExtractor ? keyExtractor(item, index) : String(index);
   };
 
-  const _renderItem = (e: any) => renderItem(e);
+  const _renderItem: ListRenderItem<any> = e => renderItem(e);
 
   const _renderEmpty = () => (!!data && EmptyComponent ? <EmptyComponent /> : null);
 

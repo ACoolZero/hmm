@@ -2,7 +2,7 @@ import {Block, Text} from '@components';
 import React from 'react';
 import {Pressable} from 'react-native';
 import styles from './styles';
-import {RadioButtonProps} from './types';
+import {ItemType, RadioButtonProps} from './types';
 
 const RadioButton: React.FC<RadioButtonProps> = ({
   data,
@@ -15,7 +15,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   unCheckColor = 'smoke',
   checkedColor = 'primary',
 }) => {
-  const _renderItem = (item: any, index: number) => {
+  const _renderItem = (item: ItemType, index: number) => {
     return (
       <Pressable
         key={index}

@@ -15,7 +15,9 @@ const StoryCard: React.FC<any> = ({item}) => {
         <ImageBackground source={image} style={{height: STORY_HEIGHT, width: STORY_WIDTH}}>
           <Block flex backgroundColor="#0000002f">
             <Block padding={16} absolute bottom={0}>
-              <Text type="medium">{title}</Text>
+              <Text type="medium" color="white">
+                {title}
+              </Text>
             </Block>
           </Block>
         </ImageBackground>

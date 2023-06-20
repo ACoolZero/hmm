@@ -2,9 +2,9 @@ import {Block, Text} from '@components';
 import React, {memo} from 'react';
 
 const Reaction: React.FC = () => {
-  const _renderTag = () => {
+  const _renderTag: React.FC<any> = item => {
     return (
-      <Block radius={12} paddingHorizontal={16} paddingVertical={12} backgroundColor="light_background">
+      <Block key={item} radius={12} paddingHorizontal={16} paddingVertical={12} backgroundColor="light_background">
         <Text sm>TAG</Text>
       </Block>
     );
@@ -18,7 +18,7 @@ const Reaction: React.FC = () => {
         height={64}
         marginVertical={12}
         borderWidth={1}
-        borderColor="#5C7987"
+        borderColor="border"
         backgroundColor="light_background"
       />
       <Block row wrap gap={12}>

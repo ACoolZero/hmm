@@ -29,25 +29,25 @@
 .
 ├── android
 ├── ios
-├── configs                         # manage environment variables
+├── configs                         # manages environment variables
 ├── e2e                             # handle automation test
-├── patches                         # contain overrided package
+├── patches                         # contains overrided package
 ├── src                             # source code
-│   ├── assets                      # contain assets (image, lottie, font, ...)
-│   ├── components                  # contain reusable components
-│   ├── hooks                       # contain custom hooks
+│   ├── assets                      # contains assets (image, lottie, font, ...)
+│   ├── components                  # contains reusable components
+│   ├── hooks                       # contains custom hooks
 │   ├── i18n                        # support multiple languages
 │   ├── navigation                  # react navigation navigators
 │   ├── screens                     # all pplication's screens
-│   │  ├── Auth                     # contain authentication screens
-│   │  ├── Bottom                   # contain bottom tab screens
-│   │  ├── Common                   # contain common screens
-│   │  ├── __DEV__                  # contain environment setting screens
+│   │  ├── Auth                     # contains authentication screens
+│   │  ├── Bottom                   # contains bottom tab screens
+│   │  ├── Common                   # contains common screens
+│   │  ├── __DEV__                  # contains environment setting screens
 │   ├── services                    # application services (api, socket, notification, ...)
-│   ├── store                       # manage aplication's state
+│   ├── store                       # manages aplication's state
 │   ├── theme                       # base styles for the application
-│   ├── utils                       # contain helper file (function, constant, storage, ...)
-│   ├── App.tsx                  # contain file for all layouts
+│   ├── utils                       # contains helper file (function, constant, storage, ...)
+│   ├── App.tsx                     # contains file for all layouts
 ├── index.js
 ├── package.json
 ...

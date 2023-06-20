@@ -3,8 +3,9 @@ import {auth, common} from '@screens';
 import React from 'react';
 import BottomTabNavigation from './BottomTabNavigation';
 import routes from './routes';
+import {RootStackParamList} from './types';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStack = () => {
   return (
@@ -42,7 +43,7 @@ const RootStack = () => {
          */}
       </Stack.Group>
       {/** Modal screens */}
-      <Stack.Group screenOptions={{presentation: 'modal'}}></Stack.Group>
+      {/* <Stack.Group screenOptions={{presentation: 'modal'}}></Stack.Group> */}
       {/** Common screens */}
       <Stack.Group>
         <Stack.Screen name={routes.ARTICLE_DETAILS_SCREEN} component={common[routes.ARTICLE_DETAILS_SCREEN]} />

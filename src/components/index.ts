@@ -24,4 +24,6 @@ export {default as EmptyList} from './common/EmptyList';
 export {default as FAB} from './common/FAB';
 export {default as GradientButton} from './common/Gradient/GradientButton';
 export {default as GradientText} from './common/Gradient/GradientText';
+export {default as Header} from './common/Header';
 export {default as Loading} from './common/Loading';
+export {default as Rating} from './common/Rating';

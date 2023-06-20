@@ -1,8 +1,9 @@
 export interface IArticle {
   id: number;
-  image: string;
+  image: number;
   title: string;
   short: string;
+  content: string;
   views_count: number;
   rating: number;
 }

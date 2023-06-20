@@ -14,7 +14,9 @@ const EmotionChart: React.FC = () => {
     const _renderDataPointLabel = (e: number) => (
       <Block backgroundColor={isDATA ? '#FFC542' : '#3DD598'} style={styles.labelContainer}>
         <Block style={{...styles.triangle, borderTopColor: isDATA ? '#FFC542' : '#3DD598'}} />
-        <Text size={10}>{e}</Text>
+        <Text size={10} color="white">
+          {e}
+        </Text>
       </Block>
     );
     return value.map(elm => ({

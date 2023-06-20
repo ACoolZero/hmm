@@ -1,7 +1,7 @@
 import {FlatListProps, ViewStyle} from 'react-native';
 
 export interface ListWrapperProps extends FlatListProps<any> {
-  data: any;
+  data: any[];
   page?: number;
   renderItem: any;
   keyExtractor?: any;
