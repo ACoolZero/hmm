@@ -26,6 +26,7 @@ export const ICONS = {
 
 export const IMAGES = {
   logo: require('./images/logo.png'),
+  splash_logo: require('./images/splash_logo.png'),
   story1: require('./images/story1.jpg'),
   story2: require('./images/story2.jpg'),
   article1: require('./images/article1.png'),
