@@ -22,7 +22,7 @@ const Articles: React.FC = () => {
   };
 
   return (
-    <Block flex>
+    <Block flex safeBottom>
       <ListWrapper
         data={DATA}
         keyExtractor={(item: IArticle) => String(item.id)}

@@ -21,7 +21,7 @@ const RegisterStep3: React.FC = () => {
       </Block>
       <Block style={{flex: 2}}>
         <Block height={200}>
-          <Block radius={8} borderWidth={1} borderColor="border" backgroundColor="white">
+          <Block radius={8} borderWidth={1} borderColor="common_border" backgroundColor="white">
             <Pressable>
               <Block row alignCenter height={48} paddingHorizontal={16} space="between">
                 <Text color="common_text">Male</Text>
@@ -30,7 +30,7 @@ const RegisterStep3: React.FC = () => {
                 </Block>
               </Block>
             </Pressable>
-            <Block height={1} backgroundColor="border" />
+            <Block height={1} backgroundColor="common_border" />
             <Pressable>
               <Block row alignCenter height={48} paddingHorizontal={16} space="between">
                 <Text color="common_text">Female</Text>

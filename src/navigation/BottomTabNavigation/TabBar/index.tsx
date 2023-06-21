@@ -17,14 +17,8 @@ const TabBar: React.FC<TabBarProps> = ({state, navigation}) => {
   const TAB_BAR_HEIGHT = bottom ? bottom : 20;
 
   return (
-    <Block backgroundColor="background">
-      <Block
-        row
-        radius={32}
-        paddingTop={24}
-        height={60 + TAB_BAR_HEIGHT}
-        backgroundColor="light_background"
-        style={{...styles.shadow}}>
+    <Block paddingBottom={TAB_BAR_HEIGHT}>
+      <Block height={60 + TAB_BAR_HEIGHT} style={[styles.container, styles.shadow]} backgroundColor="light_background">
         {state.routes.map((route: any, index: number) => {
           const isFocused = state.index === index;
           const icons = {
@@ -77,6 +71,15 @@ const TabBar: React.FC<TabBarProps> = ({state, navigation}) => {
 export default TabBar;
 
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    borderRadius: getSize.s(32),
+    paddingTop: getSize.m(24),
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
   btnTabBar: {
     flex: 1,
     alignItems: 'center',
@@ -92,8 +95,9 @@ const styles = StyleSheet.create({
       width: 0,
       height: 0,
     },
-    shadowOpacity: 0.8,
-    shadowRadius: 8,
-    shadowColor: 'rgba(4, 35, 49, 0.5)',
+    shadowOpacity: 0.2,
+    shadowRadius: 6,
+    shadowColor: '#000000',
+    elevation: 5,
   },
 });

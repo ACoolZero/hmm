@@ -48,7 +48,7 @@ const alert = produce((state = common.INITIAL_ALERT_STATE, action) => {
   }
 });
 
-const theme = produce((state = {mode: 'dark'}, action) => {
+const theme = produce((state = {mode: 'light'}, action) => {
   switch (action.type) {
     case actions.SWITCH_THEME_MODE:
       state.mode = action.payload.mode;

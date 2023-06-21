@@ -1,5 +1,6 @@
 import {AlertDialog, NetWork} from '@components';
 import {PortalProvider} from '@gorhom/portal';
+import {useColors} from '@hooks';
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {StatusBar} from 'react-native';
@@ -9,10 +10,12 @@ import {navigationRef} from './NavigationServices';
 import RootStack from './RootStack';
 
 const RootNavigation = () => {
+  const {COLORS} = useColors();
+
   return (
     <NavigationContainer ref={navigationRef} onReady={() => RNBootSplash.hide()}>
       <PortalProvider>
-        <StatusBar backgroundColor="#FFFFFF" barStyle="dark-content" />
+        <StatusBar backgroundColor={COLORS.background} barStyle="dark-content" />
         <RootStack />
       </PortalProvider>
       <AlertDialog />

@@ -1,5 +1,6 @@
 import {Block, Text} from '@components';
 import React, {memo} from 'react';
+import styles from './styles';
 
 const Reaction: React.FC = () => {
   const _renderTag: React.FC<any> = item => {
@@ -11,16 +12,9 @@ const Reaction: React.FC = () => {
   };
 
   return (
-    <Block padding={16} marginBottom={12}>
+    <Block paddingHorizontal={16} marginBottom={24}>
       <Text type="semibold">How exactly you feel right now?</Text>
-      <Block
-        radius={12}
-        height={64}
-        marginVertical={12}
-        borderWidth={1}
-        borderColor="border"
-        backgroundColor="light_background"
-      />
+      <Block shadow borderWidth={1} borderColor="border" backgroundColor="light_background" style={styles.input} />
       <Block row wrap gap={12}>
         {[1, 2, 3, 4].map(_renderTag)}
       </Block>

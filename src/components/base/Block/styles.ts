@@ -41,5 +41,6 @@ export default StyleSheet.create({
     },
     shadowOpacity: 0.18,
     shadowRadius: 2,
+    elevation: 3,
   },
 });

@@ -31,7 +31,14 @@ const EmotionChart: React.FC = () => {
   };
 
   return (
-    <Block flex radius={20} marginBottom={24} marginHorizontal={16} paddingTop={12} backgroundColor="light_background">
+    <Block
+      flex
+      shadow
+      radius={20}
+      marginBottom={24}
+      marginHorizontal={16}
+      paddingTop={12}
+      backgroundColor="light_background">
       <Block row alignCenter paddingHorizontal={16} marginBottom={16} space="between">
         <Text type="bold">Emotions flow</Text>
         <Block row>

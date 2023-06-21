@@ -4,11 +4,10 @@ import {useColors} from '@hooks';
 import {navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import {IArticle} from '@screens/Bottom/Home/types';
-import {width} from '@utils/responsive';
+import {getSize} from '@utils/responsive';
 import React from 'react';
-import {Pressable, StyleSheet} from 'react-native';
-
-const STORY_HEIGHT = width * 0.5;
+import {Pressable} from 'react-native';
+import styles, {IMAGE_HEIGHT} from './styles';
 
 interface ArticleCardProps {
   item: IArticle;
@@ -21,18 +20,14 @@ const ArticleCard: React.FC<ArticleCardProps> = ({item, index}) => {
 
   return (
     <Pressable
-      style={styles.shadow}
       onPress={() => {
         navigate(routes.ARTICLE_DETAILS_SCREEN, {details: item});
       }}>
       <Block
-        radius={20}
-        padding={16}
-        marginBottom={16}
-        marginHorizontal={16}
+        shadow
         backgroundColor={index % 2 === 0 ? 'card_background_one' : 'card_background_two'}
-        overflow="hidden">
-        <Image source={image} style={{height: STORY_HEIGHT}} />
+        style={styles.container}>
+        <Image source={image} style={{height: IMAGE_HEIGHT, borderRadius: getSize.s(10)}} />
         <Block marginTop={24}>
           <Text md type="semibold">
             {title}
@@ -54,15 +49,3 @@ const ArticleCard: React.FC<ArticleCardProps> = ({item, index}) => {
 };
 
 export default ArticleCard;
-
-const styles = StyleSheet.create({
-  shadow: {
-    shadowOffset: {
-      width: 2,
-      height: 2,
-    },
-    shadowOpacity: 1,
-    shadowRadius: 4,
-    shadowColor: 'rgba(0, 0, 0, 0.16)',
-  },
-});

@@ -15,7 +15,7 @@ const Stories: React.FC = () => {
   const _renderItem: ListRenderItem<IStory> = ({item}) => <StoryCard item={item} />;
 
   return (
-    <Block flex>
+    <Block flex marginBottom={12}>
       <ListWrapper horizontal data={DATA} keyExtractor={(item: IStory) => String(item.id)} renderItem={_renderItem} />
     </Block>
   );

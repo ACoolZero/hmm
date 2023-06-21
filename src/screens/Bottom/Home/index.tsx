@@ -1,5 +1,5 @@
 import {Block} from '@components';
-import {useStore} from '@hooks';
+import {useColors, useStore} from '@hooks';
 import React from 'react';
 import {StatusBar, StatusBarStyle} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
@@ -9,11 +9,12 @@ const Home: React.FC = () => {
   const {useSelector} = useStore();
   const {top} = useSafeAreaInsets();
   const {mode} = useSelector('theme');
+  const {COLORS} = useColors();
   const barStyle: StatusBarStyle = `${mode === 'dark' ? 'light' : 'dark'}-content`;
 
   return (
     <Block flex paddingTop={top + 24} backgroundColor="background">
-      <StatusBar barStyle={barStyle} />
+      <StatusBar backgroundColor={COLORS.background} barStyle={barStyle} />
       <PostList />
     </Block>
   );
