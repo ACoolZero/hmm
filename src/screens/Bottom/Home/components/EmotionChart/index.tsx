@@ -31,49 +31,50 @@ const EmotionChart: React.FC = () => {
   };
 
   return (
-    <Block
-      flex
-      shadow
-      radius={20}
-      marginBottom={24}
-      marginHorizontal={16}
-      paddingTop={12}
-      backgroundColor="light_background">
-      <Block row alignCenter paddingHorizontal={16} marginBottom={16} space="between">
-        <Text type="bold">Emotions flow</Text>
-        <Block row>
-          <Block row alignCenter marginRight={16}>
-            <Block round={8} marginRight={8} backgroundColor="#3DD598" />
-            <Text size={12}>You</Text>
-          </Block>
-          <Block row alignCenter>
-            <Block round={8} marginRight={8} backgroundColor="#FFC542" />
-            <Text size={12}>Your past</Text>
+    <Block flex backgroundColor="background">
+      <Block
+        shadow
+        radius={20}
+        marginBottom={24}
+        marginHorizontal={16}
+        paddingTop={12}
+        backgroundColor="light_background">
+        <Block row alignCenter paddingHorizontal={16} marginBottom={16} space="between">
+          <Text type="bold">Emotions flow</Text>
+          <Block row>
+            <Block row alignCenter marginRight={16}>
+              <Block round={8} marginRight={8} backgroundColor="#3DD598" />
+              <Text size={12}>You</Text>
+            </Block>
+            <Block row alignCenter>
+              <Block round={8} marginRight={8} backgroundColor="#FFC542" />
+              <Text size={12}>Your past</Text>
+            </Block>
           </Block>
         </Block>
+        <LineChart
+          curved
+          hideRules
+          pressEnabled
+          scrollToEnd
+          hideYAxisText
+          showTextOnPress
+          isAnimated
+          animateOnDataChange
+          thickness={2}
+          yAxisThickness={0}
+          xAxisThickness={0}
+          noOfSections={5}
+          height={width * 0.3}
+          focusedDataPointRadius={5}
+          color="#FFC542"
+          color2="#3DD598"
+          dataPointsColor="#FFC542"
+          dataPointsColor2="#3DD598"
+          data={_formattedData(data, 'data')}
+          data2={_formattedData(data2, 'data2')}
+        />
       </Block>
-      <LineChart
-        curved
-        hideRules
-        pressEnabled
-        scrollToEnd
-        hideYAxisText
-        showTextOnPress
-        isAnimated
-        animateOnDataChange
-        thickness={2}
-        yAxisThickness={0}
-        xAxisThickness={0}
-        noOfSections={5}
-        height={width * 0.3}
-        focusedDataPointRadius={5}
-        color="#FFC542"
-        color2="#3DD598"
-        dataPointsColor="#FFC542"
-        dataPointsColor2="#3DD598"
-        data={_formattedData(data, 'data')}
-        data2={_formattedData(data2, 'data2')}
-      />
     </Block>
   );
 };

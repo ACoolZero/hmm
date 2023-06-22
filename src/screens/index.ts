@@ -14,6 +14,7 @@ import Feeds from './Bottom/Feeds';
 import Gadgets from './Bottom/Gadgets';
 import Home from './Bottom/Home';
 import ArticleDetails from './Common/ArticleDetails';
+import MilestoneDetails from './Common/Home.MilestoneDetails';
 
 export const auth = {
   [routes.LOGIN_SCREEN]: Login,
@@ -37,4 +38,5 @@ export const bottom = {
 
 export const common = {
   [routes.ARTICLE_DETAILS_SCREEN]: ArticleDetails,
+  [routes.MILESTONE_DETAILS_SCREEN]: MilestoneDetails,
 };

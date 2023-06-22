@@ -14,4 +14,5 @@ export type RootStackParamList = {
   [routes.FORGOT_PASSWORD_STEP3_SCREEN]: undefined;
   [routes.FORGOT_PASSWORD_STEP4_SCREEN]: undefined;
   [routes.ARTICLE_DETAILS_SCREEN]: {details: IArticle};
+  [routes.MILESTONE_DETAILS_SCREEN]: undefined;
 };

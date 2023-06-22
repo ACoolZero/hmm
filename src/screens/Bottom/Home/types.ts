@@ -10,6 +10,13 @@ export interface IArticle {
 
 export interface IStory {
   id: number;
-  image: string;
+  image: number;
   title: string;
+}
+
+export interface IMilestone {
+  id: number;
+  image: number;
+  label: string;
+  datetime: string;
 }

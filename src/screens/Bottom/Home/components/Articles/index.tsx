@@ -1,5 +1,5 @@
 import {ArticleCard, Block, ListWrapper, Text} from '@components';
-import {EmotionChart, Reaction, Stories} from '@screens/Bottom/Home/components';
+import {EmotionChart, Milestones, Reaction, Stories} from '@screens/Bottom/Home/components';
 import {IArticle} from '@screens/Bottom/Home/types';
 import React, {memo} from 'react';
 import {ListRenderItem} from 'react-native';
@@ -14,6 +14,7 @@ const Articles: React.FC = () => {
         <Stories />
         <Reaction />
         <EmotionChart />
+        <Milestones />
         <Text size={24} marginHorizontal={16} marginBottom={24} type="bold">
           Reading list
         </Text>
@@ -25,7 +26,7 @@ const Articles: React.FC = () => {
     <Block flex safeBottom>
       <ListWrapper
         data={DATA}
-        keyExtractor={(item: IArticle) => String(item.id)}
+        keyExtractor={(item: IArticle) => item.id}
         renderItem={_renderItem}
         ListHeaderComponent={_renderHeader}
       />

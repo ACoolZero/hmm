@@ -12,7 +12,7 @@ const Reaction: React.FC = () => {
   };
 
   return (
-    <Block paddingHorizontal={16} marginBottom={24}>
+    <Block paddingHorizontal={16} marginBottom={24} backgroundColor="background">
       <Text type="semibold">How exactly you feel right now?</Text>
       <Block shadow borderWidth={1} borderColor="border" backgroundColor="light_background" style={styles.input} />
       <Block row wrap gap={12}>

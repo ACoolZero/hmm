@@ -47,6 +47,7 @@ const RootStack = () => {
       {/** Common screens */}
       <Stack.Group>
         <Stack.Screen name={routes.ARTICLE_DETAILS_SCREEN} component={common[routes.ARTICLE_DETAILS_SCREEN]} />
+        <Stack.Screen name={routes.MILESTONE_DETAILS_SCREEN} component={common[routes.MILESTONE_DETAILS_SCREEN]} />
       </Stack.Group>
     </Stack.Navigator>
   );

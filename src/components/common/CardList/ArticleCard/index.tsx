@@ -5,7 +5,7 @@ import {navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import {IArticle} from '@screens/Bottom/Home/types';
 import {getSize} from '@utils/responsive';
-import React from 'react';
+import React, {memo} from 'react';
 import {Pressable} from 'react-native';
 import styles, {IMAGE_HEIGHT} from './styles';
 
@@ -48,4 +48,4 @@ const ArticleCard: React.FC<ArticleCardProps> = ({item, index}) => {
   );
 };
 
-export default ArticleCard;
+export default memo(ArticleCard);

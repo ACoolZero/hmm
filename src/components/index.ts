@@ -27,3 +27,4 @@ export {default as GradientText} from './common/Gradient/GradientText';
 export {default as Header} from './common/Header';
 export {default as Loading} from './common/Loading';
 export {default as Rating} from './common/Rating';
+export {default as VerticalDashedLine} from './common/VerticalDashedLine';

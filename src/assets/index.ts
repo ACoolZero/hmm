@@ -31,3 +31,17 @@ export const IMAGES = {
   story2: require('./images/story2.jpg'),
   article1: require('./images/article1.png'),
 };
+
+export const MILESTONE = {
+  milestone1: require('./milestones/milestone1.png'),
+  milestone2: require('./milestones/milestone2.png'),
+  milestone3: require('./milestones/milestone3.png'),
+  milestone4: require('./milestones/milestone4.png'),
+  milestone5: require('./milestones/milestone5.png'),
+  milestone6: require('./milestones/milestone6.png'),
+  milestone7: require('./milestones/milestone7.png'),
+  milestone8: require('./milestones/milestone8.png'),
+  milestone9: require('./milestones/milestone9.png'),
+  milestone10: require('./milestones/milestone10.png'),
+  milestone11: require('./milestones/milestone11.png'),
+};

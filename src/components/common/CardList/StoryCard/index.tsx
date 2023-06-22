@@ -1,6 +1,6 @@
 import {Block, Text} from '@components';
 import {getSize} from '@utils/responsive';
-import React from 'react';
+import React, {memo} from 'react';
 import {ImageBackground, Pressable} from 'react-native';
 import styles, {STORY_HEIGHT, STORY_WIDTH} from './styles';
 
@@ -9,7 +9,7 @@ const StoryCard: React.FC<any> = ({item}) => {
 
   return (
     <Pressable onPress={() => {}}>
-      <Block shadow radius={20} style={styles.container}>
+      <Block shadow radius={20} style={styles.container} backgroundColor="background">
         <ImageBackground
           source={image}
           imageStyle={{borderRadius: getSize.s(20)}}
@@ -27,4 +27,4 @@ const StoryCard: React.FC<any> = ({item}) => {
   );
 };
 
-export default StoryCard;
+export default memo(StoryCard);
