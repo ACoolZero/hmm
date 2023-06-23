@@ -1,23 +1,14 @@
-import {Block, Text} from '@components';
+import {Block, ReactionCard} from '@components';
+import {IReaction} from '@screens/Bottom/Home/types';
 import React, {memo} from 'react';
-import styles from './styles';
+import {DATA} from './data';
 
 const Reaction: React.FC = () => {
-  const _renderTag: React.FC<any> = item => {
-    return (
-      <Block key={item} radius={12} paddingHorizontal={16} paddingVertical={12} backgroundColor="light_background">
-        <Text sm>TAG</Text>
-      </Block>
-    );
-  };
+  const _renderItem = (item: IReaction) => <ReactionCard key={item.id} item={item} />;
 
   return (
-    <Block paddingHorizontal={16} marginBottom={24} backgroundColor="background">
-      <Text type="semibold">How exactly you feel right now?</Text>
-      <Block shadow borderWidth={1} borderColor="border" backgroundColor="light_background" style={styles.input} />
-      <Block row wrap gap={12}>
-        {[1, 2, 3, 4].map(_renderTag)}
-      </Block>
+    <Block row paddingHorizontal={16} marginBottom={24} space="between" gap={12}>
+      {DATA.map(_renderItem)}
     </Block>
   );
 };

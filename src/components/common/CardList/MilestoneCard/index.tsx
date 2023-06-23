@@ -1,4 +1,4 @@
-import {Block, Image, Text, VerticalDashedLine} from '@components';
+import {Block, DashedLine, Image, Text} from '@components';
 import {useColors} from '@hooks';
 import {IMilestone} from '@screens/Bottom/Home/types';
 import React, {memo} from 'react';
@@ -31,7 +31,7 @@ const MilestoneCard: React.FC<MilestoneCardProps> = ({item, isLastItem = false})
           <Block round={8} backgroundColor={COLORS.primary} />
           {!isLastItem && (
             <Block absolute right={2.5} top={16}>
-              <VerticalDashedLine height={40} width={2} color={COLORS.primary} />
+              <DashedLine height={40} width={2} color={COLORS.primary} orientation="vertical" />
             </Block>
           )}
         </Block>

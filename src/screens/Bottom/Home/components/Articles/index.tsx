@@ -1,5 +1,5 @@
 import {ArticleCard, Block, ListWrapper, Text} from '@components';
-import {EmotionChart, Milestones, Reaction, Stories} from '@screens/Bottom/Home/components';
+import {EmotionChart, Milestones, Reaction, Status, Stories} from '@screens/Bottom/Home/components';
 import {IArticle} from '@screens/Bottom/Home/types';
 import React, {memo} from 'react';
 import {ListRenderItem} from 'react-native';
@@ -13,6 +13,7 @@ const Articles: React.FC = () => {
       <Block>
         <Stories />
         <Reaction />
+        <Status />
         <EmotionChart />
         <Milestones />
         <Text size={24} marginHorizontal={16} marginBottom={24} type="bold">

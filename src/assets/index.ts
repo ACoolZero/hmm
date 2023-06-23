@@ -30,6 +30,10 @@ export const IMAGES = {
   story1: require('./images/story1.jpg'),
   story2: require('./images/story2.jpg'),
   article1: require('./images/article1.png'),
+  boring: require('./images/boring.png'),
+  fun: require('./images/fun.png'),
+  sad: require('./images/sad.png'),
+  stress: require('./images/stress.png'),
 };
 
 export const MILESTONE = {

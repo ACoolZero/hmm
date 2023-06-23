@@ -20,3 +20,11 @@ export interface IMilestone {
   label: string;
   datetime: string;
 }
+
+export interface IReaction {
+  id: number;
+  image: number;
+  label: string;
+  color: string;
+  percentage: number;
+}
