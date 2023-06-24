@@ -3,7 +3,7 @@ import {useColors, useStore} from '@hooks';
 import React from 'react';
 import {StatusBar, StatusBarStyle} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {PostList} from './components';
+import {Feeling, PostList} from './components';
 
 const Home: React.FC = () => {
   const {useSelector} = useStore();
@@ -16,6 +16,7 @@ const Home: React.FC = () => {
     <Block flex paddingTop={top + 24} backgroundColor="background">
       <StatusBar backgroundColor={COLORS.background} barStyle={barStyle} />
       <PostList />
+      <Feeling />
     </Block>
   );
 };

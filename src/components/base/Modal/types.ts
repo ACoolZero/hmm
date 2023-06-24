@@ -1,7 +1,7 @@
 import {ModalProps as RNModalProps} from 'react-native';
 
 export interface ModalProps extends RNModalProps {
-  isVisible?: boolean;
+  isVisible: boolean;
   animated?: boolean;
   position?: 'center' | 'bottom';
   onBackdropPress?: () => void;

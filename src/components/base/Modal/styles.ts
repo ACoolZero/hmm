@@ -9,6 +9,6 @@ export default {
   content: (position: 'center' | 'bottom'): any => ({
     flex: 1,
     justifyContent: position === 'center' ? 'center' : 'flex-end',
-    paddingHorizontal: position === 'center' ? getSize.m(24) : 0,
+    paddingHorizontal: position === 'center' ? getSize.m(16) : 0,
   }),
 };

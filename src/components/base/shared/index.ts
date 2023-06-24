@@ -30,3 +30,10 @@ export const handleRound = (number: number) => {
     borderRadius: number / 2,
   };
 };
+
+export const handleHitSlop = (size = 5) => ({
+  top: size,
+  left: size,
+  right: size,
+  bottom: size,
+});
