@@ -29,3 +29,4 @@ export {default as Header} from './common/Header';
 export {default as Loading} from './common/Loading';
 export {default as ProgressCircle} from './common/ProgressCircle';
 export {default as Rating} from './common/Rating';
+export {default as ToastMessage} from './common/ToastMessage';
