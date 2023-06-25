@@ -6,7 +6,7 @@ import {TouchableOpacity} from 'react-native';
 import styles from './styles';
 
 interface FABProps extends BlockProps {
-  onPress: () => void;
+  onPress?: () => void;
 }
 
 /**

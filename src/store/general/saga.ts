@@ -1,5 +1,5 @@
+import {showMessage} from '@components/common/ToastMessage';
 import {_onComplete} from '@store/actions';
-import {ErrorToast} from '@utils/toast';
 import {call, put} from 'redux-saga/effects';
 
 const OPTION = {title: null, message: null, isToast: true, callback: null};
@@ -12,9 +12,9 @@ export const safe = (saga: any, config?: any) =>
     } catch (error) {
       __DEV__ && console.log(error);
       if (CONFIG.message) {
-        ErrorToast({message: CONFIG.title, description: CONFIG.message});
+        showMessage({type: 'error', message: CONFIG.message});
       } else {
-        CONFIG.isToast && ErrorToast({message: action.type, description: String(error)});
+        CONFIG.isToast && showMessage({type: 'error', message: String(error)});
       }
       CONFIG.callback && CONFIG.callback();
     } finally {

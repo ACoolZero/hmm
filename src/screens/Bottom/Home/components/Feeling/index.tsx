@@ -48,10 +48,8 @@ const Feeling: React.FC = () => {
         <Block row alignCenter gap={4}>
           {DATA.map(_renderItem)}
         </Block>
-        <Pressable hitSlop={handleHitSlop(5)} onPress={() => setFeelingVisible(false)}>
-          <Block absolute bottom={-52}>
-            <Image source={ICONS.close} square={16} tintColor="white" />
-          </Block>
+        <Pressable hitSlop={handleHitSlop(10)} style={styles.btnClosePopup} onPress={() => setFeelingVisible(false)}>
+          <Image source={ICONS.close} square={16} tintColor="white" />
         </Pressable>
       </Block>
     </Modal>

@@ -1,3 +1,4 @@
+import {ToastMessage} from '@components';
 import i18n from '@i18n';
 import MainContainer from '@navigation';
 import store, {persistor} from '@store';
@@ -22,6 +23,7 @@ const App = () => {
           <PersistGate loading={null} persistor={persistor}>
             <MainContainer />
             <FlashMessage position="top" />
+            <ToastMessage position="bottom" />
           </PersistGate>
         </ReduxProvider>
       </I18nextProvider>

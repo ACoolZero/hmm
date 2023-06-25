@@ -4,7 +4,7 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   backdrop: {
     position: 'absolute',
-    bottom: getSize.s(30),
-    right: getSize.s(30),
+    bottom: getSize.s(70),
+    right: getSize.s(16),
   },
 });
