@@ -13,5 +13,20 @@
   "validate": {
     "username_empty": "Tài khoản không được để trống",
     "password_empty": "Mật khẩu không được để trống"
+  },
+  "conversation": {
+    "you": "Bạn",
+    "send_input_holder": "Message",
+    "now": "Bây giờ",
+    "minutes_ago": "phút trước",
+    "hours_ago": "giờ trước",
+    "send_a_photo": "đã gửi một ảnh",
+    "send_a_file": "đã gửi một tập tin",
+    "copy": "Sao chép",
+    "edit": "Chỉnh sửa",
+    "delete": "Thu hồi",
+    "recall_message": "Tin nhắn thu hồi",
+    "edit_message": "Chỉnh sửa tin nhắn",
+    "click_to_view": "Nhấn để xem"
   }
 }

@@ -23,6 +23,7 @@ export * from './common/CardList';
 export {default as DashedLine} from './common/DashedLine';
 export {default as EmptyList} from './common/EmptyList';
 export {default as FAB} from './common/FAB';
+export {default as GiftedChat} from './common/GiftedChat';
 export {default as GradientButton} from './common/Gradient/GradientButton';
 export {default as GradientText} from './common/Gradient/GradientText';
 export {default as Header} from './common/Header';
