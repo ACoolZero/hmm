@@ -138,29 +138,29 @@ const COLORS = {
 };
 
 const dark = {
-  text: '#FFFFFF',
-  light_text: 'rgba(255, 255, 255, 0.6)',
+  text: '#FAFAFA',
+  light_text: '#96A7AF',
   article_text: 'rgba(255, 255, 255, 0.6)',
-  background: '#22343C',
-  light_background: '#30444E',
+  background: '#213138',
+  secondary_background: '#30444E',
   feeling_background: '#4B667360',
   card_background_one: '#475E69',
   card_background_two: '#30444E',
-  border: '#5C7987',
+  border: '#899A96',
   bottom_tabbar_color: '#3C6F8D',
   ...COLORS,
 };
 
 const light = {
-  text: '#30444E',
+  text: '#213138',
   light_text: '#899A96',
   article_text: '#1A3B34',
-  background: '#F5F5F5',
-  light_background: '#E4E9F3',
+  background: '#FAFAFA',
+  secondary_background: '#F3F3F3',
   feeling_background: '#FFFFFF80',
   card_background_one: '#CDDDE5',
   card_background_two: '#E4E9F3',
-  border: '#899A96',
+  border: '#96A7AF',
   bottom_tabbar_color: '#4E6EA5',
   ...COLORS,
 };

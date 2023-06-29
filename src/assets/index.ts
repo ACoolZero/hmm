@@ -22,6 +22,13 @@ export const ICONS = {
   bottom_home_selected: require('./icons/bottom_home_selected.png'),
   eye_closed: require('./icons/eye_closed.png'),
   eye_open: require('./icons/eye_open.png'),
+  send: require('./icons/send.png'),
+  received_msg: require('./icons/received_msg.png'),
+  sent_msg: require('./icons/sent_msg.png'),
+  edit: require('./icons/edit.png'),
+  camera: require('./icons/camera.png'),
+  image: require('./icons/image.png'),
+  voice: require('./icons/voice.png'),
 };
 
 export const IMAGES = {

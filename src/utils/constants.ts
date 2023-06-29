@@ -31,3 +31,5 @@ export const REFRESH_TOKEN = 'REFRESH_TOKEN';
  * @todo use for General
  */
 export const ITEM_LIMIT_PER_PAGE = 16;
+
+export const AVATAR_DEFAULT = 'https://scr.vn/wp-content/uploads/2020/07/Avatar-Facebook-tr%E1%BA%AFng.jpg';

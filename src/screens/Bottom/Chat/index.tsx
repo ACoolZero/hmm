@@ -1,14 +1,18 @@
-import {Block, Text} from '@components';
-import {useStore, useTranslation} from '@hooks';
-import React from 'react';
+import {Block, GiftedChat} from '@components';
+import {height} from '@utils/responsive';
+import React, {useState} from 'react';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {Header} from './components';
+import {DATA} from './data';
 
 const Chat = () => {
-  const {t} = useTranslation();
-  const {dispatch, useSelector} = useStore();
+  const {bottom} = useSafeAreaInsets();
+  const [messages, setMessages] = useState(DATA);
 
   return (
-    <Block flex backgroundColor="background">
-      <Text />
+    <Block height={height} marginBottom={55} paddingBottom={bottom + 30} backgroundColor="background">
+      <Header />
+      <GiftedChat messages={messages} userId={2} />
     </Block>
   );
 };
