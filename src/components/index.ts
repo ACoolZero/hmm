@@ -25,6 +25,7 @@ export {default as EmptyList} from './common/EmptyList';
 export {default as FAB} from './common/FAB';
 export {default as GiftedChat} from './common/GiftedChat';
 export {default as GradientButton} from './common/Gradient/GradientButton';
+export {default as GradientSwitch} from './common/Gradient/GradientSwitch';
 export {default as GradientText} from './common/Gradient/GradientText';
 export {default as Header} from './common/Header';
 export {default as Loading} from './common/Loading';

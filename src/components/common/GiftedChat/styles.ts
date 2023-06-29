@@ -5,18 +5,11 @@ const styles: StyleProp<any> = {
   wrapperStyle: ({position, currentMessage}: any) => ({
     paddingHorizontal: !currentMessage.image ? getSize.m(6) : 0,
     paddingVertical: getSize.m(6),
-    borderRadius: currentMessage.action !== 'REMOVED' && getSize.s(12),
+    borderRadius: getSize.s(12),
     marginRight: getSize.m(10),
-    borderWidth: currentMessage.action === 'REMOVED' ? getSize.m(1) : 0,
+    borderWidth: 0,
     borderColor: '#D9D9D9',
-    backgroundColor:
-      currentMessage.action === 'REMOVED'
-        ? null
-        : !currentMessage.image
-        ? position === 'left'
-          ? '#30444E'
-          : '#518EF8'
-        : '#FFFFFF',
+    backgroundColor: position === 'left' ? '#30444E' : '#518EF8',
   }),
   timeTextStyle: (position: any) => ({
     fontSize: getSize.m(10),
@@ -30,13 +23,15 @@ const styles: StyleProp<any> = {
   textInputStyle: {
     fontSize: getSize.m(14),
     textAlignVertical: 'center',
-    marginTop: getSize.m(12),
+    borderRadius: getSize.s(32),
+    minHeight: getSize.s(38),
+    paddingHorizontal: getSize.m(12),
+    paddingTop: getSize.m(12),
   },
   inputToolbarStyle: {
     alignItems: 'center',
-    paddingVertical: getSize.m(12),
+    paddingVertical: getSize.m(6),
     paddingLeft: getSize.m(16),
-    borderRadius: getSize.s(32),
   },
   tickStyle: {
     width: getSize.s(13),

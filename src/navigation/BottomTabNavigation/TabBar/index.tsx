@@ -18,7 +18,10 @@ const TabBar: React.FC<TabBarProps> = ({state, navigation}) => {
 
   return (
     <Block paddingBottom={TAB_BAR_HEIGHT}>
-      <Block height={60 + TAB_BAR_HEIGHT} style={[styles.container, styles.shadow]} backgroundColor="light_background">
+      <Block
+        height={60 + TAB_BAR_HEIGHT}
+        style={[styles.container, styles.shadow]}
+        backgroundColor="secondary_background">
         {state.routes.map((route: any, index: number) => {
           const isFocused = state.index === index;
           const icons = {

@@ -25,7 +25,7 @@ const Feeling: React.FC = () => {
           <Block
             radius={REACTION_SIZE}
             style={{...styles.iconShadow, shadowColor: color}}
-            backgroundColor="light_background">
+            backgroundColor="secondary_background">
             <Image source={image} round={ICON_SIZE} />
           </Block>
         </Block>
@@ -38,7 +38,7 @@ const Feeling: React.FC = () => {
 
   return (
     <Modal isVisible={isFeelingVisible}>
-      <Block alignCenter radius={24} paddingHorizontal={12} paddingBottom={24} backgroundColor="light_background">
+      <Block alignCenter radius={24} paddingHorizontal={12} paddingBottom={24} backgroundColor="secondary_background">
         <Block absolute top={-100}>
           <Image source={IMAGES.splash_logo} square={180} />
         </Block>

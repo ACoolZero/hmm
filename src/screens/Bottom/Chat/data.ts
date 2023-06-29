@@ -1,7 +1,7 @@
 export const DATA = [
   {
     _id: 1,
-    text: 'I am so sory about that',
+    text: 'I am so sorry about that',
     createdAt: new Date(),
     user: {
       _id: 1,

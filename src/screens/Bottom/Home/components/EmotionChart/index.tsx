@@ -38,7 +38,7 @@ const EmotionChart: React.FC = () => {
         marginBottom={24}
         marginHorizontal={16}
         paddingTop={12}
-        backgroundColor="light_background">
+        backgroundColor="secondary_background">
         <Block row alignCenter paddingHorizontal={16} marginBottom={16} space="between">
           <Text type="bold">Emotions flow</Text>
           <Block row>

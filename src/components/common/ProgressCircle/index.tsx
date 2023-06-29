@@ -9,7 +9,7 @@ interface ProgressCircleProps {
   radius?: number;
   strokeWidth?: number;
   backgroundColor?: string;
-  children?: JSX.Element;
+  children?: React.ReactNode;
 }
 
 const ProgressCircle: React.FC<ProgressCircleProps> = ({
@@ -35,8 +35,8 @@ const ProgressCircle: React.FC<ProgressCircleProps> = ({
           <Rect
             rx={radius}
             ry={radius}
-            x={strokeWidth / 2}
-            y={strokeWidth / 2}
+            x={strokeWidth * 0.5}
+            y={strokeWidth * 0.5}
             width={contentSize}
             height={contentSize}
             stroke={color}
@@ -47,7 +47,7 @@ const ProgressCircle: React.FC<ProgressCircleProps> = ({
           />
         </Svg>
       </Block>
-      <Block square={contentSize} absolute top={strokeWidth} left={strokeWidth / 2}>
+      <Block square={contentSize} absolute top={strokeWidth} left={strokeWidth * 0.5}>
         {children}
       </Block>
     </Block>

@@ -28,6 +28,7 @@ export const ICONS = {
   edit: require('./icons/edit.png'),
   camera: require('./icons/camera.png'),
   image: require('./icons/image.png'),
+  voice: require('./icons/voice.png'),
 };
 
 export const IMAGES = {

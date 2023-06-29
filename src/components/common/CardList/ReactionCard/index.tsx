@@ -19,12 +19,12 @@ const ReactionCard: React.FC<ReactionCardProps> = ({item}) => {
         size={REACTION_SIZE}
         color={color}
         radius={12}
-        backgroundColor={COLORS.light_background}>
+        backgroundColor={COLORS.secondary_background}>
         <Block flex alignCenter justifyCenter>
           <Block
             radius={REACTION_SIZE}
             style={{...styles.iconShadow, shadowColor: color}}
-            backgroundColor="light_background">
+            backgroundColor="secondary_background">
             <Image source={image} round={ICON_SIZE} />
           </Block>
         </Block>

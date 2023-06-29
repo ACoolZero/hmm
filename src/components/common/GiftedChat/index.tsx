@@ -7,6 +7,8 @@ import dayjs from 'dayjs';
 import React from 'react';
 import {LayoutAnimation, Pressable} from 'react-native';
 import {
+  Avatar,
+  AvatarProps,
   Bubble,
   Composer,
   ComposerProps,
@@ -39,7 +41,7 @@ const GiftedChat: React.FC<any> = ({userId, openBottomMenu, ...rest}) => {
     <Bubble
       {...props}
       wrapperStyle={{
-        left: styles.wrapperStyle(props),
+        left: {...styles.wrapperStyle(props), marginLeft: getSize.m(-8)},
         right: styles.wrapperStyle(props),
       }}
     />
@@ -51,7 +53,7 @@ const GiftedChat: React.FC<any> = ({userId, openBottomMenu, ...rest}) => {
   const _renderMessage = (props: MessageProps<any>) => (
     <Block>
       <Message {...props} />
-      {props.currentMessage.hasTimestamp && (
+      {props.currentMessage?.hasTimestamp && (
         <Text style={styles.timeTextStyle(props.position)}>
           {dayjs(props.currentMessage.createdAt).format('HH:mm')}
         </Text>
@@ -116,8 +118,11 @@ const GiftedChat: React.FC<any> = ({userId, openBottomMenu, ...rest}) => {
   const _renderInputToolbar = (props: InputToolbarProps<any>) => (
     <InputToolbar
       {...props}
-      containerStyle={{backgroundColor: COLORS.light_background, paddingBottom: 30}}
-      primaryStyle={{...styles.inputToolbarStyle, backgroundColor: COLORS.light_background}}
+      containerStyle={{
+        backgroundColor: COLORS.secondary_background,
+        paddingBottom: getSize.m(30),
+      }}
+      primaryStyle={{...styles.inputToolbarStyle, backgroundColor: COLORS.secondary_background}}
     />
   );
 
@@ -125,13 +130,11 @@ const GiftedChat: React.FC<any> = ({userId, openBottomMenu, ...rest}) => {
    * Custom text input message composer
    */
   const _renderComposer = (props: ComposerProps) => (
-    <Block flex radius={32} paddingHorizontal={5} backgroundColor="background">
-      <Composer
-        {...props}
-        textInputStyle={{...styles.textInputStyle, color: COLORS.text}}
-        textInputProps={{allowFontScaling: false}}
-      />
-    </Block>
+    <Composer
+      {...props}
+      textInputStyle={{...styles.textInputStyle, color: COLORS.text, backgroundColor: COLORS.background}}
+      textInputProps={{allowFontScaling: false}}
+    />
   );
 
   /**
@@ -147,13 +150,27 @@ const GiftedChat: React.FC<any> = ({userId, openBottomMenu, ...rest}) => {
   /**
    * Custom send button
    */
-  const _renderSend = (props: SendProps<any>) => (
-    <Pressable onPress={() => props.text.trim().length && props.onSend({text: props.text.trim()}, true)}>
-      <Block alignCenter justifyCenter square={40} marginHorizontal={10}>
-        <Image source={ICONS.send} square={26} />
+  const _renderSend = (props: SendProps<any>) =>
+    props.text ? (
+      <Pressable onPress={() => props.text?.trim().length && props.onSend?.({text: props.text.trim()}, true)}>
+        <Block alignCenter justifyCenter square={40} marginHorizontal={10}>
+          <Image source={ICONS.send} square={26} />
+        </Block>
+      </Pressable>
+    ) : (
+      <Block row alignCenter paddingHorizontal={6}>
+        <Pressable onPress={() => {}}>
+          <Block alignCenter justifyCenter square={48}>
+            <Image source={ICONS.voice} square={26} />
+          </Block>
+        </Pressable>
+        <Pressable onPress={() => {}}>
+          <Block alignCenter justifyCenter square={48}>
+            <Image source={ICONS.image} square={26} />
+          </Block>
+        </Pressable>
       </Block>
-    </Pressable>
-  );
+    );
 
   /**
    * Custom Scroll To Bottom Component container
@@ -167,6 +184,13 @@ const GiftedChat: React.FC<any> = ({userId, openBottomMenu, ...rest}) => {
     <Block marginTop={10}>
       <UIActivityIndicator size={getSize.s(20)} color={COLORS.gray_300} />
     </Block>
+  );
+
+  /**
+   * Custom message avatar; set to null to not render any avatar for the message
+   */
+  const _renderAvatar = (props: AvatarProps<any>) => (
+    <Avatar {...props} imageStyle={{left: {height: getSize.s(24), width: getSize.s(24)}}} />
   );
 
   return (
@@ -192,6 +216,7 @@ const GiftedChat: React.FC<any> = ({userId, openBottomMenu, ...rest}) => {
         scrollToBottomComponent={_scrollToBottomComponent}
         listViewProps={{marginBottom: getSize.m(bottom + 30)}}
         renderLoadEarlier={_renderLoadEarlier}
+        renderAvatar={_renderAvatar}
         lightboxProps={{underlayColor: COLORS.blue_100}}
         keyboardShouldPersistTaps="handled"
         bottomOffset={isIos ? 16 : -16}
