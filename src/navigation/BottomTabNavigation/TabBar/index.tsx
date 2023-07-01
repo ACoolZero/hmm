@@ -76,7 +76,8 @@ export default TabBar;
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    borderRadius: getSize.s(32),
+    borderTopLeftRadius: getSize.s(32),
+    borderTopRightRadius: getSize.s(32),
     paddingTop: getSize.m(24),
     position: 'absolute',
     bottom: 0,

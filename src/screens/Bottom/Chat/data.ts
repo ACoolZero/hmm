@@ -6,7 +6,7 @@ export const DATA = [
     user: {
       _id: 1,
       name: 'sender',
-      avatar: 'https://placeimg.com/140/140/any',
+      avatar: 'https://reactnative.dev/img/tiny_logo.png',
     },
   },
   {
@@ -16,7 +16,7 @@ export const DATA = [
     user: {
       _id: 2,
       name: 'receiver',
-      avatar: 'https://placeimg.com/140/140/any',
+      avatar: 'https://reactnative.dev/img/tiny_logo.png',
     },
   },
   {
@@ -26,7 +26,7 @@ export const DATA = [
     user: {
       _id: 2,
       name: 'receiver',
-      avatar: 'https://placeimg.com/140/140/any',
+      avatar: 'https://reactnative.dev/img/tiny_logo.png',
     },
   },
   {
@@ -36,7 +36,7 @@ export const DATA = [
     user: {
       _id: 2,
       name: 'receiver',
-      avatar: 'https://placeimg.com/140/140/any',
+      avatar: 'https://reactnative.dev/img/tiny_logo.png',
     },
   },
   {
@@ -46,7 +46,7 @@ export const DATA = [
     user: {
       _id: 1,
       name: 'sender',
-      avatar: 'https://placeimg.com/140/140/any',
+      avatar: 'https://reactnative.dev/img/tiny_logo.png',
     },
   },
   {
@@ -56,7 +56,7 @@ export const DATA = [
     user: {
       _id: 1,
       name: 'sender',
-      avatar: 'https://placeimg.com/140/140/any',
+      avatar: 'https://reactnative.dev/img/tiny_logo.png',
     },
   },
 ];

@@ -1,3 +1,4 @@
+import {isIos} from '@utils/helper';
 import {getSize} from '@utils/responsive';
 import {StyleProp} from 'react-native';
 
@@ -26,7 +27,7 @@ const styles: StyleProp<any> = {
     borderRadius: getSize.s(32),
     minHeight: getSize.s(38),
     paddingHorizontal: getSize.m(12),
-    paddingTop: getSize.m(12),
+    paddingTop: isIos ? getSize.m(12) : getSize.m(8),
   },
   inputToolbarStyle: {
     alignItems: 'center',
