@@ -16,7 +16,7 @@ const Header: React.FC = () => {
     <Block marginBottom={1} backgroundColor="secondary_background">
       <Block paddingTop={top} height={top + 48} backgroundColor="secondary_background" style={styles.container}>
         <Block row alignCenter>
-          <Image source={{uri: 'https://placeimg.com/140/140/any'}} round={32} />
+          <Image source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}} round={32} />
           <Text marginLeft={8} type="semibold">
             Bot
           </Text>

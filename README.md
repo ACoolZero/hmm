@@ -4,7 +4,7 @@
 
 #### Core
 
-- [React Native](https://reactnative.dev) (v0.71.8) application.
+- [React Native](https://reactnative.dev) (v0.72.0) application.
 - [React Navigation](https://reactnavigation.org)(v6) to handle in-app navigation.
 - [Redux](https://redux.js.org) (v4.2.1) to manage application state.
 - [Redux Saga](https://redux-saga.js.org) (v1.2.3) to make application side effects.
