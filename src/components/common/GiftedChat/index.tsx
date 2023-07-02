@@ -22,16 +22,14 @@ import {
   SendProps,
 } from 'react-native-gifted-chat';
 import {UIActivityIndicator} from 'react-native-indicators';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import styles from './styles';
 
-LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+LayoutAnimation.configureNext(LayoutAnimation.Presets.linear);
 
-const GiftedChat: React.FC<any> = ({userId, openBottomMenu, ...rest}) => {
+const GiftedChat: React.FC<any> = ({userId, ...rest}) => {
   const {t} = useTranslation();
   const {useSelector} = useStore();
   const {COLORS} = useColors();
-  const {bottom} = useSafeAreaInsets();
   const {locale} = useSelector('general');
 
   /**
@@ -65,26 +63,12 @@ const GiftedChat: React.FC<any> = ({userId, openBottomMenu, ...rest}) => {
    * Custom message text
    */
   const _renderMessageText = (props: MessageTextProps<any>) => {
-    const {action, text} = props.currentMessage;
+    const {text} = props.currentMessage;
     return (
-      <Pressable onPress={() => {}} onLongPress={() => action !== 'REMOVED' && openBottomMenu(props.currentMessage)}>
-        {action === 'REMOVED' ? (
-          <Text marginHorizontal={10} marginVertical={5} color="gray_400">
-            {t('conversation.recall_message')}
-          </Text>
-        ) : (
-          <Block marginHorizontal={10} marginVertical={5}>
-            <Text color="white">{text}</Text>
-            {action === 'UPDATED' && (
-              <Block row alignCenter marginTop={3}>
-                <Image source={ICONS.edit} square={8} tintColor="white" />
-                <Text size={9} marginLeft={3} color="white">
-                  Edited
-                </Text>
-              </Block>
-            )}
-          </Block>
-        )}
+      <Pressable onPress={() => {}} onLongPress={() => {}}>
+        <Block marginHorizontal={10} marginVertical={5}>
+          <Text color="white">{text}</Text>
+        </Block>
       </Pressable>
     );
   };
@@ -93,16 +77,10 @@ const GiftedChat: React.FC<any> = ({userId, openBottomMenu, ...rest}) => {
    * Custom message image
    */
   const _renderMessageImage = (props: MessageImageProps<any>) => {
-    const {action, image} = props.currentMessage;
+    const {image} = props.currentMessage;
     return (
-      <Pressable onPress={() => {}} onLongPress={() => action !== 'REMOVED' && openBottomMenu(props.currentMessage)}>
-        {action === 'REMOVED' ? (
-          <Text marginHorizontal={13} marginVertical={5} color="gray_400">
-            {t('conversation.recall_message')}
-          </Text>
-        ) : (
-          <LazyImage scalable source={image} width={width * 0.5} style={styles.messageImageStyle} />
-        )}
+      <Pressable onPress={() => {}} onLongPress={() => {}}>
+        <LazyImage scalable source={image} width={width * 0.5} style={styles.messageImageStyle} />
       </Pressable>
     );
   };
@@ -153,7 +131,7 @@ const GiftedChat: React.FC<any> = ({userId, openBottomMenu, ...rest}) => {
   const _renderSend = (props: SendProps<any>) =>
     props.text ? (
       <Pressable onPress={() => props.text?.trim().length && props.onSend?.({text: props.text.trim()}, true)}>
-        <Block alignCenter justifyCenter square={40} marginHorizontal={10}>
+        <Block alignCenter justifyCenter square={48} marginHorizontal={10}>
           <Image source={ICONS.send} square={26} />
         </Block>
       </Pressable>
@@ -194,35 +172,33 @@ const GiftedChat: React.FC<any> = ({userId, openBottomMenu, ...rest}) => {
   );
 
   return (
-    <Block flex backgroundColor="background">
-      <RNGiftedChat
-        {...rest}
-        infiniteScroll
-        alwaysShowSend
-        scrollToBottom
-        locale={LOCALE[locale as keyof typeof LOCALE].name}
-        user={{_id: userId}}
-        placeholder={t('conversation.send_input_holder')}
-        renderBubble={_renderBubble}
-        renderMessage={_renderMessage}
-        renderMessageText={_renderMessageText}
-        renderMessageImage={_renderMessageImage}
-        renderTime={_renderTime}
-        renderInputToolbar={_renderInputToolbar}
-        renderComposer={_renderComposer}
-        renderActions={_renderActions}
-        onPressActionButton={_onPressActionButton}
-        renderSend={_renderSend}
-        scrollToBottomComponent={_scrollToBottomComponent}
-        listViewProps={{marginBottom: getSize.m(bottom + 30)}}
-        renderLoadEarlier={_renderLoadEarlier}
-        renderAvatar={_renderAvatar}
-        lightboxProps={{underlayColor: COLORS.blue_100}}
-        keyboardShouldPersistTaps="handled"
-        bottomOffset={isIos ? 16 : -16}
-        onLongPress={() => {}}
-      />
-    </Block>
+    <RNGiftedChat
+      {...rest}
+      infiniteScroll
+      alwaysShowSend
+      scrollToBottom
+      locale={LOCALE[locale as keyof typeof LOCALE].name}
+      user={{_id: userId}}
+      placeholder={t('conversation.send_input_holder')}
+      renderBubble={_renderBubble}
+      renderMessage={_renderMessage}
+      renderMessageText={_renderMessageText}
+      renderMessageImage={_renderMessageImage}
+      renderTime={_renderTime}
+      renderInputToolbar={_renderInputToolbar}
+      renderComposer={_renderComposer}
+      renderActions={_renderActions}
+      onPressActionButton={_onPressActionButton}
+      renderSend={_renderSend}
+      scrollToBottomComponent={_scrollToBottomComponent}
+      listViewProps={{marginBottom: getSize.m(50)}}
+      renderLoadEarlier={_renderLoadEarlier}
+      renderAvatar={_renderAvatar}
+      lightboxProps={{underlayColor: COLORS.blue_100}}
+      keyboardShouldPersistTaps="handled"
+      bottomOffset={isIos ? 24 : -16}
+      onLongPress={() => {}}
+    />
   );
 };
 

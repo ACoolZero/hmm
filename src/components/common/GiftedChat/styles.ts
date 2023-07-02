@@ -32,7 +32,7 @@ const styles: StyleProp<any> = {
   inputToolbarStyle: {
     alignItems: 'center',
     paddingVertical: getSize.m(6),
-    paddingLeft: getSize.m(16),
+    paddingLeft: getSize.m(12),
   },
   tickStyle: {
     width: getSize.s(13),

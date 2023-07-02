@@ -17,7 +17,7 @@ const TabBar: React.FC<TabBarProps> = ({state, navigation}) => {
   const TAB_BAR_HEIGHT = bottom ? bottom : 20;
 
   return (
-    <Block paddingBottom={TAB_BAR_HEIGHT}>
+    <Block paddingBottom={TAB_BAR_HEIGHT} backgroundColor="secondary_background">
       <Block
         height={60 + TAB_BAR_HEIGHT}
         style={[styles.container, styles.shadow]}
