@@ -70,6 +70,7 @@
     "@react-native/eslint-config": "^0.72.2",
     "@react-native/metro-config": "^0.72.7",
     "@tsconfig/react-native": "^3.0.0",
+    "@types/": "react-navigation/native",
     "@types/lodash": "^4.14.195",
     "@types/metro-config": "^0.76.3",
     "@types/react": "^18.0.24",

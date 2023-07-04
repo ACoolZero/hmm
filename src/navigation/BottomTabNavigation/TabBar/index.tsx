@@ -60,7 +60,6 @@ const TabBar: React.FC<TabBarProps> = ({state, navigation}) => {
               <Image
                 square={22}
                 source={(ICONS as any)[icons[route.name as keyof typeof icons]]}
-                tintColor="#87A8B9"
                 resizeMode="contain"
               />
             </Pressable>
