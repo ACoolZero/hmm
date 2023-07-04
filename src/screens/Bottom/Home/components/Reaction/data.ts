@@ -28,6 +28,6 @@ export const DATA: IReaction[] = [
     image: IMAGES.fun,
     label: 'Fun',
     color: '#FE7E01',
-    percentage: 20,
+    percentage: 25,
   },
 ];

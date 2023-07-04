@@ -55,10 +55,10 @@ const EmotionChart: React.FC = () => {
         <LineChart
           curved
           hideRules
-          pressEnabled
+          focusEnabled
           scrollToEnd
           hideYAxisText
-          showTextOnPress
+          showTextOnFocus
           isAnimated
           animateOnDataChange
           thickness={2}

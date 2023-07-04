@@ -1,4 +1,5 @@
-import Block from '@components/base/Block';
+import {Block} from '@components';
+import {isIos} from '@utils/helper';
 import React from 'react';
 import {Rect, Svg} from 'react-native-svg';
 
@@ -21,33 +22,37 @@ const ProgressCircle: React.FC<ProgressCircleProps> = ({
   backgroundColor = 'transparent',
   children,
 }) => {
-  const circumference = size * 4;
   if (percentage < 0) percentage = 0;
   if (percentage > 100) percentage = 100;
+  const circumference = isIos ? 4 * (size - radius) : 4 * size - 2 * radius;
   const filledPercentage = percentage / 100;
-  const dashOffset = circumference * (1 - filledPercentage) + radius;
+  const dashOffset = circumference * (1 - filledPercentage);
   const contentSize = size - strokeWidth * 2;
 
   return (
     <Block>
-      <Block style={{transform: [{rotate: '-90deg'}]}} alignSelf="flex-start">
-        <Svg width={size} height={size}>
-          <Rect
-            rx={radius}
-            ry={radius}
-            x={strokeWidth * 0.5}
-            y={strokeWidth * 0.5}
-            width={contentSize}
-            height={contentSize}
-            stroke={color}
-            strokeWidth={strokeWidth}
-            fill={backgroundColor}
-            strokeDasharray={circumference}
-            strokeDashoffset={dashOffset}
-          />
-        </Svg>
-      </Block>
-      <Block square={contentSize} absolute top={strokeWidth} left={strokeWidth * 0.5}>
+      <Svg
+        width={size}
+        height={size}
+        style={{transform: [{rotate: isIos ? '-90deg' : '90deg'}]}}
+        stroke={color}
+        strokeWidth={strokeWidth}>
+        <Rect
+          rx={isIos ? radius : 0.01}
+          ry={isIos ? radius : size}
+          x={strokeWidth}
+          y={strokeWidth}
+          width={contentSize}
+          height={contentSize}
+          stroke={color}
+          strokeWidth={strokeWidth}
+          fill={backgroundColor}
+          strokeDasharray={circumference}
+          strokeDashoffset={dashOffset}
+          strokeLinecap="round"
+        />
+      </Svg>
+      <Block square={contentSize} absolute top={strokeWidth} left={strokeWidth}>
         {children}
       </Block>
     </Block>

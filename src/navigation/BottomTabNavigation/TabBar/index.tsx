@@ -60,7 +60,7 @@ const TabBar: React.FC<TabBarProps> = ({state, navigation}) => {
               <Image
                 square={22}
                 source={(ICONS as any)[icons[route.name as keyof typeof icons]]}
-                tintColor="bottom_tabbar_color"
+                tintColor="#87A8B9"
                 resizeMode="contain"
               />
             </Pressable>
@@ -79,10 +79,14 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: getSize.s(32),
     borderTopRightRadius: getSize.s(32),
     paddingTop: getSize.m(24),
+    borderTopWidth: getSize.s(1),
+    borderLeftWidth: getSize.s(0.3),
+    borderRightWidth: getSize.s(0.3),
+    borderColor: '#87A8B9',
     position: 'absolute',
+    left: -1,
+    right: -1,
     bottom: 0,
-    left: 0,
-    right: 0,
   },
   btnTabBar: {
     flex: 1,

@@ -3,7 +3,6 @@ import {Block, Image, LazyImage, Text} from '@components';
 import {useColors, useStore, useTranslation} from '@hooks';
 import {LOCALE, isIos} from '@utils/helper';
 import {getSize, width} from '@utils/responsive';
-import dayjs from 'dayjs';
 import React from 'react';
 import {LayoutAnimation, Pressable} from 'react-native';
 import {
@@ -39,8 +38,8 @@ const GiftedChat: React.FC<any> = ({userId, ...rest}) => {
     <Bubble
       {...props}
       wrapperStyle={{
-        left: {...styles.wrapperStyle(props), marginLeft: getSize.m(-8)},
-        right: styles.wrapperStyle(props),
+        left: {...styles.wrapperStyle, backgroundColor: COLORS.secondary_background, marginLeft: getSize.m(-8)},
+        right: {...styles.wrapperStyle, backgroundColor: COLORS.primary},
       }}
     />
   );
@@ -48,26 +47,20 @@ const GiftedChat: React.FC<any> = ({userId, ...rest}) => {
   /**
    * Custom message container
    */
-  const _renderMessage = (props: MessageProps<any>) => (
-    <Block>
-      <Message {...props} />
-      {props.currentMessage?.hasTimestamp && (
-        <Text style={styles.timeTextStyle(props.position)}>
-          {dayjs(props.currentMessage.createdAt).format('HH:mm')}
-        </Text>
-      )}
-    </Block>
-  );
+  const _renderMessage = (props: MessageProps<any>) => <Message {...props} />;
 
   /**
    * Custom message text
    */
   const _renderMessageText = (props: MessageTextProps<any>) => {
-    const {text} = props.currentMessage;
+    const {
+      currentMessage: {text},
+      position,
+    } = props;
     return (
       <Pressable onPress={() => {}} onLongPress={() => {}}>
         <Block marginHorizontal={10} marginVertical={5}>
-          <Text color="white">{text}</Text>
+          <Text color={position === 'left' ? 'text' : 'white'}>{text}</Text>
         </Block>
       </Pressable>
     );
@@ -191,12 +184,12 @@ const GiftedChat: React.FC<any> = ({userId, ...rest}) => {
       onPressActionButton={_onPressActionButton}
       renderSend={_renderSend}
       scrollToBottomComponent={_scrollToBottomComponent}
-      listViewProps={{marginBottom: getSize.m(50)}}
+      listViewProps={{marginBottom: isIos ? getSize.m(50) : getSize.m(70)}}
       renderLoadEarlier={_renderLoadEarlier}
       renderAvatar={_renderAvatar}
       lightboxProps={{underlayColor: COLORS.blue_100}}
       keyboardShouldPersistTaps="handled"
-      bottomOffset={isIos ? 24 : -16}
+      bottomOffset={getSize.m(24)}
       onLongPress={() => {}}
     />
   );

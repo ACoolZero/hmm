@@ -147,7 +147,6 @@ const dark = {
   card_background_one: '#475E69',
   card_background_two: '#30444E',
   border: '#899A96',
-  bottom_tabbar_color: '#3C6F8D',
   ...COLORS,
 };
 
@@ -158,10 +157,9 @@ const light = {
   background: '#FAFAFA',
   secondary_background: '#F3F3F3',
   feeling_background: '#FFFFFF80',
-  card_background_one: '#CDDDE5',
-  card_background_two: '#E4E9F3',
+  card_background_one: '#DDDDDD',
+  card_background_two: '#EEEEEE',
   border: '#96A7AF',
-  bottom_tabbar_color: '#4E6EA5',
   ...COLORS,
 };
 
