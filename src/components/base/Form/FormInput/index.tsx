@@ -8,7 +8,7 @@ const FormInput: React.FC<FormInputProps> = ({name, control, defaultValue = '', 
     <Controller
       control={control}
       name={name}
-      render={({field: {onChange, value}, formState: {errors, isDirty}}) => (
+      render={({field: {onChange, value}, formState: {errors}}) => (
         <TextInput
           {...rest}
           value={String(value)}
@@ -16,7 +16,6 @@ const FormInput: React.FC<FormInputProps> = ({name, control, defaultValue = '', 
             onChange(text);
             rest.onChangeText && rest.onChangeText(text);
           }}
-          isDirty={isDirty}
           isError={errors[name]}
           errorText={rest.errorText || errors[name]?.message}
         />

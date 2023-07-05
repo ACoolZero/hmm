@@ -2,7 +2,6 @@ import {FONTS} from '@theme';
 import {TextInputProps as RNTextInputProps, TextStyle, ViewStyle} from 'react-native';
 
 export interface TextInputProps extends RNTextInputProps {
-  animated?: boolean;
   label?: string;
   labelStyle?: TextStyle | TextStyle[];
   containerInputStyle?: ViewStyle | ViewStyle[];
@@ -15,12 +14,10 @@ export interface TextInputProps extends RNTextInputProps {
   rightIcon?: any;
   leftIcon?: any;
   leftIconStyle?: any;
-  isMultiColorIcon?: boolean;
   height?: number;
   maxLength?: number;
   inputStyle?: ViewStyle | ViewStyle[];
   errorText?: any;
-  isDirty?: boolean;
   isError?: any;
   required?: boolean;
   disabled?: boolean;

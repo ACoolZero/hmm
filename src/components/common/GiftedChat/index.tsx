@@ -9,6 +9,7 @@ import {
   Avatar,
   AvatarProps,
   Bubble,
+  BubbleProps,
   Composer,
   ComposerProps,
   InputToolbar,
@@ -34,15 +35,24 @@ const GiftedChat: React.FC<any> = ({userId, ...rest}) => {
   /**
    * Custom message bubble
    */
-  const _renderBubble = (props: Bubble) => (
-    <Bubble
-      {...props}
-      wrapperStyle={{
-        left: {...styles.wrapperStyle, backgroundColor: COLORS.secondary_background, marginLeft: getSize.m(-8)},
-        right: {...styles.wrapperStyle, backgroundColor: COLORS.primary},
-      }}
-    />
-  );
+  const _renderBubble = (props: BubbleProps<any>) => {
+    return (
+      <Bubble
+        {...props}
+        wrapperStyle={{
+          left: {
+            ...styles.wrapperStyle,
+            backgroundColor: COLORS.secondary_background,
+            marginLeft: getSize.m(-8),
+          },
+          right: {
+            ...styles.wrapperStyle,
+            backgroundColor: COLORS.primary,
+          },
+        }}
+      />
+    );
+  };
 
   /**
    * Custom message container
@@ -191,6 +201,7 @@ const GiftedChat: React.FC<any> = ({userId, ...rest}) => {
       keyboardShouldPersistTaps="handled"
       bottomOffset={getSize.m(24)}
       onLongPress={() => {}}
+      shouldUpdateMessage={() => true}
     />
   );
 };

@@ -14,25 +14,22 @@ import {TextInputProps} from './types';
 
 const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
   const {
-    animated = false,
     label,
     labelStyle,
     containerInputStyle,
     autoCapitalize = 'none',
     type = 'semibold',
     color = 'text',
-    borderColor = 'primary',
+    borderColor = 'common_border',
     size = 16,
     isSecure,
     rightIcon,
     leftIcon,
     leftIconStyle,
-    isMultiColorIcon = false,
     height,
     maxLength,
     inputStyle,
     errorText,
-    isDirty,
     isError,
     onFocus,
     onBlur,
@@ -44,7 +41,6 @@ const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
     ...inputProps
   } = props;
   const {COLORS} = useColors();
-  const [isFocus, setIsFocus] = useState(false);
   const [secureEye, setSecureEye] = useState(true);
 
   const textStyle = [
@@ -96,15 +92,9 @@ const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
     </Block>
   );
 
-  const _onFocus = (e: any) => {
-    animated && setIsFocus(!isFocus);
-    onFocus && onFocus(e);
-  };
+  const _onFocus = (e: any) => onFocus && onFocus(e);
 
-  const _onBlur = (e: any) => {
-    animated && setIsFocus(!isFocus);
-    onBlur && onBlur(e);
-  };
+  const _onBlur = (e: any) => onBlur && onBlur(e);
 
   const _renderInput = () => {
     return (
@@ -127,51 +117,33 @@ const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
     );
   };
 
-  const _getBorderColor = () => {
-    if (isError) {
-      return COLORS.error;
-    }
-    if (isFocus && isDirty) {
-      return COLORS.success;
-    }
-    if (isFocus && !isDirty) {
-      return borderColor;
-    }
-    return COLORS.common_border;
-  };
-
   return (
-    <Block flexShrink paddingHorizontal={2} pointerEvents={pointerEvents} style={containerInputStyle}>
+    <Block flexShrink paddingHorizontal={3} pointerEvents={pointerEvents} style={containerInputStyle}>
       {!isEmpty(label) && _renderLabel()}
       <Block
-        radius={7}
-        borderWidth={1}
-        backgroundColor={isFocus ? _getBorderColor() : 'transparent'}
-        borderColor={isFocus ? _getBorderColor() : 'transparent'}>
-        <Block
-          shadow={shadow}
-          style={[
-            styles.inputContainer,
-            {
-              borderColor: _getBorderColor(),
-              backgroundColor: disabled ? COLORS.gray_100 : COLORS.white,
-              borderWidth: disabled ? getSize.s(0) : getSize.s(1),
-              paddingLeft: leftIcon ? getSize.m(4) : getSize.m(12),
-            },
-            StyleSheet.flatten(inputStyle),
-          ]}>
-          {leftIcon && (
-            <Image
-              source={leftIcon}
-              tintColor={!isMultiColorIcon ? (isError ? COLORS.error : COLORS.placeholder) : {}}
-              style={[styles.leftIcon, leftIconStyle]}
-              resizeMode="contain"
-            />
-          )}
-          {_renderInput()}
-          {isSecure ? _renderSecureIcon() : rightIcon && rightIcon()}
-        </Block>
+        shadow={shadow}
+        style={[
+          styles.inputContainer,
+          {
+            borderColor: isError ? COLORS.error : (COLORS as any)[borderColor],
+            backgroundColor: disabled ? COLORS.gray_100 : COLORS.white,
+            borderWidth: disabled ? getSize.s(0) : getSize.s(1),
+            paddingLeft: leftIcon ? getSize.m(4) : getSize.m(12),
+          },
+          StyleSheet.flatten(inputStyle),
+        ]}>
+        {leftIcon && (
+          <Image
+            source={leftIcon}
+            tintColor={isError ? COLORS.error : COLORS.placeholder}
+            style={[styles.leftIcon, leftIconStyle]}
+            resizeMode="contain"
+          />
+        )}
+        {_renderInput()}
+        {isSecure ? _renderSecureIcon() : rightIcon && rightIcon()}
       </Block>
+
       {isError && Boolean(errorText) && _renderError()}
     </Block>
   );

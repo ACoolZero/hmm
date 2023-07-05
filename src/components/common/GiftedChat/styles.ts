@@ -4,12 +4,9 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   wrapperStyle: {
-    paddingHorizontal: getSize.m(6),
-    paddingVertical: getSize.m(6),
+    padding: getSize.m(6),
     borderRadius: getSize.s(12),
     marginRight: getSize.m(10),
-    borderWidth: 0,
-    borderColor: '#D9D9D9',
   },
   textInputStyle: {
     fontSize: getSize.m(14),
