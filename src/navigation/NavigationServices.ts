@@ -1,4 +1,4 @@
-import {CommonActions, NavigationContainerRef, StackActions} from '@react-navigation/native';
+import {CommonActions, NavigationContainerRef, StackActions, TabActions} from '@react-navigation/native';
 import {createRef} from 'react';
 
 export const navigationRef = createRef<NavigationContainerRef<any>>();
@@ -29,6 +29,10 @@ export function popToTop() {
 
 export function pop(count?: number) {
   navigationRef.current?.dispatch(StackActions.pop(count));
+}
+
+export function jumpTo(name: string, params?: object) {
+  navigationRef.current?.dispatch(TabActions.jumpTo(name, params));
 }
 
 export function reset(name: string, params?: object) {
