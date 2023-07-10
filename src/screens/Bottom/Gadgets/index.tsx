@@ -1,29 +1,30 @@
-import {Block, Text} from '@components';
-import {useColors, useStore} from '@hooks';
-import {SWITCH_THEME_MODE} from '@store/actions';
+import {ICONS} from '@assets';
+import {Block, FormContainer, Image, Text} from '@components';
+import {useColors, useTranslation} from '@hooks';
 import React from 'react';
 import {Pressable} from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {GadgetsHeader, GadgetsMenu} from './components';
+import styles from './styles';
 
 const Gadgets = () => {
-  const {dispatch} = useStore();
-  const {setColorScheme} = useColors();
+  const {t} = useTranslation();
+  const {top} = useSafeAreaInsets();
+  const {COLORS} = useColors();
 
   return (
-    <Block flex backgroundColor="background" alignCenter justifyCenter>
-      <Pressable
-        onPress={() => {
-          dispatch({type: SWITCH_THEME_MODE, payload: {mode: 'light'}});
-          setColorScheme('light');
-        }}>
-        <Text>light</Text>
-      </Pressable>
-      <Pressable
-        onPress={() => {
-          dispatch({type: SWITCH_THEME_MODE, payload: {mode: 'dark'}});
-          setColorScheme('dark');
-        }}>
-        <Text>dark</Text>
-      </Pressable>
+    <Block flex>
+      <Block height={top} backgroundColor="secondary_background" style={styles.shadow} />
+      <Block flex backgroundColor="background">
+        <FormContainer>
+          <GadgetsHeader />
+          <GadgetsMenu />
+          <Pressable onPress={() => {}} style={{...styles.btnLogout, borderColor: COLORS.light_text}}>
+            <Image source={ICONS.logout} square={30} />
+            <Text marginLeft={12}>{t('gadgets.logout')}</Text>
+          </Pressable>
+        </FormContainer>
+      </Block>
     </Block>
   );
 };

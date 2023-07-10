@@ -28,5 +28,12 @@
     "recall_message": "Tin nhắn thu hồi",
     "edit_message": "Chỉnh sửa tin nhắn",
     "click_to_view": "Nhấn để xem"
+  },
+  "gadgets": {
+    "apps": "Apps",
+    "mood_history": "Mood history",
+    "feedback": "FAQ / Feedback",
+    "customization": "Customization",
+    "logout": "Sign out"
   }
 }

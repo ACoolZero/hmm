@@ -29,6 +29,11 @@ export const ICONS = {
   camera: require('./icons/camera.png'),
   image: require('./icons/image.png'),
   voice: require('./icons/voice.png'),
+  gadget_apps: require('./icons/gadget_apps.png'),
+  gadget_customization: require('./icons/gadget_customization.png'),
+  gadget_feedback: require('./icons/gadget_feedback.png'),
+  gadget_mood_history: require('./icons/gadget_mood_history.png'),
+  logout: require('./icons/logout.png'),
 };
 
 export const IMAGES = {
@@ -45,6 +50,7 @@ export const IMAGES = {
   fun: require('./images/fun.png'),
   sad: require('./images/sad.png'),
   stress: require('./images/stress.png'),
+  avatar: require('./images/avatar.png'),
 };
 
 export const MILESTONE = {

@@ -4,7 +4,7 @@ import {call, put} from 'redux-saga/effects';
 
 const OPTION = {title: null, message: null, isToast: true, callback: null};
 
-export const safe = (saga: any, config?: any) =>
+export const guard = (saga: any, config?: any) =>
   function* (action: any) {
     const CONFIG = {...OPTION, ...config};
     try {
