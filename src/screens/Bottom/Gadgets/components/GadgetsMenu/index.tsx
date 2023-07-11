@@ -1,15 +1,16 @@
 import {ICONS} from '@assets';
 import {Block, Image, Text} from '@components';
+import {navigate} from '@navigation/NavigationServices';
 import React from 'react';
 import {Pressable} from 'react-native';
 import MENU, {IGadgetsMenu} from './data';
 
 const GadgetsMenu: React.FC = () => {
   const _renderItem = (item: IGadgetsMenu, index: number) => {
-    const {icon, label} = item;
+    const {icon, label, route} = item;
     const isLastItem = index === MENU.length - 1;
     return (
-      <Pressable key={item.id} onPress={() => {}}>
+      <Pressable key={item.id} onPress={() => navigate(route)}>
         <Block row alignCenter padding={16} space="between">
           <Block flex row alignCenter>
             <Image source={icon} square={32} />

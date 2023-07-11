@@ -51,6 +51,14 @@ export const IMAGES = {
   sad: require('./images/sad.png'),
   stress: require('./images/stress.png'),
   avatar: require('./images/avatar.png'),
+  community: require('./images/community.png'),
+  exchange: require('./images/exchange.png'),
+  game: require('./images/game.png'),
+  market: require('./images/market.png'),
+  music: require('./images/music.png'),
+  shopping: require('./images/shopping.png'),
+  logout_icon_left: require('./images/logout_icon_left.png'),
+  logout_icon_right: require('./images/logout_icon_right.png'),
 };
 
 export const MILESTONE = {

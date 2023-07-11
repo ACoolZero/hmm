@@ -28,7 +28,7 @@ const TabBar: React.FC<TabBarProps> = ({state, navigation}) => {
             [routes.FEEDS_SCREEN]: 'bottom_feeds',
             [routes.BOTTOM_HOME_STACK]: 'bottom_home',
             [routes.CHAT_SCREEN]: 'bottom_chat',
-            [routes.GADGETS_SCREEN]: 'bottom_gadgets',
+            [routes.BOTTOM_GADGETS_STACK]: 'bottom_gadgets',
           };
 
           const _onSelectTab = () => {

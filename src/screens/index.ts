@@ -14,6 +14,10 @@ import Feeds from './Bottom/Feeds';
 import Gadgets from './Bottom/Gadgets';
 import Home from './Bottom/Home';
 import ArticleDetails from './Common/ArticleDetails';
+import Apps from './Common/Gadgets.Apps';
+import Customization from './Common/Gadgets.Customization';
+import Feedback from './Common/Gadgets.Feedback';
+import MoodHistory from './Common/Gadgets.MoodHistory';
 import MilestoneDetails from './Common/Home.MilestoneDetails';
 
 export const auth = {
@@ -39,4 +43,8 @@ export const bottom = {
 export const common = {
   [routes.ARTICLE_DETAILS_SCREEN]: ArticleDetails,
   [routes.MILESTONE_DETAILS_SCREEN]: MilestoneDetails,
+  [routes.GADGETS_APPS_SCREEN]: Apps,
+  [routes.GADGETS_MOOD_HISTORY_SCREEN]: MoodHistory,
+  [routes.GADGETS_FEEDBACK_SCREEN]: Feedback,
+  [routes.GADGETS_CUSTOMIZATION_SCREEN]: Customization,
 };
