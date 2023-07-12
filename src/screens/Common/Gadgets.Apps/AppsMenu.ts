@@ -1,10 +1,5 @@
 import {IMAGES} from '@assets';
-
-export interface IAppsMenu {
-  id: number;
-  label: string;
-  icon: number;
-}
+import {IAppsMenu} from './types';
 
 const MENU: IAppsMenu[] = [
   {

@@ -48,6 +48,11 @@ const RootStack = () => {
       <Stack.Group>
         <Stack.Screen name={routes.ARTICLE_DETAILS_SCREEN} component={common[routes.ARTICLE_DETAILS_SCREEN]} />
         <Stack.Screen name={routes.MILESTONE_DETAILS_SCREEN} component={common[routes.MILESTONE_DETAILS_SCREEN]} />
+        <Stack.Screen name={routes.EDIT_PROFILE_SCREEN} component={common[routes.EDIT_PROFILE_SCREEN]} />
+        <Stack.Screen
+          name={routes.GADGETS_CUSTOMIZATION_SCREEN}
+          component={common[routes.GADGETS_CUSTOMIZATION_SCREEN]}
+        />
       </Stack.Group>
     </Stack.Navigator>
   );

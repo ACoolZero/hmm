@@ -2,7 +2,8 @@ import {Block, Header, Image, Text} from '@components';
 import {width} from '@utils/responsive';
 import React from 'react';
 import {Pressable} from 'react-native';
-import Menu, {IAppsMenu} from './AppsMenu';
+import Menu from './AppsMenu';
+import {IAppsMenu} from './types';
 
 const ITEM_WIDTH = (width - 16 * 4) / 3;
 

@@ -1,12 +1,12 @@
 import {Block, Header} from '@components';
 import React from 'react';
 
-const Customization: React.FC = () => {
+const EditProfile: React.FC = () => {
   return (
     <Block flex backgroundColor="background">
-      <Header canGoBack title="Customization" />
+      <Header canGoBack title="Edit Profile" />
     </Block>
   );
 };
 
-export default Customization;
+export default EditProfile;

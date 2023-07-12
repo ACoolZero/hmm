@@ -14,6 +14,7 @@ import Feeds from './Bottom/Feeds';
 import Gadgets from './Bottom/Gadgets';
 import Home from './Bottom/Home';
 import ArticleDetails from './Common/ArticleDetails';
+import EditProfile from './Common/EditProfile';
 import Apps from './Common/Gadgets.Apps';
 import Customization from './Common/Gadgets.Customization';
 import Feedback from './Common/Gadgets.Feedback';
@@ -43,6 +44,7 @@ export const bottom = {
 export const common = {
   [routes.ARTICLE_DETAILS_SCREEN]: ArticleDetails,
   [routes.MILESTONE_DETAILS_SCREEN]: MilestoneDetails,
+  [routes.EDIT_PROFILE_SCREEN]: EditProfile,
   [routes.GADGETS_APPS_SCREEN]: Apps,
   [routes.GADGETS_MOOD_HISTORY_SCREEN]: MoodHistory,
   [routes.GADGETS_FEEDBACK_SCREEN]: Feedback,

@@ -1,6 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import {ICONS, IMAGES} from '@assets';
 import {Block, Image, Text} from '@components';
+import {navigate} from '@navigation/NavigationServices';
+import routes from '@navigation/routes';
 import React from 'react';
 import {Pressable} from 'react-native';
 
@@ -22,7 +24,10 @@ const GadgetsHeader: React.FC = () => {
             </Text>
           </Block>
         </Block>
-        <Pressable onPress={() => {}}>
+        <Pressable
+          onPress={() => {
+            navigate(routes.EDIT_PROFILE_SCREEN);
+          }}>
           <Block
             alignCenter
             justifyCenter

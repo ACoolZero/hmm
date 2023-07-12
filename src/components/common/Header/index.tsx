@@ -21,7 +21,7 @@ const Header: React.FC<HeaderProps> = ({canGoBack, title, onGoBack}) => {
   const _handleGoBack = () => (onGoBack ? onGoBack() : navigation.canGoBack() ? goBack() : reset(routes.BOTTOM_TAB));
 
   return (
-    <Block alignCenter justifyCenter paddingTop={top} height={top + 50} backgroundColor="secondary_background">
+    <Block shadow alignCenter justifyCenter paddingTop={top} height={top + 50} backgroundColor="secondary_background">
       {(canGoBack || onGoBack) && (
         <Pressable onPress={_handleGoBack} style={styles.btnBack}>
           <Image source={ICONS.arrow_left} style={styles.iconBack} tintColor="text" />

@@ -19,7 +19,9 @@ const EmptyList: React.FC<EmptyListProps> = ({icon, lottie, content, containerSt
     <Block flex alignCenter justifyCenter style={containerStyle}>
       {icon && <Image source={icon} style={styles.icon} resizeMode="contain" />}
       {lottie && <LottieView loop autoPlay source={lottie} style={styles.lottie} />}
-      <Text>{content ? content : t('common.empty_list')}</Text>
+      <Text sm color="light_text">
+        {content ? content : t('common.empty_list')}
+      </Text>
     </Block>
   );
 };

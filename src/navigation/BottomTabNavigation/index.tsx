@@ -40,10 +40,6 @@ const GadgetsStack: React.FC = () => {
       <Stack.Screen name={routes.GADGETS_APPS_SCREEN} component={common[routes.GADGETS_APPS_SCREEN]} />
       <Stack.Screen name={routes.GADGETS_MOOD_HISTORY_SCREEN} component={common[routes.GADGETS_MOOD_HISTORY_SCREEN]} />
       <Stack.Screen name={routes.GADGETS_FEEDBACK_SCREEN} component={common[routes.GADGETS_FEEDBACK_SCREEN]} />
-      <Stack.Screen
-        name={routes.GADGETS_CUSTOMIZATION_SCREEN}
-        component={common[routes.GADGETS_CUSTOMIZATION_SCREEN]}
-      />
     </Stack.Navigator>
   );
 };
