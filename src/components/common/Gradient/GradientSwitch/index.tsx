@@ -12,12 +12,13 @@ const GradientSwitch: React.FC<GradientSwitchProps> = ({
   label,
   labelStyle,
   onColor = ['#23B7EB', '#78A9FD'],
-  offColor = ['#D1D5DB', '#D1D5DB'],
+  offColor = ['#213138', '#213138'],
   containerStyle,
   disabled,
 }) => {
   const animatedValue = useRef(new Animated.Value(0)).current;
   const backgroundColor = isOn ? onColor : offColor;
+  const opacity = disabled ? 0.3 : 1;
 
   useEffect(() => {
     Animated.timing(animatedValue, {
@@ -39,7 +40,7 @@ const GradientSwitch: React.FC<GradientSwitchProps> = ({
   ];
 
   return (
-    <View style={[styles.container, containerStyle]}>
+    <View style={[styles.container, containerStyle, {opacity}]}>
       {label && (
         <Text type="medium" style={labelStyle}>
           {label}

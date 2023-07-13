@@ -59,6 +59,10 @@ export const IMAGES = {
   shopping: require('./images/shopping.png'),
   logout_icon_left: require('./images/logout_icon_left.png'),
   logout_icon_right: require('./images/logout_icon_right.png'),
+  calendar_mode: require('./images/calendar_mode.png'),
+  record_mode: require('./images/record_mode.png'),
+  sound_mode: require('./images/sound_mode.png'),
+  theme_mode: require('./images/theme_mode.png'),
 };
 
 export const MILESTONE = {
