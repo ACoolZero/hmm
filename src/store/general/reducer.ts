@@ -20,6 +20,10 @@ const general = produce((state = common.INITIAL_GENERAL_STATE, action) => {
       state.deviceToken = action.payload.deviceToken;
       return state;
 
+    case actions.CHANGE_CHAT_COLOR:
+      state.chatColor = action.payload.chatColor;
+      return state;
+
     default:
       return state;
   }

@@ -1,19 +1,27 @@
 import {Block, Text} from '@components';
-import {useColors} from '@hooks';
+import {useColors, useStore} from '@hooks';
+import {CHANGE_CHAT_COLOR} from '@store/actions';
 import React, {useState} from 'react';
 import {Pressable} from 'react-native';
 
 const colors: string[] = ['#558EF9', '#00C0A6', '#FFE9A9', '#FF99FF', '#C070FF'];
 
 const ChatColor: React.FC = () => {
+  const {dispatch, useSelector} = useStore();
   const {COLORS} = useColors();
-  const [selected, setSelected] = useState<string>('#558EF9');
+  const {chatColor} = useSelector('general');
+  const [selected, setSelected] = useState<string>(chatColor);
 
   const _renderItem = (item: string) => {
     const isSelected = selected === item;
 
     return (
-      <Pressable key={item} onPress={() => setSelected(item)}>
+      <Pressable
+        key={item}
+        onPress={() => {
+          dispatch({type: CHANGE_CHAT_COLOR, payload: {chatColor: item}});
+          setSelected(item);
+        }}>
         <Block row alignCenter>
           <Block flex alignCenter justifyCenter radius={12} height={36} backgroundColor={item}>
             <Text color="#213138">I feel very sad today</Text>

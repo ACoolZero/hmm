@@ -1,12 +1,12 @@
 import {Block, Text} from '@components';
 import React from 'react';
 
-const Feeds = () => {
+const Discover = () => {
   return (
     <Block flex alignCenter justifyCenter backgroundColor="background">
-      <Text>Feeds</Text>
+      <Text>Discover</Text>
     </Block>
   );
 };
 
-export default Feeds;
+export default Discover;

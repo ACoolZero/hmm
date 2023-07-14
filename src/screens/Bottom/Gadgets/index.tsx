@@ -7,7 +7,7 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {GadgetsHeader, GadgetsMenu, LogoutDialog} from './components';
 import styles from './styles';
 
-const Gadgets = () => {
+const Gadgets: React.FC = () => {
   const {t} = useTranslation();
   const {top} = useSafeAreaInsets();
   const {COLORS} = useColors();

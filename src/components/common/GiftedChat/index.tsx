@@ -26,7 +26,7 @@ import styles from './styles';
 
 LayoutAnimation.configureNext(LayoutAnimation.Presets.linear);
 
-const GiftedChat: React.FC<any> = ({userId, ...rest}) => {
+const GiftedChat: React.FC<any> = ({userId, chatColor, ...rest}) => {
   const {t} = useTranslation();
   const {useSelector} = useStore();
   const {COLORS} = useColors();
@@ -47,7 +47,7 @@ const GiftedChat: React.FC<any> = ({userId, ...rest}) => {
           },
           right: {
             ...styles.wrapperStyle,
-            backgroundColor: COLORS.primary,
+            backgroundColor: chatColor,
           },
         }}
       />
@@ -70,7 +70,7 @@ const GiftedChat: React.FC<any> = ({userId, ...rest}) => {
     return (
       <Pressable onPress={() => {}} onLongPress={() => {}}>
         <Block marginHorizontal={10} marginVertical={5}>
-          <Text color={position === 'left' ? 'text' : 'white'}>{text}</Text>
+          <Text color={position === 'left' ? 'text' : '#213138'}>{text}</Text>
         </Block>
       </Pressable>
     );

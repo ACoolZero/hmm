@@ -10,7 +10,7 @@ import RegisterStep3 from './Auth/Register/Step3';
 import RegisterStep4 from './Auth/Register/Step4';
 import RegisterStep5 from './Auth/Register/Step5';
 import Chat from './Bottom/Chat';
-import Feeds from './Bottom/Feeds';
+import Discover from './Bottom/Discover';
 import Gadgets from './Bottom/Gadgets';
 import Home from './Bottom/Home';
 import ArticleDetails from './Common/ArticleDetails';
@@ -36,7 +36,7 @@ export const auth = {
 
 export const bottom = {
   [routes.HOME_SCREEN]: Home,
-  [routes.FEEDS_SCREEN]: Feeds,
+  [routes.DISCOVER_SCREEN]: Discover,
   [routes.CHAT_SCREEN]: Chat,
   [routes.GADGETS_SCREEN]: Gadgets,
 };

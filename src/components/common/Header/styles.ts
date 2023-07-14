@@ -3,7 +3,6 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   btnBack: {
-    height: getSize.s(50),
     width: getSize.s(50),
     alignItems: 'center',
     justifyContent: 'center',

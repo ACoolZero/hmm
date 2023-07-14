@@ -78,8 +78,13 @@ const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
   };
 
   const _renderLabel = () => (
-    <Text marginBottom={6} style={labelStyle}>
-      {label} {required && <Text color="red">*</Text>}
+    <Text sm marginBottom={8} style={labelStyle}>
+      {label}{' '}
+      {required && (
+        <Text sm color="red">
+          *
+        </Text>
+      )}
     </Text>
   );
 
@@ -143,7 +148,6 @@ const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
         {_renderInput()}
         {isSecure ? _renderSecureIcon() : rightIcon && rightIcon()}
       </Block>
-
       {isError && Boolean(errorText) && _renderError()}
     </Block>
   );

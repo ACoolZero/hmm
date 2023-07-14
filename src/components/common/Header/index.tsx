@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({canGoBack, title, onGoBack}) => {
   return (
     <Block shadow alignCenter justifyCenter paddingTop={top} height={top + 50} backgroundColor="secondary_background">
       {(canGoBack || onGoBack) && (
-        <Pressable onPress={_handleGoBack} style={styles.btnBack}>
+        <Pressable onPress={_handleGoBack} style={{...styles.btnBack, height: top + 50, paddingTop: top}}>
           <Image source={ICONS.arrow_left} style={styles.iconBack} tintColor="text" />
         </Pressable>
       )}

@@ -11,7 +11,7 @@ const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
   stateReconciler: autoMergeLevel2,
-  whitelist: ['theme', 'auth'],
+  whitelist: ['theme', 'general', 'auth'],
   transforms: [createBlacklistFilter('auth', ['isLoading'])],
 };
 
