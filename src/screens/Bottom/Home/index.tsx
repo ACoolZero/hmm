@@ -1,4 +1,4 @@
-import {Block} from '@components';
+import {Block, OnTopButton} from '@components';
 import {useColors, useStore} from '@hooks';
 import React from 'react';
 import {StatusBar, StatusBarStyle} from 'react-native';
@@ -17,6 +17,7 @@ const Home: React.FC = () => {
       <StatusBar backgroundColor={COLORS.background} barStyle={barStyle} />
       <PostList />
       <Feeling />
+      <OnTopButton />
     </Block>
   );
 };

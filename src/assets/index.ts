@@ -63,6 +63,7 @@ export const IMAGES = {
   record_mode: require('./images/record_mode.png'),
   sound_mode: require('./images/sound_mode.png'),
   theme_mode: require('./images/theme_mode.png'),
+  fab_icon: require('./images/fab_icon.png'),
 };
 
 export const MILESTONE = {

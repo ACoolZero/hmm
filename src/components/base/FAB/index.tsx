@@ -1,12 +1,12 @@
-/* eslint-disable react-native/no-inline-styles */
 import {Block, Image} from '@components';
 import {BlockProps} from '@components/base/Block/types';
 import {height, width} from '@utils/responsive';
 import React, {useRef} from 'react';
-import {Animated, PanResponder, TouchableOpacity} from 'react-native';
+import {Animated, PanResponder, TouchableOpacity, ViewStyle} from 'react-native';
 
 interface FABProps extends BlockProps {
   draggable?: boolean;
+  reversible?: boolean;
   maxSize?: number;
   icon?: number;
   xOffset?: number;
@@ -17,6 +17,7 @@ interface FABProps extends BlockProps {
 
 const FAB: React.FC<FABProps> = ({
   draggable = false,
+  reversible = false,
   maxSize = 50,
   icon,
   xOffset = 16,
@@ -28,6 +29,7 @@ const FAB: React.FC<FABProps> = ({
   const pan = useRef(new Animated.ValueXY()).current;
   const HORIZONTAL_BOUNDS = [-width + maxSize + 2 * xOffset, 0];
   const VERTICAL_BOUNDS = [-height + maxSize + 2 * yOffset, 0];
+  const wrapperStyle: ViewStyle = {position: 'absolute', right: xOffset, bottom: yOffset};
 
   const transform = [
     {
@@ -51,13 +53,17 @@ const FAB: React.FC<FABProps> = ({
       onMoveShouldSetPanResponder: () => !!draggable,
       onPanResponderMove: Animated.event([null, {dx: pan.x, dy: pan.y}], {useNativeDriver: false}),
       onPanResponderRelease: () => {
-        pan.extractOffset();
+        if (reversible) {
+          Animated.spring(pan, {toValue: {x: 0, y: 0}, useNativeDriver: true}).start();
+        } else {
+          pan.extractOffset();
+        }
       },
     }),
   ).current;
 
   return (
-    <Block pointerEvents="box-none" style={{position: 'absolute', right: xOffset, bottom: yOffset}}>
+    <Block pointerEvents="box-none" style={wrapperStyle}>
       <Animated.View {...panResponder.panHandlers} style={{transform}}>
         <TouchableOpacity onPress={onPress}>
           <Block

@@ -1,5 +1,4 @@
-import {IMAGES} from '@assets';
-import {Block, FAB, Image, Text} from '@components';
+import {Block, OnTopButton, Text} from '@components';
 import React from 'react';
 
 const Discover = () => {
@@ -7,9 +6,7 @@ const Discover = () => {
     <Block flex alignCenter justifyCenter backgroundColor="background">
       <Text>Discover</Text>
       <Block height={100} />
-      <FAB draggable>
-        <Image source={IMAGES.avatar} square={50} />
-      </FAB>
+      <OnTopButton />
     </Block>
   );
 };
