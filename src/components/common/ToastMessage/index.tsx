@@ -1,42 +1,41 @@
 import {IMAGES} from '@assets';
 import {Block, Image, Text} from '@components';
 import {getSize} from '@utils/responsive';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {DeviceEventEmitter, StyleSheet} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const BACKGROUND_COLOR = {
-  error: '#FF575F',
-  warning: '#FF974A',
   success: '#3DD598',
   info: '#518EF8',
-  default: '#3DD598',
+  warning: '#FF974A',
+  error: '#FF575F',
 };
 const ICON_TYPE = {
-  error: IMAGES.error,
-  warning: IMAGES.warning,
   success: IMAGES.success,
   info: IMAGES.info,
-  default: IMAGES.success,
+  warning: IMAGES.warning,
+  error: IMAGES.error,
 };
 
-export type MessageType = 'error' | 'warning' | 'success' | 'info' | 'default';
-export interface MessageOptions {
+export type MessageType = 'success' | 'info' | 'warning' | 'error';
+export type MessageOptions = {
   type?: MessageType;
   message: string;
   duration?: number;
-}
+};
 
 interface ToastMessageProps {
   position: 'top' | 'bottom';
 }
 
+let timer: NodeJS.Timeout;
+
 const ToastMessage: React.FC<ToastMessageProps> = ({position}) => {
   const {top, bottom} = useSafeAreaInsets();
   const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [messageType, setMessageType] = useState<MessageType>('default');
+  const [messageType, setMessageType] = useState<MessageType>('success');
   const [msg, setMsg] = useState<string>('');
-  const [timer, setTimer] = useState<NodeJS.Timeout | null>();
 
   const positionStyle = {
     bottom: {bottom: bottom ? bottom : getSize.m(20)},
@@ -45,18 +44,29 @@ const ToastMessage: React.FC<ToastMessageProps> = ({position}) => {
 
   DeviceEventEmitter.addListener('showToastMessage', payload => {
     timer && clearTimeout(timer);
-    showToastMessage(payload);
+    _showToastMessage(payload);
   });
 
-  const showToastMessage = ({type = 'default', message, duration = 3000}: MessageOptions) => {
+  DeviceEventEmitter.addListener('hideToastMessage', () => {
+    timer && clearTimeout(timer);
+    setIsVisible(false);
+  });
+
+  const _showToastMessage = ({type = 'success', message, duration = 3000}: MessageOptions) => {
     setIsVisible(true);
     setMessageType(type);
     setMsg(message);
-    const timeout = setTimeout(() => {
+    timer = setTimeout(() => {
       setIsVisible(false);
     }, duration);
-    setTimer(timeout);
   };
+
+  useEffect(() => {
+    return () => {
+      timer && clearTimeout(timer);
+      DeviceEventEmitter.removeAllListeners();
+    };
+  }, []);
 
   if (!isVisible) return null;
   return (
@@ -72,6 +82,8 @@ const ToastMessage: React.FC<ToastMessageProps> = ({position}) => {
 export default ToastMessage;
 
 export const showMessage = (arg: MessageOptions) => DeviceEventEmitter.emit('showToastMessage', {...arg});
+
+export const hideMessage = () => DeviceEventEmitter.emit('hideToastMessage');
 
 const styles = StyleSheet.create({
   container: {
