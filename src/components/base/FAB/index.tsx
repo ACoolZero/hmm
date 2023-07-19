@@ -11,8 +11,8 @@ interface FABProps extends BlockProps {
   icon?: number;
   xOffset?: number;
   yOffset?: number;
-  onPress?: () => void;
   children?: JSX.Element;
+  onPress?: () => void;
 }
 
 const FAB: React.FC<FABProps> = ({
@@ -22,27 +22,30 @@ const FAB: React.FC<FABProps> = ({
   icon,
   xOffset = 16,
   yOffset = 80,
-  onPress,
   children,
+  onPress,
   ...containerProps
 }) => {
   const pan = useRef(new Animated.ValueXY()).current;
-  const HORIZONTAL_BOUNDS = [-width + maxSize + 2 * xOffset, 0];
-  const VERTICAL_BOUNDS = [-height + maxSize + 2 * yOffset, 0];
+  const LEFT_HORIZONTAL_BOUNDS = -width + maxSize + 2 * xOffset;
+  const TOP_VERTICAL_BOUNDS = -height + maxSize + 2 * yOffset;
+  const HORIZONTAL_BOUNDS_RANGE = [LEFT_HORIZONTAL_BOUNDS, 0];
+  const VERTICAL_BOUNDS_RANGE = [TOP_VERTICAL_BOUNDS, 0];
+
   const wrapperStyle: ViewStyle = {position: 'absolute', right: xOffset, bottom: yOffset};
 
   const transform = [
     {
       translateX: pan.x.interpolate({
-        inputRange: HORIZONTAL_BOUNDS,
-        outputRange: HORIZONTAL_BOUNDS,
+        inputRange: HORIZONTAL_BOUNDS_RANGE,
+        outputRange: HORIZONTAL_BOUNDS_RANGE,
         extrapolate: 'clamp',
       }),
     },
     {
       translateY: pan.y.interpolate({
-        inputRange: VERTICAL_BOUNDS,
-        outputRange: VERTICAL_BOUNDS,
+        inputRange: VERTICAL_BOUNDS_RANGE,
+        outputRange: VERTICAL_BOUNDS_RANGE,
         extrapolate: 'clamp',
       }),
     },
@@ -51,12 +54,27 @@ const FAB: React.FC<FABProps> = ({
   const panResponder = useRef(
     PanResponder.create({
       onMoveShouldSetPanResponder: () => !!draggable,
+      onPanResponderGrant: () => {
+        pan.setOffset((pan as any).__getValue());
+        pan.setValue({x: 0, y: 0});
+      },
       onPanResponderMove: Animated.event([null, {dx: pan.x, dy: pan.y}], {useNativeDriver: false}),
       onPanResponderRelease: () => {
         if (reversible) {
-          Animated.spring(pan, {toValue: {x: 0, y: 0}, useNativeDriver: true}).start();
+          Animated.spring(pan, {toValue: {x: 0, y: 0}, useNativeDriver: false}).start();
         } else {
-          pan.extractOffset();
+          let newX = 0;
+          let xValue = (pan.x as any)._value;
+          let yValue = (pan.y as any)._value;
+          let centerHorizontal = (width - maxSize) / 2;
+          if (xValue > 0) {
+            newX = Math.abs(xValue) > centerHorizontal ? -LEFT_HORIZONTAL_BOUNDS : 0;
+          } else {
+            newX = Math.abs(xValue) > centerHorizontal ? LEFT_HORIZONTAL_BOUNDS : 0;
+          }
+          let newY = yValue;
+          pan.setValue({x: newX, y: newY});
+          pan.flattenOffset();
         }
       },
     }),
