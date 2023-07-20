@@ -64,6 +64,12 @@ export const IMAGES = {
   sound_mode: require('./images/sound_mode.png'),
   theme_mode: require('./images/theme_mode.png'),
   fab_icon: require('./images/fab_icon.png'),
+  discover: require('./images/discover.png'),
+  milestone: require('./images/milestone.png'),
+  moment: require('./images/moment.png'),
+  suggest: require('./images/suggest.png'),
+  volunteer: require('./images/volunteer.png'),
+  customization: require('./images/customization.png'),
 };
 
 export const MILESTONE = {
