@@ -4,7 +4,6 @@ export interface ListWrapperProps extends FlatListProps<any> {
   data: any[];
   page?: number;
   renderItem: any;
-  keyExtractor?: any;
   isLoading?: boolean;
   horizontal?: boolean;
   EmptyComponent?: any;

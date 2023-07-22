@@ -27,7 +27,7 @@ const Articles: React.FC = () => {
     <Block flex safeBottom>
       <ListWrapper
         data={DATA}
-        keyExtractor={(item: IArticle) => item.id}
+        keyExtractor={(item: IArticle) => String(item.id)}
         renderItem={_renderItem}
         ListHeaderComponent={_renderHeader}
       />

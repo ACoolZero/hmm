@@ -34,6 +34,8 @@ export const ICONS = {
   gadget_feedback: require('./icons/gadget_feedback.png'),
   gadget_mood_history: require('./icons/gadget_mood_history.png'),
   logout: require('./icons/logout.png'),
+  loved: require('./icons/loved.png'),
+  unloved: require('./icons/unloved.png'),
 };
 
 export const IMAGES = {
@@ -84,4 +86,16 @@ export const MILESTONE = {
   milestone9: require('./milestones/milestone9.png'),
   milestone10: require('./milestones/milestone10.png'),
   milestone11: require('./milestones/milestone11.png'),
+};
+
+export const DISCOVER = {
+  discover1: require('./discover/discover1.png'),
+  discover2: require('./discover/discover2.png'),
+  discover3: require('./discover/discover3.png'),
+  discover4: require('./discover/discover4.png'),
+  discover5: require('./discover/discover5.png'),
+  discover6: require('./discover/discover6.png'),
+  discover7: require('./discover/discover7.png'),
+  discover8: require('./discover/discover8.png'),
+  discover9: require('./discover/discover9.png'),
 };

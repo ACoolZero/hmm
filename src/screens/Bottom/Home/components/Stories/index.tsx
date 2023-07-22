@@ -16,7 +16,7 @@ const Stories: React.FC = () => {
 
   return (
     <Block flex marginBottom={24}>
-      <ListWrapper horizontal data={DATA} keyExtractor={(item: IStory) => item.id} renderItem={_renderItem} />
+      <ListWrapper horizontal data={DATA} keyExtractor={(item: IStory) => String(item.id)} renderItem={_renderItem} />
     </Block>
   );
 };

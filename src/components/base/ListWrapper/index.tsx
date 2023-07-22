@@ -9,7 +9,6 @@ const ListWrapper = forwardRef<any, ListWrapperProps>((props, ref) => {
     data = null,
     page = 1,
     renderItem,
-    keyExtractor,
     isLoading = false,
     horizontal = false,
     EmptyComponent,
@@ -21,10 +20,6 @@ const ListWrapper = forwardRef<any, ListWrapperProps>((props, ref) => {
     ...rest
   } = props;
   const refreshing = isLoading && page === 1;
-
-  const _keyExtractor = (item: any, index: number) => {
-    return keyExtractor ? keyExtractor(item, index) : String(index);
-  };
 
   const _renderItem: ListRenderItem<any> = e => renderItem(e);
 
@@ -46,7 +41,6 @@ const ListWrapper = forwardRef<any, ListWrapperProps>((props, ref) => {
         data={data}
         horizontal={horizontal}
         renderItem={_renderItem}
-        keyExtractor={_keyExtractor}
         ListEmptyComponent={_renderEmpty}
         ListFooterComponent={_renderFooter}
         ItemSeparatorComponent={_renderItemSeparator}

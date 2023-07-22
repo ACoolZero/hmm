@@ -47,7 +47,7 @@ const MoodHistory: React.FC = () => {
       <Block flex safeBottom paddingHorizontal={16}>
         <ListWrapper
           data={data}
-          keyExtractor={(item: IMoodHistory) => item.id}
+          keyExtractor={(item: IMoodHistory) => String(item.id)}
           renderItem={_renđerItem}
           EmptyComponent={EmptyList}
         />
