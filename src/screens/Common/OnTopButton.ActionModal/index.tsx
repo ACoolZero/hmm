@@ -5,8 +5,9 @@ import routes from '@navigation/routes';
 import {BlurView} from '@react-native-community/blur';
 import {getSize} from '@utils/responsive';
 import React, {useState} from 'react';
-import {DeviceEventEmitter, Pressable} from 'react-native';
+import {DeviceEventEmitter, Pressable, TouchableOpacity} from 'react-native';
 import styles from './styles';
+import {ActionButtonProps} from './types';
 
 const ActionModal: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -15,94 +16,94 @@ const ActionModal: React.FC = () => {
     setIsVisible(true);
   });
 
+  const _renderActionButton: React.FC<ActionButtonProps> = ({
+    actiontype,
+    icon,
+    iconSize = 50,
+    title,
+    style,
+    disabled = false,
+  }) => {
+    return (
+      <TouchableOpacity
+        disabled={disabled}
+        onPress={() => {
+          setIsVisible(false);
+          switch (actiontype) {
+            case 'SUGGEST':
+              break;
+            case 'DISCOVER':
+              break;
+            case 'VOLUNTEER':
+              break;
+            case 'CUSTOMIZATION':
+              navigate(routes.GADGETS_CUSTOMIZATION_SCREEN);
+              break;
+            case 'MOMENT':
+              break;
+            case 'MILSESTONE':
+              break;
+            default:
+              break;
+          }
+        }}>
+        <Block alignCenter marginBottom={30} style={style} opacity={disabled ? 0.3 : 1}>
+          <Image source={icon} square={iconSize} resizeMode="contain" />
+          <Text marginTop={8} color="#FAFAFA" type="medium">
+            {title}
+          </Text>
+        </Block>
+      </TouchableOpacity>
+    );
+  };
+
   if (!isVisible) return null;
   return (
-    <Block style={styles.container}>
+    <Pressable style={styles.container} onPress={() => setIsVisible(false)}>
       <BlurView style={styles.container} blurType="dark" blurAmount={16} />
       <Block safeBottom flex row alignEnd>
         <Block flex alignEnd justifyCenter height={300}>
-          {/**
-           * Milestone
-           */}
-          <Pressable onPress={() => {}}>
-            <Block alignCenter marginBottom={30} marginRight={8}>
-              <Image source={IMAGES.milestone} square={50} />
-              <Text marginTop={8} type="medium">
-                Milestone
-              </Text>
-            </Block>
-          </Pressable>
-          {/**
-           * Moment
-           */}
-          <Pressable onPress={() => {}}>
-            <Block alignCenter>
-              <Image source={IMAGES.moment} square={50} />
-              <Text marginTop={8} type="medium">
-                Moment
-              </Text>
-            </Block>
-          </Pressable>
+          {_renderActionButton({
+            actiontype: 'MILSESTONE',
+            icon: IMAGES.milestone,
+            title: 'Milestone',
+            style: {marginRight: getSize.m(8)},
+          })}
+          {_renderActionButton({actiontype: 'MOMENT', icon: IMAGES.moment, title: 'Moment'})}
         </Block>
         <Block flex alignCenter justifyCenter height={350}>
-          {/**
-           * Suggest
-           */}
-          <Pressable onPress={() => {}}>
-            <Block alignCenter>
-              <Image source={IMAGES.suggest} square={50} />
-              <Text marginTop={8} type="medium">
-                Suggest
-              </Text>
-            </Block>
-          </Pressable>
+          {_renderActionButton({
+            actiontype: 'SUGGEST',
+            icon: IMAGES.suggest,
+            title: 'Suggest',
+            style: {marginBottom: 0},
+          })}
           <Block alignCenter marginVertical={30}>
             <Block square={75} style={styles.btnAvatar}>
               <Image source={IMAGES.fab_icon} square={60} style={{borderRadius: getSize.s(24)}} />
             </Block>
-            <Pressable style={styles.btnClose} onPress={() => setIsVisible(false)}>
+            <TouchableOpacity style={styles.btnClose} onPress={() => setIsVisible(false)}>
               <Image source={ICONS.close} square={12} tintColor="white" />
-            </Pressable>
+            </TouchableOpacity>
           </Block>
-          {/**
-           * Customization
-           */}
-          <Pressable
-            onPress={() => {
-              setIsVisible(false);
-              navigate(routes.GADGETS_CUSTOMIZATION_SCREEN);
-            }}>
-            <Block alignCenter>
-              <Image source={IMAGES.customization} square={25} resizeMode="contain" />
-            </Block>
-          </Pressable>
+          {_renderActionButton({
+            actiontype: 'CUSTOMIZATION',
+            icon: IMAGES.customization,
+            iconSize: getSize.s(25),
+            style: {marginBottom: 0},
+          })}
         </Block>
         <Block flex alignStart justifyCenter height={300}>
-          {/**
-           * Discover
-           */}
-          <Pressable onPress={() => {}}>
-            <Block alignCenter marginBottom={30} marginLeft={8}>
-              <Image source={IMAGES.discover} square={50} />
-              <Text marginTop={8} type="medium">
-                Discover
-              </Text>
-            </Block>
-          </Pressable>
-          {/**
-           * Volunteer
-           */}
-          <Pressable onPress={() => {}}>
-            <Block alignCenter opacity={0.3}>
-              <Image source={IMAGES.volunteer} square={50} />
-              <Text marginTop={8} type="medium">
-                Volunteer
-              </Text>
-            </Block>
-          </Pressable>
+          {_renderActionButton({
+            actiontype: 'DISCOVER',
+            icon: IMAGES.discover,
+            title: 'Discover',
+            style: {marginLeft: getSize.m(8)},
+          })}
+          {_renderActionButton({actiontype: 'VOLUNTEER', icon: IMAGES.volunteer, title: 'Volunteer', disabled: true})}
         </Block>
       </Block>
-    </Block>
+    </Pressable>
   );
 };
 
