@@ -31,6 +31,7 @@ const FAB: React.FC<FABProps> = ({
   const TOP_VERTICAL_BOUNDS = -height + maxSize + 2 * yOffset;
   const HORIZONTAL_BOUNDS_RANGE = [LEFT_HORIZONTAL_BOUNDS, 0];
   const VERTICAL_BOUNDS_RANGE = [TOP_VERTICAL_BOUNDS, 0];
+  const touchThreshold = 20;
 
   const wrapperStyle: ViewStyle = {position: 'absolute', right: xOffset, bottom: yOffset};
 
@@ -53,7 +54,10 @@ const FAB: React.FC<FABProps> = ({
 
   const panResponder = useRef(
     PanResponder.create({
-      onMoveShouldSetPanResponder: () => !!draggable,
+      onStartShouldSetPanResponder: () => false,
+      onMoveShouldSetPanResponder: (_, {dx, dy}) => {
+        return draggable && (Math.abs(dx) > touchThreshold || Math.abs(dy) > touchThreshold);
+      },
       onPanResponderGrant: () => {
         pan.setOffset((pan as any).__getValue());
         pan.setValue({x: 0, y: 0});
@@ -81,7 +85,7 @@ const FAB: React.FC<FABProps> = ({
   ).current;
 
   return (
-    <Block pointerEvents="box-none" style={wrapperStyle}>
+    <Block style={wrapperStyle}>
       <Animated.View {...panResponder.panHandlers} style={{transform}}>
         <TouchableOpacity onPress={onPress}>
           <Block
