@@ -1,7 +1,7 @@
 import {Block, Image} from '@components';
 import {BlockProps} from '@components/base/Block/types';
 import {height, width} from '@utils/responsive';
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {Animated, PanResponder, TouchableOpacity, ViewStyle} from 'react-native';
 
 interface FABProps extends BlockProps {
@@ -11,9 +11,13 @@ interface FABProps extends BlockProps {
   icon?: number;
   xOffset?: number;
   yOffset?: number;
+  idleOpacity?: number;
+  idleDelayTime?: number;
   children?: JSX.Element;
   onPress?: () => void;
 }
+
+let timer: NodeJS.Timeout;
 
 const FAB: React.FC<FABProps> = ({
   draggable = false,
@@ -22,10 +26,13 @@ const FAB: React.FC<FABProps> = ({
   icon,
   xOffset = 16,
   yOffset = 80,
+  idleOpacity = 0.5,
+  idleDelayTime = 3000,
   children,
   onPress,
   ...containerProps
 }) => {
+  const [opacity, setOpacity] = useState<number>(idleOpacity);
   const pan = useRef(new Animated.ValueXY()).current;
   const LEFT_HORIZONTAL_BOUNDS = -width + maxSize + 2 * xOffset;
   const TOP_VERTICAL_BOUNDS = -height + maxSize + 2 * yOffset;
@@ -59,11 +66,13 @@ const FAB: React.FC<FABProps> = ({
         return draggable && (Math.abs(dx) > touchThreshold || Math.abs(dy) > touchThreshold);
       },
       onPanResponderGrant: () => {
+        timer && clearTimeout(timer);
         pan.setOffset((pan as any).__getValue());
         pan.setValue({x: 0, y: 0});
+        setOpacity(1);
       },
       onPanResponderMove: Animated.event([null, {dx: pan.x, dy: pan.y}], {useNativeDriver: false}),
-      onPanResponderRelease: () => {
+      onPanResponderEnd: () => {
         if (reversible) {
           Animated.spring(pan, {toValue: {x: 0, y: 0}, useNativeDriver: false}).start();
         } else {
@@ -79,6 +88,9 @@ const FAB: React.FC<FABProps> = ({
           let newY = yValue;
           pan.setValue({x: newX, y: newY});
           pan.flattenOffset();
+          timer = setTimeout(() => {
+            setOpacity(idleOpacity);
+          }, idleDelayTime);
         }
       },
     }),
@@ -94,6 +106,7 @@ const FAB: React.FC<FABProps> = ({
             round={maxSize}
             overflow="hidden"
             backgroundColor="primary"
+            opacity={opacity}
             {...containerProps}>
             {icon ? <Image source={icon} square={18} tintColor="white" /> : children}
           </Block>
