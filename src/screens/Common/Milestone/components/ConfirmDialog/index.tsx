@@ -6,28 +6,28 @@ import React from 'react';
 
 const BUTTON_WIDTH = (width - 16 - 32 - 32) / 2;
 
-interface LogoutDialogProps {
+interface ConfirmDialogProps {
   useDialog: any;
 }
 
-const LogoutDialog: React.FC<LogoutDialogProps> = ({useDialog}) => {
+const ConfirmDialog: React.FC<ConfirmDialogProps> = ({useDialog}) => {
   const [isDialogVisible, setDialogVisible] = useDialog;
   const {COLORS} = useColors();
 
   return (
     <Modal isVisible={isDialogVisible} onBackdropPress={() => setDialogVisible(false)}>
       <Block alignCenter radius={24} paddingHorizontal={12} paddingBottom={24} backgroundColor="secondary_background">
-        <Block absolute top={-100}>
-          <Image source={IMAGES.splash_logo} square={180} />
+        <Block absolute top={-79}>
+          <Image source={IMAGES.confirm_dialog_icon} square={180} resizeMode="contain" />
         </Block>
         <Text center size={24} marginTop={80} marginBottom={32} type="semibold">
-          Don’t you say goodbye..
+          Add moment also ?
         </Text>
         <Block row>
           <Block alignCenter>
-            <Image source={IMAGES.logout_icon_left} round={57} />
+            <Image source={IMAGES.confirm_icon_left} round={57} />
             <GradientButton
-              title="Oh, my bad.."
+              title="Uh, no"
               backgroundColor={['#FAFAFA', '#FAFAFA']}
               textColor="primary"
               style={{
@@ -42,9 +42,9 @@ const LogoutDialog: React.FC<LogoutDialogProps> = ({useDialog}) => {
           </Block>
           <Block width={6} />
           <Block alignCenter>
-            <Image source={IMAGES.logout_icon_right} round={57} />
+            <Image source={IMAGES.confirm_icon_right} round={57} />
             <GradientButton
-              title="Yes, I'll be back"
+              title="Yes !"
               style={{
                 width: BUTTON_WIDTH,
                 borderWidth: getSize.s(0),
@@ -61,4 +61,4 @@ const LogoutDialog: React.FC<LogoutDialogProps> = ({useDialog}) => {
   );
 };
 
-export default LogoutDialog;
+export default ConfirmDialog;

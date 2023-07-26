@@ -53,6 +53,9 @@ const RootStack = () => {
           name={routes.GADGETS_CUSTOMIZATION_SCREEN}
           component={common[routes.GADGETS_CUSTOMIZATION_SCREEN]}
         />
+        <Stack.Screen name={routes.CREATE_MILESTONE_SCREEN} component={common[routes.CREATE_MILESTONE_SCREEN]} />
+        <Stack.Screen name={routes.EDIT_MILESTONE_SCREEN} component={common[routes.EDIT_MILESTONE_SCREEN]} />
+        <Stack.Screen name={routes.SUGGEST_SCREEN} component={common[routes.SUGGEST_SCREEN]} />
       </Stack.Group>
     </Stack.Navigator>
   );

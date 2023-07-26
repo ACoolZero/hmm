@@ -20,6 +20,9 @@ import Customization from './Common/Gadgets.Customization';
 import Feedback from './Common/Gadgets.Feedback';
 import MoodHistory from './Common/Gadgets.MoodHistory';
 import MilestoneDetails from './Common/Home.MilestoneDetails';
+import CreateMilestone from './Common/Milestone/CreateScreen';
+import EditScreen from './Common/Milestone/EditScreen';
+import Suggest from './Common/Suggest';
 
 export const auth = {
   [routes.LOGIN_SCREEN]: Login,
@@ -49,4 +52,7 @@ export const common = {
   [routes.GADGETS_MOOD_HISTORY_SCREEN]: MoodHistory,
   [routes.GADGETS_FEEDBACK_SCREEN]: Feedback,
   [routes.GADGETS_CUSTOMIZATION_SCREEN]: Customization,
+  [routes.CREATE_MILESTONE_SCREEN]: CreateMilestone,
+  [routes.EDIT_MILESTONE_SCREEN]: EditScreen,
+  [routes.SUGGEST_SCREEN]: Suggest,
 };

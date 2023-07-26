@@ -1,11 +1,11 @@
-import {getSize} from '@utils/responsive';
+import {getSize, height} from '@utils/responsive';
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    paddingBottom: getSize.m(24),
     paddingHorizontal: getSize.m(16),
     borderBottomLeftRadius: getSize.s(32),
+    height: height * 0.3,
   },
   btnBack: {
     height: getSize.s(44),

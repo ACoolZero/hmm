@@ -10,7 +10,7 @@ const MODAL_BACKDROP_OPACITY = 0.5;
 
 const Modal: React.FC<ModalProps> = ({
   isVisible,
-  animated = true,
+  animated = false,
   position = 'center',
   onBackdropPress,
   onRequestClose,

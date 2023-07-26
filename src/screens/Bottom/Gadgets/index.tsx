@@ -28,7 +28,7 @@ const Gadgets: React.FC = () => {
           </Pressable>
         </FormContainer>
       </Block>
-      <LogoutDialog useLogoutDialog={[isDialogVisible, setDialogVisible]} />
+      <LogoutDialog useDialog={[isDialogVisible, setDialogVisible]} />
     </Block>
   );
 };

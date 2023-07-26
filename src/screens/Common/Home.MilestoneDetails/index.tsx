@@ -2,7 +2,7 @@ import {Block, ListWrapper, MilestoneCardTwo} from '@components';
 import {DATA} from '@screens/Bottom/Home/components/Milestones/data';
 import {IMilestone} from '@screens/Bottom/Home/types';
 import React from 'react';
-import {ListRenderItem} from 'react-native';
+import {ListRenderItem, StatusBar} from 'react-native';
 import Header from './components/Header';
 
 const MilestoneDetails: React.FC = () => {
@@ -10,6 +10,7 @@ const MilestoneDetails: React.FC = () => {
 
   return (
     <Block flex backgroundColor="background">
+      <StatusBar backgroundColor="primary" barStyle="dark-content" />
       <Header />
       <Block flex padding={16}>
         <ListWrapper data={DATA} keyExtractor={(item: IMilestone) => String(item.id)} renderItem={_renderItem} />

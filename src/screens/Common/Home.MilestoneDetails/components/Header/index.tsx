@@ -13,7 +13,7 @@ const Header: React.FC = () => {
 
   return (
     <Block shadow paddingTop={top} style={styles.container} backgroundColor="primary">
-      <Block justifyCenter height={48} marginBottom={32}>
+      <Block justifyCenter height={48} marginBottom={24}>
         <Text center numberOfLines={1} color="common_text" type="semibold">
           Milestones
         </Text>

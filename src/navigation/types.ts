@@ -17,4 +17,7 @@ export type RootStackParamList = {
   [routes.MILESTONE_DETAILS_SCREEN]: undefined;
   [routes.EDIT_PROFILE_SCREEN]: undefined;
   [routes.GADGETS_CUSTOMIZATION_SCREEN]: undefined;
+  [routes.CREATE_MILESTONE_SCREEN]: undefined;
+  [routes.EDIT_MILESTONE_SCREEN]: undefined;
+  [routes.SUGGEST_SCREEN]: undefined;
 };

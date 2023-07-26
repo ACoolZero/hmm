@@ -31,6 +31,7 @@ const ActionModal: React.FC = () => {
           setIsVisible(false);
           switch (actiontype) {
             case 'SUGGEST':
+              navigate(routes.SUGGEST_SCREEN);
               break;
             case 'DISCOVER':
               break;
@@ -42,6 +43,7 @@ const ActionModal: React.FC = () => {
             case 'MOMENT':
               break;
             case 'MILSESTONE':
+              navigate(routes.CREATE_MILESTONE_SCREEN);
               break;
             default:
               break;

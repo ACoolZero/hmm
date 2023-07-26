@@ -36,6 +36,7 @@ export const ICONS = {
   logout: require('./icons/logout.png'),
   loved: require('./icons/loved.png'),
   unloved: require('./icons/unloved.png'),
+  calender: require('./icons/calender.png'),
 };
 
 export const IMAGES = {
@@ -72,6 +73,9 @@ export const IMAGES = {
   suggest: require('./images/suggest.png'),
   volunteer: require('./images/volunteer.png'),
   customization: require('./images/customization.png'),
+  confirm_dialog_icon: require('./images/confirm_dialog_icon.png'),
+  confirm_icon_left: require('./images/confirm_icon_left.png'),
+  confirm_icon_right: require('./images/confirm_icon_right.png'),
 };
 
 export const MILESTONE = {
