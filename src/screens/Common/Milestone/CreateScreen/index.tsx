@@ -1,10 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 import {ICONS, MILESTONE} from '@assets';
-import {Block, FormContainer, GradientButton, Image, Text, TextInput} from '@components';
+import {Block, GradientButton, Image, Text, TextInput} from '@components';
 import {useColors} from '@hooks';
 import {getSize, height} from '@utils/responsive';
 import React, {useState} from 'react';
-import {Pressable, StatusBar, StyleSheet} from 'react-native';
+import {Pressable, ScrollView, StatusBar, StyleSheet} from 'react-native';
 import ConfirmDialog from '../components/ConfirmDialog';
 import Header from '../components/Header';
 
@@ -18,14 +18,8 @@ const CreateScreen: React.FC = () => {
     <Block flex backgroundColor="background">
       <StatusBar backgroundColor="#FF974A" barStyle="dark-content" />
       <Header title="Create Milestone" />
-      <FormContainer style={styles.container}>
-        <Block
-          shadow
-          radius={24}
-          marginBottom={32}
-          paddingTop={24}
-          paddingHorizontal={16}
-          backgroundColor="secondary_background">
+      <Block shadow style={styles.container}>
+        <ScrollView bounces={false} style={{...styles.content, backgroundColor: COLORS.secondary_background}}>
           <Text marginBottom={16} type="semibold">
             Your milestone
           </Text>
@@ -68,12 +62,12 @@ const CreateScreen: React.FC = () => {
           </Text>
           <TextInput
             inputStyle={{backgroundColor: COLORS.background, borderWidth: 0}}
-            containerInputStyle={styles.containerInputStyle}
+            containerInputStyle={{...styles.containerInputStyle, marginBottom: getSize.m(48)}}
             color={COLORS.light_text}
             value="Hanoi, Vietnam"
           />
-        </Block>
-      </FormContainer>
+        </ScrollView>
+      </Block>
       <Block
         safeBottom
         paddingTop={8}
@@ -93,8 +87,15 @@ export default CreateScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: getSize.m(16),
-    marginTop: -height * 0.16,
+    marginTop: -height * 0.15,
+    paddingHorizontal: getSize.m(16),
+    marginBottom: getSize.m(16),
+  },
+  content: {
+    borderRadius: getSize.s(24),
+    paddingHorizontal: getSize.m(16),
+    paddingTop: getSize.m(24),
+    flexGrow: 0,
   },
   containerInputStyle: {
     paddingHorizontal: 0,

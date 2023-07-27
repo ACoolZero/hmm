@@ -76,6 +76,8 @@ export const IMAGES = {
   confirm_dialog_icon: require('./images/confirm_dialog_icon.png'),
   confirm_icon_left: require('./images/confirm_icon_left.png'),
   confirm_icon_right: require('./images/confirm_icon_right.png'),
+  suggest_background: require('./images/suggest_background.png'),
+  suggest_dialog_icon: require('./images/suggest_dialog_icon.png'),
 };
 
 export const MILESTONE = {
