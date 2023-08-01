@@ -134,6 +134,7 @@ const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
             backgroundColor: disabled ? COLORS.gray_100 : COLORS.white,
             borderWidth: disabled ? getSize.s(0) : getSize.s(1),
             paddingLeft: leftIcon ? getSize.m(4) : getSize.m(12),
+            paddingRight: isSecure ? getSize.m(32) : getSize.m(12),
           },
           StyleSheet.flatten(inputStyle),
         ]}>

@@ -32,6 +32,6 @@ export default StyleSheet.create({
   },
   rightIcon: {
     position: 'absolute',
-    right: getSize.m(16),
+    right: getSize.m(12),
   },
 });
