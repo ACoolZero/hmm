@@ -5,12 +5,12 @@ import React from 'react';
 import {DeviceEventEmitter, StyleSheet} from 'react-native';
 import FAB from 'react-native-animated-fab';
 
-const OnTopButton: React.FC = () => {
+const OnTopButton: React.FC<{bottomOffset?: number}> = ({bottomOffset = 80}) => {
   return (
     <FAB
       renderSize={75}
       topOffset={80}
-      bottomOffset={80}
+      bottomOffset={bottomOffset}
       backgroundColor="transparent"
       onPress={() => {
         DeviceEventEmitter.emit('showActionModal');

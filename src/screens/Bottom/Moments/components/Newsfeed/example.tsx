@@ -1,6 +1,6 @@
 import {ICONS} from '@assets';
 import {Block, Image, Text} from '@components';
-import {INEWSFEED} from '@screens/Bottom/Discover/types';
+import {INEWSFEED} from '@screens/Bottom/Moments/types';
 import {getSize, width} from '@utils/responsive';
 import React from 'react';
 import {ImageBackground, Pressable, ScrollView, StyleSheet, ViewStyle} from 'react-native';

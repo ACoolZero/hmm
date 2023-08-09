@@ -25,7 +25,7 @@ const TabBar: React.FC<TabBarProps> = ({state, navigation}) => {
         {state.routes.map((route: any, index: number) => {
           const isFocused = state.index === index;
           const icons = {
-            [routes.DISCOVER_SCREEN]: 'bottom_discover',
+            [routes.MOMENTS_SCREEN]: 'bottom_moments',
             [routes.BOTTOM_HOME_STACK]: 'bottom_home',
             [routes.CHAT_SCREEN]: 'bottom_chat',
             [routes.BOTTOM_GADGETS_STACK]: 'bottom_gadgets',

@@ -28,6 +28,7 @@ export {default as GradientButton} from './common/Gradient/GradientButton';
 export {default as GradientSwitch} from './common/Gradient/GradientSwitch';
 export {default as GradientText} from './common/Gradient/GradientText';
 export {default as Header} from './common/Header';
+export {default as ImagePicker} from './common/ImagePicker';
 export {default as Loading} from './common/Loading';
 export {default as OnTopButton} from './common/OnTopButton';
 export {default as ProgressCircle} from './common/ProgressCircle';

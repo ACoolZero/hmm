@@ -43,7 +43,7 @@ const EditProfile: React.FC = () => {
             <Block alignSelf="center">
               <Image source={IMAGES.avatar} round={80} />
               <Block round={24} backgroundColor={COLORS.secondary_background} style={styles.btnCamera}>
-                <Image source={ICONS.camera} square={16} tintColor={COLORS.light_text} />
+                <Image source={ICONS.camera} square={16} tintColor={COLORS.common_background} resizeMode="contain" />
               </Block>
             </Block>
           </Pressable>

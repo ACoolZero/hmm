@@ -15,7 +15,7 @@ const Category: React.FC = () => {
     if (isFirstItem) {
       return (
         <Pressable key={id}>
-          <Block width={52} backgroundColor={COLORS.primary} style={styles.category}>
+          <Block paddingHorizontal={12} backgroundColor={COLORS.primary} style={styles.category}>
             <Text sm color={COLORS.white} type="semibold">
               {title}
             </Text>
@@ -25,12 +25,8 @@ const Category: React.FC = () => {
     }
     return (
       <Pressable key={id}>
-        <Block
-          width={80}
-          borderWidth={1}
-          borderColor={tintColor ? tintColor : COLORS.light_text}
-          style={styles.category}>
-          <Text sm color={tintColor ? tintColor : COLORS.light_text} type="semibold">
+        <Block paddingHorizontal={12} backgroundColor={COLORS.background} style={styles.category}>
+          <Text sm color={COLORS.light_text} type="semibold">
             {title}
           </Text>
         </Block>
@@ -56,6 +52,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: getSize.s(32),
-    borderRadius: getSize.s(10),
+    borderRadius: getSize.s(8),
   },
 });

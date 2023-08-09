@@ -16,7 +16,7 @@ const BottomTabNavigation: React.FC = () => {
       initialRouteName={routes.BOTTOM_HOME_STACK}
       screenOptions={{headerShown: false}}
       tabBar={_renderCustomTabBar}>
-      <Tab.Screen name={routes.DISCOVER_SCREEN} component={bottom[routes.DISCOVER_SCREEN]} />
+      <Tab.Screen name={routes.MOMENTS_SCREEN} component={bottom[routes.MOMENTS_SCREEN]} />
       <Tab.Screen name={routes.BOTTOM_HOME_STACK} component={HomeStack} />
       <Tab.Screen name={routes.CHAT_SCREEN} component={bottom[routes.CHAT_SCREEN]} />
       <Tab.Screen name={routes.BOTTOM_GADGETS_STACK} component={GadgetsStack} />

@@ -1,7 +1,7 @@
 export const DATA = [
   {
     id: 1,
-    title: 'All',
+    title: 'For you',
     tintColor: null,
   },
   {
@@ -11,16 +11,21 @@ export const DATA = [
   },
   {
     id: 3,
-    title: 'Camping',
+    title: 'Volunteer',
     tintColor: null,
   },
   {
     id: 4,
-    title: 'Travel',
+    title: 'Camping',
     tintColor: null,
   },
   {
     id: 5,
+    title: 'Travel',
+    tintColor: null,
+  },
+  {
+    id: 6,
     title: 'Giftcard',
     tintColor: '#3DD598',
   },

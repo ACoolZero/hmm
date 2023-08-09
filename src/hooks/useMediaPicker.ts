@@ -5,9 +5,9 @@ import ImagePicker, {Image} from 'react-native-image-crop-picker';
 const COMPRESS_IMAGE_QUALITY = isIos ? 0.8 : 0.1;
 
 const useMediaPicker = () => {
-  const [picture, setPicture] = useState<any>(null);
+  const [picture, setPicture] = useState<Image | Image[] | null>(null);
 
-  const openPicker = useCallback(() => {
+  const openPicker: () => void = useCallback(() => {
     ImagePicker.openPicker({
       mediaType: 'photo',
       cropping: true,
@@ -18,7 +18,7 @@ const useMediaPicker = () => {
     });
   }, []);
 
-  const openMultiPicker = useCallback(() => {
+  const openMultiPicker: () => void = useCallback(() => {
     ImagePicker.openPicker({
       mediaType: 'photo',
       multiple: true,
@@ -28,7 +28,7 @@ const useMediaPicker = () => {
     });
   }, []);
 
-  const openCamera = useCallback(() => {
+  const openCamera: () => void = useCallback(() => {
     ImagePicker.openCamera({
       cropping: true,
       includeBase64: true,

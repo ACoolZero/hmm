@@ -3,13 +3,13 @@ import React from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Category, Newsfeed} from './components';
 
-const Discover = () => {
+const Moments = () => {
   const {top} = useSafeAreaInsets();
 
   return (
-    <Block flex safeBottom paddingTop={top + 16} backgroundColor="background">
-      <Text size={42} marginHorizontal={16} type="semibold">
-        Discover
+    <Block flex safeBottom paddingTop={top + 16} backgroundColor="secondary_background">
+      <Text size={36} marginHorizontal={16} type="semibold">
+        Moments
       </Text>
       <Category />
       <Newsfeed />
@@ -18,4 +18,4 @@ const Discover = () => {
   );
 };
 
-export default Discover;
+export default Moments;

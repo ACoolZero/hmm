@@ -81,7 +81,7 @@ const Modal: React.FC<ModalProps> = ({
         };
 
   return (
-    <RNModal {...rest} transparent animationType="none" onRequestClose={onRequestClose} visible={modalShow}>
+    <RNModal {...rest} transparent animationType="fade" onRequestClose={onRequestClose} visible={modalShow}>
       <TouchableWithoutFeedback onPress={onBackdropPress}>
         <Animated.View style={[styles.backdrop, backdropAnimatedStyle]} />
       </TouchableWithoutFeedback>

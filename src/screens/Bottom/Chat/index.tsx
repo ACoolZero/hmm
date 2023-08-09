@@ -13,7 +13,7 @@ const Chat = () => {
     <Block flex paddingBottom={30} backgroundColor="background">
       <Header />
       <GiftedChat messages={messages} userId={2} chatColor={chatColor} />
-      <OnTopButton />
+      <OnTopButton bottomOffset={140} />
     </Block>
   );
 };

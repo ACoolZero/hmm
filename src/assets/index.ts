@@ -13,11 +13,11 @@ export const ICONS = {
   back: require('./icons/back.png'),
   calendar: require('./icons/calendar.png'),
   bottom_chat: require('./icons/bottom_chat.png'),
-  bottom_discover: require('./icons/bottom_discover.png'),
+  bottom_moments: require('./icons/bottom_moments.png'),
   bottom_gadgets: require('./icons/bottom_gadgets.png'),
   bottom_home: require('./icons/bottom_home.png'),
   bottom_chat_selected: require('./icons/bottom_chat_selected.png'),
-  bottom_discover_selected: require('./icons/bottom_discover_selected.png'),
+  bottom_moments_selected: require('./icons/bottom_moments_selected.png'),
   bottom_gadgets_selected: require('./icons/bottom_gadgets_selected.png'),
   bottom_home_selected: require('./icons/bottom_home_selected.png'),
   eye_closed: require('./icons/eye_closed.png'),
@@ -94,14 +94,14 @@ export const MILESTONE = {
   milestone11: require('./milestones/milestone11.png'),
 };
 
-export const DISCOVER = {
-  discover1: require('./discover/discover1.png'),
-  discover2: require('./discover/discover2.png'),
-  discover3: require('./discover/discover3.png'),
-  discover4: require('./discover/discover4.png'),
-  discover5: require('./discover/discover5.png'),
-  discover6: require('./discover/discover6.png'),
-  discover7: require('./discover/discover7.png'),
-  discover8: require('./discover/discover8.png'),
-  discover9: require('./discover/discover9.png'),
+export const MOMENTS = {
+  moment1: require('./moments/moment1.png'),
+  moment2: require('./moments/moment2.png'),
+  moment3: require('./moments/moment3.png'),
+  moment4: require('./moments/moment4.png'),
+  moment5: require('./moments/moment5.png'),
+  moment6: require('./moments/moment6.png'),
+  moment7: require('./moments/moment7.png'),
+  moment8: require('./moments/moment8.png'),
+  moment9: require('./moments/moment9.png'),
 };

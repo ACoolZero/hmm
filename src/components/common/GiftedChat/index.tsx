@@ -1,10 +1,10 @@
 import {ICONS} from '@assets';
 import {Block, Image, LazyImage, Text} from '@components';
-import {useColors, useStore, useTranslation} from '@hooks';
+import {useColors, useMediaPicker, useStore, useTranslation} from '@hooks';
 import {LOCALE, isIos} from '@utils/helper';
 import {getSize, width} from '@utils/responsive';
 import React from 'react';
-import {LayoutAnimation, Pressable} from 'react-native';
+import {LayoutAnimation, Pressable, TouchableOpacity} from 'react-native';
 import {
   Avatar,
   AvatarProps,
@@ -29,6 +29,7 @@ LayoutAnimation.configureNext(LayoutAnimation.Presets.linear);
 const GiftedChat: React.FC<any> = ({userId, chatColor, ...rest}) => {
   const {t} = useTranslation();
   const {useSelector} = useStore();
+  const {openCamera, openMultiPicker} = useMediaPicker();
   const {COLORS} = useColors();
   const {locale} = useSelector('general');
 
@@ -140,14 +141,19 @@ const GiftedChat: React.FC<any> = ({userId, chatColor, ...rest}) => {
       </Pressable>
     ) : (
       <Block row alignCenter paddingHorizontal={6}>
-        <Pressable onPress={() => {}}>
+        <TouchableOpacity onPress={() => {}}>
           <Block alignCenter justifyCenter square={48}>
-            <Image source={ICONS.voice} square={26} />
+            <Image source={ICONS.voice} square={26} resizeMode="contain" />
           </Block>
-        </Pressable>
-        <Pressable onPress={() => {}}>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={openCamera}>
           <Block alignCenter justifyCenter square={48}>
-            <Image source={ICONS.image} square={26} />
+            <Image source={ICONS.camera} square={26} resizeMode="contain" />
+          </Block>
+        </TouchableOpacity>
+        <Pressable onPress={openMultiPicker}>
+          <Block alignCenter justifyCenter square={48}>
+            <Image source={ICONS.image} square={26} resizeMode="contain" />
           </Block>
         </Pressable>
       </Block>

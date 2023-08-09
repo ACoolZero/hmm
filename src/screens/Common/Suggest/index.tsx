@@ -44,7 +44,7 @@ const Suggest: React.FC = () => {
           <Pressable>
             <Block row alignCenter justifyCenter borderWidth={1} style={styles.btnAddPhoto}>
               <Block alignCenter justifyCenter round={32} marginRight={8} backgroundColor="card_background_one">
-                <Image source={ICONS.camera} square={20} resizeMode="contain" />
+                <Image source={ICONS.camera} square={20} tintColor={COLORS.common_background} resizeMode="contain" />
               </Block>
               <Text sm>Add photos</Text>
             </Block>
