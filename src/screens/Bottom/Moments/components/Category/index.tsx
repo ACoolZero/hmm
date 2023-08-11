@@ -1,32 +1,23 @@
 import {Block, Text} from '@components';
 import {useColors} from '@hooks';
 import {getSize} from '@utils/responsive';
-import React from 'react';
+import React, {useState} from 'react';
 import {Pressable, ScrollView, StyleSheet} from 'react-native';
 import {DATA} from './data';
 
 const Category: React.FC = () => {
   const {COLORS} = useColors();
+  const [selectedId, setSelectedId] = useState<number>(1);
 
   const _renderCategory = (item: any) => {
     const {id, title, tintColor} = item;
-    const isFirstItem = id === 1;
-
-    if (isFirstItem) {
-      return (
-        <Pressable key={id}>
-          <Block paddingHorizontal={12} backgroundColor={COLORS.primary} style={styles.category}>
-            <Text sm color={COLORS.white} type="semibold">
-              {title}
-            </Text>
-          </Block>
-        </Pressable>
-      );
-    }
+    const selectedItem = id === selectedId;
+    const backgroundColor = selectedItem ? (tintColor ? tintColor : COLORS.primary) : COLORS.background;
+    const color = selectedItem ? COLORS.white : COLORS.light_text;
     return (
-      <Pressable key={id}>
-        <Block paddingHorizontal={12} backgroundColor={COLORS.background} style={styles.category}>
-          <Text sm color={COLORS.light_text} type="semibold">
+      <Pressable key={id} onPress={() => setSelectedId(id)}>
+        <Block paddingHorizontal={12} backgroundColor={backgroundColor} style={styles.category}>
+          <Text sm color={color} type="semibold">
             {title}
           </Text>
         </Block>
@@ -35,9 +26,9 @@ const Category: React.FC = () => {
   };
 
   return (
-    <Block marginVertical={12}>
+    <Block marginVertical={12} backgroundColor="secondary_background">
       <ScrollView horizontal bounces={false} showsHorizontalScrollIndicator={false}>
-        <Block row alignCenter marginLeft={16} gap={10}>
+        <Block row alignCenter gap={10}>
           {DATA.map(_renderCategory)}
         </Block>
       </ScrollView>

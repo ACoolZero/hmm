@@ -3,7 +3,7 @@ const COLORS = {
   success: '#10B981',
   error: '#FF4D4F',
   placeholder: '#BFBFBF',
-  white: '#FFFFFF',
+  white: '#FAFAFA',
   black: '#262626',
   common_background: '#F5F5F5',
   common_text: '#262626',

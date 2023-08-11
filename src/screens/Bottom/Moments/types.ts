@@ -1,4 +1,4 @@
-export interface INEWSFEED {
+export interface IMOMENT {
   id: number;
   image: number;
   title: string;

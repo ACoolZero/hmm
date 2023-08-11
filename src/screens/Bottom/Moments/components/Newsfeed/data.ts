@@ -1,7 +1,7 @@
 import {MOMENTS} from '@assets';
-import {INEWSFEED} from '@screens/Bottom/Moments/types';
+import {IMOMENT} from '@screens/Bottom/Moments/types';
 
-export const DATA: INEWSFEED[] = [
+export const DATA: IMOMENT[] = [
   {
     id: 1,
     image: MOMENTS.moment1,
