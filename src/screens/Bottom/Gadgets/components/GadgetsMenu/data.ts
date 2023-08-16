@@ -6,7 +6,7 @@ export interface IGadgetsMenu {
   id: number;
   label: string;
   icon: number;
-  route: string;
+  route: keyof typeof routes;
 }
 
 const MENU: IGadgetsMenu[] = [

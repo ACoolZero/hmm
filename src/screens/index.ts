@@ -15,10 +15,14 @@ import Home from './Bottom/Home';
 import Moments from './Bottom/Moments';
 import ArticleDetails from './Common/ArticleDetails';
 import EditProfile from './Common/EditProfile';
+import FeedbackSubmitForm from './Common/Feedback.SubmitForm';
 import Apps from './Common/Gadgets.Apps';
 import Customization from './Common/Gadgets.Customization';
+import DataProtection from './Common/Gadgets.DataProtection';
+import FAQ from './Common/Gadgets.FAQ';
 import Feedback from './Common/Gadgets.Feedback';
 import MoodHistory from './Common/Gadgets.MoodHistory';
+import Privacy from './Common/Gadgets.Privacy';
 import MilestoneDetails from './Common/Home.MilestoneDetails';
 import CreateMilestone from './Common/Milestone/CreateScreen';
 import EditScreen from './Common/Milestone/EditScreen';
@@ -55,4 +59,8 @@ export const common = {
   [routes.CREATE_MILESTONE_SCREEN]: CreateMilestone,
   [routes.EDIT_MILESTONE_SCREEN]: EditScreen,
   [routes.SUGGEST_SCREEN]: Suggest,
+  [routes.GADGETS_FAQ_SCREEN]: FAQ,
+  [routes.GADGETS_PRIVACY_SCREEN]: Privacy,
+  [routes.GADGETS_DATA_PROTECTION_SCREEN]: DataProtection,
+  [routes.FEEDBACK_SUBMIT_SCREEN]: FeedbackSubmitForm,
 };

@@ -37,6 +37,11 @@ export const ICONS = {
   loved: require('./icons/loved.png'),
   unloved: require('./icons/unloved.png'),
   calender: require('./icons/calender.png'),
+  aboutUs: require('./icons/aboutUs.png'),
+  data_protection: require('./icons/data_protection.png'),
+  FAQ: require('./icons/FAQ.png'),
+  feedback: require('./icons/feedback.png'),
+  privacy: require('./icons/privacy.png'),
 };
 
 export const IMAGES = {

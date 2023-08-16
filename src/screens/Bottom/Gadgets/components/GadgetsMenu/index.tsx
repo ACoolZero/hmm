@@ -1,11 +1,14 @@
 import {ICONS} from '@assets';
 import {Block, Image, Text} from '@components';
+import {useColors} from '@hooks';
 import {navigate} from '@navigation/NavigationServices';
 import React from 'react';
 import {Pressable} from 'react-native';
 import MENU, {IGadgetsMenu} from './data';
 
 const GadgetsMenu: React.FC = () => {
+  const {COLORS} = useColors();
+
   const _renderItem = (item: IGadgetsMenu, index: number) => {
     const {icon, label, route} = item;
     const isLastItem = index === MENU.length - 1;
@@ -22,7 +25,7 @@ const GadgetsMenu: React.FC = () => {
             <Image source={ICONS.arrow_right} square={14} tintColor="light_text" />
           </Block>
         </Block>
-        {!isLastItem && <Block height={1} marginHorizontal={16} backgroundColor="#87A8B9" />}
+        {!isLastItem && <Block height={1} marginHorizontal={16} backgroundColor={COLORS.light_text} />}
       </Pressable>
     );
   };

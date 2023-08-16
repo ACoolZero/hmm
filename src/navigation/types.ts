@@ -20,4 +20,5 @@ export type RootStackParamList = {
   [routes.CREATE_MILESTONE_SCREEN]: undefined;
   [routes.EDIT_MILESTONE_SCREEN]: undefined;
   [routes.SUGGEST_SCREEN]: undefined;
+  [routes.FEEDBACK_SUBMIT_SCREEN]: undefined;
 };

@@ -40,6 +40,12 @@ const GadgetsStack: React.FC = () => {
       <Stack.Screen name={routes.GADGETS_APPS_SCREEN} component={common[routes.GADGETS_APPS_SCREEN]} />
       <Stack.Screen name={routes.GADGETS_MOOD_HISTORY_SCREEN} component={common[routes.GADGETS_MOOD_HISTORY_SCREEN]} />
       <Stack.Screen name={routes.GADGETS_FEEDBACK_SCREEN} component={common[routes.GADGETS_FEEDBACK_SCREEN]} />
+      <Stack.Screen name={routes.GADGETS_FAQ_SCREEN} component={common[routes.GADGETS_FAQ_SCREEN]} />
+      <Stack.Screen name={routes.GADGETS_PRIVACY_SCREEN} component={common[routes.GADGETS_PRIVACY_SCREEN]} />
+      <Stack.Screen
+        name={routes.GADGETS_DATA_PROTECTION_SCREEN}
+        component={common[routes.GADGETS_DATA_PROTECTION_SCREEN]}
+      />
     </Stack.Navigator>
   );
 };
