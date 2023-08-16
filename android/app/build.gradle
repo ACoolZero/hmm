@@ -73,9 +73,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.hmm_mobile"
+    namespace "com.reliable.hmm"
     defaultConfig {
-        applicationId "com.hmm_mobile"
+        applicationId "com.reliable.hmm"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         vectorDrawables.useSupportLibrary = true

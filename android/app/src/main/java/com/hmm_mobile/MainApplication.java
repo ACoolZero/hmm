@@ -1,4 +1,4 @@
-package com.hmm_mobile;
+package com.reliable.hmm;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

@@ -1,4 +1,4 @@
-package com.hmm_mobile;
+package com.reliable.hmm;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
