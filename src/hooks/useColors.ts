@@ -13,12 +13,12 @@ const useColors = () => {
 
   const setColorScheme = (scheme: 'light' | 'dark') => Appearance.setColorScheme(scheme);
 
-  const randomTextColor = () => {
+  const randomTextColor = (): string => {
     const colorIdx = Math.floor(Math.random() * 6);
     return TEXT_COLORS_SCHEME[colorIdx];
   };
 
-  const randomBackgroundColor = () => {
+  const randomBackgroundColor = (): string => {
     const colorIdx = Math.floor(Math.random() * 6);
     return BACKGROUND_COLORS_SCHEME[colorIdx];
   };
