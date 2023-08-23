@@ -12,7 +12,7 @@ export default {
     justifyContent: 'center',
     alignItems: 'center',
     overflow: 'hidden',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#FAFAFA',
   }),
   icon: (width: number): any => ({
     width: getSize.s(width - 5),

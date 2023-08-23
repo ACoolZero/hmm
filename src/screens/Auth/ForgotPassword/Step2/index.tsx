@@ -33,7 +33,7 @@ const ForgotPasswordStep2: React.FC = () => {
         onPress={() => {
           navigate(routes.FORGOT_PASSWORD_STEP3_SCREEN);
         }}>
-        <Text color="#8C8C8C">
+        <Text color="common_light_text">
           Did not receive the OTP code?{' '}
           <Text color="primary" type="medium">
             Try again

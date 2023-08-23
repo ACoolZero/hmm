@@ -8,7 +8,7 @@ const Login: React.FC = () => {
   return (
     <Block flex padding={24} paddingTop={width * 0.2} backgroundColor="common_background">
       <Header content="Welcome!" />
-      <Text md marginTop={6} color="#595959">
+      <Text md marginTop={6} color="common_light_text">
         Sign in to continue
       </Text>
       <FormContainer>

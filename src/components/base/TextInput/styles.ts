@@ -19,7 +19,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     borderWidth: getSize.s(1),
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#FAFAFA',
     borderRadius: getSize.s(8),
     height: getSize.s(48),
     paddingRight: getSize.m(12),

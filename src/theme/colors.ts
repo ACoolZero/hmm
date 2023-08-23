@@ -1,14 +1,14 @@
 const COLORS = {
-  primary: '#518EF8',
+  primary: '#558EF9',
   success: '#10B981',
   error: '#FF4D4F',
   placeholder: '#BFBFBF',
   white: '#FAFAFA',
-  black: '#262626',
-  common_background: '#F5F5F5',
-  common_text: '#262626',
-  common_light_text: '#595959',
-  common_border: '#D9D9D9',
+  black: '#213138',
+  common_background: '#F3F3F3',
+  common_text: '#213138',
+  common_light_text: '#899A96',
+  common_border: '#DDDDDD',
 
   /**
    * @gray

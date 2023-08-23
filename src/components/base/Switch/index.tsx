@@ -11,7 +11,7 @@ const Switch: React.FC<SwitchProps> = ({
   label,
   labelStyle,
   highlight = true,
-  onColor = '#518EF8',
+  onColor = '#558EF9',
   offColor = '#D1D5DB',
   containerStyle,
   disabled,

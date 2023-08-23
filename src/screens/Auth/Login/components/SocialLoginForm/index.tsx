@@ -8,11 +8,11 @@ const SocialLoginForm: React.FC = () => {
   return (
     <Block>
       <Block row alignCenter>
-        <Block flex height={1} backgroundColor="#D9D9D9" />
+        <Block flex height={1} backgroundColor="#DDDDDD" />
         <Text center marginVertical={24} marginHorizontal={12} color="primary">
           Or
         </Text>
-        <Block flex height={1} backgroundColor="#D9D9D9" />
+        <Block flex height={1} backgroundColor="#DDDDDD" />
       </Block>
       <Block row alignCenter paddingHorizontal={width * 0.2} space="between">
         <Pressable>

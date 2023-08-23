@@ -50,7 +50,7 @@ const ListWrapper = forwardRef<any, ListWrapperProps>((props, ref) => {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{flexGrow: 1}}
         refreshControl={
-          onRefresh && <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor="#518EF8" />
+          onRefresh && <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor="#558EF9" />
         }
       />
     </Block>
