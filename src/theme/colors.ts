@@ -140,10 +140,10 @@ const COLORS = {
 const dark = {
   text: '#FAFAFA',
   light_text: '#96A7AF',
-  article_text: 'FAFAFA',
+  article_text: '#FAFAFA',
   background: '#213138',
   secondary_background: '#30444E',
-  feeling_background: '#30444E50',
+  feeling_background: '#30444E60',
   modal_feeling_background: '#21313850',
   card_background_one: '#475E69',
   card_background_two: '#30444E',
