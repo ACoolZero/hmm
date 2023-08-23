@@ -3,9 +3,11 @@ import {Block, FormContainer, Header, Image, Text} from '@components';
 import {useColors, useDeviceInfo} from '@hooks';
 import {navigate} from '@navigation/NavigationServices';
 import React from 'react';
-import {Pressable} from 'react-native';
+import {Linking, Pressable} from 'react-native';
 import data, {IFeedback} from './data';
 import styles from './styles';
+
+const url = 'https://reliable.vn/about-us';
 
 const Feedback: React.FC = () => {
   const {COLORS} = useColors();
@@ -35,7 +37,7 @@ const Feedback: React.FC = () => {
         <Block margin={16} radius={12} backgroundColor="secondary_background">
           {data.map(_renderItem)}
         </Block>
-        <Pressable style={{...styles.btnLogout, borderColor: COLORS.light_text}}>
+        <Pressable style={{...styles.btnLogout, borderColor: COLORS.light_text}} onPress={() => Linking.openURL(url)}>
           <Image source={ICONS.aboutUs} square={30} />
           <Text marginLeft={12}>About Us</Text>
         </Pressable>

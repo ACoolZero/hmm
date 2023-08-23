@@ -1,7 +1,10 @@
 import {Block, FormInput, GradientButton, Text} from '@components';
 import {yupResolver} from '@hookform/resolvers/yup';
+import {useStore} from '@hooks';
 import {navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
+import {LoginPayload} from '@screens/Auth/types';
+import {LOGIN_ACCOUNT} from '@store/actions';
 import React from 'react';
 import {useForm} from 'react-hook-form';
 import {Pressable} from 'react-native';
@@ -9,9 +12,10 @@ import SocialLoginForm from '../SocialLoginForm';
 import styles from './styles';
 import {validation} from './validation';
 
-const INITIAL_VALUES = {username: '', password: ''};
+const INITIAL_VALUES = {email: '', password: ''};
 
 const LoginForm: React.FC = () => {
+  const {dispatch} = useStore();
   const {
     control,
     handleSubmit,
@@ -22,8 +26,9 @@ const LoginForm: React.FC = () => {
     defaultValues: INITIAL_VALUES,
   });
 
-  const _onSubmit = () => {
-    navigate(routes.BOTTOM_TAB);
+  const _onSubmit = (e: LoginPayload) => {
+    dispatch({type: LOGIN_ACCOUNT, payload: e});
+    // navigate(routes.BOTTOM_TAB);
   };
 
   return (
@@ -31,7 +36,7 @@ const LoginForm: React.FC = () => {
       <FormInput
         shadow
         control={control}
-        name="username"
+        name="email"
         placeholder="Your email"
         color="common_text"
         containerInputStyle={styles.containerInputStyle}

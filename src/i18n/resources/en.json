@@ -12,7 +12,17 @@
   },
   "validate": {
     "username_empty": "Tài khoản không được để trống",
-    "password_empty": "Mật khẩu không được để trống"
+    "password_empty": "Mật khẩu không được để trống",
+    "password_min_6": "Độ dài mật khẩu phải hơn 6 kí tự",
+    "retypePassword_not_same": "Mật khẩu xác nhận không trùng khớp",
+    "fullName_empty": "Họ tên không được để trống",
+    "phone_empty": "Số điện thoại không được để trống",
+    "phone_min_10": "Số điện thoại chứa tối thiểu 10 chữ số",
+    "phone_max_16": "Số điện thoại chứa tối đa 16 chữ số",
+    "wrong_phone": "Số điện thoại không đúng định dạng",
+    "email_empty": "Email không được để trống",
+    "wrong_email": "Email không đúng định dạng",
+    "birthDate_empty": "Ngày sinh không được để trống"
   },
   "conversation": {
     "you": "Bạn",

@@ -1,40 +1,79 @@
+/* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
 import {ICONS} from '@assets';
-import {Block, GradientButton, Image, TextInput} from '@components';
+import {Block, FormInput, GradientButton, Image} from '@components';
+import {yupResolver} from '@hookform/resolvers/yup';
 import {goBack, navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import Header from '@screens/Auth/components/Header';
+import {STORE_REGISTER_DATA} from '@store/actions';
 import {getSize} from '@utils/responsive';
-import React from 'react';
+import dayjs from 'dayjs';
+import React, {useEffect, useState} from 'react';
+import {useForm} from 'react-hook-form';
 import {Pressable} from 'react-native';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {useStore} from 'react-redux';
+import {validation} from './validation';
+
+const INITIAL_VALUES = {dob: ''};
 
 const RegisterStep2: React.FC = () => {
+  const {dispatch} = useStore();
   const {top} = useSafeAreaInsets();
+  const [birthday, setBirthday] = useState<string>();
+  const [isDatePickerVisible, setDatePickerVisibility] = useState<boolean>(false);
+  const {
+    control,
+    setValue,
+    trigger,
+    formState: {isValid},
+  } = useForm({
+    resolver: yupResolver(validation),
+    mode: 'onChange',
+    defaultValues: INITIAL_VALUES,
+  });
 
   const _rightIcon = () => {
     return <Image source={ICONS.calendar} square={24} tintColor="placeholder" />;
   };
 
+  const _toggleDatePicker = () => setDatePickerVisibility(!isDatePickerVisible);
+
+  const _handleConfirm = (d: Date) => {
+    setBirthday(dayjs(d).format('YYYY-MM-DD'));
+    _toggleDatePicker();
+  };
+
+  useEffect(() => {
+    if (birthday) {
+      setValue('dob', dayjs(birthday).format('YYYY-MM-DD'));
+      dispatch({type: STORE_REGISTER_DATA, payload: {dob: birthday}});
+      trigger();
+    }
+  }, [birthday, dispatch, setValue, trigger]);
+
   return (
     <Block flex padding={24} backgroundColor="common_background">
       <Block flex paddingTop={top} justifyCenter space="between">
-        {/* <Pressable onPress={goBack}>
-          <Image source={ICONS.back} square={20} tintColor="black" resizeMode="contain" />
-        </Pressable> */}
         <Header content="When is your birthday ?" />
       </Block>
       <Block style={{flex: 2}}>
-        <Block height={200}>
-          <TextInput
-            shadow
-            pointerEvents="none"
-            placeholder="Date of birth"
-            rightIcon={_rightIcon}
-            color="common_text"
-            containerInputStyle={{marginBottom: getSize.m(16)}}
-          />
-        </Block>
+        <Pressable onPress={_toggleDatePicker}>
+          <Block height={200}>
+            <FormInput
+              control={control}
+              name="dob"
+              shadow
+              pointerEvents="none"
+              placeholder="Date of birth"
+              rightIcon={_rightIcon}
+              color="common_text"
+              containerInputStyle={{marginBottom: getSize.m(16)}}
+            />
+          </Block>
+        </Pressable>
         <Block row>
           <Pressable onPress={goBack}>
             <Block
@@ -50,6 +89,7 @@ const RegisterStep2: React.FC = () => {
             </Block>
           </Pressable>
           <GradientButton
+            isValid={isValid}
             title="Continue"
             style={{flex: 1}}
             onPress={() => {
@@ -58,6 +98,18 @@ const RegisterStep2: React.FC = () => {
           />
         </Block>
       </Block>
+      <DateTimePickerModal
+        mode="date"
+        date={new Date()}
+        isVisible={isDatePickerVisible}
+        onConfirm={_handleConfirm}
+        onCancel={_toggleDatePicker}
+        confirmTextIOS="Đồng ý"
+        display="inline"
+        themeVariant="light"
+        isDarkModeEnabled={false}
+        customCancelButtonIOS={() => <Block safeBottom />}
+      />
     </Block>
   );
 };

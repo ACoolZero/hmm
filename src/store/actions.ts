@@ -1,3 +1,4 @@
+export * from '@screens/Auth/action';
 export * from './general/action';
 
 export const _onSuccess = (action: string) => action + '_SUCCESS';
