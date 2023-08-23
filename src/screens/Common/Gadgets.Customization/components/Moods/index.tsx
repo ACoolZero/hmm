@@ -10,7 +10,7 @@ const Moods: React.FC = () => {
     const {id, image, label, color} = item;
     return (
       <Pressable key={id}>
-        <Block alignCenter justifyCenter radius={12} square={REACTION_SIZE} backgroundColor="feeling_background">
+        <Block alignCenter justifyCenter radius={12} square={REACTION_SIZE} backgroundColor="modal_feeling_background">
           <Block
             radius={REACTION_SIZE}
             style={{...styles.iconShadow, shadowColor: color}}
