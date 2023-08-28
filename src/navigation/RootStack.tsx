@@ -1,3 +1,4 @@
+import {useStore} from '@hooks';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {auth, common} from '@screens';
 import React from 'react';
@@ -8,8 +9,13 @@ import {RootStackParamList} from './types';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStack = () => {
+  const {useSelector} = useStore();
+  const {isAuth} = useSelector('auth');
+
+  const initialRouteName = isAuth ? routes.BOTTOM_TAB : routes.LOGIN_SCREEN;
+
   return (
-    <Stack.Navigator initialRouteName={routes.LOGIN_SCREEN} screenOptions={{headerShown: false}}>
+    <Stack.Navigator initialRouteName={initialRouteName} screenOptions={{headerShown: false}}>
       {/** Authentication flow */}
       <Stack.Group>
         <Stack.Screen name={routes.LOGIN_SCREEN} component={auth[routes.LOGIN_SCREEN]} />

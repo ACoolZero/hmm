@@ -9,12 +9,11 @@ export const guard = (saga: any, config?: any) =>
     const CONFIG = {...OPTION, ...config};
     try {
       yield call(saga, action);
-    } catch (error) {
-      __DEV__ && console.log(error);
+    } catch (error: any) {
       if (CONFIG.message) {
         showMessage({type: 'error', message: CONFIG.message});
       } else {
-        CONFIG.isToast && showMessage({type: 'error', message: String(error)});
+        CONFIG.isToast && showMessage({type: 'error', message: error.response.data.message || String(error)});
       }
       CONFIG.callback && CONFIG.callback();
     } finally {

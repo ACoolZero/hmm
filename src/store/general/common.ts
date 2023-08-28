@@ -33,8 +33,8 @@ export const reducer = produce((state = INITIAL_REDUCER_STATE, action, type) => 
       return state;
 
     case _onSuccess(type):
-      state.data = action.data;
-      state.temp = action.data;
+      state.data = action.payload.data;
+      state.temp = action.payload.data;
       return state;
 
     case _onComplete(type):
@@ -73,9 +73,9 @@ export const extraReducer = produce((state = INITIAL_EXTRA_REDUCER_STATE, action
       return state;
 
     case _onSuccess(type):
-      state.data = action.hasMore ? [...state.data, ...action.data] : action.data;
-      state.size = action.hasMore ? state.size + action.size : action.size;
-      state.total = action.total;
+      state.data = action.payload.hasMore ? [...state.data, ...action.payload.data] : action.payload.data;
+      state.size = action.payload.hasMore ? state.size + action.payload.size : action.payload.size;
+      state.total = action.payload.total;
       return state;
 
     case _onComplete(type):

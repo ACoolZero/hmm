@@ -18,6 +18,7 @@ const INITIAL_VALUES = {password: '', retypePassword: ''};
 const RegisterStep4: React.FC = () => {
   const {dispatch, useSelector} = useStore();
   const {data} = useSelector('register');
+  const {isLoading} = useSelector('auth');
   const {top} = useSafeAreaInsets();
   const {
     control,
@@ -75,7 +76,7 @@ const RegisterStep4: React.FC = () => {
             </Block>
           </Pressable>
           <GradientButton
-            disabled={false}
+            disabled={isLoading}
             isValid={isValid}
             title="Continue"
             style={{flex: 1}}

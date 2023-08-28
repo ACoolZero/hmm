@@ -19,7 +19,12 @@ const getAxiosInstance = async () => {
       /**
        * @description routes doesn't need accesstoken
        */
-      if (config.url && (config.url.lastIndexOf('login') >= 0 || config.url.lastIndexOf('sign-up') >= 0)) {
+      if (
+        config.url &&
+        (config.url.lastIndexOf('sign-up') >= 0 ||
+          config.url.lastIndexOf('login') >= 0 ||
+          config.url.lastIndexOf('logout') >= 0)
+      ) {
         return {...config, data};
       }
 

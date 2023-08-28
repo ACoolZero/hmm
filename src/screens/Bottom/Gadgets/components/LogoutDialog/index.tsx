@@ -1,6 +1,10 @@
 import {IMAGES} from '@assets';
 import {Block, GradientButton, Image, Modal, Text} from '@components';
-import {useColors} from '@hooks';
+import {useColors, useStore} from '@hooks';
+import {reset} from '@navigation/NavigationServices';
+import routes from '@navigation/routes';
+import {LOGOUT_ACCOUNT} from '@store/actions';
+import {sleep} from '@utils/date';
 import {getSize, width} from '@utils/responsive';
 import React from 'react';
 
@@ -11,8 +15,15 @@ interface LogoutDialogProps {
 }
 
 const LogoutDialog: React.FC<LogoutDialogProps> = ({useDialog}) => {
-  const [isDialogVisible, setDialogVisible] = useDialog;
+  const {dispatch} = useStore();
   const {COLORS} = useColors();
+  const [isDialogVisible, setDialogVisible] = useDialog;
+
+  const _handleLogout = () => {
+    setDialogVisible(false);
+    dispatch({type: LOGOUT_ACCOUNT});
+    sleep(500).then(() => reset(routes.LOGIN_SCREEN));
+  };
 
   return (
     <Modal isVisible={isDialogVisible} onBackdropPress={() => setDialogVisible(false)}>
@@ -52,7 +63,7 @@ const LogoutDialog: React.FC<LogoutDialogProps> = ({useDialog}) => {
                 borderRadius: getSize.s(9),
                 marginTop: getSize.m(16),
               }}
-              onPress={() => setDialogVisible(false)}
+              onPress={_handleLogout}
             />
           </Block>
         </Block>

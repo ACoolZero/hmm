@@ -22,17 +22,19 @@ const auth = produce((state = INITIAL_STATE, action) => {
     case REGISTER_ACCOUNT:
     case LOGIN_ACCOUNT:
     case GET_CURRENT_USER:
+    case LOGOUT_ACCOUNT:
       state.isLoading = true;
       return state;
 
     case _onSuccess(LOGIN_ACCOUNT):
-      state.accessToken = action.accessToken;
-      state.refreshToken = action.refreshToken;
+      state.isAuth = true;
+      state.accessToken = action.payload.accessToken;
+      state.refreshToken = action.payload.refreshToken;
       return state;
 
     case _onSuccess(GET_CURRENT_USER):
       state.isAuth = true;
-      state.userInfo = action.userInfo;
+      state.userInfo = action.payload.userInfo;
       return state;
 
     case _onSuccess(LOGOUT_ACCOUNT):
@@ -41,6 +43,7 @@ const auth = produce((state = INITIAL_STATE, action) => {
     case _onComplete(REGISTER_ACCOUNT):
     case _onComplete(LOGIN_ACCOUNT):
     case _onComplete(GET_CURRENT_USER):
+    case _onComplete(LOGOUT_ACCOUNT):
       state.isLoading = false;
       return state;
 

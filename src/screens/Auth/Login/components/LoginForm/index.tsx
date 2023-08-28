@@ -15,7 +15,8 @@ import {validation} from './validation';
 const INITIAL_VALUES = {email: '', password: ''};
 
 const LoginForm: React.FC = () => {
-  const {dispatch} = useStore();
+  const {dispatch, useSelector} = useStore();
+  const {isLoading} = useSelector('auth');
   const {
     control,
     handleSubmit,
@@ -62,7 +63,7 @@ const LoginForm: React.FC = () => {
           </Text>
         </Pressable>
       </Block>
-      <GradientButton isValid={isValid} title="Sign in" onPress={handleSubmit(_onSubmit)} />
+      <GradientButton disabled={isLoading} isValid={isValid} title="Sign in" onPress={handleSubmit(_onSubmit)} />
       <SocialLoginForm />
     </Block>
   );
