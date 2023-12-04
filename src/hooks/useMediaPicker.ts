@@ -10,7 +10,7 @@ const useMediaPicker = () => {
   const openPicker: () => void = useCallback(() => {
     ImagePicker.openPicker({
       mediaType: 'photo',
-      cropping: true,
+      cropping: false,
       includeBase64: true,
       compressImageQuality: COMPRESS_IMAGE_QUALITY,
     }).then((image: Image) => {
@@ -30,7 +30,7 @@ const useMediaPicker = () => {
 
   const openCamera: () => void = useCallback(() => {
     ImagePicker.openCamera({
-      cropping: true,
+      cropping: false,
       includeBase64: true,
       compressImageQuality: COMPRESS_IMAGE_QUALITY,
     }).then((image: Image) => {

@@ -64,6 +64,7 @@ const RootStack = () => {
         <Stack.Screen name={routes.SUGGEST_SCREEN} component={common[routes.SUGGEST_SCREEN]} />
         <Stack.Screen name={routes.FEEDBACK_SUBMIT_SCREEN} component={common[routes.FEEDBACK_SUBMIT_SCREEN]} />
         <Stack.Screen name={routes.CREATE_MOMENT_SCREEN} component={common[routes.CREATE_MOMENT_SCREEN]} />
+        <Stack.Screen name={routes.EDIT_MOMENT_SCREEN} component={common[routes.EDIT_MOMENT_SCREEN]} />
         <Stack.Screen name={routes.RECALL_SCREEN} component={common[routes.RECALL_SCREEN]} />
       </Stack.Group>
     </Stack.Navigator>

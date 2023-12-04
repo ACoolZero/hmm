@@ -88,6 +88,7 @@ export const IMAGES = {
   recall_edit: require('./images/recall_edit.png'),
   recall_delete: require('./images/recall_delete.png'),
   recall_notice: require('./images/recall_notice.png'),
+  delete_moment_icon_left: require('./images/delete_moment_icon_left.png'),
 };
 
 export const MILESTONE = {

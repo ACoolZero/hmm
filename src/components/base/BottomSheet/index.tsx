@@ -22,20 +22,26 @@ const BottomSheet: React.FC<BottomSheetProps> = ({title, useBottomSheet, childre
 
   const _closeBottomSheet = () => {
     setIsOpenBottom(false);
-    onCallback && onCallback();
+    onCallback?.();
   };
 
   return (
     <Portal>
       <Modalize {...rest} ref={modalizeRef} onClose={_closeBottomSheet} adjustToContentHeight={true}>
         {title && (
-          <Block justifyCenter height={50} paddingHorizontal={16} borderBottomWidth={0.5} borderColor="common_border">
-            <Text center color="common_text" type="medium">
+          <Block
+            justifyCenter
+            height={50}
+            paddingHorizontal={16}
+            borderBottomWidth={0.5}
+            borderColor="border"
+            backgroundColor="secondary_background">
+            <Text center type="medium">
               {title}
             </Text>
             <Pressable onPress={_closeBottomSheet} style={styles.btnCloseBottomSheet}>
-              <Block alignCenter justifyCenter round={20} backgroundColor="gray_400">
-                <Image source={ICONS.close} square={8} tintColor="white" />
+              <Block alignCenter justifyCenter round={20} backgroundColor="background">
+                <Image source={ICONS.close} square={8} tintColor="text" />
               </Block>
             </Pressable>
           </Block>

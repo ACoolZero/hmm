@@ -1,6 +1,6 @@
 import {ICONS} from '@assets';
 import {Block, Image, Text} from '@components';
-import {useColors} from '@hooks';
+import {useColors, useStore} from '@hooks';
 import {goBack, navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import {IMilestone} from '@screens/Bottom/Home/types';
@@ -11,6 +11,8 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import styles from './styles';
 
 const Header: React.FC<{selectedMileStone: IMilestone}> = ({selectedMileStone}) => {
+  const {useSelector} = useStore();
+  const {data: userMomentsList} = useSelector('userMomentsList');
   const {top} = useSafeAreaInsets();
   const {COLORS, randomBackgroundColor} = useColors();
   const {id, icon, content, milestoneTime, momentId} = selectedMileStone;
@@ -52,8 +54,11 @@ const Header: React.FC<{selectedMileStone: IMilestone}> = ({selectedMileStone}) 
               Edit
             </Text>
           </TouchableOpacity>
-          {momentId && (
-            <TouchableOpacity onPress={() => {}}>
+          {!!momentId && userMomentsList?.length > 0 && (
+            <TouchableOpacity
+              onPress={() => {
+                navigate(routes.RECALL_SCREEN);
+              }}>
               <Block row alignCenter>
                 <Text sm marginRight={5} color="primary">
                   Oh my memories...

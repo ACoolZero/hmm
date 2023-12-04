@@ -28,8 +28,9 @@ import MilestoneDetails from './Common/Home.MilestoneDetails';
 import CreateMilestone from './Common/Milestone/CreateScreen';
 import EditScreen from './Common/Milestone/EditScreen';
 import CreateMoment from './Common/Moments/CreateScreen';
-import Suggest from './Common/Suggest';
+import EditMoment from './Common/Moments/EditScreen';
 import Recall from './Common/Recall';
+import Suggest from './Common/Suggest';
 
 export const auth = {
   [routes.LOGIN_SCREEN]: Login,
@@ -68,5 +69,6 @@ export const common = {
   [routes.GADGETS_DATA_PROTECTION_SCREEN]: DataProtection,
   [routes.FEEDBACK_SUBMIT_SCREEN]: FeedbackSubmitForm,
   [routes.CREATE_MOMENT_SCREEN]: CreateMoment,
+  [routes.EDIT_MOMENT_SCREEN]: EditMoment,
   [routes.RECALL_SCREEN]: Recall,
 };

@@ -1,9 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {Block, Image, Text} from '@components';
 import {useStore} from '@hooks';
 import {IStory} from '@screens/Bottom/Home/types';
+import {SET_ACTIVE_MOMENT, _onSuccess} from '@store/actions';
 import {getSize, width} from '@utils/responsive';
 import dayjs from 'dayjs';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {ListRenderItem} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import Header from './components/Header';
@@ -12,12 +14,21 @@ const STORY_WIDTH = width * 0.8;
 const STORY_HEIGHT = STORY_WIDTH * 1.7;
 
 const Recall: React.FC = () => {
-  const {useSelector} = useStore();
+  const {dispatch, useSelector} = useStore();
   const {data: userMomentsList} = useSelector('userMomentsList');
+
+  useEffect(() => {
+    const moment = [...userMomentsList][0];
+    dispatch({type: _onSuccess(SET_ACTIVE_MOMENT), payload: {data: moment}});
+  }, [dispatch]);
+
+  const onSnapToItem = (e: number) => {
+    const moment = [...userMomentsList][e];
+    dispatch({type: _onSuccess(SET_ACTIVE_MOMENT), payload: {data: moment}});
+  };
 
   const _renderItem: ListRenderItem<IStory> = ({item}) => {
     const {media, content, createdAt} = item;
-
     return (
       <Block paddingVertical={24}>
         <Image source={{uri: media}} width={STORY_WIDTH} height={STORY_HEIGHT} style={{borderRadius: getSize.s(24)}} />
@@ -36,7 +47,13 @@ const Recall: React.FC = () => {
   return (
     <Block flex backgroundColor="background">
       <Header canGoBack title="Recall" />
-      <Carousel data={userMomentsList} renderItem={_renderItem} sliderWidth={width} itemWidth={width * 0.8} />
+      <Carousel
+        data={userMomentsList}
+        renderItem={_renderItem}
+        sliderWidth={width}
+        itemWidth={width * 0.8}
+        onSnapToItem={onSnapToItem}
+      />
     </Block>
   );
 };

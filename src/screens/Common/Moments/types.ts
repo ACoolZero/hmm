@@ -8,3 +8,12 @@ export interface CreateMomentPayload {
     milestoneId?: string;
   };
 }
+
+export interface EditMomentPayload {
+  momentId: string;
+  moment: {
+    media: string;
+    content: string;
+    accessMode: AccessModeType;
+  };
+}

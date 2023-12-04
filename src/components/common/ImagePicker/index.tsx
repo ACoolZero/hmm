@@ -16,20 +16,20 @@ const ImagePicker: React.FC<ImagePickerProps> = ({title, isOpenBottom, setIsOpen
       <Block>
         <Pressable
           onPress={() => {
-            openCamera && openCamera();
+            openCamera?.();
             setIsOpenBottom();
           }}>
-          <Block radius={5} padding={12} marginBottom={12} backgroundColor="gray_100">
-            <Text color="common_text">Chụp ảnh</Text>
+          <Block radius={5} padding={12} marginBottom={12} backgroundColor="background">
+            <Text>Chụp ảnh</Text>
           </Block>
         </Pressable>
         <Pressable
           onPress={() => {
-            openPicker && openPicker();
+            openPicker?.();
             setIsOpenBottom();
           }}>
-          <Block radius={5} padding={12} backgroundColor="gray_100">
-            <Text color="common_text">Chọn từ thư viện</Text>
+          <Block radius={5} padding={12} backgroundColor="background">
+            <Text>Chọn từ thư viện</Text>
           </Block>
         </Pressable>
       </Block>

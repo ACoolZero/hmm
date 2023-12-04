@@ -17,8 +17,6 @@ const useHome = () => {
   const {data: postsList} = useSelector('postsList');
 
   const fetchData = useCallback(() => {
-    console.log(dayjs(dayjs().subtract(6, 'day')).format('YYYY-MM-DD'));
-
     /**
      * GET_EMOTION_SCORE
      */
