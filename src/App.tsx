@@ -22,7 +22,7 @@ const App = () => {
         <ReduxProvider store={store}>
           <PersistGate loading={null} persistor={persistor}>
             <MainContainer />
-            <ToastMessage position="bottom" />
+            <ToastMessage position="top" />
             <ActionModal />
           </PersistGate>
         </ReduxProvider>

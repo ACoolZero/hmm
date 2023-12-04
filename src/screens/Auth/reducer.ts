@@ -1,12 +1,15 @@
 import {
+  CACHING_EMAIL,
   GET_CURRENT_USER,
   LOGIN_ACCOUNT,
   LOGOUT_ACCOUNT,
   REGISTER_ACCOUNT,
   STORE_REGISTER_DATA,
+  UPDATE_USER_INFO,
   _onComplete,
   _onSuccess,
 } from '@store/actions';
+import {reducer} from '@store/general/common';
 import {produce} from 'immer';
 
 const INITIAL_STATE = {
@@ -23,6 +26,7 @@ const auth = produce((state = INITIAL_STATE, action) => {
     case LOGIN_ACCOUNT:
     case GET_CURRENT_USER:
     case LOGOUT_ACCOUNT:
+    case UPDATE_USER_INFO:
       state.isLoading = true;
       return state;
 
@@ -44,6 +48,7 @@ const auth = produce((state = INITIAL_STATE, action) => {
     case _onComplete(LOGIN_ACCOUNT):
     case _onComplete(GET_CURRENT_USER):
     case _onComplete(LOGOUT_ACCOUNT):
+    case _onComplete(UPDATE_USER_INFO):
       state.isLoading = false;
       return state;
 
@@ -63,4 +68,6 @@ const register = produce((state = {data: {}}, action) => {
   }
 });
 
-export default {auth, register};
+const emailCaching = (...args: any) => reducer.apply(null, [...args, CACHING_EMAIL] as any);
+
+export default {auth, register, emailCaching};

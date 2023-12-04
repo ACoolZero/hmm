@@ -1,13 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 import {Block, Text} from '@components';
+import useHome from '@screens/Bottom/Home/useHome';
 import {width} from '@utils/responsive';
 import React, {memo} from 'react';
 import {LineChart} from 'react-native-gifted-charts';
 import styles from './styles';
 
 const EmotionChart: React.FC = () => {
-  const data = [{value: 50}, {value: 80}, {value: 50}, {value: 30}, {value: 50}, {value: 80}, {value: 50}, {value: 30}];
-  const data2 = [{value: 20}, {value: 50}, {value: 90}, {value: 60}, {value: 20}, {value: 90}, {value: 60}, {value: 5}];
+  const {emotionScore} = useHome();
 
   const _formattedData = (value: {value: number}[], type: 'data' | 'data2') => {
     const isDATA = type === 'data';
@@ -35,7 +35,7 @@ const EmotionChart: React.FC = () => {
       <Block
         shadow
         radius={20}
-        marginBottom={24}
+        marginBottom={36}
         marginHorizontal={16}
         paddingTop={12}
         backgroundColor="secondary_background">
@@ -67,12 +67,14 @@ const EmotionChart: React.FC = () => {
           noOfSections={5}
           height={width * 0.3}
           focusedDataPointRadius={5}
+          minValue={0}
+          maxValue={100}
           color="#FFC542"
           color2="#3DD598"
           dataPointsColor="#FFC542"
           dataPointsColor2="#3DD598"
-          data={_formattedData(data, 'data')}
-          data2={_formattedData(data2, 'data2')}
+          data={_formattedData(emotionScore?.past || [], 'data')}
+          data2={_formattedData(emotionScore?.current || [], 'data2')}
         />
       </Block>
     </Block>

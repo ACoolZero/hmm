@@ -14,6 +14,7 @@ import Gadgets from './Bottom/Gadgets';
 import Home from './Bottom/Home';
 import Moments from './Bottom/Moments';
 import ArticleDetails from './Common/ArticleDetails';
+import ArticleViewed from './Common/ArticleViewed';
 import EditProfile from './Common/EditProfile';
 import FeedbackSubmitForm from './Common/Feedback.SubmitForm';
 import Apps from './Common/Gadgets.Apps';
@@ -26,7 +27,9 @@ import Privacy from './Common/Gadgets.Privacy';
 import MilestoneDetails from './Common/Home.MilestoneDetails';
 import CreateMilestone from './Common/Milestone/CreateScreen';
 import EditScreen from './Common/Milestone/EditScreen';
+import CreateMoment from './Common/Moments/CreateScreen';
 import Suggest from './Common/Suggest';
+import Recall from './Common/Recall';
 
 export const auth = {
   [routes.LOGIN_SCREEN]: Login,
@@ -49,6 +52,7 @@ export const bottom = {
 };
 
 export const common = {
+  [routes.ARTICLE_VIEWED_SCREEN]: ArticleViewed,
   [routes.ARTICLE_DETAILS_SCREEN]: ArticleDetails,
   [routes.MILESTONE_DETAILS_SCREEN]: MilestoneDetails,
   [routes.EDIT_PROFILE_SCREEN]: EditProfile,
@@ -63,4 +67,6 @@ export const common = {
   [routes.GADGETS_PRIVACY_SCREEN]: Privacy,
   [routes.GADGETS_DATA_PROTECTION_SCREEN]: DataProtection,
   [routes.FEEDBACK_SUBMIT_SCREEN]: FeedbackSubmitForm,
+  [routes.CREATE_MOMENT_SCREEN]: CreateMoment,
+  [routes.RECALL_SCREEN]: Recall,
 };

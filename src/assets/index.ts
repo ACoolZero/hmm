@@ -42,6 +42,7 @@ export const ICONS = {
   FAQ: require('./icons/FAQ.png'),
   feedback: require('./icons/feedback.png'),
   privacy: require('./icons/privacy.png'),
+  dots: require('./icons/dots.png'),
 };
 
 export const IMAGES = {
@@ -83,6 +84,10 @@ export const IMAGES = {
   confirm_icon_right: require('./images/confirm_icon_right.png'),
   suggest_background: require('./images/suggest_background.png'),
   suggest_dialog_icon: require('./images/suggest_dialog_icon.png'),
+  recall_share: require('./images/recall_share.png'),
+  recall_edit: require('./images/recall_edit.png'),
+  recall_delete: require('./images/recall_delete.png'),
+  recall_notice: require('./images/recall_notice.png'),
 };
 
 export const MILESTONE = {

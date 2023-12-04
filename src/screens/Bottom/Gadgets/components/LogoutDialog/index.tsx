@@ -1,10 +1,7 @@
 import {IMAGES} from '@assets';
 import {Block, GradientButton, Image, Modal, Text} from '@components';
 import {useColors, useStore} from '@hooks';
-import {reset} from '@navigation/NavigationServices';
-import routes from '@navigation/routes';
 import {LOGOUT_ACCOUNT} from '@store/actions';
-import {sleep} from '@utils/date';
 import {getSize, width} from '@utils/responsive';
 import React from 'react';
 
@@ -15,14 +12,14 @@ interface LogoutDialogProps {
 }
 
 const LogoutDialog: React.FC<LogoutDialogProps> = ({useDialog}) => {
-  const {dispatch} = useStore();
+  const {dispatch, useSelector} = useStore();
+  const {isLoading} = useSelector('auth');
   const {COLORS} = useColors();
   const [isDialogVisible, setDialogVisible] = useDialog;
 
   const _handleLogout = () => {
     setDialogVisible(false);
     dispatch({type: LOGOUT_ACCOUNT});
-    sleep(500).then(() => reset(routes.LOGIN_SCREEN));
   };
 
   return (
@@ -55,6 +52,7 @@ const LogoutDialog: React.FC<LogoutDialogProps> = ({useDialog}) => {
           <Block alignCenter>
             <Image source={IMAGES.logout_icon_right} round={57} />
             <GradientButton
+              disabled={isLoading}
               title="Yes, I'll be back"
               style={{
                 width: BUTTON_WIDTH,

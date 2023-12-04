@@ -3,32 +3,33 @@ import React from 'react';
 import {Pressable} from 'react-native';
 
 interface ImagePickerProps {
+  title?: string;
   isOpenBottom: boolean;
-  setIsOpenBottom: () => void;
-  openPicker: () => void;
-  openCamera: () => void;
+  setIsOpenBottom: any;
+  openPicker?: () => void;
+  openCamera?: () => void;
 }
 
-const ImagePicker: React.FC<ImagePickerProps> = ({isOpenBottom, setIsOpenBottom, openPicker, openCamera}) => {
+const ImagePicker: React.FC<ImagePickerProps> = ({title, isOpenBottom, setIsOpenBottom, openPicker, openCamera}) => {
   return (
-    <BottomSheet title="" useBottomSheet={[isOpenBottom, setIsOpenBottom]}>
+    <BottomSheet title={title} useBottomSheet={[isOpenBottom, setIsOpenBottom]}>
       <Block>
         <Pressable
           onPress={() => {
-            openCamera();
+            openCamera && openCamera();
             setIsOpenBottom();
           }}>
           <Block radius={5} padding={12} marginBottom={12} backgroundColor="gray_100">
-            <Text>Chụp ảnh</Text>
+            <Text color="common_text">Chụp ảnh</Text>
           </Block>
         </Pressable>
         <Pressable
           onPress={() => {
-            openPicker();
+            openPicker && openPicker();
             setIsOpenBottom();
           }}>
           <Block radius={5} padding={12} backgroundColor="gray_100">
-            <Text>Chọn từ thư viện</Text>
+            <Text color="common_text">Chọn từ thư viện</Text>
           </Block>
         </Pressable>
       </Block>

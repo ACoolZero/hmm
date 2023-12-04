@@ -1,20 +1,24 @@
-import {Block, Image, Text} from '@components';
+import {Block, Text} from '@components';
 import {useColors} from '@hooks';
 import {IMilestone} from '@screens/Bottom/Home/types';
+import dayjs from 'dayjs';
 import React, {memo} from 'react';
 import {Pressable} from 'react-native';
 
 interface MilestoneCardProps {
   item: IMilestone;
+  selectedId: string;
+  onPress?: () => void;
 }
 
-const MilestoneCard2: React.FC<MilestoneCardProps> = ({item}) => {
+const MilestoneCard2: React.FC<MilestoneCardProps> = ({item, selectedId, onPress}) => {
   const {randomTextColor, randomBackgroundColor} = useColors();
-  const {image, label, datetime} = item;
+  const {id, icon, content, milestoneTime} = item;
   const {COLORS} = useColors();
+  const isSelected = selectedId === id;
 
   return (
-    <Pressable onPress={() => {}}>
+    <Pressable onPress={() => onPress && onPress()}>
       <Block
         row
         alignCenter
@@ -23,20 +27,26 @@ const MilestoneCard2: React.FC<MilestoneCardProps> = ({item}) => {
         paddingVertical={6}
         marginBottom={8}
         space="between"
-        backgroundColor={COLORS.secondary_background}>
+        backgroundColor={isSelected ? '#FF974A' : COLORS.secondary_background}>
         <Block flex row alignCenter marginRight={12}>
           <Block alignCenter justifyCenter radius={5} square={40} backgroundColor={randomBackgroundColor()}>
-            <Image source={image} square={30} resizeMode="contain" />
+            <Text md>{icon}</Text>
           </Block>
-          <Text flex sm marginLeft={12} numberOfLines={1} color={randomTextColor()} type="semibold">
-            {label}
+          <Text
+            flex
+            sm
+            marginLeft={12}
+            numberOfLines={1}
+            color={isSelected ? 'white' : randomTextColor()}
+            type="semibold">
+            {content}
           </Text>
         </Block>
         <Block row alignCenter>
           <Text sm marginRight={6} color="#5C7887">
-            {datetime}
+            {dayjs(milestoneTime).format('DD/MM/YYYY')}
           </Text>
-          <Block round={8} backgroundColor={COLORS.primary} />
+          <Block round={8} backgroundColor={isSelected ? COLORS.background : COLORS.primary} />
         </Block>
       </Block>
     </Pressable>

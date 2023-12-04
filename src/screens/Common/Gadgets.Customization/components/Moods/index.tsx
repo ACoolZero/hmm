@@ -1,13 +1,16 @@
-import {Block, Image, Text} from '@components';
+import {Block, Text} from '@components';
+import {useStore} from '@hooks';
 import {IReaction} from '@screens/Bottom/Home/types';
 import React from 'react';
 import {Pressable} from 'react-native';
-import {DATA} from './data';
+import {SvgUri} from 'react-native-svg';
 import styles, {ICON_SIZE, REACTION_SIZE} from './styles';
 
 const Moods: React.FC = () => {
+  const {useSelector} = useStore();
+  const {data: moodsList} = useSelector('moodsList');
   const _renderItem = (item: IReaction) => {
-    const {id, image, label, color} = item;
+    const {id, icon, name, color} = item;
     return (
       <Pressable key={id}>
         <Block alignCenter justifyCenter radius={12} square={REACTION_SIZE} backgroundColor="feeling_background">
@@ -15,11 +18,11 @@ const Moods: React.FC = () => {
             radius={REACTION_SIZE}
             style={{...styles.iconShadow, shadowColor: color}}
             backgroundColor="secondary_background">
-            <Image source={image} round={ICON_SIZE} />
+            <SvgUri width={ICON_SIZE} height={ICON_SIZE} uri={icon} />
           </Block>
         </Block>
         <Text sm center marginTop={8} numberOfLines={1} type="semibold" color="light_text">
-          {label}
+          {name}
         </Text>
       </Pressable>
     );
@@ -31,7 +34,7 @@ const Moods: React.FC = () => {
         Change the moods you frequently have
       </Text>
       <Block row alignCenter space="between">
-        {DATA.map(_renderItem)}
+        {moodsList?.map(_renderItem)}
       </Block>
     </Block>
   );

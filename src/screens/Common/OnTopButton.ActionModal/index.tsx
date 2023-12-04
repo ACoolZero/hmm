@@ -41,6 +41,7 @@ const ActionModal: React.FC = () => {
               navigate(routes.GADGETS_CUSTOMIZATION_SCREEN);
               break;
             case 'MOMENT':
+              navigate(routes.CREATE_MOMENT_SCREEN);
               break;
             case 'MILSESTONE':
               navigate(routes.CREATE_MILESTONE_SCREEN);

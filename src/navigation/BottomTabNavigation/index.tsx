@@ -29,6 +29,7 @@ const HomeStack: React.FC = () => {
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name={routes.HOME_SCREEN} component={bottom[routes.HOME_SCREEN]} />
       <Stack.Screen name={routes.MILESTONE_DETAILS_SCREEN} component={common[routes.MILESTONE_DETAILS_SCREEN]} />
+      <Stack.Screen name={routes.ARTICLE_VIEWED_SCREEN} component={common[routes.ARTICLE_VIEWED_SCREEN]} />
     </Stack.Navigator>
   );
 };

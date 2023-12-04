@@ -29,8 +29,8 @@ const BottomSheet: React.FC<BottomSheetProps> = ({title, useBottomSheet, childre
     <Portal>
       <Modalize {...rest} ref={modalizeRef} onClose={_closeBottomSheet} adjustToContentHeight={true}>
         {title && (
-          <Block justifyCenter height={50} paddingHorizontal={16} borderBottomWidth={0.5} borderColor="border">
-            <Text center type="medium">
+          <Block justifyCenter height={50} paddingHorizontal={16} borderBottomWidth={0.5} borderColor="common_border">
+            <Text center color="common_text" type="medium">
               {title}
             </Text>
             <Pressable onPress={_closeBottomSheet} style={styles.btnCloseBottomSheet}>
@@ -40,7 +40,7 @@ const BottomSheet: React.FC<BottomSheetProps> = ({title, useBottomSheet, childre
             </Pressable>
           </Block>
         )}
-        <Block safeBottom paddingHorizontal={16} paddingTop={16}>
+        <Block safeBottom paddingHorizontal={16} paddingTop={16} backgroundColor="secondary_background">
           {children}
         </Block>
       </Modalize>

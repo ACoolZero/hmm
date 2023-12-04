@@ -1,19 +1,29 @@
 import {Block, ListWrapper, MilestoneCardTwo} from '@components';
-import {DATA} from '@screens/Bottom/Home/components/Milestones/data';
+import {useStore} from '@hooks';
 import {IMilestone} from '@screens/Bottom/Home/types';
-import React from 'react';
+import React, {useState} from 'react';
 import {ListRenderItem, StatusBar} from 'react-native';
 import Header from './components/Header';
 
 const MilestoneDetails: React.FC = () => {
-  const _renderItem: ListRenderItem<IMilestone> = ({item}) => <MilestoneCardTwo item={item} />;
+  const {useSelector} = useStore();
+  const {data: milestoneList} = useSelector('milestoneList');
+  const [selectedMileStone, setSelectedMileStone] = useState<IMilestone>(milestoneList[0]);
+
+  const _renderItem: ListRenderItem<IMilestone> = ({item}) => (
+    <MilestoneCardTwo item={item} selectedId={selectedMileStone.id} onPress={() => setSelectedMileStone(item)} />
+  );
 
   return (
     <Block flex backgroundColor="background">
       <StatusBar backgroundColor="primary" barStyle="dark-content" />
-      <Header />
+      <Header selectedMileStone={selectedMileStone} />
       <Block flex padding={16}>
-        <ListWrapper data={DATA} keyExtractor={(item: IMilestone) => String(item.id)} renderItem={_renderItem} />
+        <ListWrapper
+          data={milestoneList}
+          keyExtractor={(item: IMilestone) => String(item.id)}
+          renderItem={_renderItem}
+        />
       </Block>
     </Block>
   );

@@ -1,0 +1,1 @@
+export const GET_MOMENTS_LIST = 'GET_MOMENTS_LIST';

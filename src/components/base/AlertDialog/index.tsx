@@ -25,11 +25,11 @@ const AlertDialog: React.FC = () => {
 
   return (
     <Modal isVisible={isShowAlert} onBackdropPress={_onBackdropPress}>
-      <Block radius={8} paddingHorizontal={16} paddingVertical={20} backgroundColor="white">
-        <Text lg center type="semibold">
+      <Block radius={8} paddingHorizontal={16} paddingVertical={20} backgroundColor="secondary_background">
+        <Text md center type="semibold">
           {title || t('common.notification')}
         </Text>
-        <Text center marginVertical={20}>
+        <Text center marginVertical={24}>
           {message || null}
         </Text>
         <Block row space="between">

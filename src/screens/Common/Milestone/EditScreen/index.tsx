@@ -1,73 +1,127 @@
 /* eslint-disable react-native/no-inline-styles */
-import {ICONS, MILESTONE} from '@assets';
-import {Block, GradientButton, Image, Text, TextInput} from '@components';
-import {useColors} from '@hooks';
+import {ICONS} from '@assets';
+import {Block, GradientButton, Image, Loading, Text, TextInput} from '@components';
+import {handleHitSlop} from '@components/base/shared';
+import {useColors, useStore} from '@hooks';
+import {RootStackParamList} from '@navigation/types';
+import {RouteProp} from '@react-navigation/native';
+import {GET_MILESTONE_DETAILS, UPDATE_MILESTONE} from '@store/actions';
 import {getSize, height} from '@utils/responsive';
-import React, {useState} from 'react';
-import {Pressable, ScrollView, StatusBar, StyleSheet} from 'react-native';
-import ConfirmDialog from '../components/ConfirmDialog';
+import dayjs from 'dayjs';
+import React, {useEffect, useRef, useState} from 'react';
+import {Pressable, TextInput as RNTextInput, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import Header from '../components/Header';
 
-const EditScreen: React.FC = () => {
+interface EditScreenProps {
+  route: RouteProp<RootStackParamList, 'EDIT_MILESTONE_SCREEN'>;
+}
+
+const EditScreen: React.FC<EditScreenProps> = ({route}) => {
+  const {dispatch, useSelector} = useStore();
+  const {milestoneId} = route.params;
   const {COLORS} = useColors();
-  const [isDialogVisible, setDialogVisible] = useState<boolean>(false);
+  const [isDatePickerVisible, setDatePickerVisibility] = useState<boolean>(false);
+  const {data: milestoneDetails, isLoading} = useSelector('milestoneDetails');
+  const {isLoading: isUpdating} = useSelector('updateMilestone');
+
+  const [mileStone, setMileStone] = useState({
+    content: '',
+    icon: '',
+    location: '',
+    milestoneTime: '',
+  });
+
+  const isValid = Object.values(mileStone).every(value => value !== '');
+  const iconInputRef = useRef<any>();
 
   const _renderIconCalendar = () => <Image source={ICONS.calender} square={24} tintColor={COLORS.light_text} />;
+
+  const _toggleDatePicker = () => setDatePickerVisibility(!isDatePickerVisible);
+  const _handleDateConfirm = (e: Date) => {
+    setMileStone({...mileStone, milestoneTime: dayjs(e).format('YYYY-MM-DD HH:mm:ss.SSS')});
+    _toggleDatePicker();
+  };
+
+  const _toggleIconInput = () => iconInputRef.current?.focus();
+
+  useEffect(() => {
+    dispatch({type: GET_MILESTONE_DETAILS, payload: {milestoneId}});
+  }, [dispatch, milestoneId]);
+
+  useEffect(() => {
+    if (milestoneDetails) setMileStone(milestoneDetails);
+  }, [milestoneDetails]);
 
   return (
     <Block flex backgroundColor="background">
       <StatusBar backgroundColor="#FF974A" barStyle="dark-content" />
       <Header title="Edit Milestone" />
-      <Block shadow style={styles.container}>
-        <ScrollView bounces={false} style={{...styles.content, backgroundColor: COLORS.secondary_background}}>
-          <Text marginBottom={16} type="semibold">
-            Your milestone
-          </Text>
-          <TextInput
-            inputStyle={{backgroundColor: COLORS.background, borderWidth: 0}}
-            containerInputStyle={styles.containerInputStyle}
-            color={COLORS.light_text}
-            value="I was just born ^^"
-          />
-          <Text marginBottom={16} type="semibold">
-            Icon
-          </Text>
-          <Block row alignCenter marginBottom={24}>
-            <Block
-              alignCenter
-              justifyCenter
-              radius={8}
-              square={86}
-              marginRight={24}
-              backgroundColor={COLORS.background}>
-              <Image source={MILESTONE.milestone1} square={44} resizeMode="contain" />
+      {isLoading ? (
+        <Block flex />
+      ) : (
+        <Block shadow style={styles.container}>
+          <ScrollView bounces={false} style={{...styles.content, backgroundColor: COLORS.secondary_background}}>
+            <Text marginBottom={16} type="semibold">
+              Your milestone
+            </Text>
+            <TextInput
+              inputStyle={{backgroundColor: COLORS.background, borderWidth: 0}}
+              containerInputStyle={styles.containerInputStyle}
+              color={COLORS.light_text}
+              defaultValue={mileStone.content}
+              onChangeText={content => setMileStone({...mileStone, content})}
+            />
+            <Text marginBottom={16} type="semibold">
+              Icon
+            </Text>
+            <Block row alignCenter marginBottom={24}>
+              <RNTextInput
+                ref={iconInputRef}
+                maxLength={2}
+                onChangeText={icon => setMileStone({...mileStone, icon})}
+                style={{opacity: 0, position: 'absolute'}}
+              />
+              <Block
+                alignCenter
+                justifyCenter
+                radius={8}
+                backgroundColor={COLORS.background}
+                square={86}
+                marginRight={24}
+                marginLeft={-3}>
+                <Text size={36}>{mileStone?.icon}</Text>
+              </Block>
+              <TouchableOpacity hitSlop={handleHitSlop(5)} onPress={_toggleIconInput}>
+                <Image source={ICONS.edit} square={24} tintColor={COLORS.light_text} />
+              </TouchableOpacity>
             </Block>
-            <Pressable>
-              <Image source={ICONS.edit} square={24} tintColor={COLORS.light_text} />
+            <Text marginBottom={16} type="semibold">
+              Time
+            </Text>
+            <Pressable onPress={_toggleDatePicker}>
+              <TextInput
+                pointerEvents="none"
+                inputStyle={{backgroundColor: COLORS.background, borderWidth: 0}}
+                containerInputStyle={styles.containerInputStyle}
+                color={COLORS.light_text}
+                rightIcon={_renderIconCalendar}
+                defaultValue={dayjs(mileStone.milestoneTime).format('DD/MM/YYYY')}
+              />
             </Pressable>
-          </Block>
-          <Text marginBottom={16} type="semibold">
-            Time
-          </Text>
-          <TextInput
-            pointerEvents="none"
-            inputStyle={{backgroundColor: COLORS.background, borderWidth: 0}}
-            containerInputStyle={styles.containerInputStyle}
-            color={COLORS.light_text}
-            rightIcon={_renderIconCalendar}
-            value="03/06/2023"
-          />
-          <Text marginBottom={16} type="semibold">
-            Location
-          </Text>
-          <TextInput
-            inputStyle={{backgroundColor: COLORS.background, borderWidth: 0}}
-            containerInputStyle={{...styles.containerInputStyle, marginBottom: getSize.m(48)}}
-            color={COLORS.light_text}
-            value="Hanoi, Vietnam"
-          />
-        </ScrollView>
-      </Block>
+            <Text marginBottom={16} type="semibold">
+              Location
+            </Text>
+            <TextInput
+              inputStyle={{backgroundColor: COLORS.background, borderWidth: 0}}
+              containerInputStyle={{...styles.containerInputStyle, marginBottom: getSize.m(48)}}
+              color={COLORS.light_text}
+              defaultValue={mileStone.location}
+              onChangeText={location => setMileStone({...mileStone, location})}
+            />
+          </ScrollView>
+        </Block>
+      )}
       <Block
         safeBottom
         paddingTop={8}
@@ -75,9 +129,28 @@ const EditScreen: React.FC = () => {
         borderTopWidth={1}
         borderColor="#87A8B9"
         backgroundColor="secondary_background">
-        <GradientButton title="Save" onPress={() => setDialogVisible(true)} />
+        <GradientButton
+          isValid={isValid}
+          disabled={isLoading}
+          title="Save"
+          onPress={() => {
+            dispatch({type: UPDATE_MILESTONE, payload: {milestoneId, data: mileStone}});
+          }}
+        />
       </Block>
-      <ConfirmDialog useDialog={[isDialogVisible, setDialogVisible]} />
+      <DateTimePickerModal
+        date={new Date()}
+        mode="date"
+        display="inline"
+        themeVariant="light"
+        confirmTextIOS="Đồng ý"
+        cancelTextIOS="Đóng"
+        isDarkModeEnabled={false}
+        isVisible={isDatePickerVisible}
+        onConfirm={_handleDateConfirm}
+        onCancel={_toggleDatePicker}
+      />
+      <Loading visible={isLoading || isUpdating} />
     </Block>
   );
 };

@@ -1,4 +1,5 @@
 export interface ActionPayload<T> {
   type: string;
-  payload?: T;
+  payload: T;
+  callback?: any;
 }

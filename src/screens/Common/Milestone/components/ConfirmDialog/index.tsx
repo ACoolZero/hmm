@@ -1,16 +1,18 @@
 import {IMAGES} from '@assets';
 import {Block, GradientButton, Image, Modal, Text} from '@components';
-import {useColors} from '@hooks';
+import {useColors, useStore} from '@hooks';
+import {CREATE_MILESTONE} from '@store/actions';
 import {getSize, width} from '@utils/responsive';
 import React from 'react';
 
 const BUTTON_WIDTH = (width - 16 - 32 - 32) / 2;
-
 interface ConfirmDialogProps {
   useDialog: any;
+  mileStone?: any;
 }
 
-const ConfirmDialog: React.FC<ConfirmDialogProps> = ({useDialog}) => {
+const ConfirmDialog: React.FC<ConfirmDialogProps> = ({useDialog, mileStone}) => {
+  const {dispatch} = useStore();
   const [isDialogVisible, setDialogVisible] = useDialog;
   const {COLORS} = useColors();
 
@@ -37,7 +39,10 @@ const ConfirmDialog: React.FC<ConfirmDialogProps> = ({useDialog}) => {
                 borderRadius: getSize.s(9),
                 marginTop: getSize.m(16),
               }}
-              onPress={() => setDialogVisible(false)}
+              onPress={() => {
+                setDialogVisible(false);
+                dispatch({type: CREATE_MILESTONE, payload: {mileStone, hasMoment: false}});
+              }}
             />
           </Block>
           <Block width={6} />
@@ -52,7 +57,10 @@ const ConfirmDialog: React.FC<ConfirmDialogProps> = ({useDialog}) => {
                 borderRadius: getSize.s(9),
                 marginTop: getSize.m(16),
               }}
-              onPress={() => setDialogVisible(false)}
+              onPress={() => {
+                setDialogVisible(false);
+                dispatch({type: CREATE_MILESTONE, payload: {mileStone, hasMoment: true}});
+              }}
             />
           </Block>
         </Block>

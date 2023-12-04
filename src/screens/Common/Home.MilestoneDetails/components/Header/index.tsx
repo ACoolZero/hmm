@@ -1,15 +1,19 @@
-import {ICONS, MILESTONE} from '@assets';
+import {ICONS} from '@assets';
 import {Block, Image, Text} from '@components';
 import {useColors} from '@hooks';
-import {goBack} from '@navigation/NavigationServices';
+import {goBack, navigate} from '@navigation/NavigationServices';
+import routes from '@navigation/routes';
+import {IMilestone} from '@screens/Bottom/Home/types';
+import dayjs from 'dayjs';
 import React from 'react';
-import {Pressable} from 'react-native';
+import {Pressable, TouchableOpacity} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import styles from './styles';
 
-const Header: React.FC = () => {
+const Header: React.FC<{selectedMileStone: IMilestone}> = ({selectedMileStone}) => {
   const {top} = useSafeAreaInsets();
   const {COLORS, randomBackgroundColor} = useColors();
+  const {id, icon, content, milestoneTime, momentId} = selectedMileStone;
 
   return (
     <Block shadow paddingTop={top} style={styles.container} backgroundColor="primary">
@@ -25,34 +29,39 @@ const Header: React.FC = () => {
         <Block row alignCenter space="between">
           <Block flex row alignCenter>
             <Block alignCenter justifyCenter radius={5} square={40} backgroundColor={randomBackgroundColor()}>
-              <Image source={MILESTONE.milestone1} square={30} resizeMode="contain" />
+              <Text md>{icon}</Text>
             </Block>
-            <Text flex marginLeft={12} type="semibold">
-              New boy friend, yay !!
-            </Text>
+            <Text flex marginLeft={12} type="semibold" />
           </Block>
           <Block row alignCenter>
             <Text sm marginRight={6} color="#5C7887">
-              May 2023
+              {dayjs(milestoneTime).format('DD/MM/YYYY')}
             </Text>
             <Block round={8} backgroundColor={COLORS.primary} />
           </Block>
         </Block>
         <Text sm marginVertical={12} color="#96A7AF">
-          This is content from Linked Moment. Generally, it could fill up to 2 lines...
+          {content}
         </Text>
         <Block row alignCenter space="between">
-          <Text sm color="primary" type="medium">
-            Edit
-          </Text>
-          <Pressable>
-            <Block row alignCenter>
-              <Text sm marginRight={5} color="primary">
-                Oh my memories...
-              </Text>
-              <Image source={ICONS.arrow_right} square={12} tintColor="primary" />
-            </Block>
-          </Pressable>
+          <TouchableOpacity
+            onPress={() => {
+              navigate(routes.EDIT_MILESTONE_SCREEN, {milestoneId: id});
+            }}>
+            <Text sm color="primary" type="medium">
+              Edit
+            </Text>
+          </TouchableOpacity>
+          {momentId && (
+            <TouchableOpacity onPress={() => {}}>
+              <Block row alignCenter>
+                <Text sm marginRight={5} color="primary">
+                  Oh my memories...
+                </Text>
+                <Image source={ICONS.arrow_right} square={12} tintColor="primary" />
+              </Block>
+            </TouchableOpacity>
+          )}
         </Block>
       </Block>
     </Block>

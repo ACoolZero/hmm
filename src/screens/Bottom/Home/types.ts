@@ -10,21 +10,27 @@ export interface IArticle {
 
 export interface IStory {
   id: number;
-  image: number;
-  title: string;
+  media: string;
+  content: string;
+  type: string;
+  mediaType: string;
+  isLiked: boolean;
+  createdAt: string;
 }
 
 export interface IMilestone {
-  id: number;
-  image: number;
-  label: string;
-  datetime: string;
+  id: string;
+  icon: string;
+  content: string;
+  milestoneTime: string;
+  location: string;
+  momentId: string;
 }
 
 export interface IReaction {
   id: number;
-  image: number;
-  label: string;
+  icon: string;
+  name: string;
   color: string;
   percentage: number;
 }

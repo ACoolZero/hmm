@@ -1,26 +1,33 @@
 /* eslint-disable react-native/no-inline-styles */
-import {ICONS, IMAGES} from '@assets';
+import {ICONS} from '@assets';
 import {Block, Image, Text} from '@components';
+import {useStore} from '@hooks';
 import {navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import React from 'react';
 import {Pressable} from 'react-native';
 
 const GadgetsHeader: React.FC = () => {
+  const {useSelector} = useStore();
+  const {userInfo} = useSelector('auth');
+  const {avatar, fullName, phoneNumber, email, slogan} = userInfo;
+
   return (
     <Block padding={24}>
       <Block row space="between">
         <Block flex row>
-          <Image source={IMAGES.avatar} round={72} />
+          <Block round={72} borderWidth={1} borderColor="light_text" overflow="hidden">
+            <Image source={{uri: avatar}} round={72} />
+          </Block>
           <Block flex marginLeft={12} space="between">
             <Text md type="semibold">
-              Alice Smith
+              {fullName}
             </Text>
             <Text sm color="light_text">
-              +191 23 456 7890
+              {phoneNumber ? phoneNumber : '-'}
             </Text>
             <Text sm color="light_text">
-              alicesmith.work@mail.com
+              {email}
             </Text>
           </Block>
         </Block>
@@ -39,9 +46,11 @@ const GadgetsHeader: React.FC = () => {
           </Block>
         </Pressable>
       </Block>
-      <Text marginTop={16} style={{fontStyle: 'italic'}}>
-        Sometimes, it’s better to smile 🤡 than to explain why you’re sad 🥹
-      </Text>
+      {slogan && (
+        <Text marginTop={16} style={{fontStyle: 'italic'}}>
+          {slogan}
+        </Text>
+      )}
     </Block>
   );
 };

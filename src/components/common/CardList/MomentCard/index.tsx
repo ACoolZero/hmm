@@ -1,6 +1,6 @@
 import {ICONS} from '@assets';
 import {Block, Image, Text} from '@components';
-import {IMOMENT} from '@screens/Bottom/Moments/types';
+import {IMoment} from '@screens/Bottom/Moments/types';
 import {getSize, width} from '@utils/responsive';
 import React, {memo} from 'react';
 import {ImageBackground, Pressable, StyleSheet, ViewStyle} from 'react-native';
@@ -10,7 +10,7 @@ const FULL_WIDTH = width - getSize.s(16 * 2);
 const HALF_WIDTH = (width - getSize.s(16 * 2 + 11)) / 2;
 
 interface MomentCardProps {
-  item: IMOMENT;
+  item: IMoment;
   index: number;
 }
 

@@ -1,5 +1,5 @@
 import {Block, GradientButton, Text} from '@components';
-import {navigate} from '@navigation/NavigationServices';
+import {reset} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import Header from '@screens/Auth/components/Header';
 import React from 'react';
@@ -14,7 +14,7 @@ const RegisterStep5: React.FC = () => {
       <GradientButton
         title="Continue"
         onPress={() => {
-          navigate(routes.LOGIN_SCREEN);
+          reset(routes.BOTTOM_TAB);
         }}
       />
     </Block>

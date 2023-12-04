@@ -1,4 +1,4 @@
-export interface IMOMENT {
+export interface IMoment {
   id: number;
   image: number;
   title: string;

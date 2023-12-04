@@ -12,11 +12,10 @@ import SocialLoginForm from '../SocialLoginForm';
 import styles from './styles';
 import {validation} from './validation';
 
-const INITIAL_VALUES = {email: '', password: ''};
-
 const LoginForm: React.FC = () => {
   const {dispatch, useSelector} = useStore();
   const {isLoading} = useSelector('auth');
+  const {data: email} = useSelector('emailCaching');
   const {
     control,
     handleSubmit,
@@ -24,12 +23,11 @@ const LoginForm: React.FC = () => {
   } = useForm({
     resolver: yupResolver(validation),
     mode: 'onChange',
-    defaultValues: INITIAL_VALUES,
+    defaultValues: {email: email || '', password: ''},
   });
 
   const _onSubmit = (e: LoginPayload) => {
     dispatch({type: LOGIN_ACCOUNT, payload: e});
-    // navigate(routes.BOTTOM_TAB);
   };
 
   return (

@@ -1,3 +1,11 @@
+export interface IUser {
+  email: string;
+  id: string;
+  fullName: string;
+  role: string;
+  accessToken: string;
+  refreshToken: string;
+}
 export interface RegisterPayload {
   email: string;
   fullName: string;
@@ -9,4 +17,15 @@ export interface RegisterPayload {
 export interface LoginPayload {
   email: string;
   password: string;
+}
+
+export type GenderType = 'MALE' | 'FEMALE';
+
+export interface UpdateUserPayload {
+  fullName?: string;
+  avatar?: string;
+  phoneNumber?: string;
+  areaCode?: string;
+  slogan?: string;
+  gender?: GenderType;
 }

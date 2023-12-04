@@ -1,6 +1,6 @@
 import {ICONS} from '@assets';
 import {Block, Image, Text} from '@components';
-import {IMOMENT} from '@screens/Bottom/Moments/types';
+import {IMoment} from '@screens/Bottom/Moments/types';
 import {getSize, width} from '@utils/responsive';
 import React from 'react';
 import {ImageBackground, Pressable, ScrollView, StyleSheet, ViewStyle} from 'react-native';
@@ -11,7 +11,7 @@ const FULL_WIDTH = width - getSize.s(16 * 2);
 const HALF_WIDTH = (width - getSize.s(16 * 2 + 12)) / 2;
 
 const Newsfeed: React.FC = () => {
-  const _renderItem = (item: IMOMENT, index: number) => {
+  const _renderItem = (item: IMoment, index: number) => {
     const {id, image, title, loved, author} = item;
     const position = index + 1;
     const specific = position % 9 === 0 ? 9 : position % 9;

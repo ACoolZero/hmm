@@ -5,7 +5,7 @@ import {getSize} from '@utils/responsive';
 import {isEmpty} from 'lodash';
 import React, {forwardRef, useImperativeHandle, useState} from 'react';
 import {TextInput as RNTextInput, StyleSheet, TouchableOpacity} from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Block from '../Block';
 import Image from '../Image';
 import Text from '../Text';
@@ -90,7 +90,7 @@ const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
 
   const _renderError = () => (
     <Block row alignCenter paddingVertical={3} style={errorContainerStyle}>
-      <Ionicons name="ios-warning" color={COLORS.error} size={getSize.m(13)} />
+      <FontAwesome name="warning" color={COLORS.error} size={getSize.m(12)} />
       <Text sm marginLeft={6} color={COLORS.error}>
         {errorText}
       </Text>
