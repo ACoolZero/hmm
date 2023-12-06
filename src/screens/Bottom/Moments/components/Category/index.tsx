@@ -1,35 +1,56 @@
 import {Block, Text} from '@components';
-import {useColors} from '@hooks';
-import {getSize} from '@utils/responsive';
-import React, {useState} from 'react';
-import {Pressable, ScrollView, StyleSheet} from 'react-native';
-import {DATA} from './data';
+import {useColors, useStore} from '@hooks';
+import {IMomentTag} from '@screens/Bottom/Moments/types';
+import useMoments from '@screens/Bottom/Moments/useMoments';
+import {GET_MOMENTS_LIST} from '@store/actions';
+import {getSize, width} from '@utils/responsive';
+import React, {useEffect} from 'react';
+import {ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
+
+let selectedId = '';
 
 const Category: React.FC = () => {
+  const {dispatch} = useStore();
   const {COLORS} = useColors();
-  const [selectedId, setSelectedId] = useState<number>(1);
+  const {momentTags} = useMoments();
 
-  const _renderCategory = (item: any) => {
-    const {id, title, tintColor} = item;
-    const selectedItem = id === selectedId;
+  useEffect(() => {
+    if (!momentTags) selectedId = '';
+  }, [momentTags]);
+
+  const _renderCategory = (item: IMomentTag, index: number) => {
+    const {id, tag, tintColor} = item;
+    let selectedItem;
+    if (selectedId) {
+      selectedItem = id === selectedId;
+    } else {
+      selectedItem = index === 0;
+    }
+
     const backgroundColor = selectedItem ? (tintColor ? tintColor : COLORS.primary) : COLORS.background;
     const color = selectedItem ? COLORS.white : COLORS.light_text;
+
+    const _filterMoments = (tagId: string) => {
+      selectedId = tagId;
+      dispatch({type: GET_MOMENTS_LIST, payload: {tagId}});
+    };
+
     return (
-      <Pressable key={id} onPress={() => setSelectedId(id)}>
+      <TouchableOpacity key={id} onPress={() => _filterMoments(id)}>
         <Block paddingHorizontal={12} backgroundColor={backgroundColor} style={styles.category}>
           <Text sm color={color} type="semibold">
-            {title}
+            {tag}
           </Text>
         </Block>
-      </Pressable>
+      </TouchableOpacity>
     );
   };
 
   return (
-    <Block marginVertical={12} backgroundColor="secondary_background">
+    <Block width={width} marginVertical={12} backgroundColor="secondary_background">
       <ScrollView horizontal bounces={false} showsHorizontalScrollIndicator={false}>
         <Block row alignCenter gap={10}>
-          {DATA.map(_renderCategory)}
+          {momentTags?.map(_renderCategory)}
         </Block>
       </ScrollView>
     </Block>

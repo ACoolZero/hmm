@@ -1,5 +1,5 @@
 import {ICONS} from '@assets';
-import {Block, GradientButton, Header, Image, LazyImage, Text, TextInput} from '@components';
+import {Block, GradientButton, Header, Image, LazyImage, Loading, Text, TextInput} from '@components';
 import {useColors, useMediaPicker, useStore} from '@hooks';
 import {RootStackParamList} from '@navigation/types';
 import {RouteProp} from '@react-navigation/native';
@@ -15,11 +15,12 @@ interface CreateMomentProps {
 }
 
 const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
-  const {dispatch} = useStore();
+  const {dispatch, useSelector} = useStore();
+  const {isLoading} = useSelector('uploadFile');
   const {milestoneId} = route.params || {};
   const {COLORS} = useColors();
   const [accessMode, setAccessMode] = useState<AccessModeType>('PUBLIC');
-  const {picture, openPicker} = useMediaPicker();
+  const {picture, openPicker} = useMediaPicker({cropping: false});
   const [moment, setMoment] = useState({
     media: '',
     content: '',
@@ -138,10 +139,12 @@ const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
         <GradientButton
           title="Save"
           isValid={isValid}
+          disabled={isLoading}
           onPress={() => {
             _createMoment();
           }}
         />
+        <Loading visible={isLoading} />
       </Block>
     </Block>
   );

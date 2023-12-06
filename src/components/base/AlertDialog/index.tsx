@@ -48,6 +48,7 @@ const AlertDialog: React.FC = () => {
             width={cancelable ? (width - 96) * 0.5 : width - 80}
             containerStyle={styles.commonStyles}
             onPress={() => (onSubmit ? _handleSubmit() : _handleCancel())}
+            textColor="white"
           />
         </Block>
       </Block>

@@ -2,20 +2,15 @@ import {Block, MomentCard, Text} from '@components';
 import {useColors} from '@hooks';
 import {IMoment} from '@screens/Bottom/Moments/types';
 import useMoments from '@screens/Bottom/Moments/useMoments';
-import React, {useEffect, useRef} from 'react';
+import React, {useRef} from 'react';
 import {Animated, ListRenderItem, RefreshControl} from 'react-native';
 import Category from '../Category';
-import {DATA} from './data';
 import styles from './styles';
 
 const Newsfeed: React.FC = () => {
   const animatedValue = useRef(new Animated.Value(0)).current;
-  const {isLoading, fetchData} = useMoments();
+  const {momentsList, isLoading, fetchData} = useMoments();
   const {COLORS} = useColors();
-
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
 
   const _renderHeader = () => {
     return (
@@ -32,11 +27,13 @@ const Newsfeed: React.FC = () => {
 
   const _renderItem: ListRenderItem<IMoment> = ({item, index}) => <MomentCard item={item} index={index} />;
 
-  const _onRefresh = () => fetchData();
+  const _onRefresh = () => {
+    fetchData();
+  };
 
   return (
     <Animated.FlatList
-      data={DATA}
+      data={momentsList}
       keyExtractor={(item: IMoment) => String(item.id)}
       renderItem={_renderItem}
       contentContainerStyle={styles.flatListcontentContaine}

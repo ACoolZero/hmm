@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import {ICONS} from '@assets';
-import {Block, FormContainer, GradientButton, Header, Image, ImagePicker, Text, TextInput} from '@components';
+import {Block, FormContainer, GradientButton, Header, Image, ImagePicker, Loading, Text, TextInput} from '@components';
 import {useColors, useMediaPicker, useStore} from '@hooks';
 import {GenderType, UpdateUserPayload} from '@screens/Auth/types';
 import {UPDATE_USER_INFO, UPLOAD_FILE} from '@store/actions';
@@ -13,7 +13,8 @@ const EditProfile: React.FC = () => {
   const {dispatch, useSelector} = useStore();
   const {COLORS} = useColors();
   const {userInfo} = useSelector('auth');
-  const {picture, openPicker, openCamera} = useMediaPicker();
+  const {isLoading} = useSelector('uploadFile');
+  const {picture, openPicker, openCamera} = useMediaPicker({cropping: true});
   const [isOpenMediaPicker, setOpenMediaPicker] = useState<boolean>(false);
   const [gender, setGender] = useState<GenderType>(userInfo.gender);
   const [info, setInfo] = useState<UpdateUserPayload>({
@@ -178,7 +179,7 @@ const EditProfile: React.FC = () => {
         borderTopWidth={1}
         borderColor="#87A8B9"
         backgroundColor="secondary_background">
-        <GradientButton title="Save" onPress={_handleSubmit} />
+        <GradientButton disabled={isLoading} title="Save" onPress={_handleSubmit} />
       </Block>
       <ImagePicker
         title="Choose Avatar"
@@ -187,6 +188,7 @@ const EditProfile: React.FC = () => {
         openPicker={openPicker}
         openCamera={openCamera}
       />
+      <Loading visible={isLoading} />
     </Block>
   );
 };

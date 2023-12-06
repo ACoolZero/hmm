@@ -15,7 +15,7 @@ interface MomentCardProps {
 }
 
 const MomentCard: React.FC<MomentCardProps> = ({item, index}) => {
-  const {image, title, loved, author} = item;
+  const {media, content, isLiked} = item;
   const position = index + 1;
   const specific = position % 9 === 0 ? 9 : position % 9;
   const specificStyle: {[k: number]: ViewStyle} = {
@@ -41,7 +41,7 @@ const MomentCard: React.FC<MomentCardProps> = ({item, index}) => {
   return (
     <Pressable>
       <Block radius={24} overflow="hidden" marginTop={marginTop} marginBottom={12}>
-        <ImageBackground source={image} style={specificStyle[specific]}>
+        <ImageBackground source={{uri: media}} style={specificStyle[specific]}>
           <LinearGradient
             style={{...StyleSheet.absoluteFillObject}}
             colors={['#00000060', '#00000020', '#00000000', '#00000020', '#00000060']}
@@ -49,15 +49,15 @@ const MomentCard: React.FC<MomentCardProps> = ({item, index}) => {
             end={{x: 0, y: 1}}>
             <Block flex paddingHorizontal={16} paddingTop={12} paddingBottom={8} space="between">
               <Text type="bold" color="#FAFAFA" numberOfLines={3}>
-                {title}
+                {content}
               </Text>
               <Block row alignCenter space="between">
                 <Text flex sm color="#FAFAFA" numberOfLines={1}>
-                  {author}
+                  @author
                 </Text>
                 <Pressable>
                   <Block alignCenter justifyCenter round={36} backgroundColor="#00000070">
-                    <Image source={loved ? ICONS.loved : ICONS.unloved} square={20} resizeMode="contain" />
+                    <Image source={isLiked ? ICONS.loved : ICONS.unloved} square={20} resizeMode="contain" />
                   </Block>
                 </Pressable>
               </Block>

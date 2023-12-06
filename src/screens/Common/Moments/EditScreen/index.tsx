@@ -68,7 +68,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
         />
         <Block alignEnd marginTop={8}>
           <Text sm color={COLORS.light_text}>
-            {moment?.content.length}/99
+            {moment?.content?.length}/99
           </Text>
         </Block>
         <Block row alignCenter marginTop={6} marginBottom={24} paddingHorizontal={5}>

@@ -1,7 +1,7 @@
 import {Text} from '@components';
 import {getSize} from '@utils/responsive';
 import React from 'react';
-import {Pressable, TextStyle, ViewStyle} from 'react-native';
+import {TextStyle, TouchableOpacity, ViewStyle} from 'react-native';
 import {UIActivityIndicator} from 'react-native-indicators';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from './styles';
@@ -30,7 +30,10 @@ const GradientButton: React.FC<GradientButtonProps> = ({
   style,
 }) => {
   return (
-    <Pressable style={{...style, marginHorizontal: getSize.m(3)}} disabled={disabled || !isValid} onPress={onPress}>
+    <TouchableOpacity
+      style={{...style, marginHorizontal: getSize.m(3)}}
+      disabled={disabled || !isValid}
+      onPress={onPress}>
       <LinearGradient
         colors={isValid ? backgroundColor : ['#9EDCF2', '#D0E1FE']}
         start={{x: 0, y: 0}}
@@ -44,7 +47,7 @@ const GradientButton: React.FC<GradientButtonProps> = ({
           </Text>
         )}
       </LinearGradient>
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 

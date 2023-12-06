@@ -8,7 +8,7 @@ const LOGO_SIZE = width * 0.18;
 const Header: React.FC<{content: String}> = ({content}) => {
   return (
     <Block>
-      <Image source={IMAGES.logo} square={LOGO_SIZE} />
+      <Image source={IMAGES.logo} square={LOGO_SIZE} resizeMode="contain" />
       <GradientText xl marginTop={12} type="bold">
         {content}
       </GradientText>

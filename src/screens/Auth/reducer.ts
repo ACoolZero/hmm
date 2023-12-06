@@ -6,6 +6,7 @@ import {
   REGISTER_ACCOUNT,
   STORE_REGISTER_DATA,
   UPDATE_USER_INFO,
+  UPLOAD_FILE,
   _onComplete,
   _onSuccess,
 } from '@store/actions';
@@ -70,4 +71,6 @@ const register = produce((state = {data: {}}, action) => {
 
 const emailCaching = (...args: any) => reducer.apply(null, [...args, CACHING_EMAIL] as any);
 
-export default {auth, register, emailCaching};
+const uploadFile = (...args: any) => reducer.apply(null, [...args, UPLOAD_FILE] as any);
+
+export default {auth, register, uploadFile, emailCaching};

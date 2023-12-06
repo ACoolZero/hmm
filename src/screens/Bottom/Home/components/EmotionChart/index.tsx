@@ -59,7 +59,6 @@ const EmotionChart: React.FC = () => {
           scrollToEnd
           hideYAxisText
           showTextOnFocus
-          isAnimated
           animateOnDataChange
           thickness={2}
           yAxisThickness={0}

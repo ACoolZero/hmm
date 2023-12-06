@@ -29,7 +29,7 @@ LayoutAnimation.configureNext(LayoutAnimation.Presets.linear);
 const GiftedChat: React.FC<any> = ({userId, chatColor, ...rest}) => {
   const {t} = useTranslation();
   const {useSelector} = useStore();
-  const {openCamera, openMultiPicker} = useMediaPicker();
+  const {openCamera, openMultiPicker} = useMediaPicker({cropping: false});
   const {COLORS} = useColors();
   const {locale} = useSelector('general');
 
