@@ -1,26 +1,67 @@
-import {Block, Modal, Text} from '@components';
+import {Block, ListWrapper, Modal, Text} from '@components';
 import {useStore} from '@hooks';
 import {IReaction} from '@screens/Bottom/Home/types';
+import {STORE_CONFIG_MOOD} from '@store/actions';
 import {height} from '@utils/responsive';
 import React, {useState} from 'react';
-import {TouchableOpacity} from 'react-native';
+import {ListRenderItem, TouchableOpacity} from 'react-native';
 import {SvgUri} from 'react-native-svg';
-import styles, {ICON_SIZE, REACTION_SIZE} from './styles';
+import styles, {ICON_SIZE, REACTION_SIZE, SELECTED_ICON_SIZE, SELECTED_REACTION_SIZE} from './styles';
 
 const Moods: React.FC = () => {
-  const {useSelector} = useStore();
+  const {dispatch, useSelector} = useStore();
   const {data: moodsList} = useSelector('moodsList');
+  const {data: configMood} = useSelector('configMood');
   const [isShowModal, setIsShowModal] = useState(false);
+  const [selectedMood, setSelectedMood] = useState<number>();
 
-  const _renderItem = (item: IReaction) => {
+  const _renderSelectedItem = (item: IReaction, index: number) => {
     const {id, icon, name, color} = item;
     return (
       <TouchableOpacity
         key={id}
         onPress={() => {
           setIsShowModal(true);
+          setSelectedMood(index);
         }}>
-        <Block alignCenter justifyCenter radius={12} square={REACTION_SIZE} backgroundColor="feeling_background">
+        <Block
+          alignCenter
+          justifyCenter
+          radius={12}
+          square={SELECTED_REACTION_SIZE}
+          backgroundColor="feeling_background">
+          <Block
+            radius={SELECTED_REACTION_SIZE}
+            style={{...styles.iconShadow, shadowColor: color}}
+            backgroundColor="secondary_background">
+            <SvgUri width={SELECTED_ICON_SIZE} height={SELECTED_ICON_SIZE} uri={icon} />
+          </Block>
+        </Block>
+        <Text sm center marginVertical={8} numberOfLines={1} type="semibold" color="light_text">
+          {name}
+        </Text>
+      </TouchableOpacity>
+    );
+  };
+
+  const _renderItem: ListRenderItem<IReaction> = ({item}) => {
+    const {id, icon, name, color} = item;
+    return (
+      <TouchableOpacity
+        key={id}
+        onPress={() => {
+          let temp = [...configMood];
+          temp[selectedMood as any] = item;
+          setIsShowModal(false);
+          dispatch({type: STORE_CONFIG_MOOD, payload: {data: temp}});
+        }}>
+        <Block
+          alignCenter
+          justifyCenter
+          radius={12}
+          square={REACTION_SIZE}
+          marginLeft={12}
+          backgroundColor="feeling_background">
           <Block
             radius={REACTION_SIZE}
             style={{...styles.iconShadow, shadowColor: color}}
@@ -41,15 +82,18 @@ const Moods: React.FC = () => {
         Change the moods you frequently have
       </Text>
       <Block row alignCenter space="between">
-        {moodsList?.slice(0, 4).map(_renderItem)}
+        {configMood?.map(_renderSelectedItem)}
       </Block>
       <Modal isVisible={isShowModal} onBackdropPress={() => setIsShowModal(false)}>
         <Block overflow="hidden" height={height * 0.6} radius={12} backgroundColor="background">
           <Text margin={16}>Frequently detected</Text>
           <Block height={1} marginBottom={16} backgroundColor="border" />
-          <Block wrap row flex space="evenly">
-            {moodsList?.map(_renderItem)}
-          </Block>
+          <ListWrapper
+            numColumns={4}
+            data={moodsList}
+            keyExtractor={item => String(item.id)}
+            renderItem={_renderItem}
+          />
         </Block>
       </Modal>
     </Block>

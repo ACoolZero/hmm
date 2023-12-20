@@ -12,8 +12,9 @@ import {SvgUri} from 'react-native-svg';
 import styles, {ICON_SIZE, REACTION_SIZE} from './styles';
 
 const Feeling: React.FC = () => {
-  const {moodsList, userCurrentMood, dispatch} = useHome();
+  const {customization, userCurrentMood, dispatch} = useHome();
   const [isFeelingVisible, setFeelingVisible] = useState(false);
+  const defaultMoods = customization?.find((x: any) => x.key === 'MOOD').config;
 
   useFocusEffect(
     useCallback(() => {
@@ -59,7 +60,7 @@ const Feeling: React.FC = () => {
           Hi, you good ?
         </Text>
         <Block row alignCenter gap={4}>
-          {moodsList?.slice(0, 4).map(_renderItem)}
+          {defaultMoods?.map(_renderItem)}
         </Block>
         {userCurrentMood && (
           <Pressable hitSlop={handleHitSlop(10)} style={styles.btnClosePopup} onPress={() => setFeelingVisible(false)}>

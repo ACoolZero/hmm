@@ -3,6 +3,7 @@ export interface IPost {
   title: string;
   content: any;
   avgRating: number;
+  thumbnail: string;
   media: string;
   mediaType: string;
   shortDesc: string;

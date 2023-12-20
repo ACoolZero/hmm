@@ -9,7 +9,7 @@ import {getSize} from '@utils/responsive';
 import React, {useEffect, useState} from 'react';
 import {Pressable, TouchableOpacity} from 'react-native';
 import {AccessModeType} from '../types';
-import styles, {IMAGE_HEIGHT, IMAGE_WIDTH} from './styles';
+import styles, {ICON_HOLDER_SIZE, IMAGE_HEIGHT, IMAGE_WIDTH} from './styles';
 
 interface CreateMomentProps {
   route: RouteProp<RootStackParamList, 'CREATE_MOMENT_SCREEN'>;
@@ -64,12 +64,18 @@ const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
           <Image source={ICONS.arrow_right} square={18} tintColor="#D4EAF5" />
         </Block>
         <Block flex shadow justifyCenter padding={16}>
-          <LazyImage
-            source={(picture as any)?.path}
-            width={IMAGE_WIDTH}
-            height={IMAGE_HEIGHT}
-            style={{borderRadius: getSize.s(24)}}
-          />
+          {(picture as any)?.path ? (
+            <LazyImage
+              source={(picture as any).path}
+              width={IMAGE_WIDTH}
+              height={IMAGE_HEIGHT}
+              style={{borderRadius: getSize.s(24)}}
+            />
+          ) : (
+            <Block alignCenter justifyCenter>
+              <Image source={ICONS.image_holder} square={ICON_HOLDER_SIZE} tintColor="#D1D5DB" />
+            </Block>
+          )}
         </Block>
       </Pressable>
       <Block

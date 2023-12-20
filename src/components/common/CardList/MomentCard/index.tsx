@@ -1,11 +1,11 @@
 import {ICONS} from '@assets';
-import {Block, Image, Text} from '@components';
+import {Block, Image, LazyImage, Text} from '@components';
 import {useStore} from '@hooks';
 import {IMoment} from '@screens/Bottom/Moments/types';
 import {LIKE_MOMENT} from '@store/actions';
 import {getSize, width} from '@utils/responsive';
 import React, {memo} from 'react';
-import {ImageBackground, Pressable, StyleSheet, TouchableOpacity, ViewStyle} from 'react-native';
+import {Pressable, StyleSheet, TouchableOpacity, ViewStyle} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 const FULL_WIDTH = width - getSize.s(16 * 2);
@@ -18,7 +18,7 @@ interface MomentCardProps {
 
 const MomentCard: React.FC<MomentCardProps> = ({item, index}) => {
   const {dispatch} = useStore();
-  const {id, media, content, liked, creatorName} = item;
+  const {id, thumbnail, media, content, liked, creatorName} = item;
   const position = index + 1;
   const specific = position % 9 === 0 ? 9 : position % 9;
   const specificStyle: {[k: number]: ViewStyle} = {
@@ -43,33 +43,40 @@ const MomentCard: React.FC<MomentCardProps> = ({item, index}) => {
 
   return (
     <Pressable>
-      <Block radius={24} overflow="hidden" marginTop={marginTop} marginBottom={12}>
-        <ImageBackground source={{uri: media}} style={specificStyle[specific]}>
-          <LinearGradient
-            style={{...StyleSheet.absoluteFillObject}}
-            colors={['#00000060', '#00000020', '#00000000', '#00000020', '#00000060']}
-            start={{x: 0, y: 0}}
-            end={{x: 0, y: 1}}>
-            <Block flex paddingHorizontal={16} paddingTop={12} paddingBottom={8} space="between">
-              <Text type="bold" color="#FAFAFA" numberOfLines={3}>
-                {content}
+      <Block
+        radius={24}
+        overflow="hidden"
+        marginTop={marginTop}
+        marginBottom={12}
+        backgroundColor="background"
+        style={specificStyle[specific]}>
+        <Block absolute>
+          <LazyImage thumbnail={thumbnail} source={media} style={specificStyle[specific]} />
+        </Block>
+        <LinearGradient
+          style={{...StyleSheet.absoluteFillObject}}
+          colors={['#00000040', '#00000020', '#00000000', '#00000020', '#00000040']}
+          start={{x: 0, y: 0}}
+          end={{x: 0, y: 1}}>
+          <Block flex paddingHorizontal={16} paddingTop={12} paddingBottom={8} space="between">
+            <Text type="bold" color="#FAFAFA" numberOfLines={3}>
+              {content}
+            </Text>
+            <Block row alignCenter space="between">
+              <Text flex sm color="#FAFAFA" numberOfLines={1}>
+                {creatorName}
               </Text>
-              <Block row alignCenter space="between">
-                <Text flex sm color="#FAFAFA" numberOfLines={1}>
-                  {creatorName}
-                </Text>
-                <TouchableOpacity
-                  onPress={() => {
-                    dispatch({type: LIKE_MOMENT, payload: {id, action: liked ? 'UNLIKE' : 'LIKE'}});
-                  }}>
-                  <Block alignCenter justifyCenter round={36} backgroundColor="#00000070">
-                    <Image source={liked ? ICONS.loved : ICONS.unloved} square={20} resizeMode="contain" />
-                  </Block>
-                </TouchableOpacity>
-              </Block>
+              <TouchableOpacity
+                onPress={() => {
+                  dispatch({type: LIKE_MOMENT, payload: {id, action: liked ? 'UNLIKE' : 'LIKE'}});
+                }}>
+                <Block alignCenter justifyCenter round={36} backgroundColor="#00000070">
+                  <Image source={liked ? ICONS.loved : ICONS.unloved} square={20} resizeMode="contain" />
+                </Block>
+              </TouchableOpacity>
             </Block>
-          </LinearGradient>
-        </ImageBackground>
+          </Block>
+        </LinearGradient>
       </Block>
     </Pressable>
   );

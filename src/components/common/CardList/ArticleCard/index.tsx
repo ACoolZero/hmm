@@ -1,5 +1,5 @@
 import {ICONS} from '@assets';
-import {Block, Image, Rating, Text} from '@components';
+import {Block, Image, LazyImage, Rating, Text} from '@components';
 import {useColors, useStore} from '@hooks';
 import {navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
@@ -8,7 +8,7 @@ import {GET_POSTS_DETAILS} from '@store/actions';
 import {getSize} from '@utils/responsive';
 import React, {memo} from 'react';
 import {Pressable} from 'react-native';
-import styles, {IMAGE_HEIGHT} from './styles';
+import styles, {IMAGE_HEIGHT, IMAGE_WIDTH} from './styles';
 
 interface ArticleCardProps {
   item: IPost;
@@ -18,7 +18,7 @@ interface ArticleCardProps {
 const ArticleCard: React.FC<ArticleCardProps> = ({item, index}) => {
   const {dispatch} = useStore();
   const {COLORS} = useColors();
-  const {id, media, title, shortDesc, viewer, avgRating} = item;
+  const {id, thumbnail, media, title, shortDesc, viewer, avgRating} = item;
 
   return (
     <Pressable
@@ -30,7 +30,13 @@ const ArticleCard: React.FC<ArticleCardProps> = ({item, index}) => {
         shadow
         backgroundColor={index % 2 === 0 ? 'card_background_one' : 'card_background_two'}
         style={styles.container}>
-        <Image source={{uri: media}} style={{height: IMAGE_HEIGHT, borderRadius: getSize.s(10)}} />
+        <LazyImage
+          thumbnail={thumbnail}
+          source={media}
+          height={IMAGE_HEIGHT}
+          width={IMAGE_WIDTH}
+          style={{borderRadius: getSize.s(10)}}
+        />
         <Block marginTop={24}>
           <Text md type="semibold">
             {title}

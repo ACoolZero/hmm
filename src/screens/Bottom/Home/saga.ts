@@ -19,8 +19,8 @@ function* getEmotionScore(
 
 function* getMoods(action: ActionPayload<null>) {
   const params = {limit: 100, skip: 0};
-  const response: AxiosResponse = yield call(api, '/mood', {params});
-  yield put({type: actions._onSuccess(action.type), payload: {data: response.data.items}});
+  const response: AxiosResponse = yield call(api, '/user-mood/customization/frequency', {params});
+  yield put({type: actions._onSuccess(action.type), payload: {data: response.data}});
 }
 
 function* createMood(action: ActionPayload<{moodId: number}>) {

@@ -10,6 +10,7 @@ export interface IArticle {
 
 export interface IStory {
   id: number;
+  thumbnail: string;
   media: string;
   content: string;
   type: string;
@@ -29,7 +30,7 @@ export interface IMilestone {
 
 export interface IReaction {
   id: number;
-  icon: string;
+  icon: any;
   name: string;
   color: string;
   percentage: number;

@@ -10,7 +10,7 @@ interface ReactionCardProps {
 
 const ReactionCard: React.FC<ReactionCardProps> = ({item}) => {
   const {COLORS} = useColors();
-  const {image, label, color, percentage} = item;
+  const {icon, name, color, percentage} = item;
 
   return (
     <Block flex>
@@ -25,12 +25,12 @@ const ReactionCard: React.FC<ReactionCardProps> = ({item}) => {
             radius={REACTION_SIZE}
             style={{...styles.iconShadow, shadowColor: color}}
             backgroundColor="secondary_background">
-            <Image source={image} round={ICON_SIZE} />
+            <Image source={icon} round={ICON_SIZE} />
           </Block>
         </Block>
       </ProgressCircle>
       <Text sm center marginTop={5} numberOfLines={1} type="semibold">
-        {label}
+        {name}
       </Text>
     </Block>
   );

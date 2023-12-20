@@ -10,6 +10,7 @@ export interface IMoment {
   creatorName: string;
   id: string;
   liked: boolean;
+  thumbnail: string;
   media: string;
   module: string;
   moduleId: string;

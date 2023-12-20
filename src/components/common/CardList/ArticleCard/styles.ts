@@ -1,6 +1,7 @@
 import {getSize, width} from '@utils/responsive';
 import {StyleSheet} from 'react-native';
 
+export const IMAGE_WIDTH = width - getSize.m(64);
 export const IMAGE_HEIGHT = width * 0.5;
 
 export default StyleSheet.create({

@@ -84,7 +84,7 @@ const GiftedChat: React.FC<any> = ({userId, chatColor, ...rest}) => {
     const {image} = props.currentMessage;
     return (
       <Pressable onPress={() => {}} onLongPress={() => {}}>
-        <LazyImage scalable source={image} width={width * 0.5} style={styles.messageImageStyle} />
+        <LazyImage source={image} width={width * 0.5} style={styles.messageImageStyle} />
       </Pressable>
     );
   };

@@ -22,6 +22,7 @@ const useHome = () => {
   const {data: tagsList} = useSelector('tagsList');
   const {data: milestoneList} = useSelector('milestoneList');
   const {data: postsList} = useSelector('postsList');
+  const {data: customization} = useSelector('customization');
 
   const fetchData = useCallback(() => {
     /**
@@ -74,6 +75,7 @@ const useHome = () => {
     tagsList,
     milestoneList,
     postsList,
+    customization,
     dispatch,
     fetchData,
   };
