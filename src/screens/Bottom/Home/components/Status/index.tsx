@@ -27,6 +27,7 @@ const Status: React.FC = () => {
     if (feeling) dispatch({type: UPDATE_STATUS, payload: {exactlyYouFeelText: feeling}});
   }, [dispatch, feeling]);
 
+  if (!userCurrentMood) return null;
   return (
     <Block paddingHorizontal={16} marginBottom={24} backgroundColor="background">
       <Text type="semibold">How exactly you feel right now?</Text>

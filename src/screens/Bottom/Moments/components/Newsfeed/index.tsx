@@ -1,7 +1,8 @@
-import {Block, MomentCard, Text} from '@components';
+import {Block, EmptyList, MomentCard, Text} from '@components';
 import {useColors} from '@hooks';
 import {IMoment} from '@screens/Bottom/Moments/types';
 import useMoments from '@screens/Bottom/Moments/useMoments';
+import {getSize} from '@utils/responsive';
 import React, {useRef} from 'react';
 import {Animated, ListRenderItem, RefreshControl} from 'react-native';
 import Category from '../Category';
@@ -15,7 +16,7 @@ const Newsfeed: React.FC = () => {
   const _renderHeader = () => {
     return (
       <Animated.View style={styles.header(animatedValue)}>
-        <Block height={102} backgroundColor="secondary_background">
+        <Block height={110} backgroundColor="secondary_background">
           <Text size={36} type="semibold">
             Moments
           </Text>
@@ -24,6 +25,8 @@ const Newsfeed: React.FC = () => {
       </Animated.View>
     );
   };
+
+  const _renderEmpty = () => <EmptyList containerStyle={{marginTop: getSize.m(16)}} />;
 
   const _renderItem: ListRenderItem<IMoment> = ({item, index}) => <MomentCard item={item} index={index} />;
 
@@ -39,6 +42,7 @@ const Newsfeed: React.FC = () => {
       contentContainerStyle={styles.flatListcontentContaine}
       showsVerticalScrollIndicator={false}
       ListHeaderComponent={_renderHeader}
+      ListEmptyComponent={_renderEmpty}
       stickyHeaderIndices={[0]}
       scrollEventThrottle={16}
       onScroll={Animated.event([{nativeEvent: {contentOffset: {y: animatedValue}}}], {useNativeDriver: false})}

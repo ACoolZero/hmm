@@ -19,10 +19,10 @@ const Category: React.FC = () => {
   }, [momentTags]);
 
   const _renderCategory = (item: IMomentTag, index: number) => {
-    const {id, tag, tintColor} = item;
+    const {id, taggingId, tagging, tintColor} = item;
     let selectedItem;
     if (selectedId) {
-      selectedItem = id === selectedId;
+      selectedItem = taggingId === selectedId;
     } else {
       selectedItem = index === 0;
     }
@@ -30,16 +30,16 @@ const Category: React.FC = () => {
     const backgroundColor = selectedItem ? (tintColor ? tintColor : COLORS.primary) : COLORS.background;
     const color = selectedItem ? COLORS.white : COLORS.light_text;
 
-    const _filterMoments = (tagId: string) => {
-      selectedId = tagId;
-      dispatch({type: GET_MOMENTS_LIST, payload: {tagId}});
+    const _filterMoments = () => {
+      selectedId = taggingId;
+      dispatch({type: GET_MOMENTS_LIST, payload: {taggingId}});
     };
 
     return (
-      <TouchableOpacity key={id} onPress={() => _filterMoments(id)}>
+      <TouchableOpacity key={id} onPress={_filterMoments}>
         <Block paddingHorizontal={12} backgroundColor={backgroundColor} style={styles.category}>
           <Text sm color={color} type="semibold">
-            {tag}
+            {tagging}
           </Text>
         </Block>
       </TouchableOpacity>

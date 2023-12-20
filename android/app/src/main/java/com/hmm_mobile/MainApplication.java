@@ -1,4 +1,4 @@
-package com.reliable.hmm;
+package com.reliable.moments;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

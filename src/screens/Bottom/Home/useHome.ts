@@ -1,5 +1,12 @@
 import {useStore} from '@hooks';
-import {GET_EMOTION_SCORE, GET_MILESTONES, GET_MOOD_LIST, GET_POSTS, GET_USER_MOMENTS_LIST} from '@store/actions';
+import {
+  GET_CUSTOMIZATION,
+  GET_EMOTION_SCORE,
+  GET_MILESTONES,
+  GET_MOOD_LIST,
+  GET_POSTS,
+  GET_USER_MOMENTS_LIST,
+} from '@store/actions';
 import dayjs from 'dayjs';
 import weekday from 'dayjs/plugin/weekday';
 import {useCallback} from 'react';
@@ -17,6 +24,11 @@ const useHome = () => {
   const {data: postsList} = useSelector('postsList');
 
   const fetchData = useCallback(() => {
+    /**
+     * GET_CUSTOMIZATION
+     */
+    dispatch({type: GET_CUSTOMIZATION});
+
     /**
      * GET_EMOTION_SCORE
      */

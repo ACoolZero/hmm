@@ -1,4 +1,4 @@
-import {Block, FormInput, GradientButton, Text} from '@components';
+import {Block, FormInput, GradientButton, Loading, Text} from '@components';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {useStore} from '@hooks';
 import {navigate} from '@navigation/NavigationServices';
@@ -63,6 +63,7 @@ const LoginForm: React.FC = () => {
       </Block>
       <GradientButton disabled={isLoading} isValid={isValid} title="Sign in" onPress={handleSubmit(_onSubmit)} />
       <SocialLoginForm />
+      <Loading visible={isLoading} />
     </Block>
   );
 };

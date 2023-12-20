@@ -28,7 +28,7 @@ const More: React.FC = () => {
           <GradientSwitch isOn={mode === 'dark'} onToggle={_toggleDarkMode} />
         </Block>
         <Block height={1} marginHorizontal={16} backgroundColor="#87A8B9" />
-        <Block row alignCenter padding={16} space="between">
+        <Block row alignCenter padding={16} space="between" opacity={0.5}>
           <Block row alignCenter>
             <Image source={IMAGES.sound_mode} square={32} />
             <Text marginLeft={12}>Sound animation</Text>
@@ -36,7 +36,7 @@ const More: React.FC = () => {
           <GradientSwitch disabled />
         </Block>
         <Block height={1} marginHorizontal={16} backgroundColor="#87A8B9" />
-        <Block row alignCenter padding={16} space="between">
+        <Block row alignCenter padding={16} space="between" opacity={0.5}>
           <Block row alignCenter>
             <Image source={IMAGES.calendar_mode} square={32} />
             <Text marginLeft={12}>Plan to Calendar</Text>
@@ -44,7 +44,7 @@ const More: React.FC = () => {
           <GradientSwitch disabled />
         </Block>
         <Block height={1} marginHorizontal={16} backgroundColor="#87A8B9" />
-        <Block row alignCenter padding={16} space="between">
+        <Block row alignCenter padding={16} space="between" opacity={0.5}>
           <Block row alignCenter>
             <Image source={IMAGES.record_mode} square={32} />
             <Text marginLeft={12}>Record reminder</Text>

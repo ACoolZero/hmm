@@ -1,14 +1,17 @@
 export interface IMomentTag {
   id: string;
-  tag: string;
-  tintColor?: string;
+  tagging: string;
+  taggingId: string;
+  tintColor: string;
 }
 export interface IMoment {
-  id: number;
-  media: string;
   content: string;
+  creatorId: string;
+  creatorName: string;
+  id: string;
+  liked: boolean;
+  media: string;
+  module: string;
+  moduleId: string;
   type: string;
-  mediaType: string;
-  isLiked: boolean;
-  createdAt: string;
 }

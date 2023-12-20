@@ -1,4 +1,4 @@
-package com.reliable.hmm;
+package com.reliable.moments;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

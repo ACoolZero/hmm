@@ -1,18 +1,25 @@
-import {Block, Text} from '@components';
+import {Block, Modal, Text} from '@components';
 import {useStore} from '@hooks';
 import {IReaction} from '@screens/Bottom/Home/types';
-import React from 'react';
-import {Pressable} from 'react-native';
+import {height} from '@utils/responsive';
+import React, {useState} from 'react';
+import {TouchableOpacity} from 'react-native';
 import {SvgUri} from 'react-native-svg';
 import styles, {ICON_SIZE, REACTION_SIZE} from './styles';
 
 const Moods: React.FC = () => {
   const {useSelector} = useStore();
   const {data: moodsList} = useSelector('moodsList');
+  const [isShowModal, setIsShowModal] = useState(false);
+
   const _renderItem = (item: IReaction) => {
     const {id, icon, name, color} = item;
     return (
-      <Pressable key={id}>
+      <TouchableOpacity
+        key={id}
+        onPress={() => {
+          setIsShowModal(true);
+        }}>
         <Block alignCenter justifyCenter radius={12} square={REACTION_SIZE} backgroundColor="feeling_background">
           <Block
             radius={REACTION_SIZE}
@@ -21,10 +28,10 @@ const Moods: React.FC = () => {
             <SvgUri width={ICON_SIZE} height={ICON_SIZE} uri={icon} />
           </Block>
         </Block>
-        <Text sm center marginTop={8} numberOfLines={1} type="semibold" color="light_text">
+        <Text sm center marginVertical={8} numberOfLines={1} type="semibold" color="light_text">
           {name}
         </Text>
-      </Pressable>
+      </TouchableOpacity>
     );
   };
 
@@ -34,8 +41,17 @@ const Moods: React.FC = () => {
         Change the moods you frequently have
       </Text>
       <Block row alignCenter space="between">
-        {moodsList?.map(_renderItem)}
+        {moodsList?.slice(0, 4).map(_renderItem)}
       </Block>
+      <Modal isVisible={isShowModal} onBackdropPress={() => setIsShowModal(false)}>
+        <Block overflow="hidden" height={height * 0.6} radius={12} backgroundColor="background">
+          <Text margin={16}>Frequently detected</Text>
+          <Block height={1} marginBottom={16} backgroundColor="border" />
+          <Block wrap row flex space="evenly">
+            {moodsList?.map(_renderItem)}
+          </Block>
+        </Block>
+      </Modal>
     </Block>
   );
 };

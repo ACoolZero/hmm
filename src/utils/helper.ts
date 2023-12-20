@@ -2,6 +2,8 @@ import en from 'dayjs/locale/en';
 import vi from 'dayjs/locale/vi';
 import {Platform} from 'react-native';
 
+export const isDeveloping = true;
+
 export const LOCALE = {vi, en};
 
 /**

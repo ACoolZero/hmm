@@ -13,7 +13,7 @@ const Milestones: React.FC = () => {
   const {milestoneList} = useHome();
 
   const _renderItem = (item: IMilestone, index: number) => {
-    const isLastItem = index === 2;
+    let isLastItem = index === (milestoneList?.length > 2 ? 2 : milestoneList.length - 1);
     return <MilestoneCard key={item.id} item={item} isLastItem={isLastItem} />;
   };
 

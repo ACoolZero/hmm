@@ -8,7 +8,7 @@ export interface BlockProps extends ViewProps {
   column?: boolean;
   shadow?: boolean;
   backgroundColor?: string;
-  space?: 'between' | 'around';
+  space?: 'between' | 'around' | 'evenly';
   padding?: number;
   margin?: number;
   alignStart?: boolean;

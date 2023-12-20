@@ -13,7 +13,7 @@ import {IPost} from './types';
 const Articles: React.FC = () => {
   const {fetchData} = useHome();
   const {COLORS} = useColors();
-  const {userCurrentMood, postsList} = useHome();
+  const {postsList} = useHome();
 
   useEffect(() => {
     fetchData();
@@ -26,25 +26,27 @@ const Articles: React.FC = () => {
       <Block>
         <Stories />
         <Reaction />
-        {userCurrentMood && <Status />}
+        <Status />
         <EmotionChart />
         <Milestones />
-        <Block row alignCenter marginHorizontal={17} marginBottom={24} space="between">
-          <Text size={24} type="bold">
-            Reading list
-          </Text>
-          <TouchableOpacity
-            onPress={() => {
-              navigate(routes.ARTICLE_VIEWED_SCREEN);
-            }}>
-            <Block row alignCenter>
-              <Text sm marginRight={6} color="primary">
-                Viewed
-              </Text>
-              <Image source={ICONS.arrow_right} square={12} tintColor={COLORS.primary} />
-            </Block>
-          </TouchableOpacity>
-        </Block>
+        {!!postsList?.length && (
+          <Block row alignCenter marginHorizontal={17} marginBottom={24} space="between">
+            <Text size={24} type="bold">
+              Reading list
+            </Text>
+            <TouchableOpacity
+              onPress={() => {
+                navigate(routes.ARTICLE_VIEWED_SCREEN);
+              }}>
+              <Block row alignCenter>
+                <Text sm marginRight={6} color="primary">
+                  Viewed
+                </Text>
+                <Image source={ICONS.arrow_right} square={12} tintColor={COLORS.primary} />
+              </Block>
+            </TouchableOpacity>
+          </Block>
+        )}
       </Block>
     );
   };

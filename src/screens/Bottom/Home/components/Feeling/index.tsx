@@ -12,7 +12,7 @@ import {SvgUri} from 'react-native-svg';
 import styles, {ICON_SIZE, REACTION_SIZE} from './styles';
 
 const Feeling: React.FC = () => {
-  const {postsList, moodsList, userCurrentMood, dispatch} = useHome();
+  const {moodsList, userCurrentMood, dispatch} = useHome();
   const [isFeelingVisible, setFeelingVisible] = useState(false);
 
   useFocusEffect(
@@ -22,8 +22,8 @@ const Feeling: React.FC = () => {
   );
 
   useEffect(() => {
-    if (postsList?.length) sleep(3000).then(() => setFeelingVisible(true));
-  }, [postsList]);
+    sleep(5000).then(() => setFeelingVisible(true));
+  }, []);
 
   const _renderItem = (item: IReaction) => {
     const {id, icon, name, color} = item;
@@ -59,7 +59,7 @@ const Feeling: React.FC = () => {
           Hi, you good ?
         </Text>
         <Block row alignCenter gap={4}>
-          {moodsList?.map(_renderItem)}
+          {moodsList?.slice(0, 4).map(_renderItem)}
         </Block>
         {userCurrentMood && (
           <Pressable hitSlop={handleHitSlop(10)} style={styles.btnClosePopup} onPress={() => setFeelingVisible(false)}>

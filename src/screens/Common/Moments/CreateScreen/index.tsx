@@ -1,14 +1,15 @@
+/* eslint-disable react-native/no-inline-styles */
 import {ICONS} from '@assets';
 import {Block, GradientButton, Header, Image, LazyImage, Loading, Text, TextInput} from '@components';
 import {useColors, useMediaPicker, useStore} from '@hooks';
 import {RootStackParamList} from '@navigation/types';
 import {RouteProp} from '@react-navigation/native';
 import {CREATE_MOMENT, UPLOAD_FILE} from '@store/actions';
-import {getSize, width} from '@utils/responsive';
+import {getSize} from '@utils/responsive';
 import React, {useEffect, useState} from 'react';
 import {Pressable, TouchableOpacity} from 'react-native';
 import {AccessModeType} from '../types';
-import styles from './styles';
+import styles, {IMAGE_HEIGHT, IMAGE_WIDTH} from './styles';
 
 interface CreateMomentProps {
   route: RouteProp<RootStackParamList, 'CREATE_MOMENT_SCREEN'>;
@@ -57,17 +58,20 @@ const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
   return (
     <Block flex backgroundColor={COLORS.secondary_background}>
       <Header canGoBack title="Create Moment" />
-      <Block flex>
-        <Pressable onPress={openPicker}>
-          <Block row alignCenter height={40} paddingHorizontal={12} backgroundColor="primary" space="between">
-            <Text color="#D4EAF5">Choose a photo</Text>
-            <Image source={ICONS.arrow_right} square={18} tintColor="#D4EAF5" />
-          </Block>
-        </Pressable>
-        <Block flex shadow justifyCenter padding={16}>
-          <LazyImage source={(picture as any)?.path} square={width * 0.8} style={{borderRadius: getSize.s(24)}} />
+      <Pressable style={{flex: 1}} onPress={openPicker}>
+        <Block row alignCenter height={40} paddingHorizontal={12} backgroundColor="primary" space="between">
+          <Text color="#D4EAF5">Choose a photo</Text>
+          <Image source={ICONS.arrow_right} square={18} tintColor="#D4EAF5" />
         </Block>
-      </Block>
+        <Block flex shadow justifyCenter padding={16}>
+          <LazyImage
+            source={(picture as any)?.path}
+            width={IMAGE_WIDTH}
+            height={IMAGE_HEIGHT}
+            style={{borderRadius: getSize.s(24)}}
+          />
+        </Block>
+      </Pressable>
       <Block
         shadow
         safeBottom

@@ -11,8 +11,8 @@ const useMoments = () => {
     dispatch({type: _onUnmount(GET_MOMENT_TAGS)});
     dispatch({
       type: GET_MOMENT_TAGS,
-      callback: (tagId: string) => {
-        dispatch({type: GET_MOMENTS_LIST, payload: {tagId}});
+      callback: (taggingId: string) => {
+        dispatch({type: GET_MOMENTS_LIST, payload: {taggingId}});
       },
     });
   }, [dispatch]);

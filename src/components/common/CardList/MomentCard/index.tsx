@@ -1,9 +1,11 @@
 import {ICONS} from '@assets';
 import {Block, Image, Text} from '@components';
+import {useStore} from '@hooks';
 import {IMoment} from '@screens/Bottom/Moments/types';
+import {LIKE_MOMENT} from '@store/actions';
 import {getSize, width} from '@utils/responsive';
 import React, {memo} from 'react';
-import {ImageBackground, Pressable, StyleSheet, ViewStyle} from 'react-native';
+import {ImageBackground, Pressable, StyleSheet, TouchableOpacity, ViewStyle} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 const FULL_WIDTH = width - getSize.s(16 * 2);
@@ -15,7 +17,8 @@ interface MomentCardProps {
 }
 
 const MomentCard: React.FC<MomentCardProps> = ({item, index}) => {
-  const {media, content, isLiked} = item;
+  const {dispatch} = useStore();
+  const {id, media, content, liked, creatorName} = item;
   const position = index + 1;
   const specific = position % 9 === 0 ? 9 : position % 9;
   const specificStyle: {[k: number]: ViewStyle} = {
@@ -53,13 +56,16 @@ const MomentCard: React.FC<MomentCardProps> = ({item, index}) => {
               </Text>
               <Block row alignCenter space="between">
                 <Text flex sm color="#FAFAFA" numberOfLines={1}>
-                  @author
+                  {creatorName}
                 </Text>
-                <Pressable>
+                <TouchableOpacity
+                  onPress={() => {
+                    dispatch({type: LIKE_MOMENT, payload: {id, action: liked ? 'UNLIKE' : 'LIKE'}});
+                  }}>
                   <Block alignCenter justifyCenter round={36} backgroundColor="#00000070">
-                    <Image source={isLiked ? ICONS.loved : ICONS.unloved} square={20} resizeMode="contain" />
+                    <Image source={liked ? ICONS.loved : ICONS.unloved} square={20} resizeMode="contain" />
                   </Block>
-                </Pressable>
+                </TouchableOpacity>
               </Block>
             </Block>
           </LinearGradient>

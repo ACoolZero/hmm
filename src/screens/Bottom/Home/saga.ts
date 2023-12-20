@@ -18,7 +18,7 @@ function* getEmotionScore(
 }
 
 function* getMoods(action: ActionPayload<null>) {
-  const params = {limit: 4, skip: 0};
+  const params = {limit: 100, skip: 0};
   const response: AxiosResponse = yield call(api, '/mood', {params});
   yield put({type: actions._onSuccess(action.type), payload: {data: response.data.items}});
 }
@@ -34,6 +34,7 @@ function* updateStatus(action: ActionPayload<{exactlyYouFeelText: string}>) {
   const exactlyYouFeelText = action.payload.exactlyYouFeelText;
   yield call(api, `/user-mood/${userCurrentMood}`, {method: 'put', data: {exactlyYouFeelText}});
   yield put({type: actions._onSuccess(action.type)});
+  yield put({type: actions.GENERATE_TAG, payload: {exactlyYouFeelText}});
 }
 
 function* generateTags(action: ActionPayload<{exactlyYouFeelText: string}>) {

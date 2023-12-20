@@ -52,7 +52,7 @@ const ToastMessage: React.FC<ToastMessageProps> = ({position}) => {
     setIsVisible(false);
   });
 
-  const _showToastMessage = ({type = 'success', message, duration = 3000}: MessageOptions) => {
+  const _showToastMessage = ({type = 'success', message, duration = 2000}: MessageOptions) => {
     setIsVisible(true);
     setMessageType(type);
     setMsg(message);

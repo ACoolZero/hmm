@@ -2,6 +2,7 @@ import {
   CACHING_EMAIL,
   GET_CURRENT_USER,
   LOGIN_ACCOUNT,
+  LOGIN_GOOGLE,
   LOGOUT_ACCOUNT,
   REGISTER_ACCOUNT,
   STORE_REGISTER_DATA,
@@ -69,8 +70,10 @@ const register = produce((state = {data: {}}, action) => {
   }
 });
 
+const loginGoogle = (...args: any) => reducer.apply(null, [...args, LOGIN_GOOGLE] as any);
+
 const emailCaching = (...args: any) => reducer.apply(null, [...args, CACHING_EMAIL] as any);
 
 const uploadFile = (...args: any) => reducer.apply(null, [...args, UPLOAD_FILE] as any);
 
-export default {auth, register, uploadFile, emailCaching};
+export default {auth, register, loginGoogle, uploadFile, emailCaching};

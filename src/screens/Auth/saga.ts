@@ -34,11 +34,28 @@ function* login(action: ActionPayload<LoginPayload>) {
   yield Storage.setItem(REFRESH_TOKEN, refreshToken);
   yield put({type: actions._onSuccess(action.type), payload: {accessToken, refreshToken}});
   yield put({type: actions.GET_CURRENT_USER});
-  yield put({type: actions._onSuccess(actions.CACHING_EMAIL), payload: {data: data.email}});
+  yield put({type: actions._onSuccess(actions.CACHING_EMAIL), payload: {data: data?.email}});
 
   yield Storage.setItem(REFRESH_EXPIRES_AT, dayjs().add(1, 'week').format('YYYY-MM-DD'));
-
+  yield delay(200);
   reset(routes.BOTTOM_TAB);
+}
+
+function* loginGoogle(action: ActionPayload<{accessToken: string; email: string}>) {
+  const data = {
+    accessToken: action.payload.accessToken,
+    email: action.payload.email,
+  };
+  const response: AxiosResponse = yield call(api, '/auth/google', {method: 'post', data});
+  const {accessToken, refreshToken} = response.data;
+  yield Storage.setItem(ACCESS_TOKEN, accessToken);
+  yield Storage.setItem(REFRESH_TOKEN, refreshToken);
+  yield put({type: actions._onSuccess(actions.LOGIN_ACCOUNT), payload: {accessToken, refreshToken}});
+  yield put({type: actions._onComplete(actions.LOGIN_ACCOUNT)});
+  yield put({type: actions.GET_CURRENT_USER});
+
+  yield Storage.setItem(REFRESH_EXPIRES_AT, dayjs().add(1, 'week').format('YYYY-MM-DD'));
+  yield reset(routes.BOTTOM_TAB);
 }
 
 function* getCurrentUser(action: ActionPayload<null>) {
@@ -54,7 +71,7 @@ function* logout(action: ActionPayload<null>) {
   Storage.removeItem(REFRESH_TOKEN);
   FastImage.clearMemoryCache();
   FastImage.clearDiskCache();
-  yield delay(500);
+  yield delay(200);
   reset(routes.LOGIN_SCREEN);
 }
 
@@ -92,6 +109,7 @@ function* uploadFile(action: ActionPayload<any>) {
 export default [
   takeLatest(actions.REGISTER_ACCOUNT, guard(register)),
   takeLatest(actions.LOGIN_ACCOUNT, guard(login)),
+  takeLatest(actions.LOGIN_GOOGLE, guard(loginGoogle)),
   takeLatest(actions.GET_CURRENT_USER, guard(getCurrentUser)),
   takeLatest(actions.LOGOUT_ACCOUNT, guard(logout)),
   takeLatest(actions.GET_REFRESH_TOKEN, guard(getRefreshToken)),
