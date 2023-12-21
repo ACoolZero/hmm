@@ -6,7 +6,7 @@ import {GenderType, UpdateUserPayload} from '@screens/Auth/types';
 import {UPDATE_USER_INFO, UPLOAD_FILE} from '@store/actions';
 import {getSize} from '@utils/responsive';
 import React, {useEffect, useState} from 'react';
-import {Pressable} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import styles from './styles';
 
 const EditProfile: React.FC = () => {
@@ -49,7 +49,7 @@ const EditProfile: React.FC = () => {
   };
 
   const _renderGender = (value: GenderType) => (
-    <Pressable
+    <TouchableOpacity
       onPress={() => {
         setGender(value);
         setInfo(oldValue => ({...oldValue, gender: value}));
@@ -69,7 +69,7 @@ const EditProfile: React.FC = () => {
           </Block>
         </Block>
       </Block>
-    </Pressable>
+    </TouchableOpacity>
   );
 
   return (
@@ -77,7 +77,7 @@ const EditProfile: React.FC = () => {
       <Header canGoBack title="Edit Profile" />
       <FormContainer>
         <Block paddingHorizontal={16} paddingVertical={24}>
-          <Pressable onPress={() => setOpenMediaPicker(true)}>
+          <TouchableOpacity onPress={() => setOpenMediaPicker(true)}>
             <Block alignSelf="center">
               <Block round={80} borderWidth={1} borderColor="light_text" overflow="hidden">
                 <Image source={{uri: info.avatar}} round={80} />
@@ -86,7 +86,7 @@ const EditProfile: React.FC = () => {
                 <Image source={ICONS.camera} square={16} tintColor={COLORS.light_text} resizeMode="contain" />
               </Block>
             </Block>
-          </Pressable>
+          </TouchableOpacity>
           <Block paddingTop={16}>
             <TextInput
               label="Your name"

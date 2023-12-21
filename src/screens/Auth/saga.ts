@@ -52,11 +52,11 @@ function* loginGoogle(action: ActionPayload<{accessToken: string; email: string}
   yield Storage.setItem(ACCESS_TOKEN, accessToken);
   yield Storage.setItem(REFRESH_TOKEN, refreshToken);
   yield put({type: actions._onSuccess(actions.LOGIN_ACCOUNT), payload: {accessToken, refreshToken}});
-  yield put({type: actions._onComplete(actions.LOGIN_ACCOUNT)});
   yield put({type: actions.GET_CURRENT_USER});
 
   yield Storage.setItem(REFRESH_EXPIRES_AT, dayjs().add(1, 'week').format('YYYY-MM-DD'));
   yield reset(routes.BOTTOM_TAB);
+  GoogleSignin.revokeAccess();
 }
 
 function* getCurrentUser(action: ActionPayload<null>) {
@@ -72,10 +72,10 @@ function* logout(action: ActionPayload<null>) {
   Storage.removeItem(REFRESH_TOKEN);
   FastImage.clearMemoryCache();
   FastImage.clearDiskCache();
-  GoogleSignin.revokeAccess();
-
   yield delay(500);
   reset(routes.LOGIN_SCREEN);
+  GoogleSignin.revokeAccess();
+  GoogleSignin.signOut();
 }
 
 function* getRefreshToken() {

@@ -1,3 +1,4 @@
+import {showMessage} from '@components/common/ToastMessage';
 import {api} from '@services';
 import * as actions from '@store/actions';
 import {guard} from '@store/general/saga';
@@ -16,6 +17,7 @@ function* updateConfigMood(action: ActionPayload<{moodIds: number[]}>) {
   const data = {moodIds: action.payload.moodIds};
   yield call(api, '/user/customization/config-mood', {method: 'put', data});
   yield put({type: actions.GET_CUSTOMIZATION});
+  showMessage({message: 'Customization Updated'});
 }
 
 export default [

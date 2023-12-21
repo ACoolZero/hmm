@@ -5,7 +5,7 @@ import routes from '@navigation/routes';
 import {BlurView} from '@react-native-community/blur';
 import {getSize} from '@utils/responsive';
 import React, {useState} from 'react';
-import {DeviceEventEmitter, Pressable, TouchableOpacity} from 'react-native';
+import {DeviceEventEmitter, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import {ActionButtonProps} from './types';
 
@@ -62,7 +62,7 @@ const ActionModal: React.FC = () => {
 
   if (!isVisible) return null;
   return (
-    <Pressable style={styles.container} onPress={() => setIsVisible(false)}>
+    <TouchableOpacity style={styles.container} onPress={() => setIsVisible(false)}>
       <BlurView style={styles.container} blurType="dark" blurAmount={16} />
       <Block safeBottom flex row alignEnd>
         <Block flex alignEnd justifyCenter height={300}>
@@ -106,7 +106,7 @@ const ActionModal: React.FC = () => {
           {_renderActionButton({actiontype: 'VOLUNTEER', icon: IMAGES.volunteer, title: 'Volunteer', disabled: true})}
         </Block>
       </Block>
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 

@@ -5,7 +5,7 @@ import {useStore} from '@hooks';
 import {navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import React from 'react';
-import {Pressable} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 
 const GadgetsHeader: React.FC = () => {
   const {useSelector} = useStore();
@@ -31,7 +31,7 @@ const GadgetsHeader: React.FC = () => {
             </Text>
           </Block>
         </Block>
-        <Pressable
+        <TouchableOpacity
           onPress={() => {
             navigate(routes.EDIT_PROFILE_SCREEN);
           }}>
@@ -44,7 +44,7 @@ const GadgetsHeader: React.FC = () => {
             backgroundColor="secondary_background">
             <Image source={ICONS.edit} square={20} />
           </Block>
-        </Pressable>
+        </TouchableOpacity>
       </Block>
       {slogan && (
         <Text marginTop={16} style={{fontStyle: 'italic'}}>

@@ -4,7 +4,7 @@ import {goBack, reset} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {Pressable} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import styles from './styles';
 
@@ -23,9 +23,9 @@ const Header: React.FC<HeaderProps> = ({canGoBack, title, onGoBack}) => {
   return (
     <Block shadow alignCenter justifyCenter paddingTop={top} height={top + 50} backgroundColor="secondary_background">
       {(canGoBack || onGoBack) && (
-        <Pressable onPress={_handleGoBack} style={{...styles.btnBack, height: top + 50, paddingTop: top}}>
+        <TouchableOpacity onPress={_handleGoBack} style={{...styles.btnBack, height: top + 50, paddingTop: top}}>
           <Image source={ICONS.arrow_left} style={styles.iconBack} tintColor="text" />
-        </Pressable>
+        </TouchableOpacity>
       )}
       <Text center numberOfLines={1} color="text" type="semibold">
         {title}

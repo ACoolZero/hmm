@@ -39,7 +39,7 @@ const ToastMessage: React.FC<ToastMessageProps> = ({position}) => {
 
   const positionStyle = {
     bottom: {bottom: bottom ? bottom : getSize.m(20)},
-    top: {top},
+    top: {top: top + getSize.m(12)},
   };
 
   DeviceEventEmitter.addListener('showToastMessage', payload => {

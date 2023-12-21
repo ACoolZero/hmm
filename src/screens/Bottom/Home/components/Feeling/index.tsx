@@ -7,7 +7,7 @@ import useHome from '@screens/Bottom/Home/useHome';
 import {CREATE_MOOD} from '@store/actions';
 import {sleep} from '@utils/date';
 import React, {memo, useCallback, useEffect, useState} from 'react';
-import {Pressable} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import {SvgUri} from 'react-native-svg';
 import styles, {ICON_SIZE, REACTION_SIZE} from './styles';
 
@@ -29,7 +29,7 @@ const Feeling: React.FC = () => {
   const _renderItem = (item: IReaction) => {
     const {id, icon, name, color} = item;
     return (
-      <Pressable
+      <TouchableOpacity
         key={id}
         onPress={() => {
           dispatch({type: CREATE_MOOD, payload: {moodId: id}});
@@ -46,7 +46,7 @@ const Feeling: React.FC = () => {
         <Text sm center marginTop={8} numberOfLines={1} type="semibold">
           {name}
         </Text>
-      </Pressable>
+      </TouchableOpacity>
     );
   };
 
@@ -63,9 +63,12 @@ const Feeling: React.FC = () => {
           {defaultMoods?.map(_renderItem)}
         </Block>
         {userCurrentMood && (
-          <Pressable hitSlop={handleHitSlop(10)} style={styles.btnClosePopup} onPress={() => setFeelingVisible(false)}>
+          <TouchableOpacity
+            hitSlop={handleHitSlop(10)}
+            style={styles.btnClosePopup}
+            onPress={() => setFeelingVisible(false)}>
             <Image source={ICONS.close} square={16} tintColor="white" />
-          </Pressable>
+          </TouchableOpacity>
         )}
       </Block>
     </Modal>
