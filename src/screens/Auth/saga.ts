@@ -1,6 +1,7 @@
 import {showMessage} from '@components/common/ToastMessage';
 import {goBack, reset} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {api} from '@services';
 import * as actions from '@store/actions';
 import {guard} from '@store/general/saga';
@@ -71,7 +72,9 @@ function* logout(action: ActionPayload<null>) {
   Storage.removeItem(REFRESH_TOKEN);
   FastImage.clearMemoryCache();
   FastImage.clearDiskCache();
-  yield delay(200);
+  GoogleSignin.revokeAccess();
+
+  yield delay(500);
   reset(routes.LOGIN_SCREEN);
 }
 

@@ -32,17 +32,17 @@ const SocialLoginForm: React.FC = () => {
         <Block flex height={1} backgroundColor="#DDDDDD" />
       </Block>
       <Block row alignCenter paddingHorizontal={width * 0.2} space="between">
-        <TouchableOpacity>
-          <Image source={ICONS.apple} square={24} resizeMode="contain" />
-        </TouchableOpacity>
+        {isIos && (
+          <TouchableOpacity>
+            <Image source={ICONS.apple} square={24} resizeMode="contain" />
+          </TouchableOpacity>
+        )}
         <TouchableOpacity onPress={_handleLoginGoogle}>
           <Image source={ICONS.google} square={24} resizeMode="contain" />
         </TouchableOpacity>
-        {isIos && (
-          <TouchableOpacity>
-            <Image source={ICONS.twitter} square={24} resizeMode="contain" />
-          </TouchableOpacity>
-        )}
+        <TouchableOpacity>
+          <Image source={ICONS.twitter} square={24} resizeMode="contain" />
+        </TouchableOpacity>
       </Block>
     </Block>
   );
