@@ -23,7 +23,13 @@ const ArticleViewed: React.FC = () => {
   return (
     <Block flex backgroundColor="background">
       <Header canGoBack title="Viewed" />
-      <ListWrapper data={viewedPostsList} keyExtractor={(item: IArticle) => String(item.id)} renderItem={_renderItem} />
+      <Block flex paddingVertical={16}>
+        <ListWrapper
+          data={viewedPostsList}
+          keyExtractor={(item: IArticle) => String(item.id)}
+          renderItem={_renderItem}
+        />
+      </Block>
     </Block>
   );
 };
