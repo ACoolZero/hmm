@@ -40,7 +40,7 @@ function* updateStatus(action: ActionPayload<{exactlyYouFeelText: string}>) {
 function* generateTags(action: ActionPayload<{exactlyYouFeelText: string}>) {
   const data = {exactlyYouFeelText: action.payload.exactlyYouFeelText};
   const response: AxiosResponse = yield call(api, '/user-mood/generate-tag', {method: 'post', data});
-  yield put({type: actions._onSuccess(action.type), payload: {data: response.data.items}});
+  yield put({type: actions._onSuccess(action.type), payload: {data: response.data}});
 }
 
 function* updateTag(action: ActionPayload<{tagging: string}>) {

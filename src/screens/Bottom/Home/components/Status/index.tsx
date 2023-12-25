@@ -4,7 +4,7 @@ import {useColors} from '@hooks';
 import useHome from '@screens/Bottom/Home/useHome';
 import {UPDATE_STATUS} from '@store/actions';
 import {getSize} from '@utils/responsive';
-import React, {memo, useEffect, useState} from 'react';
+import React, {memo, useCallback, useEffect, useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 
 const Status: React.FC = () => {
@@ -12,16 +12,23 @@ const Status: React.FC = () => {
   const {userCurrentMood, tagsList, dispatch} = useHome();
   const [feeling, setFeeling] = useState<string>();
 
-  const _renderTag: React.FC<{id: string; tag: string}> = item => {
-    const {id, tag} = item;
+  const _renderTag: React.FC<any> = (item, index) => {
     return (
-      <TouchableOpacity key={id} onPress={() => {}}>
-        <Block radius={12} paddingHorizontal={16} paddingVertical={12} backgroundColor="secondary_background">
-          <Text sm>{tag}</Text>
+      <TouchableOpacity
+        key={index}
+        onPress={() => {
+          setFeeling(item);
+        }}>
+        <Block radius={8} paddingHorizontal={12} paddingVertical={8} backgroundColor="secondary_background">
+          <Text>{item}</Text>
         </Block>
       </TouchableOpacity>
     );
   };
+
+  const onChangeText = useCallback((e: string) => {
+    setFeeling(e);
+  }, []);
 
   useEffect(() => {
     if (feeling) dispatch({type: UPDATE_STATUS, payload: {exactlyYouFeelText: feeling}});
@@ -47,7 +54,8 @@ const Status: React.FC = () => {
         }}
         height={100}
         color={COLORS.light_text}
-        onChangeText={e => setFeeling(e)}
+        onChangeText={onChangeText}
+        value={feeling}
       />
       <Block row wrap gap={12}>
         {tagsList?.map(_renderTag)}

@@ -1,5 +1,5 @@
 import {ICONS} from '@assets';
-import {Block, Image} from '@components';
+import {Block, Image, OnTopButton} from '@components';
 import routes from '@navigation/routes';
 import {getSize} from '@utils/responsive';
 import React from 'react';
@@ -66,6 +66,7 @@ const TabBar: React.FC<TabBarProps> = ({state, navigation}) => {
           );
         })}
       </Block>
+      <OnTopButton />
     </Block>
   );
 };

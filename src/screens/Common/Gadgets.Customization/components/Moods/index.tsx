@@ -1,11 +1,10 @@
-import {Block, ListWrapper, Modal, Text} from '@components';
+import {Block, Image, ListWrapper, Modal, Text} from '@components';
 import {useStore} from '@hooks';
 import {IReaction} from '@screens/Bottom/Home/types';
 import {STORE_CONFIG_MOOD} from '@store/actions';
 import {height} from '@utils/responsive';
 import React, {useState} from 'react';
 import {ListRenderItem, TouchableOpacity} from 'react-native';
-import {SvgUri} from 'react-native-svg';
 import styles, {ICON_SIZE, REACTION_SIZE, SELECTED_ICON_SIZE, SELECTED_REACTION_SIZE} from './styles';
 
 const Moods: React.FC = () => {
@@ -34,7 +33,7 @@ const Moods: React.FC = () => {
             radius={SELECTED_REACTION_SIZE}
             style={{...styles.iconShadow, shadowColor: color}}
             backgroundColor="secondary_background">
-            <SvgUri width={SELECTED_ICON_SIZE} height={SELECTED_ICON_SIZE} uri={icon} />
+            <Image source={{uri: icon}} square={SELECTED_ICON_SIZE} />
           </Block>
         </Block>
         <Text sm center marginVertical={8} numberOfLines={1} type="semibold" color="light_text">
@@ -66,7 +65,7 @@ const Moods: React.FC = () => {
             radius={REACTION_SIZE}
             style={{...styles.iconShadow, shadowColor: color}}
             backgroundColor="secondary_background">
-            <SvgUri width={ICON_SIZE} height={ICON_SIZE} uri={icon} />
+            <Image source={{uri: icon}} square={ICON_SIZE} />
           </Block>
         </Block>
         <Text sm center marginVertical={8} numberOfLines={1} type="semibold" color="light_text">

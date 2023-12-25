@@ -1,4 +1,4 @@
-import {Block, GiftedChat, OnTopButton, Text} from '@components';
+import {Block, GiftedChat, Text} from '@components';
 import {useStore} from '@hooks';
 import {isDeveloping} from '@utils/helper';
 import React, {useState} from 'react';
@@ -21,7 +21,6 @@ const Chat = () => {
     <Block flex paddingBottom={30} backgroundColor="background">
       <Header />
       <GiftedChat messages={messages} userId={2} chatColor={chatColor} />
-      <OnTopButton bottomOffset={140} />
     </Block>
   );
 };

@@ -1,8 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import {ICONS} from '@assets';
-import {Block, GradientButton, Image, Text, TextInput} from '@components';
+import {Block, GradientButton, Image, Loading, Text, TextInput} from '@components';
 import {handleHitSlop} from '@components/base/shared';
-import {useColors} from '@hooks';
+import {useColors, useStore} from '@hooks';
 import {getSize, height} from '@utils/responsive';
 import dayjs from 'dayjs';
 import React, {useRef, useState} from 'react';
@@ -12,6 +12,8 @@ import ConfirmDialog from '../components/ConfirmDialog';
 import Header from '../components/Header';
 
 const CreateScreen: React.FC = () => {
+  const {useSelector} = useStore();
+  const {isLoading} = useSelector('createMilestone');
   const {COLORS} = useColors();
   const [isDialogVisible, setDialogVisible] = useState<boolean>(false);
   const [isDatePickerVisible, setDatePickerVisibility] = useState<boolean>(false);
@@ -119,6 +121,7 @@ const CreateScreen: React.FC = () => {
         onConfirm={_handleDateConfirm}
         onCancel={_toggleDatePicker}
       />
+      <Loading visible={isLoading} />
     </Block>
   );
 };

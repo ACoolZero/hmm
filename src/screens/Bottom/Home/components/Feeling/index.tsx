@@ -8,7 +8,6 @@ import {CREATE_MOOD} from '@store/actions';
 import {sleep} from '@utils/date';
 import React, {memo, useCallback, useEffect, useState} from 'react';
 import {TouchableOpacity} from 'react-native';
-import {SvgUri} from 'react-native-svg';
 import styles, {ICON_SIZE, REACTION_SIZE} from './styles';
 
 const Feeling: React.FC = () => {
@@ -23,8 +22,8 @@ const Feeling: React.FC = () => {
   );
 
   useEffect(() => {
-    sleep(5000).then(() => setFeelingVisible(true));
-  }, []);
+    sleep(5000).then(() => !!defaultMoods?.length && setFeelingVisible(true));
+  }, [defaultMoods]);
 
   const _renderItem = (item: IReaction) => {
     const {id, icon, name, color} = item;
@@ -40,7 +39,7 @@ const Feeling: React.FC = () => {
             radius={REACTION_SIZE}
             style={{...styles.iconShadow, shadowColor: color}}
             backgroundColor="secondary_background">
-            <SvgUri width={ICON_SIZE} height={ICON_SIZE} uri={icon} />
+            <Image source={{uri: icon}} square={ICON_SIZE} />
           </Block>
         </Block>
         <Text sm center marginTop={8} numberOfLines={1} type="semibold">

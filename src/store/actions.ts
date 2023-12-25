@@ -1,6 +1,7 @@
 export * from '@screens/Auth/action';
 export * from '@screens/Bottom/Home/action';
 export * from '@screens/Bottom/Moments/action';
+export * from '@screens/Common/Feedback.SubmitForm/action';
 export * from '@screens/Common/Gadgets.Customization/action';
 export * from '@screens/Common/Milestone/action';
 export * from '@screens/Common/Moments/action';

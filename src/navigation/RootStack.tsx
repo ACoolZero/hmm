@@ -42,12 +42,6 @@ const RootStack = () => {
         />
       </Stack.Group>
       <Stack.Screen name={routes.BOTTOM_TAB} component={BottomTabNavigation} />
-      {/** Screens are disabled swipe back action */}
-      <Stack.Group screenOptions={{gestureEnabled: false}}>
-        {/**
-         *
-         */}
-      </Stack.Group>
       {/** Modal screens */}
       {/* <Stack.Group screenOptions={{presentation: 'modal'}}></Stack.Group> */}
       {/** Common screens */}

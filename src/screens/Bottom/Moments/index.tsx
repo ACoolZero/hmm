@@ -1,4 +1,4 @@
-import {Block, OnTopButton} from '@components';
+import {Block} from '@components';
 import React, {useEffect} from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Newsfeed} from './components';
@@ -15,7 +15,6 @@ const Moments = () => {
   return (
     <Block flex safeBottom paddingTop={top + 12} backgroundColor="secondary_background">
       <Newsfeed />
-      <OnTopButton />
     </Block>
   );
 };

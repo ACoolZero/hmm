@@ -17,6 +17,7 @@ interface CreateMomentProps {
 
 const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
   const {dispatch, useSelector} = useStore();
+  const {isLoading: isCreate} = useSelector('createMoment');
   const {isLoading} = useSelector('uploadFile');
   const {milestoneId} = route.params || {};
   const {COLORS} = useColors();
@@ -154,7 +155,7 @@ const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
             _createMoment();
           }}
         />
-        <Loading visible={isLoading} />
+        <Loading visible={isLoading || isCreate} />
       </Block>
     </Block>
   );
