@@ -1,7 +1,7 @@
 import {getSize} from '@utils/responsive';
 
 export default {
-  flatListcontentContaine: {
+  flatListcontentContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',

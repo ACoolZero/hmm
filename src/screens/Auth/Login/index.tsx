@@ -9,8 +9,6 @@ const Login: React.FC = () => {
   const {useSelector} = useStore();
   const {isLoading} = useSelector('auth');
 
-  console.log(isLoading);
-
   return (
     <Block flex padding={24} paddingTop={width * 0.2} backgroundColor="common_background">
       <Header content="Welcome!" />

@@ -39,7 +39,7 @@ const Newsfeed: React.FC = () => {
       data={momentsList}
       keyExtractor={(item: IMoment) => String(item.id)}
       renderItem={_renderItem}
-      contentContainerStyle={styles.flatListcontentContaine}
+      contentContainerStyle={styles.flatListcontentContainer}
       showsVerticalScrollIndicator={false}
       ListHeaderComponent={_renderHeader}
       ListEmptyComponent={_renderEmpty}
