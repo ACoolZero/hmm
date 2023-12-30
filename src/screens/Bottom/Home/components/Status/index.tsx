@@ -82,7 +82,7 @@ const Status: React.FC = () => {
   if (!userCurrentMood) return null;
   return (
     <Block paddingHorizontal={16} marginBottom={24} backgroundColor="background">
-      <Block row alignCenter space="between">
+      <Block row alignCenter paddingHorizontal={2} space="between">
         <Text type="semibold">How exactly you feel right now?</Text>
         {endEditing && (
           <TouchableOpacity

@@ -1,34 +1,53 @@
 /* eslint-disable react-native/no-inline-styles */
 import {Block, Text} from '@components';
+import {useColors} from '@hooks';
 import useHome from '@screens/Bottom/Home/useHome';
 import {width} from '@utils/responsive';
-import React, {memo} from 'react';
+import dayjs from 'dayjs';
+import React, {memo, useState} from 'react';
+import {DeviceEventEmitter} from 'react-native';
 import {LineChart} from 'react-native-gifted-charts';
 import styles from './styles';
 
 const EmotionChart: React.FC = () => {
+  const {COLORS} = useColors();
   const {emotionScore} = useHome();
+  const [disableScroll, setDisableScroll] = useState(false);
 
-  const _formattedData = (value: {value: number}[], type: 'data' | 'data2') => {
-    const isDATA = type === 'data';
+  const _formattedData = (value: {value: number; date: string}[], type: 'current' | 'past') => {
+    const isPast = type === 'past';
     const _renderDataPointLabel = (e: number) => (
-      <Block backgroundColor={isDATA ? '#FFC542' : '#3DD598'} style={styles.labelContainer}>
-        <Block style={{...styles.triangle, borderTopColor: isDATA ? '#FFC542' : '#3DD598'}} />
+      <Block backgroundColor={isPast ? '#FFC542' : '#3DD598'} style={styles.labelContainer}>
+        <Block style={{...styles.triangle, borderTopColor: isPast ? '#FFC542' : '#3DD598'}} />
         <Text size={10} color="white">
           {e}
         </Text>
       </Block>
     );
+
+    const _renderLabel = (date: string) => (
+      <Block marginBottom={12}>
+        <Text center size={9}>
+          {dayjs(date).format('ddd')}
+        </Text>
+      </Block>
+    );
+
     return value.map(elm => ({
       ...elm,
       ...{
         label: '',
-        labelComponent: () => {},
+        labelComponent: () => _renderLabel(elm.date),
         dataPointText: String(elm.value),
         dataPointLabelComponent: () => _renderDataPointLabel(elm.value),
+        showXAxisIndex: false,
       },
     }));
   };
+
+  DeviceEventEmitter.addListener('onDragging', payload => {
+    setDisableScroll(payload);
+  });
 
   return (
     <Block flex backgroundColor="background">
@@ -72,8 +91,12 @@ const EmotionChart: React.FC = () => {
           color2="#3DD598"
           dataPointsColor="#FFC542"
           dataPointsColor2="#3DD598"
-          data={_formattedData(emotionScore?.past || [], 'data')}
-          data2={_formattedData(emotionScore?.current || [], 'data2')}
+          data={_formattedData(emotionScore?.past || [], 'past')}
+          data2={_formattedData(emotionScore?.current || [], 'current')}
+          showStripOnFocus
+          disableScroll={disableScroll}
+          stripColor={COLORS.border}
+          stripWidth={1}
         />
       </Block>
     </Block>
