@@ -78,7 +78,7 @@ export default [
   takeLatest(actions.CREATE_MOOD, guard(createMood)),
   debounce(1000, actions.UPDATE_STATUS, guard(updateStatus)),
   takeLatest(actions.GENERATE_TAG, guard(generateTags)),
-  takeLatest(actions.UPDATE_TAG, guard(updateTag)),
+  debounce(3000, actions.UPDATE_TAG, guard(updateTag)),
   takeLatest(actions.GET_EMOTION_SCORE, guard(getEmotionScore)),
   takeLatest(actions.GET_POSTS, guard(getPosts)),
   takeLatest(actions.GET_VIEWED_POSTS, guard(getViewedPosts)),
