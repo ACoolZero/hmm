@@ -13,6 +13,7 @@ import Chat from './Bottom/Chat';
 import Gadgets from './Bottom/Gadgets';
 import Home from './Bottom/Home';
 import Moments from './Bottom/Moments';
+import ActivityDetails from './Common/ActivityDetails';
 import ArticleDetails from './Common/ArticleDetails';
 import ArticleViewed from './Common/ArticleViewed';
 import EditProfile from './Common/EditProfile';
@@ -71,4 +72,5 @@ export const common = {
   [routes.CREATE_MOMENT_SCREEN]: CreateMoment,
   [routes.EDIT_MOMENT_SCREEN]: EditMoment,
   [routes.RECALL_SCREEN]: Recall,
+  [routes.ACTIVITY_DETAILS_SCREEN]: ActivityDetails,
 };

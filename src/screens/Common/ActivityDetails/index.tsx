@@ -1,28 +1,25 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import {Block, Image, Text} from '@components';
+import {Block, Header, Image, Text} from '@components';
 import {useStore} from '@hooks';
 import {RootStackParamList} from '@navigation/types';
 import {RouteProp} from '@react-navigation/native';
 import {IStory} from '@screens/Bottom/Home/types';
-import {SET_ACTIVE_MOMENT, _onSuccess} from '@store/actions';
 import {sleep} from '@utils/date';
 import {getSize, width} from '@utils/responsive';
 import dayjs from 'dayjs';
 import React, {useEffect, useRef} from 'react';
 import {ListRenderItem} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
-import Header from './components/Header';
 
 const STORY_WIDTH = width * 0.8;
 const STORY_HEIGHT = STORY_WIDTH * 1.7;
 
-interface RecallProps {
-  route: RouteProp<RootStackParamList, 'RECALL_SCREEN'>;
+interface ActivityDetailsProps {
+  route: RouteProp<RootStackParamList, 'ACTIVITY_DETAILS_SCREEN'>;
 }
 
-const Recall: React.FC<RecallProps> = ({route}) => {
-  const {dispatch, useSelector} = useStore();
-  const {data: userMomentsList} = useSelector('userMomentsList');
+const ActivityDetails: React.FC<ActivityDetailsProps> = ({route}) => {
+  const {useSelector} = useStore();
+  const {data: momentsList} = useSelector('momentsList');
   const carouselRef = useRef(null);
   const {momentIdx} = route.params;
 
@@ -31,16 +28,6 @@ const Recall: React.FC<RecallProps> = ({route}) => {
       (carouselRef.current as any)?.snapToItem(momentIdx);
     });
   }, [momentIdx]);
-
-  useEffect(() => {
-    const moment = [...userMomentsList][0];
-    dispatch({type: _onSuccess(SET_ACTIVE_MOMENT), payload: {data: moment}});
-  }, [dispatch]);
-
-  const onSnapToItem = (e: number) => {
-    const moment = [...userMomentsList][e];
-    dispatch({type: _onSuccess(SET_ACTIVE_MOMENT), payload: {data: moment}});
-  };
 
   const _renderItem: ListRenderItem<IStory> = ({item}) => {
     const {media, content, createdAt} = item;
@@ -61,17 +48,16 @@ const Recall: React.FC<RecallProps> = ({route}) => {
 
   return (
     <Block flex backgroundColor="background">
-      <Header canGoBack title="Recall" />
+      <Header canGoBack title="Moments" />
       <Carousel
         ref={carouselRef}
-        data={userMomentsList}
+        data={momentsList}
         renderItem={_renderItem}
         sliderWidth={width}
         itemWidth={width * 0.8}
-        onSnapToItem={onSnapToItem}
       />
     </Block>
   );
 };
 
-export default Recall;
+export default ActivityDetails;

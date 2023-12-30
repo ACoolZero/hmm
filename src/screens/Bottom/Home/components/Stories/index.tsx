@@ -12,7 +12,7 @@ const STORY_HEIGHT = STORY_WIDTH * 1.4;
 const Stories: React.FC = () => {
   const {userMomentsList} = useHome();
 
-  const _renderItem: ListRenderItem<IStory> = ({item}) => <StoryCard item={item} />;
+  const _renderItem: ListRenderItem<IStory> = ({item, index}) => <StoryCard item={item} index={index} />;
 
   if (!userMomentsList?.length)
     return (

@@ -60,6 +60,7 @@ const RootStack = () => {
         <Stack.Screen name={routes.CREATE_MOMENT_SCREEN} component={common[routes.CREATE_MOMENT_SCREEN]} />
         <Stack.Screen name={routes.EDIT_MOMENT_SCREEN} component={common[routes.EDIT_MOMENT_SCREEN]} />
         <Stack.Screen name={routes.RECALL_SCREEN} component={common[routes.RECALL_SCREEN]} />
+        <Stack.Screen name={routes.ACTIVITY_DETAILS_SCREEN} component={common[routes.ACTIVITY_DETAILS_SCREEN]} />
       </Stack.Group>
     </Stack.Navigator>
   );

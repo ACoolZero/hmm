@@ -24,5 +24,6 @@ export type RootStackParamList = {
   [routes.FEEDBACK_SUBMIT_SCREEN]: undefined;
   [routes.CREATE_MOMENT_SCREEN]: {milestoneId?: string};
   [routes.EDIT_MOMENT_SCREEN]: {momentId: string};
-  [routes.RECALL_SCREEN]: undefined;
+  [routes.RECALL_SCREEN]: {momentIdx?: number};
+  [routes.ACTIVITY_DETAILS_SCREEN]: {momentIdx: number};
 };

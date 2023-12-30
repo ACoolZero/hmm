@@ -7,13 +7,18 @@ import React, {memo} from 'react';
 import {Pressable} from 'react-native';
 import styles, {STORY_HEIGHT, STORY_WIDTH} from './styles';
 
-const StoryCard: React.FC<{item: IStory}> = ({item}) => {
+interface StoryCardProps {
+  item: IStory;
+  index: number;
+}
+
+const StoryCard: React.FC<StoryCardProps> = ({item, index}) => {
   const {thumbnail, media, content} = item;
 
   return (
     <Pressable
       onPress={() => {
-        navigate(routes.RECALL_SCREEN);
+        navigate(routes.RECALL_SCREEN, {momentIdx: index});
       }}>
       <Block shadow overflow="hidden" radius={20} style={styles.container} backgroundColor="secondary_background">
         <LazyImage

@@ -1,6 +1,8 @@
 import {ICONS} from '@assets';
 import {Block, Image, LazyImage, Text} from '@components';
 import {useStore} from '@hooks';
+import {navigate} from '@navigation/NavigationServices';
+import routes from '@navigation/routes';
 import {IMoment} from '@screens/Bottom/Moments/types';
 import {LIKE_MOMENT} from '@store/actions';
 import {getSize, width} from '@utils/responsive';
@@ -42,7 +44,10 @@ const MomentCard: React.FC<MomentCardProps> = ({item, index}) => {
   }
 
   return (
-    <Pressable>
+    <Pressable
+      onPress={() => {
+        navigate(routes.ACTIVITY_DETAILS_SCREEN, {momentIdx: index});
+      }}>
       <Block
         radius={24}
         overflow="hidden"
