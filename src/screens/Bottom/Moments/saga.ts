@@ -21,11 +21,11 @@ function* getMoments(action: ActionPayload<{taggingId: string}>) {
 }
 
 function* likeMoment(action: ActionPayload<{id: string; action: 'LIKE' | 'UNLIKE'}>) {
+  yield put({type: actions._onSuccess(action.type), payload: {id: action.payload.id}});
   yield call(api, `/activity/like/${action.payload.id}`, {
     method: 'put',
     data: {action: action.payload.action},
   });
-  yield put({type: actions._onSuccess(action.type), payload: {id: action.payload.id}});
 }
 
 export default [

@@ -55,6 +55,7 @@ function* loginGoogle(action: ActionPayload<{accessToken: string; email: string}
   yield put({type: actions.GET_CURRENT_USER});
 
   yield Storage.setItem(REFRESH_EXPIRES_AT, dayjs().add(1, 'week').format('YYYY-MM-DD'));
+  yield delay(200);
   yield reset(routes.BOTTOM_TAB);
   GoogleSignin.revokeAccess();
 }

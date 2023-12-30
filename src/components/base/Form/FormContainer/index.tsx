@@ -4,10 +4,10 @@ import {KeyboardAvoidingView, ScrollView} from 'react-native';
 import styles from './styles';
 import {FormContainerProps} from './types';
 
-const FormContainer: React.FC<FormContainerProps> = ({style = {}, children}) => {
+const FormContainer: React.FC<FormContainerProps> = ({style = {}, children, ...rest}) => {
   return (
     <KeyboardAvoidingView style={{...style, ...styles.keyboardAvoiding}} behavior={isIos ? 'padding' : 'height'}>
-      <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
+      <ScrollView {...rest} bounces={false} showsVerticalScrollIndicator={false}>
         {children}
       </ScrollView>
     </KeyboardAvoidingView>
