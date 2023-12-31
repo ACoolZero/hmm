@@ -1,5 +1,6 @@
 import {ICONS, IMAGES} from '@assets';
 import {Block, Image, Text} from '@components';
+import {useStore} from '@hooks';
 import {navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import {BlurView} from '@react-native-community/blur';
@@ -10,6 +11,8 @@ import styles from './styles';
 import {ActionButtonProps} from './types';
 
 const ActionModal: React.FC = () => {
+  const {useSelector} = useStore();
+  const {userInfo} = useSelector('auth');
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   DeviceEventEmitter.addListener('showActionModal', () => {
@@ -83,7 +86,7 @@ const ActionModal: React.FC = () => {
           })}
           <Block alignCenter marginVertical={30}>
             <Block square={75} style={styles.btnAvatar}>
-              <Image source={IMAGES.fab_icon} square={60} style={{borderRadius: getSize.s(24)}} />
+              <Image source={{uri: userInfo?.avatar}} square={60} style={{borderRadius: getSize.s(24)}} />
             </Block>
             <TouchableOpacity style={styles.btnClose} onPress={() => setIsVisible(false)}>
               <Image source={ICONS.close} square={12} tintColor="white" />

@@ -60,7 +60,7 @@ const MomentCard: React.FC<MomentCardProps> = ({item, index}) => {
         </Block>
         <LinearGradient
           style={{...StyleSheet.absoluteFillObject}}
-          colors={['#00000040', '#00000020', '#00000000', '#00000020', '#00000040']}
+          colors={['#00000060', '#00000030', '#00000000', '#00000030', '#00000060']}
           start={{x: 0, y: 0}}
           end={{x: 0, y: 1}}>
           <Block flex paddingHorizontal={16} paddingTop={12} paddingBottom={8} space="between">
