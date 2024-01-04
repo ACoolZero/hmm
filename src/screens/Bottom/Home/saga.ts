@@ -29,6 +29,11 @@ function* createMood(action: ActionPayload<{moodId: number}>) {
   yield put({type: actions._onSuccess(action.type), payload: {data: response.data.id}});
 }
 
+function* getUserMoodFrequency(action: ActionPayload<null>) {
+  const response: AxiosResponse = yield call(api, 'user-mood/mood-frequency');
+  yield put({type: actions._onSuccess(action.type), payload: {data: response.data}});
+}
+
 function* updateStatus(action: ActionPayload<{exactlyYouFeelText: string}>) {
   const {data: userCurrentMood} = yield select(state => state.userCurrentMood);
   const exactlyYouFeelText = action.payload.exactlyYouFeelText;
@@ -76,6 +81,7 @@ function* ratingPosts(action: ActionPayload<{id: string; rating: number}>) {
 export default [
   takeLatest(actions.GET_MOOD_LIST, guard(getMoods)),
   takeLatest(actions.CREATE_MOOD, guard(createMood)),
+  takeLatest(actions.GET_USER_MOOD_FREQUENCY, guard(getUserMoodFrequency)),
   debounce(1000, actions.UPDATE_STATUS, guard(updateStatus)),
   takeLatest(actions.GENERATE_TAG, guard(generateTags)),
   debounce(3000, actions.UPDATE_TAG, guard(updateTag)),

@@ -1,55 +1,60 @@
-import {Block, Image} from '@components';
-import {BlockProps} from '@components/base/Block/types';
-import {height, width} from '@utils/responsive';
+import {ICONS} from '@assets';
 import React, {useRef, useState} from 'react';
-import {Animated, PanResponder, TouchableOpacity, ViewStyle} from 'react-native';
-
-interface FABProps extends BlockProps {
-  draggable?: boolean;
-  reversible?: boolean;
-  maxSize?: number;
-  icon?: number;
-  xOffset?: number;
-  yOffset?: number;
-  idleOpacity?: number;
-  idleDelayTime?: number;
-  children?: JSX.Element;
-  onPress?: () => void;
-}
+import type {ImageStyle, ViewStyle} from 'react-native';
+import {Animated, Image, PanResponder, TouchableOpacity, View} from 'react-native';
+import styles, {height, width} from './FAB.styles';
+import type {FABProps} from './FAB.types';
 
 let timer: NodeJS.Timeout;
 
 const FAB: React.FC<FABProps> = ({
-  draggable = false,
+  renderSize,
+  draggable = true,
   reversible = false,
-  maxSize = 50,
-  icon,
-  xOffset = 16,
-  yOffset = 80,
+  icon = ICONS.plus,
+  iconSize = 24,
+  iconStyle,
+  tintColor,
+  borderRadius,
+  backgroundColor,
+  topOffset = 60,
+  rightOffset = 16,
+  bottomOffset = 60,
+  leftOffset = 16,
   idleOpacity = 0.5,
   idleDelayTime = 3000,
   children,
   onPress,
-  ...containerProps
+  onLongPress,
+  onDragStart,
+  onDragEnd,
+  ...touchableProps
 }) => {
-  const [opacity, setOpacity] = useState<number>(idleOpacity);
   const pan = useRef(new Animated.ValueXY()).current;
-  const LEFT_HORIZONTAL_BOUNDS = -width + maxSize + 2 * xOffset;
-  const TOP_VERTICAL_BOUNDS = -height + maxSize + 2 * yOffset;
-  const HORIZONTAL_BOUNDS_RANGE = [LEFT_HORIZONTAL_BOUNDS, 0];
-  const VERTICAL_BOUNDS_RANGE = [TOP_VERTICAL_BOUNDS, 0];
-  const touchThreshold = 20;
+  const [opacity, setOpacity] = useState<number>(idleOpacity);
+  const HORIZONTAL_BOUNDS = width - renderSize - (leftOffset + rightOffset);
+  const VERTICAL_BOUNDS = height - renderSize - (bottomOffset + topOffset);
+  const VERTICAL_BOUNDS_RANGE = [-VERTICAL_BOUNDS, 0];
 
-  const wrapperStyle: ViewStyle = {position: 'absolute', right: xOffset, bottom: yOffset};
+  const wrapperStyle: (ViewStyle | any)[] = [{position: 'absolute'}, {bottom: bottomOffset}, {right: rightOffset}];
+
+  const containerStyle: (ViewStyle | any)[] = [
+    styles.defaultStyle,
+    {width: renderSize, height: renderSize},
+    {opacity: opacity},
+    borderRadius && {borderRadius: borderRadius},
+    backgroundColor && {backgroundColor: backgroundColor},
+  ];
+
+  const defaultIconStyle: ImageStyle = {
+    height: iconSize,
+    width: iconSize,
+    tintColor: tintColor,
+    ...iconStyle,
+  };
 
   const transform = [
-    {
-      translateX: pan.x.interpolate({
-        inputRange: HORIZONTAL_BOUNDS_RANGE,
-        outputRange: HORIZONTAL_BOUNDS_RANGE,
-        extrapolate: 'clamp',
-      }),
-    },
+    {translateX: pan.x},
     {
       translateY: pan.y.interpolate({
         inputRange: VERTICAL_BOUNDS_RANGE,
@@ -61,9 +66,9 @@ const FAB: React.FC<FABProps> = ({
 
   const panResponder = useRef(
     PanResponder.create({
-      onStartShouldSetPanResponder: () => false,
-      onMoveShouldSetPanResponder: (_, {dx, dy}) => {
-        return draggable && (Math.abs(dx) > touchThreshold || Math.abs(dy) > touchThreshold);
+      onMoveShouldSetPanResponder: (_, gestureState) => {
+        onDragStart && onDragStart(gestureState);
+        return draggable && (gestureState.dx !== 0 || gestureState.dy !== 0);
       },
       onPanResponderGrant: () => {
         timer && clearTimeout(timer);
@@ -71,48 +76,47 @@ const FAB: React.FC<FABProps> = ({
         pan.setValue({x: 0, y: 0});
         setOpacity(1);
       },
-      onPanResponderMove: Animated.event([null, {dx: pan.x, dy: pan.y}], {useNativeDriver: false}),
-      onPanResponderEnd: () => {
+      onPanResponderMove: Animated.event([null, {dx: pan.x, dy: pan.y}], {
+        useNativeDriver: false,
+      }),
+      onPanResponderEnd: (_, gestureState) => {
         if (reversible) {
-          Animated.spring(pan, {toValue: {x: 0, y: 0}, useNativeDriver: false}).start();
+          Animated.spring(pan, {
+            toValue: {x: 0, y: 0},
+            useNativeDriver: false,
+          }).start();
         } else {
           let newX = 0;
           let xValue = (pan.x as any)._value;
-          let yValue = (pan.y as any)._value;
-          let centerHorizontal = (width - maxSize) / 2;
+          let centerHorizontal = (width - renderSize) / 2;
           if (xValue > 0) {
-            newX = Math.abs(xValue) > centerHorizontal ? -LEFT_HORIZONTAL_BOUNDS : 0;
+            newX = Math.abs(xValue) > centerHorizontal ? HORIZONTAL_BOUNDS : 0;
           } else {
-            newX = Math.abs(xValue) > centerHorizontal ? LEFT_HORIZONTAL_BOUNDS : 0;
+            newX = Math.abs(xValue) > centerHorizontal ? -HORIZONTAL_BOUNDS : 0;
           }
-          let newY = yValue;
-          pan.setValue({x: newX, y: newY});
-          pan.flattenOffset();
-          timer = setTimeout(() => {
-            setOpacity(idleOpacity);
-          }, idleDelayTime);
+          Animated.spring(pan, {
+            toValue: {x: newX, y: (pan.y as any)._value},
+            useNativeDriver: false,
+          }).start();
         }
+        onDragEnd && onDragEnd(gestureState);
+        timer = setTimeout(() => {
+          setOpacity(idleOpacity);
+        }, idleDelayTime);
       },
     }),
   ).current;
 
   return (
-    <Block style={wrapperStyle}>
+    <View style={wrapperStyle}>
       <Animated.View {...panResponder.panHandlers} style={{transform}}>
-        <TouchableOpacity onPress={onPress}>
-          <Block
-            alignCenter
-            justifyCenter
-            round={maxSize}
-            overflow="hidden"
-            backgroundColor="primary"
-            opacity={opacity}
-            {...containerProps}>
-            {icon ? <Image source={icon} square={18} tintColor="white" /> : children}
-          </Block>
+        <TouchableOpacity onPress={onPress} onLongPress={onLongPress} {...touchableProps}>
+          <View style={containerStyle}>
+            {children ? children : <Image source={icon} style={defaultIconStyle} resizeMode="contain" />}
+          </View>
         </TouchableOpacity>
       </Animated.View>
-    </Block>
+    </View>
   );
 };
 

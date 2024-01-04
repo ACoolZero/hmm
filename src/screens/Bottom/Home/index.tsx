@@ -31,7 +31,7 @@ const Home: React.FC = () => {
       <ScrollView
         scrollEnabled={scrollEnabled}
         refreshControl={<RefreshControl refreshing={false} onRefresh={_onRefresh} tintColor={COLORS.text} />}>
-        <Block paddingBottom={24}>
+        <Block paddingBottom={36}>
           <Stories />
           <Reaction />
           <Status />

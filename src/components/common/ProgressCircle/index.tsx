@@ -1,4 +1,5 @@
 import {Block} from '@components';
+import {useColors} from '@hooks';
 import {isIos} from '@utils/helper';
 import React from 'react';
 import {Rect, Svg} from 'react-native-svg';
@@ -28,6 +29,7 @@ const ProgressCircle: React.FC<ProgressCircleProps> = ({
   const filledPercentage = percentage / 100;
   const dashOffset = circumference * (1 - filledPercentage);
   const contentSize = size - strokeWidth * 2;
+  const {COLORS} = useColors();
 
   return (
     <Block>
@@ -44,7 +46,7 @@ const ProgressCircle: React.FC<ProgressCircleProps> = ({
           y={strokeWidth}
           width={contentSize}
           height={contentSize}
-          stroke={color}
+          stroke={color || COLORS.border}
           strokeWidth={strokeWidth}
           fill={backgroundColor}
           strokeDasharray={circumference}

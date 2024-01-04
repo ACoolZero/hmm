@@ -33,5 +33,5 @@ export interface IReaction {
   icon: any;
   name: string;
   color: string;
-  percentage: number;
+  percent: number;
 }

@@ -106,7 +106,11 @@ function* updateUser(action: ActionPayload<UpdateUserPayload>) {
 
 function* uploadFile(action: ActionPayload<any>) {
   const data = action.payload;
-  const response: AxiosResponse = yield call(api, '/file/upload', {method: 'post', data});
+  const response: AxiosResponse = yield call(api, '/file/upload', {
+    method: 'post',
+    data,
+    headers: {'Content-Type': 'multipart/form-data'},
+  });
   yield call(action.callback, response.data);
 }
 

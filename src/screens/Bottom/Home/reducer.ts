@@ -5,6 +5,7 @@ import {
   GET_MOOD_LIST,
   GET_POSTS,
   GET_POSTS_DETAILS,
+  GET_USER_MOOD_FREQUENCY,
   GET_VIEWED_POSTS,
 } from '@store/actions';
 import {reducer} from '@store/general/common';
@@ -12,6 +13,8 @@ import {reducer} from '@store/general/common';
 const moodsList = (...args: any) => reducer.apply(null, [...args, GET_MOOD_LIST] as any);
 
 const userCurrentMood = (...args: any) => reducer.apply(null, [...args, CREATE_MOOD] as any);
+
+const userMoodFrequency = (...args: any) => reducer.apply(null, [...args, GET_USER_MOOD_FREQUENCY] as any);
 
 const tagsList = (...args: any) => reducer.apply(null, [...args, GENERATE_TAG] as any);
 
@@ -27,6 +30,7 @@ export default {
   emotionScore,
   moodsList,
   userCurrentMood,
+  userMoodFrequency,
   tagsList,
   postsList,
   viewedPostsList,

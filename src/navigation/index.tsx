@@ -16,9 +16,7 @@ const RootNavigation = () => {
   const {isAuth} = useSelector('auth');
 
   useEffect(() => {
-    if (isAuth) {
-      dispatch({type: GET_CURRENT_USER});
-    }
+    if (isAuth) dispatch({type: GET_CURRENT_USER});
   }, [dispatch, isAuth]);
 
   return (

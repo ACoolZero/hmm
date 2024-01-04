@@ -4,6 +4,7 @@ export const GET_EMOTION_SCORE = 'GET_EMOTION_SCORE';
 // MOOD
 export const GET_MOOD_LIST = 'GET_MOOD_LIST';
 export const CREATE_MOOD = 'CREATE_MOOD';
+export const GET_USER_MOOD_FREQUENCY = 'GET_USER_MOOD_FREQUENCY';
 export const UPDATE_STATUS = 'UPDATE_STATUS';
 export const GENERATE_TAG = 'GENERATE_TAG';
 export const UPDATE_TAG = 'UPDATE_TAG';

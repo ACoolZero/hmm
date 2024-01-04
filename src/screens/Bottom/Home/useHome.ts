@@ -6,6 +6,7 @@ import {
   GET_MOOD_LIST,
   GET_POSTS,
   GET_USER_MOMENTS_LIST,
+  GET_USER_MOOD_FREQUENCY,
 } from '@store/actions';
 import dayjs from 'dayjs';
 import weekday from 'dayjs/plugin/weekday';
@@ -19,6 +20,7 @@ const useHome = () => {
   const {data: emotionScore} = useSelector('emotionScore');
   const {data: moodsList} = useSelector('moodsList');
   const {data: userCurrentMood} = useSelector('userCurrentMood');
+  const {data: userMoodFrequency} = useSelector('userMoodFrequency');
   const {data: tagsList} = useSelector('tagsList');
   const {data: milestoneList} = useSelector('milestoneList');
   const {data: postsList} = useSelector('postsList');
@@ -56,6 +58,13 @@ const useHome = () => {
     });
 
     /**
+     * GET_USER_MOOD_FREQUENCY
+     */
+    dispatch({
+      type: GET_USER_MOOD_FREQUENCY,
+    });
+
+    /**
      * GET_MILESTONE_LIST
      */
     dispatch({type: GET_MILESTONES});
@@ -70,6 +79,7 @@ const useHome = () => {
     mode,
     moodsList,
     userCurrentMood,
+    userMoodFrequency,
     userMomentsList,
     emotionScore,
     tagsList,

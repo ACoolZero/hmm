@@ -1,11 +1,10 @@
-import {Block, Image} from '@components';
+import {Block, FAB, Image} from '@components';
 import {useStore} from '@hooks';
 import {getSize} from '@utils/responsive';
 import React from 'react';
 import {DeviceEventEmitter, StyleSheet} from 'react-native';
-import FAB from 'react-native-animated-fab';
 
-const OnTopButton: React.FC<{bottomOffset?: number}> = ({bottomOffset = 100}) => {
+const OnTopButton: React.FC<{bottomOffset?: number}> = ({bottomOffset = 110}) => {
   const {useSelector} = useStore();
   const {userInfo} = useSelector('auth');
 
