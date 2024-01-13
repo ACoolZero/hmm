@@ -20,6 +20,7 @@ const persistConfig = {
     'userCurrentMood',
     'userMoodFrequency',
     'moodsList',
+    'momentsList',
   ],
   transforms: [createBlacklistFilter('auth', ['isLoading'])],
 };

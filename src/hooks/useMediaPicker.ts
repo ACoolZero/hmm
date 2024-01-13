@@ -2,7 +2,7 @@ import {isIos} from '@utils/helper';
 import {useCallback, useState} from 'react';
 import ImagePicker, {Image} from 'react-native-image-crop-picker';
 
-const COMPRESS_IMAGE_QUALITY = isIos ? 0.8 : 0.1;
+const COMPRESS_IMAGE_QUALITY = isIos ? 0.8 : 1;
 
 const useMediaPicker = ({cropping}: {cropping: boolean}) => {
   const [picture, setPicture] = useState<Image | Image[] | null>(null);

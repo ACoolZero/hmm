@@ -50,6 +50,7 @@ const ActivityDetails: React.FC<ActivityDetailsProps> = ({route}) => {
     <Block flex backgroundColor="background">
       <Header canGoBack title="Moments" />
       <Carousel
+        useScrollView={true}
         ref={carouselRef}
         data={momentsList}
         renderItem={_renderItem}
