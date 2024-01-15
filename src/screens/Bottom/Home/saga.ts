@@ -23,6 +23,12 @@ function* getMoods(action: ActionPayload<null>) {
   yield put({type: actions._onSuccess(action.type), payload: {data: response.data}});
 }
 
+function* getMoodHistory(action: ActionPayload<null>) {
+  const params = {limit: ITEM_LIMIT_PER_PAGE, skip: 0};
+  const response: AxiosResponse = yield call(api, 'user-mood/history', {params});
+  yield put({type: actions._onSuccess(action.type), payload: {data: response.data.items}});
+}
+
 function* createMood(action: ActionPayload<{moodId: number}>) {
   const data = {moodId: action.payload.moodId};
   const response: AxiosResponse = yield call(api, '/user-mood', {method: 'post', data});
@@ -80,6 +86,7 @@ function* ratingPosts(action: ActionPayload<{id: string; rating: number}>) {
 
 export default [
   takeLatest(actions.GET_MOOD_LIST, guard(getMoods)),
+  takeLatest(actions.GET_MOOD_HISTORY, guard(getMoodHistory)),
   takeLatest(actions.CREATE_MOOD, guard(createMood)),
   takeLatest(actions.GET_USER_MOOD_FREQUENCY, guard(getUserMoodFrequency)),
   debounce(1000, actions.UPDATE_STATUS, guard(updateStatus)),
