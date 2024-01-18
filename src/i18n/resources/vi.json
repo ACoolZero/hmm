@@ -13,7 +13,7 @@
   "validate": {
     "username_empty": "Tài khoản không được để trống",
     "password_empty": "Mật khẩu không được để trống",
-    "password_min_8": "Độ dài mật khẩu phải hơn 8 kí tự",
+    "password_min_8": "Độ dài mật khẩu ít nhất phải có 8 kí tự",
     "retypePassword_not_same": "Mật khẩu xác nhận không trùng khớp",
     "fullName_empty": "Họ tên không được để trống",
     "phone_empty": "Số điện thoại không được để trống",
@@ -29,7 +29,9 @@
     "send_input_holder": "Message",
     "now": "Bây giờ",
     "minutes_ago": "phút trước",
+    "minute_ago": "phút trước",
     "hours_ago": "giờ trước",
+    "hour_ago": "giờ trước",
     "send_a_photo": "đã gửi một ảnh",
     "send_a_file": "đã gửi một tập tin",
     "copy": "Sao chép",
