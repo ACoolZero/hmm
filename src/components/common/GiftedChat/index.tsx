@@ -44,7 +44,6 @@ const GiftedChat: React.FC<any> = ({userId, chatColor, ...rest}) => {
           left: {
             ...styles.wrapperStyle,
             backgroundColor: COLORS.secondary_background,
-            marginLeft: getSize.m(-8),
           },
           right: {
             ...styles.wrapperStyle,
@@ -177,7 +176,11 @@ const GiftedChat: React.FC<any> = ({userId, chatColor, ...rest}) => {
    * Custom message avatar; set to null to not render any avatar for the message
    */
   const _renderAvatar = (props: AvatarProps<any>) => (
-    <Avatar {...props} imageStyle={{left: {height: getSize.s(24), width: getSize.s(24)}}} />
+    <Avatar
+      {...props}
+      imageStyle={{left: {height: getSize.s(32), width: getSize.s(32)}}}
+      containerStyle={{left: {backgroundColor: chatColor, borderRadius: getSize.m(16), marginRight: 0}}}
+    />
   );
 
   return (

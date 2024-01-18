@@ -1,3 +1,4 @@
+import {ICONS} from '@assets';
 export const DATA = [
   {
     _id: 1,
@@ -6,7 +7,7 @@ export const DATA = [
     user: {
       _id: 1,
       name: 'sender',
-      avatar: 'https://reactnative.dev/img/tiny_logo.png',
+      avatar: ICONS.bot,
     },
   },
   {
@@ -46,7 +47,7 @@ export const DATA = [
     user: {
       _id: 1,
       name: 'sender',
-      avatar: 'https://reactnative.dev/img/tiny_logo.png',
+      avatar: ICONS.bot,
     },
   },
   {
@@ -56,7 +57,7 @@ export const DATA = [
     user: {
       _id: 1,
       name: 'sender',
-      avatar: 'https://reactnative.dev/img/tiny_logo.png',
+      avatar: ICONS.bot,
     },
   },
 ];
