@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import {ICONS} from '@assets';
-import {Block, FormInput, GradientButton, Image} from '@components';
+import {Block, FormContainer, FormInput, GradientButton, Image} from '@components';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {useStore} from '@hooks';
 import {goBack} from '@navigation/NavigationServices';
@@ -36,12 +36,10 @@ const RegisterStep4: React.FC = () => {
   };
 
   return (
-    <Block flex padding={24} backgroundColor="common_background">
-      <Block flex paddingTop={top} justifyCenter space="between">
+    <Block flex padding={24} paddingTop={top} backgroundColor="common_background">
+      <FormContainer>
         <Header content="Create your password" />
-      </Block>
-      <Block style={{flex: 2}}>
-        <Block height={200}>
+        <Block marginTop={24} height={200}>
           <FormInput
             control={control}
             name="password"
@@ -61,7 +59,7 @@ const RegisterStep4: React.FC = () => {
             containerInputStyle={{marginBottom: getSize.m(16)}}
           />
         </Block>
-        <Block row>
+        <Block row alignCenter>
           <Pressable onPress={goBack}>
             <Block
               alignCenter
@@ -83,7 +81,7 @@ const RegisterStep4: React.FC = () => {
             onPress={handleSubmit(_onSubmit)}
           />
         </Block>
-      </Block>
+      </FormContainer>
     </Block>
   );
 };

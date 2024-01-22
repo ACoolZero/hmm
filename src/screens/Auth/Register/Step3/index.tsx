@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import {ICONS} from '@assets';
-import {Block, GradientButton, Image, Text} from '@components';
+import {Block, FormContainer, GradientButton, Image, Text} from '@components';
 import {goBack, navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import Header from '@screens/Auth/components/Header';
@@ -23,12 +23,10 @@ const RegisterStep3: React.FC = () => {
   };
 
   return (
-    <Block flex padding={24} backgroundColor="common_background">
-      <Block flex paddingTop={top} justifyCenter space="between">
+    <Block flex padding={24} paddingTop={top} backgroundColor="common_background">
+      <FormContainer>
         <Header content="What is your gender ?" />
-      </Block>
-      <Block style={{flex: 2}}>
-        <Block height={200}>
+        <Block marginTop={24} height={200}>
           <Block radius={8} borderWidth={1} borderColor="common_border" backgroundColor="white">
             <Pressable onPress={() => setGender('MALE')}>
               <Block row alignCenter height={48} paddingHorizontal={16} space="between">
@@ -59,7 +57,7 @@ const RegisterStep3: React.FC = () => {
             </Pressable>
           </Block>
         </Block>
-        <Block row>
+        <Block row alignCenter>
           <Pressable onPress={goBack}>
             <Block
               alignCenter
@@ -75,7 +73,7 @@ const RegisterStep3: React.FC = () => {
           </Pressable>
           <GradientButton title="Continue" style={{flex: 1}} onPress={_onSubmit} />
         </Block>
-      </Block>
+      </FormContainer>
     </Block>
   );
 };
