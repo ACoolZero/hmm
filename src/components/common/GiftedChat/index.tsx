@@ -179,7 +179,7 @@ const GiftedChat: React.FC<any> = ({userId, chatColor, ...rest}) => {
     <Avatar
       {...props}
       imageStyle={{left: {height: getSize.s(32), width: getSize.s(32)}}}
-      containerStyle={{left: {backgroundColor: chatColor, borderRadius: getSize.m(16), marginRight: 0}}}
+      containerStyle={{left: {marginRight: 0}}}
     />
   );
 

@@ -1,4 +1,5 @@
 import {ICONS} from '@assets';
+
 export const DATA = [
   {
     _id: 1,

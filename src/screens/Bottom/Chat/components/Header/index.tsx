@@ -1,10 +1,9 @@
+import {ICONS} from '@assets';
 import {Block, GradientSwitch, Image, Text} from '@components';
 import {getSize} from '@utils/responsive';
 import React, {useCallback, useState} from 'react';
 import {StyleSheet} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {ICONS} from '@assets';
-import {useColors} from '@hooks';
 
 const Header: React.FC = () => {
   const {top} = useSafeAreaInsets();
@@ -14,8 +13,6 @@ const Header: React.FC = () => {
     setEnabledSwitch(oldValue => !oldValue);
   }, []);
 
-  const {COLORS} = useColors();
-
   return (
     <Block marginBottom={1} backgroundColor="secondary_background">
       <Block
@@ -24,7 +21,7 @@ const Header: React.FC = () => {
         backgroundColor="secondary_background"
         style={styles.container}>
         <Block row alignCenter>
-          <Image source={ICONS.bot} round={48} style={{backgroundColor: COLORS.background}} />
+          <Image source={ICONS.bot} round={48} />
           <Text marginLeft={8} type="semibold">
             Sam
           </Text>
