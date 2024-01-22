@@ -27,7 +27,7 @@ const DetailLayer = ({data, onPress}: any) => {
   const {top} = useSafeAreaInsets();
   const [isVisible, setIsVisible] = useState(true);
   const handleToggle = () => {
-    setIsVisible(isVisible);
+    setIsVisible(!isVisible);
   };
   return (
     <Block absolute onLayout={e => console.log(e.nativeEvent.layout)}>
