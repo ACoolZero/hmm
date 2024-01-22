@@ -1,5 +1,5 @@
 import {Block, Text} from '@components';
-import {useColors} from '@hooks';
+import {useColors, useTranslation} from '@hooks';
 import {width} from '@utils/responsive';
 import React, {useState} from 'react';
 import {Pressable} from 'react-native';
@@ -14,15 +14,21 @@ const langs: ILanguage[] = [
 ];
 
 const Language: React.FC = () => {
+  const {i18n} = useTranslation();
   const {COLORS} = useColors();
-  const [selected, setSelected] = useState<string>('en');
+  const [selected, setSelected] = useState<string>(i18n.language);
 
   const _renderItem = (item: ILanguage) => {
     const {value, label} = item;
     const isSelected = selected === value;
 
     return (
-      <Pressable key={value} onPress={() => setSelected(value)}>
+      <Pressable
+        key={value}
+        onPress={() => {
+          setSelected(value);
+          i18n.changeLanguage(value);
+        }}>
         <Block
           justifyCenter
           radius={12}
