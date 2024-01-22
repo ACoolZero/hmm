@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
 import {ICONS} from '@assets';
-import {Block, FormInput, GradientButton, Image} from '@components';
+import {Block, FormContainer, FormInput, GradientButton, Image} from '@components';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {goBack, navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
@@ -55,13 +55,11 @@ const RegisterStep2: React.FC = () => {
   }, [birthday, dispatch, setValue, trigger]);
 
   return (
-    <Block flex padding={24} backgroundColor="common_background">
-      <Block flex paddingTop={top} justifyCenter space="between">
+    <Block flex padding={24} paddingTop={top} backgroundColor="common_background">
+      <FormContainer>
         <Header content="When is your birthday ?" />
-      </Block>
-      <Block style={{flex: 2}}>
-        <Pressable onPress={_toggleDatePicker}>
-          <Block height={200}>
+        <Block marginTop={24} height={200}>
+          <Pressable onPress={_toggleDatePicker}>
             <FormInput
               control={control}
               name="dob"
@@ -72,9 +70,9 @@ const RegisterStep2: React.FC = () => {
               color="common_text"
               containerInputStyle={{marginBottom: getSize.m(16)}}
             />
-          </Block>
-        </Pressable>
-        <Block row>
+          </Pressable>
+        </Block>
+        <Block row alignCenter>
           <Pressable onPress={goBack}>
             <Block
               alignCenter
@@ -97,7 +95,7 @@ const RegisterStep2: React.FC = () => {
             }}
           />
         </Block>
-      </Block>
+      </FormContainer>
       <DateTimePickerModal
         mode="date"
         date={new Date()}
