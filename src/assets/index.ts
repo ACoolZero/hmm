@@ -44,6 +44,7 @@ export const ICONS = {
   privacy: require('./icons/privacy.png'),
   dots: require('./icons/dots.png'),
   rollback: require('./icons/rollback.png'),
+  bot: require('./icons/bot.png'),
 };
 
 export const IMAGES = {
