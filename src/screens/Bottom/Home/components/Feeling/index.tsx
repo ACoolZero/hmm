@@ -31,8 +31,8 @@ const Feeling: React.FC = () => {
       <TouchableOpacity
         key={id}
         onPress={() => {
+          sleep(200).then(() => setFeelingVisible(false));
           dispatch({type: CREATE_MOOD, payload: {moodId: id}});
-          sleep(500).then(() => setFeelingVisible(false));
         }}>
         <Block alignCenter justifyCenter radius={12} square={REACTION_SIZE} backgroundColor="modal_feeling_background">
           <Block

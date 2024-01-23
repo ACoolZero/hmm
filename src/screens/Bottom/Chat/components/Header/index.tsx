@@ -1,3 +1,4 @@
+import {ICONS} from '@assets';
 import {Block, GradientSwitch, Image, Text} from '@components';
 import {getSize} from '@utils/responsive';
 import React, {useCallback, useState} from 'react';
@@ -14,16 +15,20 @@ const Header: React.FC = () => {
 
   return (
     <Block marginBottom={1} backgroundColor="secondary_background">
-      <Block paddingTop={top} height={top + 48} backgroundColor="secondary_background" style={styles.container}>
+      <Block
+        paddingTop={top}
+        height={top + getSize.v(48)}
+        backgroundColor="secondary_background"
+        style={styles.container}>
         <Block row alignCenter>
-          <Image source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}} round={32} />
+          <Image source={ICONS.bot} round={48} />
           <Text marginLeft={8} type="semibold">
-            Bot
+            Sam
           </Text>
         </Block>
         <Block row alignCenter>
           <Text sm marginRight={8}>
-            Mode
+            Bot
           </Text>
           <GradientSwitch isOn={isEnabledSwitch} onToggle={_toggleSwitch} />
         </Block>

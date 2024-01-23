@@ -21,7 +21,7 @@ function* createMileStone(action: ActionPayload<CreateMileStonePayload>) {
 
   if (hasMoment) {
     showMessage({message: 'MileStone Created'});
-    sleep(500).then(() => replace(routes.CREATE_MOMENT_SCREEN, {milestoneId: response.data.id}));
+    sleep(200).then(() => replace(routes.CREATE_MOMENT_SCREEN, {milestoneId: response.data.id}));
   } else {
     showMessage({message: 'MileStone Created'});
     goBack();

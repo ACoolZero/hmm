@@ -13,7 +13,6 @@ import {Pressable} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useStore} from 'react-redux';
 import {validation} from './validation';
-import {usePaddingBottom} from './helper';
 
 const INITIAL_VALUES = {fullName: '', email: ''};
 
@@ -35,56 +34,45 @@ const RegisterStep1: React.FC = () => {
     navigate(routes.REGISTER_STEP2_SCREEN);
   };
 
-  const {paddingBottom, onFocus, onBlur} = usePaddingBottom();
-
   return (
-    <Block flex padding={24} backgroundColor="common_background">
-      <Block flex paddingTop={top} justifyCenter space="between">
-        <Header content="First, we want to know you" />
-      </Block>
+    <Block flex padding={24} paddingTop={top} backgroundColor="common_background">
       <FormContainer>
-        <Block paddingBottom={paddingBottom}>
-          <Block height={200}>
-            <FormInput
-              control={control}
-              name="fullName"
-              shadow
-              placeholder="Your name"
-              color="common_text"
-              containerInputStyle={{marginBottom: getSize.m(16)}}
-              onFocus={() => onFocus(24)}
-              onBlur={() => onBlur()}
-            />
-            <FormInput
-              control={control}
-              name="email"
-              shadow
-              placeholder="Email"
-              color="common_text"
-              containerInputStyle={{marginBottom: getSize.m(16)}}
-              onFocus={() => onFocus(24)}
-              onBlur={() => onBlur()}
-            />
-          </Block>
-          <Block row>
-            <Pressable onPress={goBack}>
-              <Block
-                alignCenter
-                justifyCenter
-                square={50}
-                radius={8}
-                marginRight={8}
-                borderWidth={1}
-                borderColor="primary"
-                backgroundColor="white">
-                <Image source={ICONS.back} square={20} tintColor="primary" resizeMode="contain" />
-              </Block>
-            </Pressable>
-            <GradientButton isValid={isValid} title="Continue" style={{flex: 1}} onPress={handleSubmit(_onSubmit)} />
-          </Block>
+        <Header content="First, we want to know you" />
+        <Block marginTop={24} height={200}>
+          <FormInput
+            control={control}
+            name="fullName"
+            shadow
+            placeholder="Your name"
+            color="common_text"
+            containerInputStyle={{marginBottom: getSize.m(16)}}
+          />
+          <FormInput
+            control={control}
+            name="email"
+            shadow
+            placeholder="Email"
+            color="common_text"
+            containerInputStyle={{marginBottom: getSize.m(16)}}
+          />
+        </Block>
+        <Block row alignCenter>
+          <Pressable onPress={goBack}>
+            <Block
+              alignCenter
+              justifyCenter
+              square={50}
+              radius={8}
+              marginRight={8}
+              borderWidth={1}
+              borderColor="primary"
+              backgroundColor="white">
+              <Image source={ICONS.back} square={20} tintColor="primary" resizeMode="contain" />
+            </Block>
+          </Pressable>
+          <GradientButton isValid={isValid} title="Continue" style={{flex: 1}} onPress={handleSubmit(_onSubmit)} />
         </Block>
       </FormContainer>
-      <Block flex />
     </Block>
   );
 };

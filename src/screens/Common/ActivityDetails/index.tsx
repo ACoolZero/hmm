@@ -24,7 +24,7 @@ const ActivityDetails: React.FC<ActivityDetailsProps> = ({route}) => {
   const {momentIdx} = route.params;
 
   useEffect(() => {
-    sleep(500).then(() => {
+    sleep(200).then(() => {
       (carouselRef.current as any)?.snapToItem(momentIdx);
     });
   }, [momentIdx]);

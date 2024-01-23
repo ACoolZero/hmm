@@ -508,12 +508,12 @@ PODS:
   - RNGoogleSignin (10.1.1):
     - GoogleSignIn (~> 7.0)
     - React-Core
-  - RNImageCropPicker (0.40.0):
+  - RNImageCropPicker (0.40.2):
     - React-Core
     - React-RCTImage
-    - RNImageCropPicker/QBImagePickerController (= 0.40.0)
+    - RNImageCropPicker/QBImagePickerController (= 0.40.2)
     - TOCropViewController
-  - RNImageCropPicker/QBImagePickerController (0.40.0):
+  - RNImageCropPicker/QBImagePickerController (0.40.2):
     - React-Core
     - React-RCTImage
     - TOCropViewController
@@ -837,7 +837,7 @@ SPEC CHECKSUMS:
   RNFastImage: 5c9c9fed9c076e521b3f509fe79e790418a544e8
   RNGestureHandler: dec4645026e7401a0899f2846d864403478ff6a5
   RNGoogleSignin: aac5c1ec73422109dec1da770247a1e410dcc620
-  RNImageCropPicker: 486e2f7e2b0461ce24321f751410dce1b3b49e6d
+  RNImageCropPicker: d9616a0cb9b72e8551ff94a7a5021fbd29050aa5
   RNScreens: b21dc57dfa2b710c30ec600786a3fc223b1b92e7
   RNSVG: 53c661b76829783cdaf9b7a57258f3d3b4c28315
   RNVectorIcons: 8b5bb0fa61d54cd2020af4f24a51841ce365c7e9
