@@ -1,13 +1,13 @@
 import {getSize} from '@utils/responsive';
 
 const styles = {
-  closeButtonContainer: (top: any, secondary_background: any) => ({
+  closeButtonContainer: (top: number) => ({
     position: 'absolute',
-    backgroundColor: `${secondary_background}66`,
-    marginLeft: 15,
-    padding: getSize.m(15),
+    backgroundColor: '#00000090',
+    marginLeft: getSize.m(16),
+    padding: getSize.m(12),
+    borderRadius: getSize.m(6),
     marginTop: top,
-    borderRadius: getSize.m(8),
   }),
 };
 
