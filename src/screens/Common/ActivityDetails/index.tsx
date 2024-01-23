@@ -2,13 +2,13 @@ import {Block, Header, Image, Text} from '@components';
 import {useStore} from '@hooks';
 import {RootStackParamList} from '@navigation/types';
 import {RouteProp} from '@react-navigation/native';
-import {IStory} from '@screens/Bottom/Home/types';
 import {sleep} from '@utils/date';
 import {getSize, width} from '@utils/responsive';
 import dayjs from 'dayjs';
-import React, {useEffect, useRef} from 'react';
-import {ListRenderItem} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import {Pressable} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
+import DetailLayer from './components/DetailLayer';
 
 const STORY_WIDTH = width * 0.8;
 const STORY_HEIGHT = STORY_WIDTH * 1.7;
@@ -29,11 +29,26 @@ const ActivityDetails: React.FC<ActivityDetailsProps> = ({route}) => {
     });
   }, [momentIdx]);
 
-  const _renderItem: ListRenderItem<IStory> = ({item}) => {
+  const [isFullMode, setIsFullMode] = useState(false);
+  const [momentIndex, setMomentIndex] = useState<null | number>(null);
+  const handlePress = (payload: {fullMode: boolean; index: number}) => {
+    const {fullMode, index} = payload;
+    setIsFullMode(fullMode);
+    setMomentIndex(index);
+  };
+
+  const _renderItem = ({item, index, onPress}: any) => {
     const {media, content, createdAt} = item;
     return (
       <Block paddingVertical={24}>
-        <Image source={{uri: media}} width={STORY_WIDTH} height={STORY_HEIGHT} style={{borderRadius: getSize.s(24)}} />
+        <Pressable onPress={() => onPress({fullMode: true, index})}>
+          <Image
+            source={{uri: media}}
+            width={STORY_WIDTH}
+            height={STORY_HEIGHT}
+            style={{borderRadius: getSize.s(24)}}
+          />
+        </Pressable>
         <Block padding={24}>
           <Text center size={24} marginBottom={5} numberOfLines={2} type="semibold">
             {content}
@@ -53,10 +68,11 @@ const ActivityDetails: React.FC<ActivityDetailsProps> = ({route}) => {
         useScrollView={true}
         ref={carouselRef}
         data={momentsList}
-        renderItem={_renderItem}
+        renderItem={({item, index}) => <_renderItem item={item} index={index} onPress={handlePress} />}
         sliderWidth={width}
         itemWidth={width * 0.8}
       />
+      {isFullMode && <DetailLayer data={momentsList[momentIndex!]} onPress={handlePress} />}
     </Block>
   );
 };
