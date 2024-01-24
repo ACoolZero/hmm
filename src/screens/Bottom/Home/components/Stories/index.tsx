@@ -1,5 +1,5 @@
 import {ICONS} from '@assets';
-import {Block, Image, ListWrapper, StoryCard} from '@components';
+import {Block, FormContainer, Image, ListWrapper, StoryCard} from '@components';
 import {IStory} from '@screens/Bottom/Home/types';
 import useHome from '@screens/Bottom/Home/useHome';
 import {width} from '@utils/responsive';
@@ -17,21 +17,23 @@ const Stories: React.FC = () => {
 
   if (!userMomentsList?.length)
     return (
-      <Block row height={STORY_HEIGHT} marginBottom={36}>
-        {skeletonList.map((_, idx) => (
-          <Block
-            key={idx}
-            alignCenter
-            justifyCenter
-            radius={20}
-            height={STORY_HEIGHT}
-            width={STORY_WIDTH}
-            marginLeft={16}
-            backgroundColor="secondary_background">
-            <Image source={ICONS.image_holder} square={16} tintColor="#D1D5DB" />
-          </Block>
-        ))}
-      </Block>
+      <FormContainer horizontal showsHorizontalScrollIndicator={false}>
+        <Block row height={STORY_HEIGHT} marginBottom={36} paddingRight={16}>
+          {skeletonList.map((_, idx) => (
+            <Block
+              key={idx}
+              alignCenter
+              justifyCenter
+              radius={20}
+              height={STORY_HEIGHT}
+              width={STORY_WIDTH}
+              marginLeft={16}
+              backgroundColor="secondary_background">
+              <Image source={ICONS.image_holder} square={16} tintColor="#D1D5DB" />
+            </Block>
+          ))}
+        </Block>
+      </FormContainer>
     );
   return (
     <Block flex marginBottom={24}>

@@ -30,6 +30,7 @@ const Home: React.FC = () => {
       <StatusBar backgroundColor={COLORS.background} barStyle={barStyle} />
       <ScrollView
         scrollEnabled={scrollEnabled}
+        showsVerticalScrollIndicator={false}
         refreshControl={<RefreshControl refreshing={false} onRefresh={_onRefresh} tintColor={COLORS.text} />}>
         <Block paddingBottom={36}>
           <Stories />
