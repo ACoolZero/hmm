@@ -1,12 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {ICONS, IMAGES} from '@assets';
 import {Block, Image, Modal, Text} from '@components';
 import {handleHitSlop} from '@components/base/shared';
-import {useFocusEffect} from '@react-navigation/native';
 import {IReaction} from '@screens/Bottom/Home/types';
 import useHome from '@screens/Bottom/Home/useHome';
 import {CREATE_MOOD} from '@store/actions';
 import {sleep} from '@utils/date';
-import React, {memo, useCallback, useEffect, useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import styles, {ICON_SIZE, REACTION_SIZE} from './styles';
 
@@ -15,15 +15,9 @@ const Feeling: React.FC = () => {
   const [isFeelingVisible, setFeelingVisible] = useState(false);
   const defaultMoods = customization?.find((x: any) => x.key === 'MOOD').config;
 
-  useFocusEffect(
-    useCallback(() => {
-      // setFeelingVisible(true);
-    }, []),
-  );
-
   useEffect(() => {
-    sleep(5000).then(() => !!defaultMoods?.length && setFeelingVisible(true));
-  }, [defaultMoods]);
+    sleep(10000).then(() => !!defaultMoods?.length && setFeelingVisible(true));
+  }, []);
 
   const _renderItem = (item: IReaction) => {
     const {id, icon, name, color} = item;

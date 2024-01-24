@@ -29,6 +29,7 @@ const auth = produce((state = INITIAL_STATE, action) => {
     case GET_CURRENT_USER:
     case LOGOUT_ACCOUNT:
     case UPDATE_USER_INFO:
+    case LOGIN_GOOGLE:
       state.isLoading = true;
       return state;
 
@@ -43,6 +44,10 @@ const auth = produce((state = INITIAL_STATE, action) => {
       state.userInfo = action.payload.userInfo;
       return state;
 
+    case _onSuccess(LOGIN_GOOGLE):
+      state.isLoading = false;
+      return state;
+
     case _onSuccess(LOGOUT_ACCOUNT):
       return INITIAL_STATE;
 
@@ -51,6 +56,7 @@ const auth = produce((state = INITIAL_STATE, action) => {
     case _onComplete(GET_CURRENT_USER):
     case _onComplete(LOGOUT_ACCOUNT):
     case _onComplete(UPDATE_USER_INFO):
+    case _onComplete(LOGIN_GOOGLE):
       state.isLoading = false;
       return state;
 
@@ -70,10 +76,8 @@ const register = produce((state = {data: {}}, action) => {
   }
 });
 
-const loginGoogle = (...args: any) => reducer.apply(null, [...args, LOGIN_GOOGLE] as any);
-
 const emailCaching = (...args: any) => reducer.apply(null, [...args, CACHING_EMAIL] as any);
 
 const uploadFile = (...args: any) => reducer.apply(null, [...args, UPLOAD_FILE] as any);
 
-export default {auth, register, loginGoogle, uploadFile, emailCaching};
+export default {auth, register, uploadFile, emailCaching};

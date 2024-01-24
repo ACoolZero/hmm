@@ -38,7 +38,6 @@ function* login(action: ActionPayload<LoginPayload>) {
   yield put({type: actions._onSuccess(actions.CACHING_EMAIL), payload: {data: data?.email}});
 
   yield Storage.setItem(REFRESH_EXPIRES_AT, dayjs().add(1, 'week').format('YYYY-MM-DD'));
-  yield delay(200);
   reset(routes.BOTTOM_TAB);
 }
 
@@ -48,6 +47,7 @@ function* loginGoogle(action: ActionPayload<{accessToken: string; email: string}
     email: action.payload.email,
   };
   const response: AxiosResponse = yield call(api, '/auth/google', {method: 'post', data});
+  yield put({type: actions._onSuccess(action.type)});
   const {accessToken, refreshToken} = response.data;
   yield Storage.setItem(ACCESS_TOKEN, accessToken);
   yield Storage.setItem(REFRESH_TOKEN, refreshToken);
@@ -55,7 +55,6 @@ function* loginGoogle(action: ActionPayload<{accessToken: string; email: string}
   yield put({type: actions.GET_CURRENT_USER});
 
   yield Storage.setItem(REFRESH_EXPIRES_AT, dayjs().add(1, 'week').format('YYYY-MM-DD'));
-  yield delay(200);
   yield reset(routes.BOTTOM_TAB);
   GoogleSignin.revokeAccess();
 }
@@ -67,16 +66,21 @@ function* getCurrentUser(action: ActionPayload<null>) {
 
 function* logout(action: ActionPayload<null>) {
   const {accessToken} = yield select(state => state.auth);
-  yield call(api, `/auth/logout/${accessToken}`, {method: 'delete'});
-  yield put({type: actions._onSuccess(action.type)});
-  Storage.removeItem(ACCESS_TOKEN);
-  Storage.removeItem(REFRESH_TOKEN);
-  FastImage.clearMemoryCache();
-  FastImage.clearDiskCache();
-  yield delay(500);
-  reset(routes.LOGIN_SCREEN);
-  GoogleSignin.revokeAccess();
-  GoogleSignin.signOut();
+  const response: AxiosResponse = yield call(api, `/auth/logout/${accessToken}`, {
+    method: 'delete',
+    headers: {Authorization: `Bearer ${accessToken}`},
+  });
+  if (response) {
+    yield put({type: actions._onSuccess(action.type)});
+    yield delay(500);
+    reset(routes.LOGIN_SCREEN);
+    GoogleSignin.revokeAccess();
+    GoogleSignin.signOut();
+    Storage.removeItem(ACCESS_TOKEN);
+    Storage.removeItem(REFRESH_TOKEN);
+    FastImage.clearMemoryCache();
+    FastImage.clearDiskCache();
+  }
 }
 
 function* getRefreshToken() {

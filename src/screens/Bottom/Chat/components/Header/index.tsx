@@ -21,7 +21,7 @@ const Header: React.FC = () => {
         backgroundColor="secondary_background"
         style={styles.container}>
         <Block row alignCenter>
-          <Image source={ICONS.bot} round={48} />
+          <Image source={ICONS.bot} round={46} />
           <Text marginLeft={8} type="semibold">
             Sam
           </Text>

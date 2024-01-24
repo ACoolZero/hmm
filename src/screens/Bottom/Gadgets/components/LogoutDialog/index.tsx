@@ -22,8 +22,10 @@ const LogoutDialog: React.FC<LogoutDialogProps> = ({useDialog}) => {
     dispatch({type: LOGOUT_ACCOUNT});
   };
 
+  const _closeModal = () => setDialogVisible(false);
+
   return (
-    <Modal isVisible={isDialogVisible} onBackdropPress={() => setDialogVisible(false)}>
+    <Modal isVisible={isDialogVisible} onBackdropPress={_closeModal}>
       <Block alignCenter radius={24} paddingHorizontal={12} paddingBottom={24} backgroundColor="secondary_background">
         <Block absolute top={-100}>
           <Image source={IMAGES.splash_logo} square={180} />
@@ -45,7 +47,7 @@ const LogoutDialog: React.FC<LogoutDialogProps> = ({useDialog}) => {
                 borderRadius: getSize.s(9),
                 marginTop: getSize.m(16),
               }}
-              onPress={() => setDialogVisible(false)}
+              onPress={_closeModal}
             />
           </Block>
           <Block width={6} />

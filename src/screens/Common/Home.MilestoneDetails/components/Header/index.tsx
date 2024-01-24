@@ -57,7 +57,7 @@ const Header: React.FC<{selectedMileStone: IMilestone}> = ({selectedMileStone}) 
           {!!momentId && userMomentsList?.length > 0 && (
             <TouchableOpacity
               onPress={() => {
-                navigate(routes.RECALL_SCREEN);
+                navigate(routes.RECALL_SCREEN, {momentIdx: 0});
               }}>
               <Block row alignCenter>
                 <Text sm marginRight={5} color="primary">

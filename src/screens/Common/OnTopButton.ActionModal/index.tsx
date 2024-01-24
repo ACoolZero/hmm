@@ -38,7 +38,7 @@ const ActionModal: React.FC = () => {
               break;
             case 'DISCOVER':
               break;
-            case 'VOLUNTEER':
+            case 'MOODNOW':
               break;
             case 'CUSTOMIZATION':
               navigate(routes.GADGETS_CUSTOMIZATION_SCREEN);
@@ -106,7 +106,7 @@ const ActionModal: React.FC = () => {
             title: 'Discover',
             style: {marginLeft: getSize.m(8)},
           })}
-          {_renderActionButton({actiontype: 'VOLUNTEER', icon: IMAGES.volunteer, title: 'Volunteer', disabled: true})}
+          {_renderActionButton({actiontype: 'MOODNOW', icon: IMAGES.volunteer, title: 'Mood Now'})}
         </Block>
       </Block>
     </TouchableOpacity>
