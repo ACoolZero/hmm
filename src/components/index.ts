@@ -34,3 +34,4 @@ export {default as OnTopButton} from './common/OnTopButton';
 export {default as ProgressCircle} from './common/ProgressCircle';
 export {default as Rating} from './common/Rating';
 export {default as ToastMessage} from './common/ToastMessage';
+export {default as EmojiKeyboard} from './common/EmojiKeyboard';
