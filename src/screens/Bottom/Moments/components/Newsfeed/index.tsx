@@ -1,4 +1,4 @@
-import {Block, EmptyList, MomentCard, Text} from '@components';
+import {Block, EmptyList, LoadingBar, MomentCard, Text} from '@components';
 import {useColors} from '@hooks';
 import {IMoment} from '@screens/Bottom/Moments/types';
 import useMoments from '@screens/Bottom/Moments/useMoments';
@@ -16,14 +16,19 @@ const Newsfeed: React.FC = () => {
 
   const _renderHeader = () => {
     return (
-      <Animated.View style={styles.header(animatedValue)}>
-        <Block height={110} backgroundColor="secondary_background">
-          <Text size={36} type="semibold">
-            Moments
-          </Text>
-          <Category />
+      <>
+        <Animated.View style={styles.header(animatedValue)}>
+          <Block height={110} backgroundColor="secondary_background">
+            <Text size={36} type="semibold">
+              Moments
+            </Text>
+            <Category />
+          </Block>
+        </Animated.View>
+        <Block>
+          <LoadingBar visible={isLoading} container={{top: -8}} />
         </Block>
-      </Animated.View>
+      </>
     );
   };
 
