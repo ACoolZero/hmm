@@ -1,12 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
 import {ICONS} from '@assets';
-import {Block, GradientButton, Image, Loading, Text, TextInput} from '@components';
+import {Block, EmojiKeyboard, GradientButton, Image, Loading, Text, TextInput} from '@components';
 import {handleHitSlop} from '@components/base/shared';
 import {useColors, useStore} from '@hooks';
 import {getSize, height} from '@utils/responsive';
 import dayjs from 'dayjs';
-import React, {useRef, useState} from 'react';
-import {Pressable, TextInput as RNTextInput, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import {Pressable, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import ConfirmDialog from '../components/ConfirmDialog';
 import Header from '../components/Header';
@@ -23,8 +23,9 @@ const CreateScreen: React.FC = () => {
     location: '',
     milestoneTime: dayjs(new Date()).format('YYYY-MM-DD HH:mm:ss.SSS'),
   });
+
   const isValid = Object.values(mileStone).every(value => value !== '');
-  const iconInputRef = useRef<any>();
+  const [isIconInputVisible, setIconInputVisibility] = useState<boolean>(false);
 
   const _renderIconCalendar = () => <Image source={ICONS.calender} square={24} tintColor={COLORS.light_text} />;
 
@@ -34,7 +35,7 @@ const CreateScreen: React.FC = () => {
     _toggleDatePicker();
   };
 
-  const _toggleIconInput = () => iconInputRef.current?.focus();
+  const _toggleIconInput = () => setIconInputVisibility(!isIconInputVisible);
 
   return (
     <Block flex backgroundColor="background">
@@ -55,11 +56,13 @@ const CreateScreen: React.FC = () => {
             Icon
           </Text>
           <Block row alignCenter marginBottom={24}>
-            <RNTextInput
-              ref={iconInputRef}
-              maxLength={2}
-              onChangeText={icon => setMileStone({...mileStone, icon})}
-              style={{opacity: 0, position: 'absolute'}}
+            <EmojiKeyboard
+              open={isIconInputVisible}
+              onClose={_toggleIconInput}
+              onEmojiSelected={metadata => {
+                const icon: string = metadata.emoji;
+                setMileStone({...mileStone, icon});
+              }}
             />
             <Block
               alignCenter
