@@ -80,7 +80,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         vectorDrawables.useSupportLibrary = true
-        versionCode 202401052
+        versionCode 202401271
         versionName "1.0.0"
     }
     signingConfigs {
