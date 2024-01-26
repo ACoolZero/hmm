@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import {ICONS} from '@assets';
-import {Block, GradientButton, Image, Loading, Text, TextInput} from '@components';
+import {Block, EmojiKeyboard, GradientButton, Image, Loading, Text, TextInput} from '@components';
 import {handleHitSlop} from '@components/base/shared';
 import {useColors, useStore} from '@hooks';
 import {RootStackParamList} from '@navigation/types';
@@ -12,7 +12,6 @@ import React, {useEffect, useState} from 'react';
 import {Pressable, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import Header from '../components/Header';
-import {EmojiKeyboard} from '@components';
 
 interface EditScreenProps {
   route: RouteProp<RootStackParamList, 'EDIT_MILESTONE_SCREEN'>;

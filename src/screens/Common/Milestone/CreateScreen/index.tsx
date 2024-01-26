@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import {ICONS} from '@assets';
-import {Block, GradientButton, Image, Loading, Text, TextInput} from '@components';
+import {Block, EmojiKeyboard, GradientButton, Image, Loading, Text, TextInput} from '@components';
 import {handleHitSlop} from '@components/base/shared';
 import {useColors, useStore} from '@hooks';
 import {getSize, height} from '@utils/responsive';
@@ -10,7 +10,6 @@ import {Pressable, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 're
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import ConfirmDialog from '../components/ConfirmDialog';
 import Header from '../components/Header';
-import {EmojiKeyboard} from '@components';
 
 const CreateScreen: React.FC = () => {
   const {useSelector} = useStore();
