@@ -1,15 +1,16 @@
+/* eslint-disable react-native/no-inline-styles */
 import {ICONS} from '@assets';
-import {Block, GradientButton, Header, Image, LazyImage, Loading, Text, TextInput, LoadingBar} from '@components';
+import {Block, GradientButton, Header, Image, LazyImage, Loading, Text, TextInput} from '@components';
 import {useColors, useMediaPicker, useStore} from '@hooks';
 import {RootStackParamList} from '@navigation/types';
 import {RouteProp} from '@react-navigation/native';
 import {CREATE_MOMENT, UPLOAD_FILE} from '@store/actions';
-import {getSize, height, width} from '@utils/responsive';
+import {isIos} from '@utils/helper';
+import {getSize, height} from '@utils/responsive';
 import React, {useEffect, useState} from 'react';
 import {KeyboardAvoidingView, TouchableOpacity} from 'react-native';
 import {AccessModeType} from '../types';
 import styles, {ICON_HOLDER_SIZE, IMAGE_HEIGHT, IMAGE_WIDTH} from './styles';
-import {isIos} from '@utils/helper';
 
 interface CreateMomentProps {
   route: RouteProp<RootStackParamList, 'CREATE_MOMENT_SCREEN'>;
@@ -29,9 +30,6 @@ const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
     accessMode: accessMode,
   });
   const isValid = Object.values(moment).every(value => value !== '');
-  const containerStyle = {
-    flex: 1,
-  };
 
   useEffect(() => {
     if (picture) {
@@ -60,7 +58,7 @@ const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
   };
 
   return (
-    <KeyboardAvoidingView style={[containerStyle]} behavior={isIos ? 'padding' : 'height'}>
+    <KeyboardAvoidingView style={{flex: 1}} behavior={isIos ? 'padding' : 'height'}>
       <Block flex backgroundColor={COLORS.secondary_background}>
         <Header canGoBack title="Create Moment" />
         <Block height={height - 250}>
@@ -86,7 +84,6 @@ const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
               </TouchableOpacity>
             )}
           </Block>
-          <LoadingBar visible={isLoading} backdrop={{width: width, height: height}} container={{top: 40}} />
         </Block>
         <Block height={230} absolute bottom={0} left={0} right={0} backgroundColor={COLORS.background}>
           <Block
@@ -165,7 +162,7 @@ const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
               }}
             />
           </Block>
-          <Loading visible={isCreate} />
+          <Loading visible={isLoading || isCreate} />
         </Block>
       </Block>
     </KeyboardAvoidingView>

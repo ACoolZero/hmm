@@ -2,7 +2,7 @@ import {Block} from '@components';
 import {BlockProps} from '@components/base/Block/types';
 import {getSize, width} from '@utils/responsive';
 import React, {useEffect, useRef} from 'react';
-import {ViewStyle, StyleSheet, Animated} from 'react-native';
+import {Animated, StyleSheet, ViewStyle} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
@@ -20,17 +20,18 @@ interface LoadingBarProps {
   timePerLap?: number;
 }
 
-const LoadingBar = ({
+const LoadingBar: React.FC<LoadingBarProps> = ({
   visible,
   backdrop,
   container,
   barStyle,
   gradientColors = ['#9EDCF2', '#23B7EB'],
   timePerLap = 2000,
-}: LoadingBarProps) => {
+}) => {
   const animatedValue = useRef(new Animated.Value(0)).current;
   const endPosition: any = container?.width ? container.width : width;
   const startPosition: any = barStyle?.width ? -barStyle.width : -styles.defaultBarStyle.width;
+
   useEffect(() => {
     Animated.loop(
       Animated.timing(animatedValue, {
