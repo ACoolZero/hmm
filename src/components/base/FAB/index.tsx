@@ -9,7 +9,7 @@ let timer: NodeJS.Timeout;
 
 const FAB: React.FC<FABProps> = ({
   renderSize,
-  draggable = true,
+  draggable = false,
   reversible = false,
   icon = ICONS.plus,
   iconSize = 24,

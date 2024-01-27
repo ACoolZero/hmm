@@ -3,8 +3,8 @@ import {useColors} from '@hooks';
 import {IMoment} from '@screens/Bottom/Moments/types';
 import useMoments from '@screens/Bottom/Moments/useMoments';
 import {getSize} from '@utils/responsive';
-import React, {useRef, useState} from 'react';
-import {Animated, DeviceEventEmitter, ListRenderItem, RefreshControl} from 'react-native';
+import React, {useRef} from 'react';
+import {Animated, ListRenderItem, RefreshControl} from 'react-native';
 import Category from '../Category';
 import styles from './styles';
 
@@ -12,7 +12,6 @@ const Newsfeed: React.FC = () => {
   const animatedValue = useRef(new Animated.Value(0)).current;
   const {momentsList, isLoading, fetchData} = useMoments();
   const {COLORS} = useColors();
-  const [scrollEnabled, setScrollEnabled] = useState(true);
 
   const _renderHeader = () => {
     return (
@@ -35,13 +34,8 @@ const Newsfeed: React.FC = () => {
     fetchData();
   };
 
-  DeviceEventEmitter.addListener('onDragging', payload => {
-    setScrollEnabled(!payload);
-  });
-
   return (
     <Animated.FlatList
-      scrollEnabled={scrollEnabled}
       data={momentsList}
       keyExtractor={(item: IMoment) => String(item.id)}
       renderItem={_renderItem}

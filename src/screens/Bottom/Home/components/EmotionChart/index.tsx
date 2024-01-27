@@ -4,15 +4,13 @@ import {useColors} from '@hooks';
 import useHome from '@screens/Bottom/Home/useHome';
 import {width} from '@utils/responsive';
 import dayjs from 'dayjs';
-import React, {memo, useState} from 'react';
-import {DeviceEventEmitter} from 'react-native';
+import React, {memo} from 'react';
 import {LineChart} from 'react-native-gifted-charts';
 import styles from './styles';
 
 const EmotionChart: React.FC = () => {
   const {COLORS} = useColors();
   const {emotionScore} = useHome();
-  const [disableScroll, setDisableScroll] = useState(false);
 
   const _formattedData = (value: {value: number; date: string}[], type: 'current' | 'past') => {
     const isPast = type === 'past';
@@ -44,10 +42,6 @@ const EmotionChart: React.FC = () => {
       },
     }));
   };
-
-  DeviceEventEmitter.addListener('onDragging', payload => {
-    setDisableScroll(payload);
-  });
 
   return (
     <Block flex backgroundColor="background">
@@ -94,7 +88,6 @@ const EmotionChart: React.FC = () => {
           data={_formattedData(emotionScore?.past || [], 'past')}
           data2={_formattedData(emotionScore?.current || [], 'current')}
           showStripOnFocus
-          disableScroll={disableScroll}
           stripColor={COLORS.border}
           stripWidth={1}
         />

@@ -17,12 +17,6 @@ const OnTopButton: React.FC<{bottomOffset?: number}> = ({bottomOffset = 110}) =>
       backgroundColor="transparent"
       onPress={() => {
         DeviceEventEmitter.emit('showActionModal');
-      }}
-      onDragStart={() => {
-        DeviceEventEmitter.emit('onDragging', true);
-      }}
-      onDragEnd={() => {
-        DeviceEventEmitter.emit('onDragging', false);
       }}>
       <Block alignCenter justifyCenter square={75} style={styles.container} borderWidth={1.5}>
         <Image source={{uri: userInfo.avatar}} square={60} style={{borderRadius: getSize.s(24)}} />
