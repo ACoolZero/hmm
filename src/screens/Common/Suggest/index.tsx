@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import {ICONS, IMAGES} from '@assets';
 import {Block, GradientButton, Image, Text, TextInput} from '@components';
-import {useColors} from '@hooks';
+import {useColors, useTranslation} from '@hooks';
 import {isIos} from '@utils/helper';
 import {getSize, height, width} from '@utils/responsive';
 import React, {useState} from 'react';
@@ -15,6 +15,7 @@ const IMAGE_BACKGROUND_HEIGHT = IMAGE_BACKGROUND_WIDTH * 0.78;
 const Suggest: React.FC = () => {
   const {COLORS} = useColors();
   const [isDialogVisible, setDialogVisible] = useState<boolean>(false);
+  const {t} = useTranslation();
 
   return (
     <Block flex backgroundColor="background">
@@ -23,14 +24,14 @@ const Suggest: React.FC = () => {
       <Block shadow style={styles.container} backgroundColor="secondary_background" overflow="hidden">
         <Block marginBottom={28}>
           <Text marginBottom={24} type="semibold">
-            What is in your mind, my friend ?
+            {t('suggest.question')}
           </Text>
           <TextInput
             multiline
             inputStyle={{...styles.multilineInputStyle, backgroundColor: COLORS.background}}
             containerInputStyle={styles.containerInputStyle}
             color={COLORS.light_text}
-            value="We can't contain our excitement to give it a go!"
+            value={t('suggest.input_placeholder')}
             height={120}
             style={{
               flex: 1,
@@ -46,7 +47,7 @@ const Suggest: React.FC = () => {
               <Block alignCenter justifyCenter round={32} marginRight={8} backgroundColor="card_background_one">
                 <Image source={ICONS.camera} square={20} tintColor={COLORS.common_background} resizeMode="contain" />
               </Block>
-              <Text sm>Add photos</Text>
+              <Text sm>{t('suggest.add_photos')}</Text>
             </Block>
           </Pressable>
         </Block>
@@ -66,7 +67,7 @@ const Suggest: React.FC = () => {
         borderTopWidth={1}
         borderColor="#87A8B9"
         backgroundColor="secondary_background">
-        <GradientButton title="Share" onPress={() => setDialogVisible(true)} />
+        <GradientButton title={t('button.share')} onPress={() => setDialogVisible(true)} />
       </Block>
       <SuccessDialog useDialog={[isDialogVisible, setDialogVisible]} />
     </Block>

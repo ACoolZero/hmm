@@ -1,5 +1,6 @@
 import {ICONS} from '@assets';
 import {Block, Image, Text} from '@components';
+import {useTranslation} from '@hooks';
 import {goBack, navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import Header from '@screens/Auth/components/Header';
@@ -9,6 +10,7 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const ForgotPasswordStep2: React.FC = () => {
   const {top} = useSafeAreaInsets();
+  const {t} = useTranslation();
 
   return (
     <Block flex padding={24} backgroundColor="common_background">
@@ -18,9 +20,9 @@ const ForgotPasswordStep2: React.FC = () => {
             <Image source={ICONS.close} square={14} tintColor="common_light_text" resizeMode="contain" />
           </Block>
         </Pressable>
-        <Header content="OTP sent !!" />
+        <Header content={t('forgot_password.otp_sent')} />
         <Text md marginTop={8} color="common_light_text">
-          Please enter the OTP sent to your email to reset your password
+          {t('forgot_password.otp_input_prompt')}
         </Text>
       </Block>
       <Block row marginBottom={24}>
@@ -34,9 +36,9 @@ const ForgotPasswordStep2: React.FC = () => {
           navigate(routes.FORGOT_PASSWORD_STEP3_SCREEN);
         }}>
         <Text color="common_light_text">
-          Did not receive the OTP code?{' '}
+          {t('forgot_password.otp_didnt_receive')}{' '}
           <Text color="primary" type="medium">
-            Try again
+            {t('forgot_password.try_again')}
           </Text>
         </Text>
       </Pressable>

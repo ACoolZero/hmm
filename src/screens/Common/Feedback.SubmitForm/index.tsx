@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import {ICONS} from '@assets';
 import {Block, FormContainer, GradientButton, Header, Image, LazyImage, Loading, Text, TextInput} from '@components';
-import {useColors, useMediaPicker, useStore} from '@hooks';
+import {useColors, useMediaPicker, useStore, useTranslation} from '@hooks';
 import {SEND_FEEDBACK, UPLOAD_FILE} from '@store/actions';
 import {getSize, width} from '@utils/responsive';
 import React, {useEffect, useState} from 'react';
@@ -15,6 +15,7 @@ const FeedbackSubmitForm: React.FC = () => {
   const {COLORS} = useColors();
   const {picture, openPicker} = useMediaPicker({cropping: false});
   const [feedback, setFeedback] = useState({content: '', attachment: ''});
+  const {t} = useTranslation();
 
   useEffect(() => {
     if (picture) {
@@ -38,11 +39,11 @@ const FeedbackSubmitForm: React.FC = () => {
 
   return (
     <Block flex backgroundColor="background">
-      <Header canGoBack title="Feedback" />
+      <Header canGoBack title={t('gadgets.FAQ/Feedback.feedback.label')} />
       <FormContainer>
         <Block radius={24} margin={16} paddingHorizontal={16} paddingTop={24} backgroundColor="secondary_background">
           <Text md type="semibold">
-            Something went wrong ?
+            {t('gadgets.FAQ/Feedback.feedback.prompt')}
           </Text>
           <TextInput
             multiline
@@ -63,7 +64,7 @@ const FeedbackSubmitForm: React.FC = () => {
               <Block round={10} backgroundColor="primary" />
             </Block>
             <Text sm color="light_text">
-              Including logs
+              {t('gadgets.FAQ/Feedback.feedback.logs')}
             </Text>
           </Block>
           <TouchableOpacity onPress={openPicker}>
@@ -72,7 +73,7 @@ const FeedbackSubmitForm: React.FC = () => {
                 <Image source={ICONS.camera} square={18} tintColor={COLORS.light_text} resizeMode="contain" />
               </Block>
               <Text sm color="light_text">
-                Add screenshots
+                {t('gadgets.FAQ/Feedback.feedback.add_screenshots')}
               </Text>
             </Block>
           </TouchableOpacity>
@@ -88,7 +89,12 @@ const FeedbackSubmitForm: React.FC = () => {
         borderTopWidth={1}
         borderColor="#87A8B9"
         backgroundColor="secondary_background">
-        <GradientButton isValid={!!feedback.content} disabled={isUploading} title="Submit" onPress={_onSubmit} />
+        <GradientButton
+          isValid={!!feedback.content}
+          disabled={isUploading}
+          title={t('gadgets.FAQ/Feedback.feedback.submit')}
+          onPress={_onSubmit}
+        />
       </Block>
       <Loading visible={isUploading || isSending} />
     </Block>

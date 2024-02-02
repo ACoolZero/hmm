@@ -1,6 +1,6 @@
 import {ICONS} from '@assets';
 import {Block, Image, Text} from '@components';
-import {useStore} from '@hooks';
+import {useStore, useTranslation} from '@hooks';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {LOGIN_GOOGLE} from '@store/actions';
 import {isIos} from '@utils/helper';
@@ -10,6 +10,7 @@ import {TouchableOpacity} from 'react-native';
 
 const SocialLoginForm: React.FC = () => {
   const {dispatch} = useStore();
+  const {t} = useTranslation();
 
   const _handleLoginGoogle = async () => {
     try {
@@ -27,7 +28,7 @@ const SocialLoginForm: React.FC = () => {
       <Block row alignCenter>
         <Block flex height={1} backgroundColor="#DDDDDD" />
         <Text center marginVertical={24} marginHorizontal={12} color="primary">
-          Or
+          {t('common.or')}
         </Text>
         <Block flex height={1} backgroundColor="#DDDDDD" />
       </Block>

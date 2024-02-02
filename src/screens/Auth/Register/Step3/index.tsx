@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import {ICONS} from '@assets';
 import {Block, FormContainer, GradientButton, Image, Text} from '@components';
+import {useTranslation} from '@hooks';
 import {goBack, navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import Header from '@screens/Auth/components/Header';
@@ -16,6 +17,7 @@ const RegisterStep3: React.FC = () => {
   const {dispatch} = useStore();
   const {top} = useSafeAreaInsets();
   const [gender, setGender] = useState<GenderType>('MALE');
+  const {t} = useTranslation();
 
   const _onSubmit = () => {
     dispatch({type: STORE_REGISTER_DATA, payload: {gender}});
@@ -25,12 +27,12 @@ const RegisterStep3: React.FC = () => {
   return (
     <Block flex padding={24} paddingTop={top} backgroundColor="common_background">
       <FormContainer>
-        <Header content="What is your gender ?" />
+        <Header content={t('validate.step_three_header')} />
         <Block marginTop={24} height={200}>
           <Block radius={8} borderWidth={1} borderColor="common_border" backgroundColor="white">
             <Pressable onPress={() => setGender('MALE')}>
               <Block row alignCenter height={48} paddingHorizontal={16} space="between">
-                <Text color="common_text">Male</Text>
+                <Text color="common_text">{t('placeholder.male')}</Text>
                 <Block
                   alignCenter
                   justifyCenter
@@ -44,7 +46,7 @@ const RegisterStep3: React.FC = () => {
             <Block height={1} backgroundColor="common_border" />
             <Pressable onPress={() => setGender('FEMALE')}>
               <Block row alignCenter height={48} paddingHorizontal={16} space="between">
-                <Text color="common_text">Female</Text>
+                <Text color="common_text">{t('placeholder.female')}</Text>
                 <Block
                   alignCenter
                   justifyCenter
@@ -71,7 +73,7 @@ const RegisterStep3: React.FC = () => {
               <Image source={ICONS.back} square={20} tintColor="primary" resizeMode="contain" />
             </Block>
           </Pressable>
-          <GradientButton title="Continue" style={{flex: 1}} onPress={_onSubmit} />
+          <GradientButton title={t('button.continue')} style={{flex: 1}} onPress={_onSubmit} />
         </Block>
       </FormContainer>
     </Block>

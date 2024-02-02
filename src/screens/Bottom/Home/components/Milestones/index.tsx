@@ -1,6 +1,6 @@
 import {ICONS} from '@assets';
 import {Block, Image, MilestoneCard, Text} from '@components';
-import {useColors} from '@hooks';
+import {useColors, useTranslation} from '@hooks';
 import {navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import {IMilestone} from '@screens/Bottom/Home/types';
@@ -11,6 +11,7 @@ import {Pressable} from 'react-native';
 const Milestones: React.FC = () => {
   const {COLORS} = useColors();
   const {milestoneList} = useHome();
+  const {t} = useTranslation();
 
   const _renderItem = (item: IMilestone, index: number) => {
     let isLastItem = index === (milestoneList?.length > 2 ? 2 : milestoneList.length - 1);
@@ -30,12 +31,12 @@ const Milestones: React.FC = () => {
       borderColor="border">
       <Block row alignCenter marginBottom={25} marginRight={-1} space="between">
         <Text md type="bold">
-          Keep fighting !
+          {t('home.milestones.label')}
         </Text>
         <Pressable onPress={() => navigate(routes.MILESTONE_DETAILS_SCREEN)}>
           <Block row alignCenter>
             <Text sm marginRight={6} color={COLORS.primary}>
-              See more
+              {t('home.milestones.see_more')}
             </Text>
             <Image source={ICONS.arrow_right} square={12} tintColor={COLORS.primary} />
           </Block>

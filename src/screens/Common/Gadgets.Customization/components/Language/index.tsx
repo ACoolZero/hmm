@@ -14,7 +14,7 @@ const langs: ILanguage[] = [
 ];
 
 const Language: React.FC = () => {
-  const {i18n} = useTranslation();
+  const {t, i18n} = useTranslation();
   const {COLORS} = useColors();
   const [selected, setSelected] = useState<string>(i18n.language);
 
@@ -49,7 +49,7 @@ const Language: React.FC = () => {
   return (
     <Block marginBottom={24}>
       <Text marginBottom={12} type="bold">
-        Language
+        {t('gadgets.customization.language.label')}
       </Text>
       <Block row alignCenter justifyCenter>
         {langs.map(_renderItem)}

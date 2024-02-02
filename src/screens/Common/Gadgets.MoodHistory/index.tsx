@@ -1,5 +1,5 @@
 import {Block, EmptyList, Header, Image, ListWrapper, Text} from '@components';
-import {useColors, useStore} from '@hooks';
+import {useColors, useStore, useTranslation} from '@hooks';
 import {GET_MOOD_HISTORY} from '@store/actions';
 import {getSize} from '@utils/responsive';
 import React, {useEffect} from 'react';
@@ -11,6 +11,7 @@ const MoodHistory: React.FC = () => {
   const {COLORS, randomTextColor} = useColors();
   const {dispatch, useSelector} = useStore();
   const {data: moodsHistoryList} = useSelector('moodsHistoryList');
+  const {t} = useTranslation();
 
   const _renđerItem: ListRenderItem<IMoodHistory> = ({item}) => {
     const {date, userMoodHistories} = item;
@@ -53,7 +54,7 @@ const MoodHistory: React.FC = () => {
 
   return (
     <Block flex backgroundColor="background">
-      <Header canGoBack title="Mood history" />
+      <Header canGoBack title={t('gadgets.mood_history.label')} />
       <Block flex safeBottom paddingHorizontal={16}>
         <ListWrapper
           data={moodsHistoryList}

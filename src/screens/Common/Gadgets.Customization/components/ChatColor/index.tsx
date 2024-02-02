@@ -1,5 +1,5 @@
 import {Block, Text} from '@components';
-import {useColors, useStore} from '@hooks';
+import {useColors, useStore, useTranslation} from '@hooks';
 import {CHANGE_CHAT_COLOR} from '@store/actions';
 import React, {useState} from 'react';
 import {Pressable} from 'react-native';
@@ -11,6 +11,7 @@ const ChatColor: React.FC = () => {
   const {COLORS} = useColors();
   const {chatColor} = useSelector('general');
   const [selected, setSelected] = useState<string>(chatColor);
+  const {t} = useTranslation();
 
   const _renderItem = (item: string) => {
     const isSelected = selected === item;
@@ -24,7 +25,7 @@ const ChatColor: React.FC = () => {
         }}>
         <Block row alignCenter>
           <Block flex alignCenter justifyCenter radius={12} height={36} backgroundColor={item}>
-            <Text color="#213138">I feel very sad today</Text>
+            <Text color="#213138">{t('gadgets.customization.chat_color.sample_text')}</Text>
           </Block>
           <Block alignCenter justifyCenter width={80} height={36}>
             <Block
@@ -44,7 +45,7 @@ const ChatColor: React.FC = () => {
   return (
     <Block marginBottom={24}>
       <Text marginBottom={12} type="bold">
-        Chat color
+        {t('gadgets.customization.chat_color.label')}
       </Text>
       <Block gap={8}>{colors.map(_renderItem)}</Block>
     </Block>

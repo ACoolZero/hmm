@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import {Block, Image, Text} from '@components';
-import {useStore} from '@hooks';
+import {useStore, useTranslation} from '@hooks';
 import {RootStackParamList} from '@navigation/types';
 import {RouteProp} from '@react-navigation/native';
 import {IStory} from '@screens/Bottom/Home/types';
@@ -25,6 +25,7 @@ const Recall: React.FC<RecallProps> = ({route}) => {
   const {data: userMomentsList} = useSelector('userMomentsList');
   const carouselRef = useRef(null);
   const {momentIdx} = route.params;
+  const {t} = useTranslation();
 
   useEffect(() => {
     sleep(200).then(() => {
@@ -61,7 +62,7 @@ const Recall: React.FC<RecallProps> = ({route}) => {
 
   return (
     <Block flex backgroundColor="background">
-      <Header canGoBack title="Recall" />
+      <Header canGoBack title={t('recall.header')} />
       <Carousel
         ref={carouselRef}
         data={userMomentsList}

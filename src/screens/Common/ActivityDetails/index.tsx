@@ -1,5 +1,5 @@
 import {Block, Header, Image, Text} from '@components';
-import {useStore} from '@hooks';
+import {useStore, useTranslation} from '@hooks';
 import {RootStackParamList} from '@navigation/types';
 import {RouteProp} from '@react-navigation/native';
 import {sleep} from '@utils/date';
@@ -22,6 +22,7 @@ const ActivityDetails: React.FC<ActivityDetailsProps> = ({route}) => {
   const {data: momentsList} = useSelector('momentsList');
   const carouselRef = useRef(null);
   const {momentIdx} = route.params;
+  const {t} = useTranslation();
 
   useEffect(() => {
     sleep(200).then(() => {
@@ -63,7 +64,7 @@ const ActivityDetails: React.FC<ActivityDetailsProps> = ({route}) => {
 
   return (
     <Block flex backgroundColor="background">
-      <Header canGoBack title="Moments" />
+      <Header canGoBack title={t('moments.header')} />
       <Carousel
         useScrollView={true}
         ref={carouselRef}

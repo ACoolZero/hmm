@@ -24,7 +24,7 @@ const Gadgets: React.FC = () => {
             onPress={() => setDialogVisible(true)}
             style={{...styles.btnLogout, borderColor: COLORS.light_text}}>
             <Image source={ICONS.logout} square={30} />
-            <Text marginLeft={12}>{t('gadgets.logout')}</Text>
+            <Text marginLeft={12}>{t('gadgets.logout.label')}</Text>
           </Pressable>
         </FormContainer>
       </Block>

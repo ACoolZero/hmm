@@ -1,6 +1,6 @@
 import {IMAGES} from '@assets';
 import {Block, GradientButton, Image, Modal, Text} from '@components';
-import {useColors, useStore} from '@hooks';
+import {useColors, useStore, useTranslation} from '@hooks';
 import {DELETE_MOMENT} from '@store/actions';
 import {getSize, width} from '@utils/responsive';
 import React from 'react';
@@ -16,6 +16,7 @@ const DeleteDialog: React.FC<DeleteDialogProps> = ({useDialog}) => {
   const {isLoading} = useSelector('auth');
   const {data: activeMoment} = useSelector('activeMoment');
   const {COLORS} = useColors();
+  const {t} = useTranslation();
   const [isDialogVisible, setDialogVisible] = useDialog;
 
   const _handleDelete = () => {
@@ -27,13 +28,13 @@ const DeleteDialog: React.FC<DeleteDialogProps> = ({useDialog}) => {
     <Modal isVisible={isDialogVisible} onBackdropPress={() => setDialogVisible(false)}>
       <Block alignCenter radius={24} paddingHorizontal={12} paddingBottom={24} backgroundColor="secondary_background">
         <Text center size={24} margin={36} type="semibold">
-          Delete it?
+          {t('recall.delete_moment.question')}
         </Text>
         <Block row>
           <Block alignCenter>
             <Image source={IMAGES.delete_moment_icon_left} round={57} />
             <GradientButton
-              title="No no"
+              title={t('recall.delete_moment.no')}
               backgroundColor={['#FAFAFA', '#FAFAFA']}
               textColor="primary"
               style={{
@@ -51,7 +52,7 @@ const DeleteDialog: React.FC<DeleteDialogProps> = ({useDialog}) => {
             <Image source={IMAGES.logout_icon_right} round={57} />
             <GradientButton
               disabled={isLoading}
-              title="Yep !"
+              title={t('recall.delete_moment.yes')}
               style={{
                 width: BUTTON_WIDTH,
                 borderWidth: getSize.s(0),

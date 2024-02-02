@@ -2,7 +2,7 @@
 import {ICONS} from '@assets';
 import {Block, EmojiKeyboard, GradientButton, Image, Loading, Text, TextInput} from '@components';
 import {handleHitSlop} from '@components/base/shared';
-import {useColors, useStore} from '@hooks';
+import {useColors, useStore, useTranslation} from '@hooks';
 import {RootStackParamList} from '@navigation/types';
 import {RouteProp} from '@react-navigation/native';
 import {GET_MILESTONE_DETAILS, UPDATE_MILESTONE} from '@store/actions';
@@ -24,6 +24,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
   const [isDatePickerVisible, setDatePickerVisibility] = useState<boolean>(false);
   const {data: milestoneDetails, isLoading} = useSelector('milestoneDetails');
   const {isLoading: isUpdating} = useSelector('updateMilestone');
+  const {t} = useTranslation();
 
   const [mileStone, setMileStone] = useState({
     content: '',
@@ -56,14 +57,14 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
   return (
     <Block flex backgroundColor="background">
       <StatusBar backgroundColor="#FF974A" barStyle="dark-content" />
-      <Header title="Edit Milestone" />
+      <Header title={t('milestone.edit.header')} />
       {isLoading ? (
         <Block flex />
       ) : (
         <Block shadow style={styles.container}>
           <ScrollView bounces={false} style={{...styles.content, backgroundColor: COLORS.secondary_background}}>
             <Text marginBottom={16} type="semibold">
-              Your milestone
+              {t('milestone.your_milestone')}
             </Text>
             <TextInput
               inputStyle={{backgroundColor: COLORS.background, borderWidth: 0}}
@@ -73,7 +74,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
               onChangeText={content => setMileStone({...mileStone, content})}
             />
             <Text marginBottom={16} type="semibold">
-              Icon
+              {t('milestone.icon')}
             </Text>
             <Block row alignCenter marginBottom={24}>
               <EmojiKeyboard
@@ -99,7 +100,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
               </TouchableOpacity>
             </Block>
             <Text marginBottom={16} type="semibold">
-              Time
+              {t('milestone.time')}
             </Text>
             <Pressable onPress={_toggleDatePicker}>
               <TextInput
@@ -112,7 +113,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
               />
             </Pressable>
             <Text marginBottom={16} type="semibold">
-              Location
+              {t('milestone.location')}
             </Text>
             <TextInput
               inputStyle={{backgroundColor: COLORS.background, borderWidth: 0}}
@@ -134,7 +135,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
         <GradientButton
           isValid={isValid}
           disabled={isLoading}
-          title="Save"
+          title={t('button.save')}
           onPress={() => {
             dispatch({type: UPDATE_MILESTONE, payload: {milestoneId, data: mileStone}});
           }}
@@ -145,8 +146,8 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
         mode="date"
         display="inline"
         themeVariant="light"
-        confirmTextIOS="Đồng ý"
-        cancelTextIOS="Đóng"
+        confirmTextIOS={t('button.confirm')}
+        cancelTextIOS={t('button.close')}
         isDarkModeEnabled={false}
         isVisible={isDatePickerVisible}
         onConfirm={_handleDateConfirm}

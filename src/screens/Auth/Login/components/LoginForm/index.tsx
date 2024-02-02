@@ -1,6 +1,6 @@
 import {Block, FormInput, GradientButton, Loading, Text} from '@components';
 import {yupResolver} from '@hookform/resolvers/yup';
-import {useStore} from '@hooks';
+import {useStore, useTranslation} from '@hooks';
 import {navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import {LoginPayload} from '@screens/Auth/types';
@@ -16,6 +16,7 @@ const LoginForm: React.FC = () => {
   const {dispatch, useSelector} = useStore();
   const {isLoading} = useSelector('auth');
   const {data: email} = useSelector('emailCaching');
+  const {t} = useTranslation();
   const {
     control,
     handleSubmit,
@@ -36,7 +37,7 @@ const LoginForm: React.FC = () => {
         shadow
         control={control}
         name="email"
-        placeholder="Your email"
+        placeholder={t('placeholder.email')}
         color="common_text"
         containerInputStyle={styles.containerInputStyle}
       />
@@ -45,23 +46,28 @@ const LoginForm: React.FC = () => {
         shadow
         control={control}
         name="password"
-        placeholder="Password"
+        placeholder={t('placeholder.password')}
         color="common_text"
         containerInputStyle={styles.containerInputStyle}
       />
       <Block row alignCenter marginBottom={40} space="between">
         <Pressable onPress={() => navigate(routes.REGISTER_STEP1_SCREEN)}>
           <Text md color="primary">
-            Register
+            {t('login.register')}
           </Text>
         </Pressable>
         <Pressable onPress={() => navigate(routes.FORGOT_PASSWORD_STEP1_SCREEN)}>
           <Text md color="primary">
-            Forgot password?
+            {t('login.forgot_password')}
           </Text>
         </Pressable>
       </Block>
-      <GradientButton disabled={isLoading} isValid={isValid} title="Sign in" onPress={handleSubmit(_onSubmit)} />
+      <GradientButton
+        disabled={isLoading}
+        isValid={isValid}
+        title={t('common.login')}
+        onPress={handleSubmit(_onSubmit)}
+      />
       <SocialLoginForm />
       <Loading visible={isLoading} />
     </Block>

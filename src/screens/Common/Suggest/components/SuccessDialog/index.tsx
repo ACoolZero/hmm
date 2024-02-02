@@ -1,5 +1,6 @@
 import {IMAGES} from '@assets';
 import {Block, GradientButton, Image, Modal, Text} from '@components';
+import {useTranslation} from '@hooks';
 import {width} from '@utils/responsive';
 import React from 'react';
 
@@ -9,6 +10,7 @@ interface SuccessDialogProps {
 
 const SuccessDialog: React.FC<SuccessDialogProps> = ({useDialog}) => {
   const [isDialogVisible, setDialogVisible] = useDialog;
+  const {t} = useTranslation();
 
   return (
     <Modal isVisible={isDialogVisible} onBackdropPress={() => setDialogVisible(false)}>
@@ -17,10 +19,10 @@ const SuccessDialog: React.FC<SuccessDialogProps> = ({useDialog}) => {
           <Image source={IMAGES.suggest_dialog_icon} square={180} resizeMode="contain" />
         </Block>
         <Text center size={24} marginTop={80} marginBottom={32} type="semibold">
-          A million thanks !
+          {t('suggest.thank')}
         </Text>
         <GradientButton
-          title="Okay"
+          title={t('suggest.okay')}
           style={{
             width: width - 80,
           }}
