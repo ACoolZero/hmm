@@ -72,7 +72,14 @@ const ActivityDetails: React.FC<ActivityDetailsProps> = ({route}) => {
         sliderWidth={width}
         itemWidth={width * 0.8}
       />
-      {isFullMode && <DetailLayer data={momentsList[momentIndex!]} onPress={handlePress} />}
+      {isFullMode && (
+        <DetailLayer
+          data={momentsList[momentIndex!]}
+          onPress={handlePress}
+          STORY_WIDTH={STORY_WIDTH}
+          STORY_HEIGHT={STORY_HEIGHT}
+        />
+      )}
     </Block>
   );
 };
