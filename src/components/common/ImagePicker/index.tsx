@@ -1,4 +1,5 @@
 import {Block, BottomSheet, Text} from '@components';
+import {useTranslation} from '@hooks';
 import React from 'react';
 import {Pressable} from 'react-native';
 
@@ -11,6 +12,8 @@ interface ImagePickerProps {
 }
 
 const ImagePicker: React.FC<ImagePickerProps> = ({title, isOpenBottom, setIsOpenBottom, openPicker, openCamera}) => {
+  const {t} = useTranslation();
+
   return (
     <BottomSheet title={title} useBottomSheet={[isOpenBottom, setIsOpenBottom]}>
       <Block>
@@ -20,7 +23,7 @@ const ImagePicker: React.FC<ImagePickerProps> = ({title, isOpenBottom, setIsOpen
             setIsOpenBottom();
           }}>
           <Block radius={5} padding={12} marginBottom={12} backgroundColor="background">
-            <Text>Chụp ảnh</Text>
+            <Text>{t('image_picker.take_picture')}</Text>
           </Block>
         </Pressable>
         <Pressable
@@ -29,7 +32,7 @@ const ImagePicker: React.FC<ImagePickerProps> = ({title, isOpenBottom, setIsOpen
             setIsOpenBottom();
           }}>
           <Block radius={5} padding={12} backgroundColor="background">
-            <Text>Chọn từ thư viện</Text>
+            <Text>{t('image_picker.choose_from_library')}</Text>
           </Block>
         </Pressable>
       </Block>

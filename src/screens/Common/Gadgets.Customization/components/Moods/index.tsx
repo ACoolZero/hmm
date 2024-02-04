@@ -1,5 +1,5 @@
 import {Block, Image, ListWrapper, Modal, Text} from '@components';
-import {useStore} from '@hooks';
+import {useStore, useTranslation} from '@hooks';
 import {IReaction} from '@screens/Bottom/Home/types';
 import {STORE_CONFIG_MOOD} from '@store/actions';
 import {height} from '@utils/responsive';
@@ -13,6 +13,7 @@ const Moods: React.FC = () => {
   const {data: configMood} = useSelector('configMood');
   const [isShowModal, setIsShowModal] = useState(false);
   const [selectedMood, setSelectedMood] = useState<number>();
+  const {t} = useTranslation();
 
   const _renderSelectedItem = (item: IReaction, index: number) => {
     const {id, icon, name, color} = item;
@@ -78,14 +79,14 @@ const Moods: React.FC = () => {
   return (
     <Block marginBottom={24}>
       <Text marginBottom={12} type="bold">
-        Change the moods you frequently have
+        {t('gadgets.customization.moods.prompt')}
       </Text>
       <Block row alignCenter space="between">
         {configMood?.map(_renderSelectedItem)}
       </Block>
       <Modal isVisible={isShowModal} onBackdropPress={() => setIsShowModal(false)}>
         <Block overflow="hidden" height={height * 0.6} radius={12} backgroundColor="background">
-          <Text margin={16}>Frequently detected</Text>
+          <Text margin={16}>{t('gadgets.customization.moods.frequently_detected')}</Text>
           <Block height={1} marginBottom={16} backgroundColor="border" />
           <ListWrapper
             numColumns={4}

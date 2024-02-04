@@ -1,7 +1,7 @@
 import {ICONS} from '@assets';
 import {Block, FormContainer, Header, Image, Rating, Text} from '@components';
 import HTMLView from '@components/common/HTMLView';
-import {useColors, useStore} from '@hooks';
+import {useColors, useStore, useTranslation} from '@hooks';
 import {RootStackParamList} from '@navigation/types';
 import {RouteProp} from '@react-navigation/native';
 import {RATING_POSTS} from '@store/actions';
@@ -17,8 +17,9 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = () => {
   // const {details} = route.params;
   const {dispatch, useSelector} = useStore();
   const {data: details} = useSelector('postDetails');
-  const {id, media, avgRating, rating, shortDesc, content, title, viewer} = details || {};
   const {COLORS} = useColors();
+  const {t} = useTranslation();
+  const {id, media, avgRating, rating, shortDesc, content, title, viewer} = details || {};
 
   const _ratingPost = (rating: number) => {
     dispatch({type: RATING_POSTS, payload: {id, rating}});
@@ -38,7 +39,7 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = () => {
                 <Block row alignCenter marginTop={4}>
                   <Image source={ICONS.eye_open} tintColor={COLORS.white} square={24} />
                   <Text marginLeft={6} style={styles.customFont} color="white">
-                    {viewer} views
+                    {viewer} {t('home.articles.views')}
                   </Text>
                 </Block>
                 <Rating value={avgRating} />
@@ -52,10 +53,10 @@ const ArticleDetails: React.FC<ArticleDetailsProps> = () => {
             <Block height={0.5} marginHorizontal={width * 0.1} marginBottom={16} backgroundColor="border" />
             <Block marginBottom={16}>
               <Text md center marginBottom={5} color="primary" type="semibold" style={styles.customFont}>
-                Hi,
+                {t('home.articles.rating.greeting')}
               </Text>
               <Text md center color="primary" type="semibold" style={styles.customFont}>
-                how good is this post to you ?
+                {t('home.articles.rating.prompt')}
               </Text>
             </Block>
             <Block radius={12} padding={8} borderWidth={1} borderColor="border">

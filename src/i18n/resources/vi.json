@@ -2,50 +2,241 @@
   "common": {
     "app_name": "Hmm",
     "notification": "Thông báo",
-    "cancel": "Hủy",
-    "submit": "Đồng ý",
-    "network_failure": "Kiểm tra kết nối và khởi động lại ứng dụng",
-    "logout_request": "Bạn có muốn đăng xuất tài khoản?",
-    "login": "Đăng nhập",
-    "logout": "Đăng xuất",
-    "empty_list": "Không có dữ liệu để hiển thị"
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "network_failure": "Please check your network connection and relaunch the application",
+    "logout_request": "Would you like to sign out?",
+    "login": "Sign in",
+    "logout": "Sign out",
+    "empty_list": "There is no data to display at the moment",
+    "or": "Or"
+  },
+  "placeholder": {
+    "email": "Your email",
+    "password": "Password",
+    "name": "Your name",
+    "dob": "Date of birth",
+    "confirm_password": "Confirm password",
+    "phone_number": "Phone number",
+    "male": "Male",
+    "female": "Female"
+  },
+    "button": {
+      "edit": "Edit",
+      "save": "Save",
+      "continue": "Continue",
+      "confirm": "Đồng ý",
+      "close": "Đóng",
+      "share": "Share"
+  },
+  "login": {
+    "welcome": "Welcome!",
+    "prompt": "Sign in to continue",
+    "register": "Register",
+    "forgot_password": "Forgot password?"
   },
   "validate": {
-    "username_empty": "Tài khoản không được để trống",
-    "password_empty": "Mật khẩu không được để trống",
-    "password_min_8": "Độ dài mật khẩu ít nhất phải có 8 kí tự",
-    "retypePassword_not_same": "Mật khẩu xác nhận không trùng khớp",
-    "fullName_empty": "Họ tên không được để trống",
-    "phone_empty": "Số điện thoại không được để trống",
-    "phone_min_10": "Số điện thoại chứa tối thiểu 10 chữ số",
-    "phone_max_16": "Số điện thoại chứa tối đa 16 chữ số",
-    "wrong_phone": "Số điện thoại không đúng định dạng",
-    "email_empty": "Email không được để trống",
-    "wrong_email": "Email không đúng định dạng",
-    "birthDate_empty": "Ngày sinh không được để trống"
+    "username_empty": "Username is required",
+    "password_empty": "Password is required",
+    "password_min_8": "Password must be at least 8 characters long",
+    "retypePassword_not_same": "Confirm password is not matched",
+    "fullName_empty": "Full name is required",
+    "phone_empty": "Phone number is required",
+    "phone_min_10": "Phone number must be at least 10 digits long",
+    "phone_max_16": "Phone number must not exceed 16 digits in length",
+    "wrong_phone": "Phone number format is not valid",
+    "email_empty": "Email is required",
+    "wrong_email": "Email format is not valid",
+    "birthDate_empty": "Date of birth is required",
+    "step_one_header": "First, we want to know you",
+    "step_two_header": "Sinh nhật của bạn là khi nào ?",
+    "step_three_header": "What is your gender ?",
+    "step_four_header": "Create your password",
+    "step_five_header": "It's all set up !!",
+    "create_password": "Create a password",
+    "welcome": "Thank you for using the app"
+  },
+  "forgot_password": {
+    "step_one_header": "Don’t remember ?",
+    "step_three_header": "Create your password",
+    "otp_sent": "OTP sent !!",
+    "otp_input_prompt": "Please enter the OTP sent to your email to reset your password",
+    "otp_didnt_receive": "Did not receive the OTP code?",
+    "try_again": "Try again",
+    "welcome": "You’re back !!"
   },
   "conversation": {
-    "you": "Bạn",
+    "you": "You",
     "send_input_holder": "Message",
-    "now": "Bây giờ",
-    "minutes_ago": "phút trước",
-    "minute_ago": "phút trước",
-    "hours_ago": "giờ trước",
-    "hour_ago": "giờ trước",
-    "send_a_photo": "đã gửi một ảnh",
-    "send_a_file": "đã gửi một tập tin",
-    "copy": "Sao chép",
-    "edit": "Chỉnh sửa",
-    "delete": "Thu hồi",
-    "recall_message": "Tin nhắn thu hồi",
-    "edit_message": "Chỉnh sửa tin nhắn",
-    "click_to_view": "Nhấn để xem"
+    "now": "Now",
+    "minutes_ago": "minutes ago",
+    "minute_ago": "minute ago",
+    "hours_ago": "hours ago",
+    "hour_ago": "hour ago",
+    "send_a_photo": "sent a photo",
+    "send_a_file": "sent a file",
+    "copy": "Copy",
+    "delete": "Unsend",
+    "recall_message": "Message is recalled",
+    "edit_message": "Edit message",
+    "click_to_view": "Click to view",
+    "bot_name": "Sam",
+    "chat_mode": "Bot"
   },
   "gadgets": {
-    "apps": "Apps",
-    "mood_history": "Mood history",
-    "feedback": "FAQ / Feedback",
-    "customization": "Customization",
-    "logout": "Sign out"
+    "apps": {
+      "label": "Apps",
+      "community": "Community",
+      "exchange": "Exchange",
+      "market": "Market",
+      "music": "Music",
+      "game": "Game",
+      "shopping": "Shopping"
+    },
+    "mood_history": {
+      "label":"Mood history"
+    },
+    "FAQ/Feedback": {
+      "label": "FAQ / Feedback",
+      "about_us": {
+        "label":"About Us"
+      },
+      "version": {
+        "label": "Version:",
+        "latest_version": "You are using the latest version of the app."
+      },
+      "FAQ": {
+        "label":"FAQ"
+      },
+      "feedback": {
+        "label":"Feedback",
+        "prompt": "Something went wrong ?",
+        "logs": "Including logs",
+        "add_screenshots": "Add screenshots",
+        "submit": "Submit"
+      },
+      "data_protection": {
+        "label": "Data Protection",
+        "how_to_store_data": "How we store and process your data ?",
+        "way_to_store_data": "Here we store on a public cloud Then we process it in side VN country Sometimes we take you anonymous data to get insight for the app.",
+        "etc": "Together with a team of authors, Mike writes about various destinations in Africa, Asia, Oceania, Europe, Middle East and North America and targets quite a wide audience by providing versatile guides that you can filter by destination or trip type (active, city break, etc.).",
+        "effective_date": "Effective Date: July 01, 2023"
+      },
+      "privacy_agreement": {
+        "label": "Privacy Agreement",
+        "introduction": "Travel & Destinations is a travel resource designed to inspire people to travel the world and provide helpful tips and advice. It was created by Mike Clegg, a great traveler and photographer.",
+        "etc": "Together with a team of authors, Mike writes about various destinations in Africa, Asia, Oceania, Europe, Middle East and North America and targets quite a wide audience by providing versatile guides that you can filter by destination or trip type (active, city break, etc.).",
+        "effective_date": "Effective Date: July 01, 2023"
+      }
+    },
+    "customization": {
+      "label": "Customization",
+      "moods": {
+        "prompt": "Change the moods you frequently have",
+        "frequently_detected": "Frequently detected"
+      },
+      "chat_color": {
+        "label": "Chat color",
+        "sample_text": "I feel very sad today"
+      },
+      "language": {
+        "label": "Language"
+      },
+      "more": {
+        "label": "More",
+        "dark_mode": "Dark mode",
+        "sound_animation": "Sound animation",
+        "plan_to_calendar": "Plan to Calendar",
+        "record_reminder": "Record reminder"
+      }
+    },
+    "logout": {
+      "label": "Sign out",
+      "prompt": "Don’t you say goodbye..",
+      "cancel": "Oh, my bad..",
+      "accept": "Yes, I'll be back"
+    },
+    "edit_profile": {
+      "header": "Edit Profile",
+      "gender_label": "Gender",
+      "slogan_label": "Slogan",
+      "avatar_picker_header": "Choose Avatar"
+    }
+  },
+  "home": {
+    "status": {
+      "prompt": "How exactly you feel right now?"
+    },
+    "emotion_chart": {
+      "label": "Emotions flow",
+      "you": "You",
+      "your_past": "Your past"
+    },
+    "milestones": {
+      "label": "Keep fighting !",
+      "see_more": "See more",
+      "header": "Milestones",
+      "edit_moment": "Oh my memories..."
+    },
+    "articles": {
+      "label": "Reading list",
+      "viewed": "Viewed",
+      "views": "views",
+      "rating": {
+        "greeting": "Hi,",
+        "prompt": "how good is this post to you ?"
+      }
+    },
+    "feeling": {
+      "prompt": "Hi, you good ?"
+    }
+  },
+  "moments": {
+    "header": "Moments"
+  },
+  "image_picker": {
+    "take_picture": "Chụp ảnh",
+    "choose_from_library": "Chọn từ thư viện"
+  },
+  "moment": {
+    "create": {
+      "header": "Create Moment",
+      "choose_a_photo": "Choose a photo"
+    },
+    "input_placeholder": "How does this photo mean to you?",
+    "public": "Public",
+    "private": "Private"
+  },
+  "milestone": {
+    "create": {
+      "header": "Create Milestone"
+    },
+    "edit": {
+      "header": "Edit Milestone"
+    },
+    "your_milestone": "Your milestone",
+    "icon": "Icon",
+    "time": "Time",
+    "location": "Location"
+  },
+  "suggest": {
+    "header": "Suggest to experience",
+    "question": "What is in your mind, my friend ?",
+    "input_placeholder": "We can't contain our excitement to give it a go!",
+    "add_photos": "Add photos",
+    "thank": "A million thanks !",
+    "okay": "Okay"
+  },
+  "recall": {
+    "header": "Recall",
+    "share": "Share to other apps",
+    "edit": "Edit title and privacy",
+    "delete": "Delete this moment",
+    "notice": "Notice us this meaningful moment",
+    "delete_moment": {
+      "question": "Delete it?",
+      "no": "No no",
+      "yes": "Yep !"
+    }
   }
 }

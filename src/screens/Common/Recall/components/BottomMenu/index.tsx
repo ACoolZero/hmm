@@ -1,6 +1,6 @@
 import {IMAGES} from '@assets';
 import {Block, BottomSheet, Image, Text} from '@components';
-import {useStore} from '@hooks';
+import {useStore, useTranslation} from '@hooks';
 import {navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import React, {useState} from 'react';
@@ -16,6 +16,7 @@ const BottomMenu: React.FC<BottomMenuProps> = ({isOpenBottom, setIsOpenBottom}) 
   const {useSelector} = useStore();
   const {data: activeMoment} = useSelector('activeMoment');
   const [isDialogVisible, setDialogVisible] = useState<boolean>(false);
+  const {t} = useTranslation();
 
   const _onDeleteMoment = () => {
     setDialogVisible(true);
@@ -27,7 +28,7 @@ const BottomMenu: React.FC<BottomMenuProps> = ({isOpenBottom, setIsOpenBottom}) 
         <Block row alignCenter paddingHorizontal={12} paddingVertical={16} opacity={0.4}>
           <Image source={IMAGES.recall_share} square={32} />
           <Text flex marginLeft={12} numberOfLines={1}>
-            Share to other apps
+            {t('recall.share')}
           </Text>
         </Block>
       </TouchableOpacity>
@@ -40,7 +41,7 @@ const BottomMenu: React.FC<BottomMenuProps> = ({isOpenBottom, setIsOpenBottom}) 
         <Block row alignCenter paddingHorizontal={12} paddingVertical={16}>
           <Image source={IMAGES.recall_edit} square={32} />
           <Text flex marginLeft={12} numberOfLines={1}>
-            Edit title and privacy
+            {t('recall.edit')}
           </Text>
         </Block>
       </TouchableOpacity>
@@ -49,7 +50,7 @@ const BottomMenu: React.FC<BottomMenuProps> = ({isOpenBottom, setIsOpenBottom}) 
         <Block row alignCenter paddingHorizontal={12} paddingVertical={16}>
           <Image source={IMAGES.recall_delete} square={32} />
           <Text flex marginLeft={12} numberOfLines={1}>
-            Delete this moment
+            {t('recall.delete')}
           </Text>
         </Block>
       </TouchableOpacity>
@@ -58,7 +59,7 @@ const BottomMenu: React.FC<BottomMenuProps> = ({isOpenBottom, setIsOpenBottom}) 
         <Block row alignCenter paddingHorizontal={12} paddingVertical={16} opacity={0.4}>
           <Image source={IMAGES.recall_notice} square={32} />
           <Text flex marginLeft={12} numberOfLines={1}>
-            Notice us this meaningful moment
+            {t('recall.notice')}
           </Text>
         </Block>
       </TouchableOpacity>

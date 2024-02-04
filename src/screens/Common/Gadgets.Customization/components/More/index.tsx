@@ -1,6 +1,6 @@
 import {IMAGES} from '@assets';
 import {Block, GradientSwitch, Image, Text} from '@components';
-import {useColors, useStore} from '@hooks';
+import {useColors, useStore, useTranslation} from '@hooks';
 import {SWITCH_THEME_MODE} from '@store/actions';
 import React from 'react';
 
@@ -8,6 +8,7 @@ const More: React.FC = () => {
   const {dispatch, useSelector} = useStore();
   const {setColorScheme} = useColors();
   const {mode} = useSelector('theme');
+  const {t} = useTranslation();
 
   const _toggleDarkMode = () => {
     dispatch({type: SWITCH_THEME_MODE, payload: {mode: mode === 'dark' ? 'light' : 'dark'}});
@@ -17,13 +18,13 @@ const More: React.FC = () => {
   return (
     <Block marginBottom={24}>
       <Text marginBottom={12} type="bold">
-        More
+        {t('gadgets.customization.more.label')}
       </Text>
       <Block radius={12} backgroundColor="secondary_background">
         <Block row alignCenter padding={16} space="between">
           <Block row alignCenter>
             <Image source={IMAGES.theme_mode} square={32} />
-            <Text marginLeft={12}>Dark mode</Text>
+            <Text marginLeft={12}>{t('gadgets.customization.more.dark_mode')}</Text>
           </Block>
           <GradientSwitch isOn={mode === 'dark'} onToggle={_toggleDarkMode} />
         </Block>
@@ -31,7 +32,7 @@ const More: React.FC = () => {
         <Block row alignCenter padding={16} space="between" opacity={0.5}>
           <Block row alignCenter>
             <Image source={IMAGES.sound_mode} square={32} />
-            <Text marginLeft={12}>Sound animation</Text>
+            <Text marginLeft={12}>{t('gadgets.customization.more.sound_animation')}</Text>
           </Block>
           <GradientSwitch disabled />
         </Block>
@@ -39,7 +40,7 @@ const More: React.FC = () => {
         <Block row alignCenter padding={16} space="between" opacity={0.5}>
           <Block row alignCenter>
             <Image source={IMAGES.calendar_mode} square={32} />
-            <Text marginLeft={12}>Plan to Calendar</Text>
+            <Text marginLeft={12}>{t('gadgets.customization.more.plan_to_calendar')}</Text>
           </Block>
           <GradientSwitch disabled />
         </Block>
@@ -47,7 +48,7 @@ const More: React.FC = () => {
         <Block row alignCenter padding={16} space="between" opacity={0.5}>
           <Block row alignCenter>
             <Image source={IMAGES.record_mode} square={32} />
-            <Text marginLeft={12}>Record reminder</Text>
+            <Text marginLeft={12}>{t('gadgets.customization.more.record_reminder')}</Text>
           </Block>
           <GradientSwitch disabled />
         </Block>

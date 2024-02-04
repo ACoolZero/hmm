@@ -1,25 +1,21 @@
 import {Block, FormContainer, Header, Text} from '@components';
+import {useTranslation} from '@hooks';
 import React from 'react';
 import {StyleSheet} from 'react-native';
 
 const DataProtection: React.FC = () => {
+  const {t} = useTranslation();
+
   return (
     <Block flex paddingBottom={60} backgroundColor="background">
-      <Header canGoBack title="Data Protection" />
+      <Header canGoBack title={t('gadgets.FAQ/Feedback.data_protection.label')} />
       <FormContainer>
         <Block padding={16}>
-          <Text style={styles.customFont}>How we store and process your data ?</Text>
-          <Text style={styles.customFont}>
-            Here we store on a public cloud Then we process it in side VN country Sometimes we take you anonymous data
-            to get insight for the app.
-          </Text>
-          <Text style={styles.customFont}>
-            Together with a team of authors, Mike writes about various destinations in Africa, Asia, Oceania, Europe,
-            Middle East and North America and targets quite a wide audience by providing versatile guides that you can
-            filter by destination or trip type (active, city break, etc.).
-          </Text>
+          <Text style={styles.customFont}>{t('gadgets.FAQ/Feedback.data_protection.how_to_store_data')}</Text>
+          <Text style={styles.customFont}>{t('gadgets.FAQ/Feedback.data_protection.way_to_store_data')}</Text>
+          <Text style={styles.customFont}>{t('gadgets.FAQ/Feedback.data_protection.etc')} </Text>
           <Text marginTop={16} style={styles.customFont}>
-            Effective Date: July 01, 2023
+            {t('gadgets.FAQ/Feedback.data_protection.effective_date')}
           </Text>
         </Block>
       </FormContainer>

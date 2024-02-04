@@ -1,5 +1,5 @@
 import {Block, GradientButton, Header, LazyImage, Text, TextInput} from '@components';
-import {useColors, useStore} from '@hooks';
+import {useColors, useStore, useTranslation} from '@hooks';
 import {RootStackParamList} from '@navigation/types';
 import {RouteProp} from '@react-navigation/native';
 import {EDIT_MOMENT, GET_MOMENT_DETAILS} from '@store/actions';
@@ -24,6 +24,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
     content: data?.content,
     accessMode: accessMode,
   });
+  const {t} = useTranslation();
   const isValid = Object.values(moment).every(value => value !== '');
 
   useEffect(() => {
@@ -46,7 +47,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
 
   return (
     <Block flex backgroundColor={COLORS.secondary_background}>
-      <Header canGoBack title="Edit Moment" />
+      <Header canGoBack title={t('moment.edit.header')} />
       <Block flex shadow justifyCenter padding={16}>
         <LazyImage source={data?.media} square={width * 0.8} style={{borderRadius: getSize.s(24)}} />
       </Block>
@@ -59,7 +60,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
         borderTopWidth={1}
         borderColor={COLORS.light_text}>
         <TextInput
-          placeholder="How does this photo mean to you?"
+          placeholder={t('moment.input_placeholder')}
           inputStyle={{backgroundColor: COLORS.secondary_background, borderColor: COLORS.background}}
           containerInputStyle={styles.containerInputStyle}
           maxLength={99}
@@ -91,7 +92,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
                 />
               </Block>
               <Text sm type="medium">
-                Public
+                {t('moment.public')}
               </Text>
             </Block>
           </TouchableOpacity>
@@ -114,12 +115,12 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
                 />
               </Block>
               <Text sm type="medium">
-                Private
+                {t('moment.private')}
               </Text>
             </Block>
           </TouchableOpacity>
         </Block>
-        <GradientButton title="Save" isValid={isValid} onPress={_handleUpdate} />
+        <GradientButton title={t('button.save')} isValid={isValid} onPress={_handleUpdate} />
       </Block>
     </Block>
   );

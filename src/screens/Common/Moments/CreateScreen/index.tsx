@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import {ICONS} from '@assets';
 import {Block, GradientButton, Header, Image, LazyImage, Loading, Text, TextInput} from '@components';
-import {useColors, useMediaPicker, useStore} from '@hooks';
+import {useColors, useMediaPicker, useStore, useTranslation} from '@hooks';
 import {RootStackParamList} from '@navigation/types';
 import {RouteProp} from '@react-navigation/native';
 import {CREATE_MOMENT, UPLOAD_FILE} from '@store/actions';
@@ -30,6 +30,7 @@ const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
     accessMode: accessMode,
   });
   const isValid = Object.values(moment).every(value => value !== '');
+  const {t} = useTranslation();
 
   useEffect(() => {
     if (picture) {
@@ -60,11 +61,11 @@ const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
   return (
     <KeyboardAvoidingView style={{flex: 1}} behavior={isIos ? 'padding' : 'height'}>
       <Block flex backgroundColor={COLORS.secondary_background}>
-        <Header canGoBack title="Create Moment" />
+        <Header canGoBack title={t('moment.create.header')} />
         <Block height={height - 250}>
           <TouchableOpacity onPress={openPicker}>
             <Block row alignCenter height={40} paddingHorizontal={12} backgroundColor="primary" space="between">
-              <Text color="#D4EAF5">Choose a photo</Text>
+              <Text color="#D4EAF5">{t('moment.create.choose_a_photo')}</Text>
               <Image source={ICONS.arrow_right} square={18} tintColor="#D4EAF5" />
             </Block>
           </TouchableOpacity>
@@ -94,7 +95,7 @@ const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
             borderTopWidth={1}
             borderColor={COLORS.light_text}>
             <TextInput
-              placeholder="How does this photo mean to you?"
+              placeholder={t('moment.input_placeholder')}
               inputStyle={{backgroundColor: COLORS.secondary_background, borderColor: COLORS.background}}
               containerInputStyle={styles.containerInputStyle}
               maxLength={99}
@@ -125,7 +126,7 @@ const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
                     />
                   </Block>
                   <Text sm type="medium">
-                    Public
+                    {t('moment.public')}
                   </Text>
                 </Block>
               </TouchableOpacity>
@@ -148,13 +149,13 @@ const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
                     />
                   </Block>
                   <Text sm type="medium">
-                    Private
+                    {t('moment.private')}
                   </Text>
                 </Block>
               </TouchableOpacity>
             </Block>
             <GradientButton
-              title="Save"
+              title={t('button.save')}
               isValid={isValid}
               disabled={isLoading}
               onPress={() => {

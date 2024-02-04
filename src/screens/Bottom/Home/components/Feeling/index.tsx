@@ -9,11 +9,13 @@ import {sleep} from '@utils/date';
 import React, {memo, useEffect, useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import styles, {ICON_SIZE, REACTION_SIZE} from './styles';
+import {useTranslation} from '@hooks';
 
 const Feeling: React.FC = () => {
   const {customization, userCurrentMood, dispatch} = useHome();
   const [isFeelingVisible, setFeelingVisible] = useState(false);
   const defaultMoods = customization?.find((x: any) => x.key === 'MOOD').config;
+  const {t} = useTranslation();
 
   useEffect(() => {
     sleep(10000).then(() => !!defaultMoods?.length && setFeelingVisible(true));
@@ -50,7 +52,7 @@ const Feeling: React.FC = () => {
           <Image source={IMAGES.splash_logo} square={180} />
         </Block>
         <Text center size={24} marginTop={80} marginBottom={32} type="semibold">
-          Hi, you good ?
+          {t('home.feeling.prompt')}
         </Text>
         <Block row alignCenter gap={4}>
           {defaultMoods?.map(_renderItem)}

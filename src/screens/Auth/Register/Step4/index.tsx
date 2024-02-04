@@ -2,7 +2,7 @@
 import {ICONS} from '@assets';
 import {Block, FormContainer, FormInput, GradientButton, Image} from '@components';
 import {yupResolver} from '@hookform/resolvers/yup';
-import {useStore} from '@hooks';
+import {useStore, useTranslation} from '@hooks';
 import {goBack} from '@navigation/NavigationServices';
 import Header from '@screens/Auth/components/Header';
 import {REGISTER_ACCOUNT} from '@store/actions';
@@ -20,6 +20,7 @@ const RegisterStep4: React.FC = () => {
   const {data} = useSelector('register');
   const {isLoading} = useSelector('auth');
   const {top} = useSafeAreaInsets();
+  const {t} = useTranslation();
   const {
     control,
     handleSubmit,
@@ -38,14 +39,14 @@ const RegisterStep4: React.FC = () => {
   return (
     <Block flex padding={24} paddingTop={top} backgroundColor="common_background">
       <FormContainer>
-        <Header content="Create your password" />
+        <Header content={t('validate.step_four_header')} />
         <Block marginTop={24} height={200}>
           <FormInput
             control={control}
             name="password"
             shadow
             isSecure
-            placeholder="Password"
+            placeholder={t('placeholder.password')}
             color="common_text"
             containerInputStyle={{marginBottom: getSize.m(16)}}
           />
@@ -54,7 +55,7 @@ const RegisterStep4: React.FC = () => {
             name="retypePassword"
             shadow
             isSecure
-            placeholder="Confirm password"
+            placeholder={t('placeholder.confirm_password')}
             color="common_text"
             containerInputStyle={{marginBottom: getSize.m(16)}}
           />
@@ -76,7 +77,7 @@ const RegisterStep4: React.FC = () => {
           <GradientButton
             disabled={isLoading}
             isValid={isValid}
-            title="Continue"
+            title={t('button.continue')}
             style={{flex: 1}}
             onPress={handleSubmit(_onSubmit)}
           />

@@ -2,7 +2,7 @@
 import {ICONS} from '@assets';
 import {Block, Image, Text, TextInput} from '@components';
 import {handleHitSlop} from '@components/base/shared';
-import {useColors} from '@hooks';
+import {useColors, useTranslation} from '@hooks';
 import useHome from '@screens/Bottom/Home/useHome';
 import {UPDATE_STATUS, UPDATE_TAG} from '@store/actions';
 import {getSize} from '@utils/responsive';
@@ -52,6 +52,7 @@ const Status: React.FC = () => {
   const {userCurrentMood, tagsList, dispatch} = useHome();
   const [selectedTag, setSelectedTag] = useState<string[]>([]);
   const [endEditing, setEndEditing] = useState(false);
+  const {t} = useTranslation();
 
   const _renderTag: React.FC<any> = (item, index) => {
     const isSelected = selectedTag.includes(item);
@@ -83,7 +84,7 @@ const Status: React.FC = () => {
   return (
     <Block paddingHorizontal={16} marginBottom={24} backgroundColor="background">
       <Block row alignCenter paddingHorizontal={2} space="between">
-        <Text type="semibold">How exactly you feel right now?</Text>
+        <Text type="semibold">{t('home.status.prompt')}</Text>
         {endEditing && (
           <TouchableOpacity
             hitSlop={handleHitSlop(5)}

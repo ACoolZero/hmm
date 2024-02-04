@@ -16,6 +16,7 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useStore} from 'react-redux';
 import {validation} from './validation';
+import {useTranslation} from '@hooks';
 
 const INITIAL_VALUES = {dob: ''};
 
@@ -24,6 +25,7 @@ const RegisterStep2: React.FC = () => {
   const {top} = useSafeAreaInsets();
   const [birthday, setBirthday] = useState<string>();
   const [isDatePickerVisible, setDatePickerVisibility] = useState<boolean>(false);
+  const {t} = useTranslation();
   const {
     control,
     setValue,
@@ -57,7 +59,7 @@ const RegisterStep2: React.FC = () => {
   return (
     <Block flex padding={24} paddingTop={top} backgroundColor="common_background">
       <FormContainer>
-        <Header content="When is your birthday ?" />
+        <Header content={t('validate.step_two_header')} />
         <Block marginTop={24} height={200}>
           <Pressable onPress={_toggleDatePicker}>
             <FormInput
@@ -65,7 +67,7 @@ const RegisterStep2: React.FC = () => {
               name="dob"
               shadow
               pointerEvents="none"
-              placeholder="Date of birth"
+              placeholder={t('placeholder.dob')}
               rightIcon={_rightIcon}
               color="common_text"
               containerInputStyle={{marginBottom: getSize.m(16)}}
@@ -88,7 +90,7 @@ const RegisterStep2: React.FC = () => {
           </Pressable>
           <GradientButton
             isValid={isValid}
-            title="Continue"
+            title={t('button.continue')}
             style={{flex: 1}}
             onPress={() => {
               navigate(routes.REGISTER_STEP3_SCREEN);
@@ -102,7 +104,7 @@ const RegisterStep2: React.FC = () => {
         isVisible={isDatePickerVisible}
         onConfirm={_handleConfirm}
         onCancel={_toggleDatePicker}
-        confirmTextIOS="Đồng ý"
+        confirmTextIOS={t('button.confirm')}
         display="inline"
         themeVariant="light"
         isDarkModeEnabled={false}

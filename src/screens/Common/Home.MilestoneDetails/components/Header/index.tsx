@@ -1,6 +1,6 @@
 import {ICONS} from '@assets';
 import {Block, Image, Text} from '@components';
-import {useColors, useStore} from '@hooks';
+import {useColors, useStore, useTranslation} from '@hooks';
 import {goBack, navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import {IMilestone} from '@screens/Bottom/Home/types';
@@ -15,13 +15,14 @@ const Header: React.FC<{selectedMileStone: IMilestone}> = ({selectedMileStone}) 
   const {data: userMomentsList} = useSelector('userMomentsList');
   const {top} = useSafeAreaInsets();
   const {COLORS, randomBackgroundColor} = useColors();
+  const {t} = useTranslation();
   const {id, icon, content, milestoneTime, momentId} = selectedMileStone;
 
   return (
     <Block shadow paddingTop={top} style={styles.container} backgroundColor="primary">
       <Block justifyCenter height={48} marginBottom={24}>
         <Text center numberOfLines={1} color="common_text" type="semibold">
-          Milestones
+          {t('home.milestones.header')}
         </Text>
         <Pressable style={styles.btnBack} onPress={goBack}>
           <Image source={ICONS.arrow_left} square={14} tintColor="common_text" />
@@ -51,7 +52,7 @@ const Header: React.FC<{selectedMileStone: IMilestone}> = ({selectedMileStone}) 
               navigate(routes.EDIT_MILESTONE_SCREEN, {milestoneId: id});
             }}>
             <Text sm color="primary" type="medium">
-              Edit
+              {t('button.edit')}
             </Text>
           </TouchableOpacity>
           {!!momentId && userMomentsList?.length > 0 && (
@@ -61,7 +62,7 @@ const Header: React.FC<{selectedMileStone: IMilestone}> = ({selectedMileStone}) 
               }}>
               <Block row alignCenter>
                 <Text sm marginRight={5} color="primary">
-                  Oh my memories...
+                  {t('home.milestones.edit_moment')}
                 </Text>
                 <Image source={ICONS.arrow_right} square={12} tintColor="primary" />
               </Block>

@@ -1,6 +1,6 @@
 import {ICONS} from '@assets';
 import {ArticleCard, Block, Image, Text} from '@components';
-import {useColors} from '@hooks';
+import {useColors, useTranslation} from '@hooks';
 import {navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import useHome from '@screens/Bottom/Home/useHome';
@@ -11,6 +11,7 @@ import {IPost} from './types';
 const Articles: React.FC = () => {
   const {COLORS} = useColors();
   const {postsList} = useHome();
+  const {t} = useTranslation();
 
   const _renderItem = (item: IPost, index: number) => <ArticleCard key={item.id} item={item} index={index} />;
 
@@ -19,7 +20,7 @@ const Articles: React.FC = () => {
       {!!postsList?.length && (
         <Block row alignCenter marginHorizontal={17} marginBottom={24} space="between">
           <Text size={24} type="bold">
-            Reading list
+            {t('home.articles.label')}
           </Text>
           <TouchableOpacity
             onPress={() => {
@@ -27,7 +28,7 @@ const Articles: React.FC = () => {
             }}>
             <Block row alignCenter>
               <Text sm marginRight={6} color="primary">
-                Viewed
+                {t('home.articles.viewed')}
               </Text>
               <Image source={ICONS.arrow_right} square={12} tintColor={COLORS.primary} />
             </Block>

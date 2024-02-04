@@ -2,7 +2,7 @@
 import {ICONS} from '@assets';
 import {Block, EmojiKeyboard, GradientButton, Image, Loading, Text, TextInput} from '@components';
 import {handleHitSlop} from '@components/base/shared';
-import {useColors, useStore} from '@hooks';
+import {useColors, useStore, useTranslation} from '@hooks';
 import {getSize, height} from '@utils/responsive';
 import dayjs from 'dayjs';
 import React, {useState} from 'react';
@@ -23,6 +23,7 @@ const CreateScreen: React.FC = () => {
     location: '',
     milestoneTime: dayjs(new Date()).format('YYYY-MM-DD HH:mm:ss.SSS'),
   });
+  const {t} = useTranslation();
 
   const isValid = Object.values(mileStone).every(value => value !== '');
   const [isIconInputVisible, setIconInputVisibility] = useState<boolean>(false);
@@ -40,11 +41,11 @@ const CreateScreen: React.FC = () => {
   return (
     <Block flex backgroundColor="background">
       <StatusBar backgroundColor="#FF974A" barStyle="dark-content" />
-      <Header title="Create Milestone" />
+      <Header title={t('milestone.create.header')} />
       <Block shadow style={styles.container}>
         <ScrollView bounces={false} style={{...styles.content, backgroundColor: COLORS.secondary_background}}>
           <Text marginBottom={16} type="semibold">
-            Your milestone
+            {t('milestone.your_milestone')}
           </Text>
           <TextInput
             inputStyle={{backgroundColor: COLORS.background, borderWidth: 0}}
@@ -53,7 +54,7 @@ const CreateScreen: React.FC = () => {
             onChangeText={content => setMileStone({...mileStone, content})}
           />
           <Text marginBottom={16} type="semibold">
-            Icon
+            {t('milestone.icon')}
           </Text>
           <Block row alignCenter marginBottom={24}>
             <EmojiKeyboard
@@ -79,7 +80,7 @@ const CreateScreen: React.FC = () => {
             </TouchableOpacity>
           </Block>
           <Text marginBottom={16} type="semibold">
-            Time
+            {t('milestone.time')}
           </Text>
           <Pressable onPress={_toggleDatePicker}>
             <TextInput
@@ -92,7 +93,7 @@ const CreateScreen: React.FC = () => {
             />
           </Pressable>
           <Text marginBottom={16} type="semibold">
-            Location
+            {t('milestone.location')}
           </Text>
           <TextInput
             inputStyle={{backgroundColor: COLORS.background, borderWidth: 0}}
@@ -109,7 +110,7 @@ const CreateScreen: React.FC = () => {
         borderTopWidth={1}
         borderColor="#87A8B9"
         backgroundColor="secondary_background">
-        <GradientButton isValid={isValid} title="Save" onPress={() => setDialogVisible(true)} />
+        <GradientButton isValid={isValid} title={t('button.save')} onPress={() => setDialogVisible(true)} />
       </Block>
       <ConfirmDialog useDialog={[isDialogVisible, setDialogVisible]} mileStone={mileStone} />
       <DateTimePickerModal
@@ -117,8 +118,8 @@ const CreateScreen: React.FC = () => {
         mode="date"
         display="inline"
         themeVariant="light"
-        confirmTextIOS="Đồng ý"
-        cancelTextIOS="Đóng"
+        confirmTextIOS={t('button.confirm')}
+        cancelTextIOS={t('button.close')}
         isDarkModeEnabled={false}
         isVisible={isDatePickerVisible}
         onConfirm={_handleDateConfirm}

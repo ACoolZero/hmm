@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import {ICONS} from '@assets';
 import {Block, FormContainer, GradientButton, Header, Image, ImagePicker, Loading, Text, TextInput} from '@components';
-import {useColors, useMediaPicker, useStore} from '@hooks';
+import {useColors, useMediaPicker, useStore, useTranslation} from '@hooks';
 import {GenderType, UpdateUserPayload} from '@screens/Auth/types';
 import {UPDATE_USER_INFO, UPLOAD_FILE} from '@store/actions';
 import {getSize} from '@utils/responsive';
@@ -25,6 +25,7 @@ const EditProfile: React.FC = () => {
     slogan: userInfo.slogan,
     gender: userInfo.gender,
   });
+  const {t} = useTranslation();
 
   useEffect(() => {
     if (picture) {
@@ -74,7 +75,7 @@ const EditProfile: React.FC = () => {
 
   return (
     <Block flex backgroundColor="background">
-      <Header canGoBack title="Edit Profile" />
+      <Header canGoBack title={t('gadgets.edit_profile.header')} />
       <FormContainer>
         <Block paddingHorizontal={16} paddingVertical={24}>
           <TouchableOpacity onPress={() => setOpenMediaPicker(true)}>
@@ -89,7 +90,7 @@ const EditProfile: React.FC = () => {
           </TouchableOpacity>
           <Block paddingTop={16}>
             <TextInput
-              label="Your name"
+              label={t('placeholder.name')}
               defaultValue={info.fullName}
               inputStyle={{backgroundColor: COLORS.secondary_background, borderWidth: 0}}
               containerInputStyle={styles.containerInputStyle}
@@ -98,7 +99,7 @@ const EditProfile: React.FC = () => {
             />
             <Block paddingHorizontal={3} style={styles.containerInputStyle}>
               <Text sm marginBottom={8}>
-                Phone number
+                {t('placeholder.phone_number')}
               </Text>
               <Block row alignCenter>
                 <Block
@@ -143,7 +144,7 @@ const EditProfile: React.FC = () => {
             />
             <Block paddingHorizontal={3} style={styles.containerInputStyle}>
               <Text sm marginBottom={8}>
-                Gender
+                {t('gadgets.edit_profile.gender_label')}
               </Text>
               <Block radius={8} backgroundColor={COLORS.secondary_background}>
                 {_renderGender('MALE')}
@@ -152,7 +153,7 @@ const EditProfile: React.FC = () => {
               </Block>
             </Block>
             <Text sm marginBottom={8} marginLeft={3}>
-              Slogan
+              {t('gadgets.edit_profile.slogan_label')}
             </Text>
             <TextInput
               multiline
@@ -179,10 +180,10 @@ const EditProfile: React.FC = () => {
         borderTopWidth={1}
         borderColor="#87A8B9"
         backgroundColor="secondary_background">
-        <GradientButton disabled={isLoading} title="Save" onPress={_handleSubmit} />
+        <GradientButton disabled={isLoading} title={t('button.save')} onPress={_handleSubmit} />
       </Block>
       <ImagePicker
-        title="Choose Avatar"
+        title={t('gadgets.edit_profile.avatar_picker_header')}
         isOpenBottom={isOpenMediaPicker}
         setIsOpenBottom={setOpenMediaPicker}
         openPicker={openPicker}

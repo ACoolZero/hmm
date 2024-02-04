@@ -1,6 +1,6 @@
 import {IMAGES} from '@assets';
 import {Block, GradientButton, Image, Modal, Text} from '@components';
-import {useColors, useStore} from '@hooks';
+import {useColors, useStore, useTranslation} from '@hooks';
 import {LOGOUT_ACCOUNT} from '@store/actions';
 import {getSize, width} from '@utils/responsive';
 import React from 'react';
@@ -15,6 +15,7 @@ const LogoutDialog: React.FC<LogoutDialogProps> = ({useDialog}) => {
   const {dispatch, useSelector} = useStore();
   const {isLoading} = useSelector('auth');
   const {COLORS} = useColors();
+  const {t} = useTranslation();
   const [isDialogVisible, setDialogVisible] = useDialog;
 
   const _handleLogout = () => {
@@ -31,13 +32,13 @@ const LogoutDialog: React.FC<LogoutDialogProps> = ({useDialog}) => {
           <Image source={IMAGES.splash_logo} square={180} />
         </Block>
         <Text center size={24} marginTop={80} marginBottom={32} type="semibold">
-          Don’t you say goodbye..
+          {t('gadgets.logout.prompt')}
         </Text>
         <Block row>
           <Block alignCenter>
             <Image source={IMAGES.logout_icon_left} round={57} />
             <GradientButton
-              title="Oh, my bad.."
+              title={t('gadgets.logout.cancel')}
               backgroundColor={['#FAFAFA', '#FAFAFA']}
               textColor="primary"
               style={{
@@ -55,7 +56,7 @@ const LogoutDialog: React.FC<LogoutDialogProps> = ({useDialog}) => {
             <Image source={IMAGES.logout_icon_right} round={57} />
             <GradientButton
               disabled={isLoading}
-              title="Yes, I'll be back"
+              title={t('gadgets.logout.accept')}
               style={{
                 width: BUTTON_WIDTH,
                 borderWidth: getSize.s(0),

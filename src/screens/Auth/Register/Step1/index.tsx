@@ -13,12 +13,14 @@ import {Pressable} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useStore} from 'react-redux';
 import {validation} from './validation';
+import {useTranslation} from '@hooks';
 
 const INITIAL_VALUES = {fullName: '', email: ''};
 
 const RegisterStep1: React.FC = () => {
   const {dispatch} = useStore();
   const {top} = useSafeAreaInsets();
+  const {t} = useTranslation();
   const {
     control,
     handleSubmit,
@@ -37,13 +39,13 @@ const RegisterStep1: React.FC = () => {
   return (
     <Block flex padding={24} paddingTop={top} backgroundColor="common_background">
       <FormContainer>
-        <Header content="First, we want to know you" />
+        <Header content={t('validate.step_one_header')} />
         <Block marginTop={24} height={200}>
           <FormInput
             control={control}
             name="fullName"
             shadow
-            placeholder="Your name"
+            placeholder={t('placeholder.name')}
             color="common_text"
             containerInputStyle={{marginBottom: getSize.m(16)}}
           />
@@ -51,7 +53,7 @@ const RegisterStep1: React.FC = () => {
             control={control}
             name="email"
             shadow
-            placeholder="Email"
+            placeholder={t('placeholder.email')}
             color="common_text"
             containerInputStyle={{marginBottom: getSize.m(16)}}
           />
@@ -70,7 +72,12 @@ const RegisterStep1: React.FC = () => {
               <Image source={ICONS.back} square={20} tintColor="primary" resizeMode="contain" />
             </Block>
           </Pressable>
-          <GradientButton isValid={isValid} title="Continue" style={{flex: 1}} onPress={handleSubmit(_onSubmit)} />
+          <GradientButton
+            isValid={isValid}
+            title={t('button.continue')}
+            style={{flex: 1}}
+            onPress={handleSubmit(_onSubmit)}
+          />
         </Block>
       </FormContainer>
     </Block>

@@ -1,6 +1,6 @@
 import {ICONS} from '@assets';
 import {Block, Image, LazyImage, Rating, Text} from '@components';
-import {useColors, useStore} from '@hooks';
+import {useColors, useStore, useTranslation} from '@hooks';
 import {navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import {IPost} from '@screens/Bottom/Home/components/Articles/types';
@@ -18,6 +18,7 @@ interface ArticleCardProps {
 const ArticleCard: React.FC<ArticleCardProps> = ({item, index}) => {
   const {dispatch} = useStore();
   const {COLORS} = useColors();
+  const {t} = useTranslation();
   const {id, thumbnail, media, title, shortDesc, viewer, avgRating} = item;
 
   return (
@@ -47,7 +48,9 @@ const ArticleCard: React.FC<ArticleCardProps> = ({item, index}) => {
           <Block row alignCenter space="between">
             <Block row alignCenter>
               <Image source={ICONS.eye_open} tintColor={COLORS.text} square={24} />
-              <Text marginLeft={6}>{viewer} views</Text>
+              <Text marginLeft={6}>
+                {viewer} {t('home.articles.views')}
+              </Text>
             </Block>
             <Rating value={avgRating} />
           </Block>

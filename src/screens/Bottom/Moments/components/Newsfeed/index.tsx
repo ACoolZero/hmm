@@ -1,5 +1,5 @@
 import {Block, EmptyList, MomentCard, Text} from '@components';
-import {useColors} from '@hooks';
+import {useColors, useTranslation} from '@hooks';
 import {IMoment} from '@screens/Bottom/Moments/types';
 import useMoments from '@screens/Bottom/Moments/useMoments';
 import {getSize} from '@utils/responsive';
@@ -12,13 +12,14 @@ const Newsfeed: React.FC = () => {
   const animatedValue = useRef(new Animated.Value(0)).current;
   const {momentsList, isLoading, fetchData} = useMoments();
   const {COLORS} = useColors();
+  const {t} = useTranslation();
 
   const _renderHeader = () => {
     return (
       <Animated.View style={styles.header(animatedValue)}>
         <Block height={110} backgroundColor="secondary_background">
           <Text size={36} type="semibold">
-            Moments
+            {t('moments.header')}
           </Text>
           <Category />
         </Block>
