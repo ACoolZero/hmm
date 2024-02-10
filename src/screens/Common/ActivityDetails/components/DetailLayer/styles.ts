@@ -1,7 +1,7 @@
 import {getSize, height, width} from '@utils/responsive';
 
 const styles = {
-  animatedImageContainer: ({animatedValue, STORY_WIDTH, STORY_HEIGHT, leftOffset, topOffset}: any) => ({
+  animatedImageContainer: ({animatedValue, STORY_WIDTH, STORY_HEIGHT, originalDimensions, pan}: any) => ({
     overflow: 'hidden',
     borderRadius: animatedValue.interpolate({
       inputRange: [0, 1],
@@ -17,12 +17,13 @@ const styles = {
     }),
     left: animatedValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [leftOffset, 0],
+      outputRange: [originalDimensions.leftOffset, 0],
     }),
     top: animatedValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [topOffset, 0],
+      outputRange: [originalDimensions.topOffset, 0],
     }),
+    transform: [{translateX: pan.x}, {translateY: pan.y}],
   }),
   animatedHeader: ({animatedValue, top}: any) => ({
     position: 'absolute',

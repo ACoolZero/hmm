@@ -1,31 +1,39 @@
 import {ICONS} from '@assets';
 import {Block, Image, Text} from '@components';
-import {useColors} from '@hooks';
+import {useBackHandler, useColors, useTranslation} from '@hooks';
 import {useNavigation} from '@react-navigation/native';
 import {getSize, height, width} from '@utils/responsive';
 import dayjs from 'dayjs';
 import React, {useEffect, useRef, useState} from 'react';
-import {Animated, Pressable, StyleProp, TouchableOpacity, ViewStyle} from 'react-native';
+import {Animated, PanResponder, StyleProp, TouchableOpacity, ViewStyle} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import styles from './styles';
 
+const SWIPING_BOUND = {x: width / 4, y: height / 4};
+
 const DetailLayer = ({data, onPress, STORY_WIDTH, STORY_HEIGHT}: any) => {
+  const {t} = useTranslation();
   const navigation = useNavigation();
   const {COLORS} = useColors();
   const {top} = useSafeAreaInsets();
   const [isVisible, setIsVisible] = useState<boolean>(true);
+  const animatedValue = useRef(new Animated.Value(0)).current;
+  const pan = useRef(new Animated.ValueXY()).current;
   const {media, creatorName, content, createdAt} = data;
-  const topOffset = top + 50 + getSize.m(24);
-  const leftOffset = width * 0.1;
+  const originalDimensions = {
+    topOffset: top + 50 + getSize.m(24),
+    leftOffset: width * 0.1,
+  };
 
   useEffect(() => {
     navigation.setOptions({gestureEnabled: false});
     return () => navigation.setOptions({gestureEnabled: true});
   }, [navigation]);
 
-  const handleToggle = () => setIsVisible(!isVisible);
-
-  const animatedValue = useRef(new Animated.Value(0)).current;
+  const handleToggle = () =>
+    setIsVisible((currentState): boolean => {
+      return !currentState;
+    });
 
   useEffect(() => {
     Animated.timing(animatedValue, {
@@ -33,18 +41,66 @@ const DetailLayer = ({data, onPress, STORY_WIDTH, STORY_HEIGHT}: any) => {
       duration: 300,
       useNativeDriver: false,
     }).start();
-  });
+  }, [animatedValue]);
+
+  const handleClose = () => onPress({fullMode: false, index: null});
+  const closeAnimation = {
+    animatedValue: Animated.timing(animatedValue, {
+      toValue: 0,
+      duration: 300,
+      useNativeDriver: false,
+    }),
+    pan: Animated.timing(pan, {
+      toValue: {x: 0, y: 0},
+      duration: 300,
+      useNativeDriver: false,
+    }),
+  };
+  const handleCloseAnimation = () => {
+    closeAnimation.animatedValue.start(() => handleClose());
+  };
+
+  useBackHandler({enabled: true, callback: handleCloseAnimation});
+
+  const panResponder = useRef(
+    PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponder: () => true,
+      onPanResponderTerminate: () => true,
+
+      onPanResponderMove: (_, gestureState) => {
+        pan.setValue({x: gestureState.dx, y: gestureState.dy});
+        setIsVisible(false);
+      },
+
+      onPanResponderRelease: (_, gestureState) => {
+        if (
+          Math.abs(gestureState.dx) >= SWIPING_BOUND.x ||
+          Math.abs(gestureState.dy) >= SWIPING_BOUND.y ||
+          Math.abs(gestureState.vx) >= 1 ||
+          Math.abs(gestureState.vy) >= 1
+        ) {
+          Animated.parallel([closeAnimation.animatedValue, closeAnimation.pan]).start(() => handleClose());
+        } else if (Math.abs(gestureState.dx) > 0 || Math.abs(gestureState.dy) > 0) {
+          closeAnimation.pan.start(() => handleToggle());
+        }
+
+        if (gestureState.dx === 0 && gestureState.dy === 0) {
+          handleToggle();
+        }
+      },
+    }),
+  ).current;
 
   return (
     <Block absolute width={width} height={height}>
-      <Pressable onPress={handleToggle}>
-        <Animated.View
-          style={
-            styles.animatedImageContainer({animatedValue, STORY_WIDTH, STORY_HEIGHT, leftOffset, topOffset}) as any
-          }>
-          <Image source={{uri: media}} style={styles.image} />
-        </Animated.View>
-      </Pressable>
+      <Animated.View
+        style={
+          styles.animatedImageContainer({animatedValue, STORY_WIDTH, STORY_HEIGHT, originalDimensions, pan}) as any
+        }
+        {...panResponder.panHandlers}>
+        <Image source={{uri: media}} style={styles.image} />
+      </Animated.View>
       {isVisible && (
         <>
           <Animated.View style={styles.animatedHeader({top, animatedValue}) as any}>
@@ -57,18 +113,12 @@ const DetailLayer = ({data, onPress, STORY_WIDTH, STORY_HEIGHT}: any) => {
               paddingTop={top}
               backgroundColor="#00000090">
               <Text center color={COLORS.white} type="semibold">
-                Moments
+                {t('moments.header')}
               </Text>
             </Block>
             <TouchableOpacity
               onPress={() => {
-                Animated.timing(animatedValue, {
-                  toValue: 0,
-                  duration: 300,
-                  useNativeDriver: false,
-                }).start(() => {
-                  onPress({fullMode: false, index: null});
-                });
+                handleCloseAnimation();
               }}
               style={styles.closeButtonContainer(top) as StyleProp<ViewStyle>}>
               <Image source={ICONS.close} square={16} tintColor={COLORS.white} />
