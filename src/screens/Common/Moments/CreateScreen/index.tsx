@@ -11,6 +11,7 @@ import React, {useEffect, useState} from 'react';
 import {KeyboardAvoidingView, TouchableOpacity} from 'react-native';
 import {AccessModeType} from '../types';
 import styles, {ICON_HOLDER_SIZE, IMAGE_HEIGHT, IMAGE_WIDTH} from './styles';
+import {UIActivityIndicator} from 'react-native-indicators';
 
 interface CreateMomentProps {
   route: RouteProp<RootStackParamList, 'CREATE_MOMENT_SCREEN'>;
@@ -61,7 +62,12 @@ const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
   return (
     <KeyboardAvoidingView style={{flex: 1}} behavior={isIos ? 'padding' : 'height'}>
       <Block flex backgroundColor={COLORS.secondary_background}>
-        <Header canGoBack title={t('moment.create.header')} />
+        <Block>
+          <Header canGoBack title={t('moment.create.header')} />
+          {isLoading && (
+            <UIActivityIndicator size={getSize.m(14)} color={COLORS.text} style={styles.loadingButtonContainer} />
+          )}
+        </Block>
         <Block height={height - 250}>
           <TouchableOpacity onPress={openPicker}>
             <Block row alignCenter height={40} paddingHorizontal={12} backgroundColor="primary" space="between">
@@ -163,7 +169,7 @@ const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
               }}
             />
           </Block>
-          <Loading visible={isLoading || isCreate} />
+          <Loading visible={isCreate} />
         </Block>
       </Block>
     </KeyboardAvoidingView>
