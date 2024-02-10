@@ -10,6 +10,7 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import styles from './styles';
 
 const SWIPING_BOUND = {x: width / 4, y: height / 4};
+const VELOCITY_BOUND = 1;
 
 const DetailLayer = ({data, onPress, STORY_WIDTH, STORY_HEIGHT}: any) => {
   const {t} = useTranslation();
@@ -77,8 +78,8 @@ const DetailLayer = ({data, onPress, STORY_WIDTH, STORY_HEIGHT}: any) => {
         if (
           Math.abs(gestureState.dx) >= SWIPING_BOUND.x ||
           Math.abs(gestureState.dy) >= SWIPING_BOUND.y ||
-          Math.abs(gestureState.vx) >= 1 ||
-          Math.abs(gestureState.vy) >= 1
+          Math.abs(gestureState.vx) >= VELOCITY_BOUND ||
+          Math.abs(gestureState.vy) >= VELOCITY_BOUND
         ) {
           Animated.parallel([closeAnimation.animatedValue, closeAnimation.pan]).start(() => handleClose());
         } else if (Math.abs(gestureState.dx) > 0 || Math.abs(gestureState.dy) > 0) {
