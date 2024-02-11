@@ -62,7 +62,7 @@ const Header: React.FC<{selectedMileStone: IMilestone}> = ({selectedMileStone}) 
               }}>
               <Block row alignCenter>
                 <Text sm marginRight={5} color="primary">
-                  {t('home.milestones.edit_moment')}
+                  {t('home.milestones.recall_moment')}
                 </Text>
                 <Image source={ICONS.arrow_right} square={12} tintColor="primary" />
               </Block>
