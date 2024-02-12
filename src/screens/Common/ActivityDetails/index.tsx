@@ -43,12 +43,16 @@ const ActivityDetails: React.FC<ActivityDetailsProps> = ({route}) => {
     return (
       <Block paddingVertical={24}>
         <Pressable onPress={() => onPress({fullMode: true, index})}>
-          <Image
-            source={{uri: media}}
-            width={STORY_WIDTH}
-            height={STORY_HEIGHT}
-            style={{borderRadius: getSize.s(24)}}
-          />
+          {isFullMode && momentIndex === index ? (
+            <Block width={STORY_WIDTH} height={STORY_HEIGHT} radius={24} />
+          ) : (
+            <Image
+              source={{uri: media}}
+              width={STORY_WIDTH}
+              height={STORY_HEIGHT}
+              style={{borderRadius: getSize.s(24)}}
+            />
+          )}
         </Pressable>
         <Block padding={24}>
           <Text center size={24} marginBottom={5} numberOfLines={2} type="semibold">
