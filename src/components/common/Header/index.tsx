@@ -8,7 +8,7 @@ import {TouchableOpacity} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import styles from './styles';
 
-interface HeaderProps {
+export interface HeaderProps {
   canGoBack?: boolean;
   title?: string;
   onGoBack?: () => void;

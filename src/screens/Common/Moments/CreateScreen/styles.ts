@@ -9,11 +9,4 @@ export default StyleSheet.create({
   containerInputStyle: {
     marginBottom: getSize.m(0),
   },
-  loadingButtonContainer: {
-    position: 'absolute',
-    width: getSize.s(50),
-    height: getSize.v(50),
-    right: 0,
-    bottom: 0,
-  },
 });

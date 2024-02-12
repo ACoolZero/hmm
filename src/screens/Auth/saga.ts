@@ -38,6 +38,7 @@ function* login(action: ActionPayload<LoginPayload>) {
   yield put({type: actions._onSuccess(actions.CACHING_EMAIL), payload: {data: data?.email}});
 
   yield Storage.setItem(REFRESH_EXPIRES_AT, dayjs().add(1, 'week').format('YYYY-MM-DD'));
+  yield delay(200);
   reset(routes.BOTTOM_TAB);
 }
 

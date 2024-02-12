@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import {ICONS} from '@assets';
-import {Block, GradientButton, Header, Image, LazyImage, Loading, Text, TextInput} from '@components';
+import {Block, GradientButton, Image, LazyImage, Loading, Text, TextInput} from '@components';
 import {useColors, useMediaPicker, useStore, useTranslation} from '@hooks';
 import {RootStackParamList} from '@navigation/types';
 import {RouteProp} from '@react-navigation/native';
@@ -10,8 +10,8 @@ import {getSize, height} from '@utils/responsive';
 import React, {useEffect, useState} from 'react';
 import {KeyboardAvoidingView, TouchableOpacity} from 'react-native';
 import {AccessModeType} from '../types';
+import Header from './CustomHeader';
 import styles, {ICON_HOLDER_SIZE, IMAGE_HEIGHT, IMAGE_WIDTH} from './styles';
-import {UIActivityIndicator} from 'react-native-indicators';
 
 interface CreateMomentProps {
   route: RouteProp<RootStackParamList, 'CREATE_MOMENT_SCREEN'>;
@@ -62,12 +62,7 @@ const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
   return (
     <KeyboardAvoidingView style={{flex: 1}} behavior={isIos ? 'padding' : 'height'}>
       <Block flex backgroundColor={COLORS.secondary_background}>
-        <Block>
-          <Header canGoBack title={t('moment.create.header')} />
-          {isLoading && (
-            <UIActivityIndicator size={getSize.m(14)} color={COLORS.text} style={styles.loadingButtonContainer} />
-          )}
-        </Block>
+        <Header canGoBack title={t('moment.create.header')} isLoading={isLoading} />
         <Block height={height - 250}>
           <TouchableOpacity onPress={openPicker}>
             <Block row alignCenter height={40} paddingHorizontal={12} backgroundColor="primary" space="between">

@@ -21,13 +21,13 @@
     "male": "Male",
     "female": "Female"
   },
-    "button": {
-      "edit": "Edit",
-      "save": "Save",
-      "continue": "Continue",
-      "confirm": "Đồng ý",
-      "close": "Đóng",
-      "share": "Share"
+  "button": {
+    "edit": "Edit",
+    "save": "Save",
+    "continue": "Continue",
+    "confirm": "Đồng ý",
+    "close": "Đóng",
+    "share": "Share"
   },
   "login": {
     "welcome": "Welcome!",
@@ -94,22 +94,22 @@
       "shopping": "Shopping"
     },
     "mood_history": {
-      "label":"Mood history"
+      "label": "Mood history"
     },
     "FAQ/Feedback": {
       "label": "FAQ / Feedback",
       "about_us": {
-        "label":"About Us"
+        "label": "About Us"
       },
       "version": {
         "label": "Version:",
         "latest_version": "You are using the latest version of the app."
       },
       "FAQ": {
-        "label":"FAQ"
+        "label": "FAQ"
       },
       "feedback": {
-        "label":"Feedback",
+        "label": "Feedback",
         "prompt": "Something went wrong ?",
         "logs": "Including logs",
         "add_screenshots": "Add screenshots",
@@ -202,6 +202,9 @@
     "create": {
       "header": "Create Moment",
       "choose_a_photo": "Choose a photo"
+    },
+    "edit": {
+      "header": "Edit Moment"
     },
     "input_placeholder": "How does this photo mean to you?",
     "public": "Public",
