@@ -39,6 +39,7 @@ const ActionModal: React.FC = () => {
             case 'DISCOVER':
               break;
             case 'MOODNOW':
+              DeviceEventEmitter.emit('showMoodNowModal');
               break;
             case 'CUSTOMIZATION':
               navigate(routes.GADGETS_CUSTOMIZATION_SCREEN);
@@ -53,7 +54,7 @@ const ActionModal: React.FC = () => {
               break;
           }
         }}>
-        <Block alignCenter marginBottom={30} style={style} opacity={disabled ? 0.3 : 1}>
+        <Block alignCenter marginBottom={30} style={style} opacity={actiontype === 'MOODNOW' ? 0.7 : 1}>
           <Image source={icon} square={iconSize} resizeMode="contain" />
           <Text marginTop={8} color="#FAFAFA" type="medium">
             {title}
@@ -106,7 +107,7 @@ const ActionModal: React.FC = () => {
             title: 'Discover',
             style: {marginLeft: getSize.m(8)},
           })}
-          {_renderActionButton({actiontype: 'MOODNOW', icon: IMAGES.volunteer, title: 'Mood Now'})}
+          {_renderActionButton({actiontype: 'MOODNOW', icon: IMAGES.moodnow, title: 'Mood Now'})}
         </Block>
       </Block>
     </TouchableOpacity>

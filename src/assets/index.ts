@@ -79,7 +79,7 @@ export const IMAGES = {
   milestone: require('./images/milestone.png'),
   moment: require('./images/moment.png'),
   suggest: require('./images/suggest.png'),
-  volunteer: require('./images/volunteer.png'),
+  moodnow: require('./images/moodnow.png'),
   customization: require('./images/customization.png'),
   confirm_dialog_icon: require('./images/confirm_dialog_icon.png'),
   confirm_icon_left: require('./images/confirm_icon_left.png'),
@@ -91,30 +91,4 @@ export const IMAGES = {
   recall_delete: require('./images/recall_delete.png'),
   recall_notice: require('./images/recall_notice.png'),
   delete_moment_icon_left: require('./images/delete_moment_icon_left.png'),
-};
-
-export const MILESTONE = {
-  milestone1: require('./milestones/milestone1.png'),
-  milestone2: require('./milestones/milestone2.png'),
-  milestone3: require('./milestones/milestone3.png'),
-  milestone4: require('./milestones/milestone4.png'),
-  milestone5: require('./milestones/milestone5.png'),
-  milestone6: require('./milestones/milestone6.png'),
-  milestone7: require('./milestones/milestone7.png'),
-  milestone8: require('./milestones/milestone8.png'),
-  milestone9: require('./milestones/milestone9.png'),
-  milestone10: require('./milestones/milestone10.png'),
-  milestone11: require('./milestones/milestone11.png'),
-};
-
-export const MOMENTS = {
-  moment1: require('./moments/moment1.png'),
-  moment2: require('./moments/moment2.png'),
-  moment3: require('./moments/moment3.png'),
-  moment4: require('./moments/moment4.png'),
-  moment5: require('./moments/moment5.png'),
-  moment6: require('./moments/moment6.png'),
-  moment7: require('./moments/moment7.png'),
-  moment8: require('./moments/moment8.png'),
-  moment9: require('./moments/moment9.png'),
 };

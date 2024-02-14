@@ -27,7 +27,9 @@ function* getMomentDetails(action: ActionPayload<{momentId: string}>) {
   const {momentId} = action.payload;
   const response: AxiosResponse = yield call(api, `/moments/${momentId}`);
   yield put({type: actions._onSuccess(action.type), payload: {data: response.data}});
-  yield call(action.callback, response.data);
+  if (action.callback) {
+    yield call(action.callback, response.data);
+  }
 }
 
 function* editMoment(action: ActionPayload<EditMomentPayload>) {

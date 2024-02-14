@@ -3,7 +3,7 @@ import {useColors} from '@hooks';
 import React, {useEffect} from 'react';
 import {RefreshControl, ScrollView, StatusBar, StatusBarStyle} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {EmotionChart, Feeling, Milestones, PostList, Reaction, Status, Stories} from './components';
+import {EmotionChart, Milestones, PostList, Reaction, Status, Stories} from './components';
 import useHome from './useHome';
 
 const Home: React.FC = () => {
@@ -35,7 +35,6 @@ const Home: React.FC = () => {
           <PostList />
         </Block>
       </ScrollView>
-      <Feeling />
     </Block>
   );
 };

@@ -3,7 +3,7 @@ import {Block, Image, OnTopButton} from '@components';
 import routes from '@navigation/routes';
 import {getSize} from '@utils/responsive';
 import React from 'react';
-import {StyleSheet, TouchableOpacity} from 'react-native';
+import {Pressable, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
@@ -40,7 +40,7 @@ const TabBar: React.FC<TabBarProps> = ({state, navigation}) => {
 
           if (isFocused) {
             return (
-              <TouchableOpacity key={index} onPress={_onSelectTab} style={styles.btnTabBar}>
+              <Pressable key={index} onPress={_onSelectTab} style={styles.btnTabBar}>
                 <Image
                   square={22}
                   source={(ICONS as any)[icons[route.name as keyof typeof icons] + '_selected']}
@@ -52,17 +52,17 @@ const TabBar: React.FC<TabBarProps> = ({state, navigation}) => {
                   end={{x: 1, y: 0}}
                   style={styles.indicator}
                 />
-              </TouchableOpacity>
+              </Pressable>
             );
           }
           return (
-            <TouchableOpacity key={index} onPress={_onSelectTab} style={styles.btnTabBar}>
+            <Pressable key={index} onPress={_onSelectTab} style={styles.btnTabBar}>
               <Image
                 square={22}
                 source={(ICONS as any)[icons[route.name as keyof typeof icons]]}
                 resizeMode="contain"
               />
-            </TouchableOpacity>
+            </Pressable>
           );
         })}
       </Block>

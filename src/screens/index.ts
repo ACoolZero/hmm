@@ -29,6 +29,7 @@ import MilestoneDetails from './Common/Home.MilestoneDetails';
 import CreateMilestone from './Common/Milestone/CreateScreen';
 import EditScreen from './Common/Milestone/EditScreen';
 import CreateMoment from './Common/Moments/CreateScreen';
+import MomentDetails from './Common/Moments/DetailsScreen';
 import EditMoment from './Common/Moments/EditScreen';
 import Recall from './Common/Recall';
 import Suggest from './Common/Suggest';
@@ -73,4 +74,5 @@ export const common = {
   [routes.EDIT_MOMENT_SCREEN]: EditMoment,
   [routes.RECALL_SCREEN]: Recall,
   [routes.ACTIVITY_DETAILS_SCREEN]: ActivityDetails,
+  [routes.MOMENT_DETAILS_SCREEN]: MomentDetails,
 };

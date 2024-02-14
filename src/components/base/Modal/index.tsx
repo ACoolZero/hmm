@@ -6,7 +6,7 @@ import styles from './styles';
 import {ModalProps} from './types';
 
 const MODAL_ANIM_DURATION = 300;
-const MODAL_BACKDROP_OPACITY = 0.5;
+const MODAL_BACKDROP_OPACITY = 0.6;
 
 const Modal: React.FC<ModalProps> = ({
   isVisible,

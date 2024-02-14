@@ -11,11 +11,11 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import styles from './styles';
 
 const Header: React.FC<{selectedMileStone: IMilestone}> = ({selectedMileStone}) => {
+  const {t} = useTranslation();
   const {useSelector} = useStore();
   const {data: userMomentsList} = useSelector('userMomentsList');
   const {top} = useSafeAreaInsets();
   const {COLORS, randomBackgroundColor} = useColors();
-  const {t} = useTranslation();
   const {id, icon, content, milestoneTime, momentId} = selectedMileStone;
 
   return (
@@ -58,7 +58,7 @@ const Header: React.FC<{selectedMileStone: IMilestone}> = ({selectedMileStone}) 
           {!!momentId && userMomentsList?.length > 0 && (
             <TouchableOpacity
               onPress={() => {
-                navigate(routes.RECALL_SCREEN, {momentIdx: 0});
+                navigate(routes.MOMENT_DETAILS_SCREEN, {momentId});
               }}>
               <Block row alignCenter>
                 <Text sm marginRight={5} color="primary">

@@ -12,9 +12,8 @@ interface MilestoneCardProps {
 }
 
 const MilestoneCard2: React.FC<MilestoneCardProps> = ({item, selectedId, onPress}) => {
-  const {randomTextColor, randomBackgroundColor} = useColors();
+  const {COLORS, randomTextColor, randomBackgroundColor} = useColors();
   const {id, icon, content, milestoneTime} = item;
-  const {COLORS} = useColors();
   const isSelected = selectedId === id;
 
   return (

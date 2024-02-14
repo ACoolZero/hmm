@@ -2,6 +2,7 @@ import {ToastMessage} from '@components';
 import i18n from '@i18n';
 import MainContainer from '@navigation';
 import ActionModal from '@screens/Common/OnTopButton.ActionModal';
+import MoodNowModal from '@screens/Common/OnTopButton.MoodNowModal';
 import store, {persistor} from '@store';
 import {isIos} from '@utils/helper';
 import React from 'react';
@@ -24,6 +25,7 @@ const App = () => {
             <MainContainer />
             <ToastMessage position="top" />
             <ActionModal />
+            <MoodNowModal />
           </PersistGate>
         </ReduxProvider>
       </I18nextProvider>
