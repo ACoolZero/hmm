@@ -13,6 +13,12 @@ const CustomHeader: React.FC<CustomHeader> = ({isLoading, ...rest}) => {
   const {useSelector} = useStore();
   const {mode} = useSelector('theme');
   const animatedValue = useRef(new Animated.Value(0)).current;
+
+  const rotation = animatedValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '360deg'],
+  });
+
   useEffect(() => {
     Animated.loop(
       Animated.timing(animatedValue, {
@@ -22,10 +28,6 @@ const CustomHeader: React.FC<CustomHeader> = ({isLoading, ...rest}) => {
         useNativeDriver: false,
       }),
     ).start();
-  });
-  const rotation = animatedValue.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['0deg', '360deg'],
   });
 
   return (
