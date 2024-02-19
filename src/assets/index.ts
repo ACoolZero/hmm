@@ -45,6 +45,10 @@ export const ICONS = {
   dots: require('./icons/dots.png'),
   rollback: require('./icons/rollback.png'),
   bot: require('./icons/bot.png'),
+  loading_indicator: {
+    dark: require('./icons/loading_indicator_dark.png'),
+    light: require('./icons/loading_indicator_light.png'),
+  },
 };
 
 export const IMAGES = {
