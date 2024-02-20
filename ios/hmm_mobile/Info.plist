@@ -30,6 +30,16 @@
 				<string>com.googleusercontent.apps.1075938704086-qrjotta8pdm3v981sveojhg8kti8468h</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>moments</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>moments</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>

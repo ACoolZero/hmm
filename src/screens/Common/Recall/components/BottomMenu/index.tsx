@@ -3,9 +3,12 @@ import {Block, BottomSheet, Image, Text} from '@components';
 import {useStore, useTranslation} from '@hooks';
 import {navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import DeleteDialog from '../DeleteDialog';
+import {GET_MOMENT_DETAILS} from '@store/actions';
+import {showMessage} from '@components/common/ToastMessage';
+import Clipboard from '@react-native-clipboard/clipboard';
 
 interface BottomMenuProps {
   isOpenBottom: boolean;
@@ -13,22 +16,40 @@ interface BottomMenuProps {
 }
 
 const BottomMenu: React.FC<BottomMenuProps> = ({isOpenBottom, setIsOpenBottom}) => {
-  const {useSelector} = useStore();
-  const {data: activeMoment} = useSelector('activeMoment');
-  const [isDialogVisible, setDialogVisible] = useState<boolean>(false);
   const {t} = useTranslation();
+  const {dispatch, useSelector} = useStore();
+  const {data: activeMoment} = useSelector('activeMoment');
+  const {data: momentDetails} = useSelector('momentDetails');
+  const [isDialogVisible, setDialogVisible] = useState<boolean>(false);
+  const [isShareable, setIsShareable] = useState<boolean>(false);
 
   const _onDeleteMoment = () => {
     setDialogVisible(true);
   };
 
+  useEffect(() => {
+    if (activeMoment) {
+      dispatch({type: GET_MOMENT_DETAILS, payload: {momentId: activeMoment.id}});
+      setIsShareable(true);
+    }
+  }, [dispatch, activeMoment]);
+
+  const handlePress = () => {
+    if (momentDetails) {
+      const deepLinkUrlComponents = momentDetails.deepLinkUrl.split('/');
+      const deepLinkUrl = `moments://${deepLinkUrlComponents[deepLinkUrlComponents.length - 1]}`;
+      Clipboard.setString(deepLinkUrl);
+      showMessage({type: 'success', message: `${t('recall.share.message')}`});
+    }
+  };
+
   return (
     <BottomSheet useBottomSheet={[isOpenBottom, setIsOpenBottom]}>
-      <TouchableOpacity disabled onPress={() => {}}>
-        <Block row alignCenter paddingHorizontal={12} paddingVertical={16} opacity={0.4}>
+      <TouchableOpacity disabled={!isShareable} onPress={handlePress}>
+        <Block row alignCenter paddingHorizontal={12} paddingVertical={16} opacity={isShareable ? 1 : 0.4}>
           <Image source={IMAGES.recall_share} square={32} />
           <Text flex marginLeft={12} numberOfLines={1}>
-            {t('recall.share')}
+            {t('recall.share.label')}
           </Text>
         </Block>
       </TouchableOpacity>
