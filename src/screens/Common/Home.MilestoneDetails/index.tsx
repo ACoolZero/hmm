@@ -1,5 +1,5 @@
 import {Block, ListWrapper, MilestoneCardTwo} from '@components';
-import {useStore} from '@hooks';
+import {useColors, useStore} from '@hooks';
 import {IMilestone} from '@screens/Bottom/Home/types';
 import {GET_MILESTONES} from '@store/actions';
 import React, {useEffect, useState} from 'react';
@@ -10,6 +10,7 @@ const MilestoneDetails: React.FC = () => {
   const {dispatch, useSelector} = useStore();
   const {data: milestoneList} = useSelector('milestoneList');
   const [selectedMileStone, setSelectedMileStone] = useState<IMilestone>(milestoneList[0]);
+  const {COLORS} = useColors();
 
   const _renderItem: ListRenderItem<IMilestone> = ({item}) => (
     <MilestoneCardTwo item={item} selectedId={selectedMileStone.id} onPress={() => setSelectedMileStone(item)} />
@@ -26,7 +27,7 @@ const MilestoneDetails: React.FC = () => {
 
   return (
     <Block flex backgroundColor="background">
-      <StatusBar backgroundColor="primary" barStyle="dark-content" />
+      <StatusBar backgroundColor={COLORS.milestone_header} />
       <Header selectedMileStone={selectedMileStone} />
       <Block flex padding={16}>
         <ListWrapper
