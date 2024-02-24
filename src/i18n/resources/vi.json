@@ -233,7 +233,10 @@
   },
   "recall": {
     "header": "Recall",
-    "share": "Share to other apps",
+    "share": {
+      "label":"Share to other apps",
+      "message": "Copied to clipboard"
+    },
     "edit": "Edit title and privacy",
     "delete": "Delete this moment",
     "notice": "Notice us this meaningful moment",
