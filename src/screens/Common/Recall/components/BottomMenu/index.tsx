@@ -1,14 +1,14 @@
 import {IMAGES} from '@assets';
 import {Block, BottomSheet, Image, Text} from '@components';
+import {showMessage} from '@components/common/ToastMessage';
 import {useStore, useTranslation} from '@hooks';
 import {navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
+import Clipboard from '@react-native-clipboard/clipboard';
+import {GET_MOMENT_DETAILS} from '@store/actions';
 import React, {useEffect, useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import DeleteDialog from '../DeleteDialog';
-import {GET_MOMENT_DETAILS} from '@store/actions';
-import {showMessage} from '@components/common/ToastMessage';
-import Clipboard from '@react-native-clipboard/clipboard';
 
 interface BottomMenuProps {
   isOpenBottom: boolean;
@@ -34,10 +34,10 @@ const BottomMenu: React.FC<BottomMenuProps> = ({isOpenBottom, setIsOpenBottom}) 
     }
   }, [dispatch, activeMoment]);
 
-  const handlePress = () => {
+  const _handleShareLink = () => {
     if (momentDetails) {
       const deepLinkUrlComponents = momentDetails.deepLinkUrl.split('/');
-      const deepLinkUrl = `moments://${deepLinkUrlComponents[deepLinkUrlComponents.length - 1]}`;
+      const deepLinkUrl = `moments://moment-details/${deepLinkUrlComponents[deepLinkUrlComponents.length - 1]}`;
       Clipboard.setString(deepLinkUrl);
       showMessage({type: 'success', message: `${t('recall.share.message')}`});
     }
@@ -45,7 +45,7 @@ const BottomMenu: React.FC<BottomMenuProps> = ({isOpenBottom, setIsOpenBottom}) 
 
   return (
     <BottomSheet useBottomSheet={[isOpenBottom, setIsOpenBottom]}>
-      <TouchableOpacity disabled={!isShareable} onPress={handlePress}>
+      <TouchableOpacity disabled={!isShareable} onPress={_handleShareLink}>
         <Block row alignCenter paddingHorizontal={12} paddingVertical={16} opacity={isShareable ? 1 : 0.4}>
           <Image source={IMAGES.recall_share} square={32} />
           <Text flex marginLeft={12} numberOfLines={1}>
