@@ -25,16 +25,6 @@ const styles = {
     }),
     transform: [{translateX: pan.x}, {translateY: pan.y}],
   }),
-  animatedHeader: ({animatedValue, top}: any) => ({
-    position: 'absolute',
-    opacity: animatedValue,
-    width: width,
-    height: top + 50,
-    top: animatedValue.interpolate({
-      inputRange: [0, 1],
-      outputRange: [-150, 0],
-    }),
-  }),
   animatedDetailText: (animatedValue: any) => ({
     position: 'absolute',
     opacity: animatedValue,
@@ -43,18 +33,6 @@ const styles = {
       outputRange: [-150, 0],
     }),
   }),
-  closeButtonContainer: (top: number) => ({
-    position: 'absolute',
-    marginLeft: getSize.m(16),
-    marginTop: top,
-    padding: getSize.m(12),
-    borderRadius: getSize.m(6),
-  }),
-  image: {
-    flex: 1,
-    width: 'auto',
-    height: 'auto',
-  },
 };
 
 export default styles;

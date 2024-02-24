@@ -62,6 +62,14 @@ const RootStack = () => {
         <Stack.Screen name={routes.RECALL_SCREEN} component={common[routes.RECALL_SCREEN]} />
         <Stack.Screen name={routes.ACTIVITY_DETAILS_SCREEN} component={common[routes.ACTIVITY_DETAILS_SCREEN]} />
         <Stack.Screen name={routes.MOMENT_DETAILS_SCREEN} component={common[routes.MOMENT_DETAILS_SCREEN]} />
+        <Stack.Screen
+          options={{
+            animation: 'none',
+            presentation: 'containedTransparentModal',
+          }}
+          name={routes.MOMENT_FULL_SCREEN}
+          component={common[routes.MOMENT_FULL_SCREEN]}
+        />
       </Stack.Group>
     </Stack.Navigator>
   );

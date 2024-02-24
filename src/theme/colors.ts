@@ -148,6 +148,7 @@ const dark = {
   card_background_one: '#475E69',
   card_background_two: '#2A3D45',
   border: '#899A96',
+  moment_full_screen: '#213138CC',
   ...COLORS,
 };
 
@@ -162,6 +163,7 @@ const light = {
   card_background_one: '#DDDDDD',
   card_background_two: '#EEEEEE',
   border: '#96A7AF',
+  moment_full_screen: '#FAFAFACC',
   ...COLORS,
 };
 

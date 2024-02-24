@@ -49,6 +49,16 @@ export const ICONS = {
     dark: require('./icons/loading_indicator_dark.png'),
     light: require('./icons/loading_indicator_light.png'),
   },
+  playback_control: {
+    dark: {
+      isPaused: require('./icons/playback_control_paused_dark.png'),
+      isPlaying: require('./icons/playback_control_playing_dark.png'),
+    },
+    light: {
+      isPaused: require('./icons/playback_control_paused_light.png'),
+      isPlaying: require('./icons/playback_control_playing_light.png'),
+    },
+  },
 };
 
 export const IMAGES = {
@@ -95,4 +105,7 @@ export const IMAGES = {
   recall_delete: require('./images/recall_delete.png'),
   recall_notice: require('./images/recall_notice.png'),
   delete_moment_icon_left: require('./images/delete_moment_icon_left.png'),
+  moment_share: require('./images/moment_share.png'),
+  moment_report: require('./images/moment_report.png'),
+  moment_notice: require('./images/moment_notice.png'),
 };

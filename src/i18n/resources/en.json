@@ -192,7 +192,12 @@
     }
   },
   "moments": {
-    "header": "Moments"
+    "header": "Moments",
+    "bottom_menu": {
+      "share": "Share to other apps",
+      "report": "Report illegal content",
+      "notice": "Notice us this meaningful moment"
+    }
   },
   "image_picker": {
     "take_picture": "Chụp ảnh",
