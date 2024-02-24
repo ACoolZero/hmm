@@ -220,7 +220,8 @@
     "your_milestone": "Your milestone",
     "icon": "Icon",
     "time": "Time",
-    "location": "Location"
+    "location": "Location",
+    "your_story": "Your story"
   },
   "suggest": {
     "header": "Suggest to experience",

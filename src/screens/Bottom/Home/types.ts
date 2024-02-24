@@ -25,6 +25,7 @@ export interface IMilestone {
   content: string;
   milestoneTime: string;
   location: string;
+  story: string;
   momentId: string;
 }
 

@@ -2,6 +2,10 @@ import {getSize} from '@utils/responsive';
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
+  containerBorder: {
+    paddingBottom: getSize.m(5),
+    borderBottomLeftRadius: getSize.s(32),
+  },
   container: {
     paddingBottom: getSize.m(24),
     paddingHorizontal: getSize.m(16),
