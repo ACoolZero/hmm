@@ -4,7 +4,7 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   containerBorder: {
     borderBottomLeftRadius: getSize.s(32),
-    height: height * 0.305,
+    paddingBottom: getSize.m(5),
   },
   container: {
     paddingHorizontal: getSize.m(16),

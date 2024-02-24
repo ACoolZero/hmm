@@ -8,9 +8,9 @@ import Header from './components/Header';
 
 const MilestoneDetails: React.FC = () => {
   const {dispatch, useSelector} = useStore();
+  const {COLORS} = useColors();
   const {data: milestoneList} = useSelector('milestoneList');
   const [selectedMileStone, setSelectedMileStone] = useState<IMilestone>(milestoneList[0]);
-  const {COLORS} = useColors();
 
   const _renderItem: ListRenderItem<IMilestone> = ({item}) => (
     <MilestoneCardTwo item={item} selectedId={selectedMileStone.id} onPress={() => setSelectedMileStone(item)} />

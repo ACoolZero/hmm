@@ -4,12 +4,12 @@ import {useColors, useStore, useTranslation} from '@hooks';
 import {goBack, navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import {IMilestone} from '@screens/Bottom/Home/types';
+import {width} from '@utils/responsive';
 import dayjs from 'dayjs';
 import React from 'react';
 import {Pressable, TouchableOpacity} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import styles from './styles';
-import {width} from '@utils/responsive';
 
 const Header: React.FC<{selectedMileStone: IMilestone}> = ({selectedMileStone}) => {
   const {t} = useTranslation();
