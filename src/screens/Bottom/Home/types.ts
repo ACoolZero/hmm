@@ -22,7 +22,7 @@ export interface IStory {
 export interface IMilestone {
   id: string;
   icon: string;
-  content: string;
+  title: string;
   milestoneTime: string;
   location: string;
   story: string;

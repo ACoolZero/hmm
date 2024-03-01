@@ -3,6 +3,8 @@ import {ICONS} from '@assets';
 import {Block, EmojiKeyboard, GradientButton, Image, Loading, Text, TextInput} from '@components';
 import {handleHitSlop} from '@components/base/shared';
 import {useColors, useStore, useTranslation} from '@hooks';
+import {sleep} from '@utils/date';
+import {isIos} from '@utils/helper';
 import {getSize, height} from '@utils/responsive';
 import dayjs from 'dayjs';
 import React, {createRef, useState} from 'react';
@@ -10,8 +12,6 @@ import {KeyboardAvoidingView, Pressable, ScrollView, StatusBar, StyleSheet, Touc
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import ConfirmDialog from '../components/ConfirmDialog';
 import Header from '../components/Header';
-import {isIos} from '@utils/helper';
-import {sleep} from '@utils/date';
 
 const CreateScreen: React.FC = () => {
   const {useSelector} = useStore();
@@ -20,7 +20,7 @@ const CreateScreen: React.FC = () => {
   const [isDialogVisible, setDialogVisible] = useState<boolean>(false);
   const [isDatePickerVisible, setDatePickerVisibility] = useState<boolean>(false);
   const [mileStone, setMileStone] = useState({
-    content: '',
+    title: '',
     icon: '',
     location: '',
     story: '',
@@ -64,7 +64,7 @@ const CreateScreen: React.FC = () => {
               containerInputStyle={styles.containerInputStyle}
               color={COLORS.light_text}
               onFocus={() => scrollViewRef.current?.scrollTo({y: 0, animated: true})}
-              onChangeText={content => setMileStone({...mileStone, content})}
+              onChangeText={title => setMileStone({...mileStone, title})}
             />
             <Text marginBottom={16} type="semibold">
               {t('milestone.icon')}

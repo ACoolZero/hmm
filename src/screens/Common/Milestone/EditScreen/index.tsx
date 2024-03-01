@@ -6,14 +6,14 @@ import {useColors, useStore, useTranslation} from '@hooks';
 import {RootStackParamList} from '@navigation/types';
 import {RouteProp} from '@react-navigation/native';
 import {GET_MILESTONE_DETAILS, UPDATE_MILESTONE} from '@store/actions';
+import {sleep} from '@utils/date';
+import {isIos} from '@utils/helper';
 import {getSize, height} from '@utils/responsive';
 import dayjs from 'dayjs';
 import React, {createRef, useEffect, useState} from 'react';
 import {KeyboardAvoidingView, Pressable, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import Header from '../components/Header';
-import {isIos} from '@utils/helper';
-import {sleep} from '@utils/date';
 
 interface EditScreenProps {
   route: RouteProp<RootStackParamList, 'EDIT_MILESTONE_SCREEN'>;
@@ -30,7 +30,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
   const scrollViewRef = createRef<ScrollView>();
 
   const [mileStone, setMileStone] = useState({
-    content: '',
+    title: '',
     icon: '',
     location: '',
     story: '',
@@ -79,9 +79,9 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
                 inputStyle={{backgroundColor: COLORS.background, borderWidth: 0}}
                 containerInputStyle={styles.containerInputStyle}
                 color={COLORS.light_text}
-                defaultValue={mileStone.content}
+                defaultValue={mileStone.title}
                 onFocus={() => scrollViewRef.current?.scrollTo({y: 0, animated: true})}
-                onChangeText={content => setMileStone({...mileStone, content})}
+                onChangeText={title => setMileStone({...mileStone, title})}
               />
               <Text marginBottom={16} type="semibold">
                 {t('milestone.icon')}

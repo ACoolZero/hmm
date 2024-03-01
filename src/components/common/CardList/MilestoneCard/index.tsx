@@ -11,7 +11,7 @@ interface MilestoneCardProps {
 
 const MilestoneCard: React.FC<MilestoneCardProps> = ({item, isLastItem = false}) => {
   const {randomTextColor, randomBackgroundColor} = useColors();
-  const {icon, content, milestoneTime} = item;
+  const {icon, title, milestoneTime} = item;
   const {COLORS} = useColors();
 
   return (
@@ -21,7 +21,7 @@ const MilestoneCard: React.FC<MilestoneCardProps> = ({item, isLastItem = false})
           <Text>{icon}</Text>
         </Block>
         <Text flex sm marginLeft={12} numberOfLines={1} color={randomTextColor()} type="semibold">
-          {content}
+          {title}
         </Text>
       </Block>
       <Block>

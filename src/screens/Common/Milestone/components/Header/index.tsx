@@ -1,11 +1,11 @@
 import {ICONS} from '@assets';
 import {Block, Image, Text} from '@components';
 import {goBack} from '@navigation/NavigationServices';
+import {width} from '@utils/responsive';
 import React from 'react';
 import {Pressable} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import styles from './styles';
-import {width} from '@utils/responsive';
 
 interface HeaderProps {
   title: string;
