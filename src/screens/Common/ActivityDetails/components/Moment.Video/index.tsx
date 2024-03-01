@@ -1,12 +1,12 @@
 import {Block, Text} from '@components';
-import React, {createRef, useState} from 'react';
-import {getSize} from '@utils/responsive';
-import Video from 'react-native-video';
-import {Pressable, StyleSheet} from 'react-native';
-import PlaybackControl from '../PlaybackControl';
-import dayjs from 'dayjs';
 import {navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
+import {getSize} from '@utils/responsive';
+import dayjs from 'dayjs';
+import React, {createRef, useState} from 'react';
+import {Pressable, StyleSheet} from 'react-native';
+import Video from 'react-native-video';
+import PlaybackControl from '../PlaybackControl';
 
 interface MomentVideoProps {
   item: any;

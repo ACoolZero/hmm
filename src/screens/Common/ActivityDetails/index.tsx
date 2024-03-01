@@ -6,9 +6,9 @@ import {sleep} from '@utils/date';
 import {width} from '@utils/responsive';
 import React, {useEffect, useRef, useState} from 'react';
 import Carousel from 'react-native-snap-carousel';
+import Header from './components/Header';
 import MomentImage from './components/Moment.Image';
 import MomentVideo from './components/Moment.Video';
-import Header from './components/Header';
 
 const mediaType = {
   image: 'IMAGE',

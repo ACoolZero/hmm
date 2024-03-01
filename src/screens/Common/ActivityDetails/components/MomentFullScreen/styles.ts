@@ -32,6 +32,7 @@ const styles = {
       inputRange: [0, 1],
       outputRange: [-150, 0],
     }),
+    height: height / 4,
   }),
 };
 

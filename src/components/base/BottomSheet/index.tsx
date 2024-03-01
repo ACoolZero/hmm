@@ -14,6 +14,7 @@ const BottomSheet: React.FC<BottomSheetProps> = ({
   onCallback,
   containerStyle,
   contentStyle,
+  handleStyle,
   ...rest
 }) => {
   const [isOpenBottom, setIsOpenBottom] = useBottomSheet;
@@ -40,7 +41,8 @@ const BottomSheet: React.FC<BottomSheetProps> = ({
         ref={modalizeRef}
         onClose={_closeBottomSheet}
         adjustToContentHeight={true}
-        modalStyle={containerStyle}>
+        modalStyle={containerStyle}
+        handleStyle={handleStyle}>
         {title && (
           <Block
             justifyCenter

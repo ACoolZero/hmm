@@ -1,16 +1,16 @@
 import {Block, Text} from '@components';
 import {useBackHandler} from '@hooks';
+import {goBack} from '@navigation/NavigationServices';
 import {useNavigation} from '@react-navigation/native';
 import {getSize, height, width} from '@utils/responsive';
 import dayjs from 'dayjs';
 import React, {useEffect, useRef, useState} from 'react';
 import {Animated, PanResponder} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import styles from './styles';
 import AnimatedHeader from './components/AnimatedHeader';
 import ImageFullScreen from './components/ImageFullScreen';
 import VideoFullScreen from './components/VideoFullScreen';
-import {goBack} from '@navigation/NavigationServices';
+import styles from './styles';
 
 const mediaType = {
   image: 'IMAGE',
@@ -133,8 +133,8 @@ const MomentFullScreen = ({route}: any) => {
                 {dayjs(createdAt).format('DD/MM/YYYY')}
               </Text>
             </Block>
-            <Block alignCenter width={width} top={-height / 4 + getSize.m(35)}>
-              <Block width={50} height={3} backgroundColor="text" />
+            <Block alignCenter width={width} top={12}>
+              <Block width={50} height={2} radius={2} backgroundColor="text" />
             </Block>
           </Animated.View>
         </>

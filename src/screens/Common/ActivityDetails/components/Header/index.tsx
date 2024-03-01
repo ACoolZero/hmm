@@ -3,8 +3,8 @@ import {Block, Header, Image} from '@components';
 import {handleHitSlop} from '@components/base/shared';
 import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
-import styles from './styles';
 import BottomMenu from '../BottomMenu';
+import styles from './styles';
 
 const CustomHeader = ({...rest}) => {
   const [isOpenBottom, setIsOpenBottom] = useState(false);

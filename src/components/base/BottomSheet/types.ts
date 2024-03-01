@@ -4,5 +4,6 @@ export interface BottomSheetProps {
   children?: any;
   containerStyle?: any;
   contentStyle?: any;
+  handleStyle?: any;
   onCallback?: () => void;
 }

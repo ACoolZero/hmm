@@ -1,6 +1,6 @@
 import {IMAGES} from '@assets';
 import {Block, BottomSheet, Image, Text} from '@components';
-import {useTranslation} from '@hooks';
+import {useColors, useTranslation} from '@hooks';
 import {getSize} from '@utils/responsive';
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
@@ -12,12 +12,14 @@ interface BottomMenuProps {
 
 const BottomMenu: React.FC<BottomMenuProps> = ({isOpenBottom, setIsOpenBottom}) => {
   const {t} = useTranslation();
+  const {COLORS} = useColors();
 
   return (
     <BottomSheet
       useBottomSheet={[isOpenBottom, setIsOpenBottom]}
-      containerStyle={{borderTopLeftRadius: getSize.s(25), borderTopRightRadius: getSize.s(25)}}
-      contentStyle={{borderTopLeftRadius: getSize.s(25), borderTopRightRadius: getSize.s(25)}}>
+      handleStyle={{...styles.handleStyle, backgroundColor: COLORS.light_text}}
+      containerStyle={styles.containerStyle}
+      contentStyle={styles.contentStyle}>
       <TouchableOpacity disabled onPress={() => {}}>
         <Block row alignCenter paddingHorizontal={12} paddingVertical={16} opacity={0.4}>
           <Image source={IMAGES.moment_share} square={32} />
@@ -49,3 +51,20 @@ const BottomMenu: React.FC<BottomMenuProps> = ({isOpenBottom, setIsOpenBottom}) 
 };
 
 export default BottomMenu;
+
+const styles = {
+  containerStyle: {
+    borderTopLeftRadius: getSize.s(25),
+    borderTopRightRadius: getSize.s(25),
+  },
+  contentStyle: {
+    borderTopLeftRadius: getSize.s(25),
+    borderTopRightRadius: getSize.s(25),
+  },
+  handleStyle: {
+    width: getSize.s(50),
+    height: getSize.v(3),
+    borderRadius: getSize.m(3),
+    top: 30,
+  },
+};

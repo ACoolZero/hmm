@@ -1,8 +1,8 @@
+import {Block} from '@components';
 import React, {useState} from 'react';
 import {StyleSheet} from 'react-native';
 import Video from 'react-native-video';
 import PlaybackControl from '../../../PlaybackControl';
-import {Block} from '@components';
 
 const VideoFullScreen = ({media}: any) => {
   const [isPaused, setIsPaused] = useState<boolean>(true);

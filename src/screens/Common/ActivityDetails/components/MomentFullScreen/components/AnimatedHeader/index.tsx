@@ -1,13 +1,13 @@
+import {ICONS} from '@assets';
+import {Block, Image, Text} from '@components';
+import {handleHitSlop} from '@components/base/shared';
+import {useTranslation} from '@hooks';
+import {width} from '@utils/responsive';
 import React, {useState} from 'react';
 import {Animated, StyleProp, TouchableOpacity, ViewStyle} from 'react-native';
-import styles from './styles';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {Block, Image, Text} from '@components';
-import {width} from '@utils/responsive';
-import {useTranslation} from '@hooks';
-import {ICONS} from '@assets';
-import {handleHitSlop} from '@components/base/shared';
 import BottomMenu from '../../../BottomMenu';
+import styles from './styles';
 
 const AnimatedHeader = ({animatedValue, onCloseAnimation}: any) => {
   const {top} = useSafeAreaInsets();
