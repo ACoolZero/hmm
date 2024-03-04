@@ -36,8 +36,7 @@ const BottomMenu: React.FC<BottomMenuProps> = ({isOpenBottom, setIsOpenBottom}) 
 
   const _handleShareLink = () => {
     if (momentDetails) {
-      const deepLinkUrlComponents = momentDetails.deepLinkUrl.split('/');
-      const deepLinkUrl = `moments://moment-details/${deepLinkUrlComponents[deepLinkUrlComponents.length - 1]}`;
+      const deepLinkUrl = momentDetails.deepLinkUrl;
       Clipboard.setString(deepLinkUrl);
       showMessage({type: 'success', message: `${t('recall.share.message')}`});
     }
