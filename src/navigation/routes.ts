@@ -45,3 +45,12 @@ const routes = {
 } as const;
 
 export default routes;
+
+export const linking = {
+  prefixes: ['moments://'],
+  config: {
+    screens: {
+      [routes.MOMENT_DETAILS_SCREEN]: 'moment-details/:momentId',
+    },
+  },
+};

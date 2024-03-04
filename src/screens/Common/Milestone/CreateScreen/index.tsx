@@ -5,11 +5,13 @@ import {handleHitSlop} from '@components/base/shared';
 import {useColors, useStore, useTranslation} from '@hooks';
 import {getSize, height} from '@utils/responsive';
 import dayjs from 'dayjs';
-import React, {useState} from 'react';
-import {Pressable, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
+import React, {createRef, useState} from 'react';
+import {KeyboardAvoidingView, Pressable, ScrollView, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import ConfirmDialog from '../components/ConfirmDialog';
 import Header from '../components/Header';
+import {isIos} from '@utils/helper';
+import {sleep} from '@utils/date';
 
 const CreateScreen: React.FC = () => {
   const {useSelector} = useStore();
@@ -21,9 +23,11 @@ const CreateScreen: React.FC = () => {
     content: '',
     icon: '',
     location: '',
+    story: '',
     milestoneTime: dayjs(new Date()).format('YYYY-MM-DD HH:mm:ss.SSS'),
   });
   const {t} = useTranslation();
+  const scrollViewRef = createRef<ScrollView>();
 
   const isValid = Object.values(mileStone).every(value => value !== '');
   const [isIconInputVisible, setIconInputVisibility] = useState<boolean>(false);
@@ -40,78 +44,113 @@ const CreateScreen: React.FC = () => {
 
   return (
     <Block flex backgroundColor="background">
-      <StatusBar backgroundColor="#FF974A" barStyle="dark-content" />
+      <StatusBar backgroundColor={COLORS.milestone_header} />
       <Header title={t('milestone.create.header')} />
-      <Block shadow style={styles.container}>
-        <ScrollView bounces={false} style={{...styles.content, backgroundColor: COLORS.secondary_background}}>
-          <Text marginBottom={16} type="semibold">
-            {t('milestone.your_milestone')}
-          </Text>
-          <TextInput
-            inputStyle={{backgroundColor: COLORS.background, borderWidth: 0}}
-            containerInputStyle={styles.containerInputStyle}
-            color={COLORS.light_text}
-            onChangeText={content => setMileStone({...mileStone, content})}
-          />
-          <Text marginBottom={16} type="semibold">
-            {t('milestone.icon')}
-          </Text>
-          <Block row alignCenter marginBottom={24}>
-            <EmojiKeyboard
-              open={isIconInputVisible}
-              onClose={_toggleIconInput}
-              onEmojiSelected={metadata => {
-                const icon: string = metadata.emoji;
-                setMileStone({...mileStone, icon});
-              }}
-            />
-            <Block
-              alignCenter
-              justifyCenter
-              radius={8}
-              backgroundColor={COLORS.background}
-              square={86}
-              marginRight={24}
-              marginLeft={-3}>
-              <Text size={36}>{mileStone.icon}</Text>
-            </Block>
-            <TouchableOpacity hitSlop={handleHitSlop(5)} onPress={_toggleIconInput}>
-              <Image source={ICONS.edit} square={24} tintColor={COLORS.light_text} />
-            </TouchableOpacity>
-          </Block>
-          <Text marginBottom={16} type="semibold">
-            {t('milestone.time')}
-          </Text>
-          <Pressable onPress={_toggleDatePicker}>
+      <KeyboardAvoidingView
+        style={{flex: 1}}
+        behavior={isIos ? 'padding' : 'height'}
+        keyboardVerticalOffset={isIos ? 0 : getSize.m(31)}>
+        <Block shadow style={styles.container}>
+          <ScrollView
+            ref={scrollViewRef}
+            bounces={false}
+            showsVerticalScrollIndicator={false}
+            style={{...styles.content, backgroundColor: COLORS.secondary_background}}>
+            <Text marginBottom={16} type="semibold">
+              {t('milestone.your_milestone')}
+            </Text>
             <TextInput
-              pointerEvents="none"
               inputStyle={{backgroundColor: COLORS.background, borderWidth: 0}}
               containerInputStyle={styles.containerInputStyle}
               color={COLORS.light_text}
-              rightIcon={_renderIconCalendar}
-              value={dayjs(mileStone.milestoneTime).format('DD-MM-YYYY')}
+              onFocus={() => scrollViewRef.current?.scrollTo({y: 0, animated: true})}
+              onChangeText={content => setMileStone({...mileStone, content})}
             />
-          </Pressable>
-          <Text marginBottom={16} type="semibold">
-            {t('milestone.location')}
-          </Text>
-          <TextInput
-            inputStyle={{backgroundColor: COLORS.background, borderWidth: 0}}
-            containerInputStyle={{...styles.containerInputStyle, marginBottom: getSize.m(48)}}
-            color={COLORS.light_text}
-            onChangeText={location => setMileStone({...mileStone, location})}
-          />
-        </ScrollView>
-      </Block>
-      <Block
-        safeBottom
-        paddingTop={8}
-        paddingHorizontal={16}
-        borderTopWidth={1}
-        borderColor="#87A8B9"
-        backgroundColor="secondary_background">
-        <GradientButton isValid={isValid} title={t('button.save')} onPress={() => setDialogVisible(true)} />
-      </Block>
+            <Text marginBottom={16} type="semibold">
+              {t('milestone.icon')}
+            </Text>
+            <Block row alignCenter marginBottom={24}>
+              <EmojiKeyboard
+                open={isIconInputVisible}
+                onClose={_toggleIconInput}
+                onEmojiSelected={metadata => {
+                  const icon: string = metadata.emoji;
+                  setMileStone({...mileStone, icon});
+                }}
+              />
+              <Block
+                alignCenter
+                justifyCenter
+                radius={8}
+                backgroundColor={COLORS.background}
+                square={86}
+                marginRight={24}
+                marginLeft={-3}>
+                <Text size={36}>{mileStone.icon}</Text>
+              </Block>
+              <TouchableOpacity hitSlop={handleHitSlop(5)} onPress={_toggleIconInput}>
+                <Image source={ICONS.edit} square={24} tintColor={COLORS.light_text} />
+              </TouchableOpacity>
+            </Block>
+            <Text marginBottom={16} type="semibold">
+              {t('milestone.time')}
+            </Text>
+            <Pressable onPress={_toggleDatePicker}>
+              <TextInput
+                pointerEvents="none"
+                inputStyle={{backgroundColor: COLORS.background, borderWidth: 0}}
+                containerInputStyle={styles.containerInputStyle}
+                color={COLORS.light_text}
+                rightIcon={_renderIconCalendar}
+                value={dayjs(mileStone.milestoneTime).format('DD-MM-YYYY')}
+              />
+            </Pressable>
+            <Text marginBottom={16} type="semibold">
+              {t('milestone.location')}
+            </Text>
+            <TextInput
+              inputStyle={{backgroundColor: COLORS.background, borderWidth: 0}}
+              containerInputStyle={{...styles.containerInputStyle}}
+              color={COLORS.light_text}
+              onFocus={() =>
+                sleep(100).then(() => scrollViewRef.current?.scrollTo({y: getSize.m(300), animated: true}))
+              }
+              onChangeText={location => setMileStone({...mileStone, location})}
+            />
+            <Text marginBottom={16} type="semibold">
+              {t('milestone.your_story')}
+            </Text>
+            <TextInput
+              multiline
+              inputStyle={{
+                ...styles.multilineInputStyle,
+                backgroundColor: COLORS.background,
+                borderWidth: 0,
+              }}
+              containerInputStyle={{marginBottom: getSize.m(48)}}
+              style={{
+                flex: 1,
+                height: getSize.s(140),
+                fontSize: getSize.m(16),
+                fontWeight: '600',
+                textAlignVertical: 'top',
+                color: COLORS.light_text,
+              }}
+              onFocus={() => sleep(100).then(() => scrollViewRef.current?.scrollToEnd({animated: true}))}
+              onChangeText={story => setMileStone({...mileStone, story})}
+            />
+          </ScrollView>
+        </Block>
+        <Block
+          safeBottom
+          paddingTop={8}
+          paddingHorizontal={16}
+          borderTopWidth={1}
+          borderColor="#87A8B9"
+          backgroundColor="secondary_background">
+          <GradientButton isValid={isValid} title={t('button.save')} onPress={() => setDialogVisible(true)} />
+        </Block>
+      </KeyboardAvoidingView>
       <ConfirmDialog useDialog={[isDialogVisible, setDialogVisible]} mileStone={mileStone} />
       <DateTimePickerModal
         date={new Date()}
@@ -148,5 +187,10 @@ const styles = StyleSheet.create({
   containerInputStyle: {
     paddingHorizontal: 0,
     marginBottom: getSize.m(24),
+  },
+  multilineInputStyle: {
+    alignItems: isIos ? 'flex-start' : 'center',
+    height: isIos ? getSize.s(160) : getSize.s(150),
+    paddingTop: isIos ? getSize.m(10) : 0,
   },
 });

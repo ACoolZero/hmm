@@ -9,6 +9,7 @@ import RNBootSplash from 'react-native-bootsplash';
 import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
 import {navigationRef} from './NavigationServices';
 import RootStack from './RootStack';
+import {linking} from './routes';
 
 const RootNavigation = () => {
   const {dispatch, useSelector} = useStore();
@@ -20,7 +21,7 @@ const RootNavigation = () => {
   }, [dispatch, isAuth]);
 
   return (
-    <NavigationContainer ref={navigationRef} onReady={() => RNBootSplash.hide()}>
+    <NavigationContainer linking={linking} ref={navigationRef} onReady={() => RNBootSplash.hide()}>
       <PortalProvider>
         <StatusBar backgroundColor={COLORS.background} barStyle="dark-content" />
         <RootStack />
