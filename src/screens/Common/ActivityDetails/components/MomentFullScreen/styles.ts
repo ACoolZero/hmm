@@ -1,6 +1,12 @@
 import {getSize, height, width} from '@utils/responsive';
 
 const styles = {
+  animatedOpacity: (animatedValue: any) => ({
+    opacity: animatedValue.interpolate({
+      inputRange: [0, 0.5, 1],
+      outputRange: [0, 1, 1],
+    }),
+  }),
   animatedImageContainer: ({animatedValue, STORY_WIDTH, STORY_HEIGHT, originalDimensions, pan}: any) => ({
     overflow: 'hidden',
     borderRadius: animatedValue.interpolate({

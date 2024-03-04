@@ -3,21 +3,36 @@ import {Block, Image, Text} from '@components';
 import {handleHitSlop} from '@components/base/shared';
 import {useTranslation} from '@hooks';
 import {width} from '@utils/responsive';
-import React, {useState} from 'react';
+import React from 'react';
 import {Animated, StyleProp, TouchableOpacity, ViewStyle} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import BottomMenu from '../../../BottomMenu';
 import styles from './styles';
 
-const AnimatedHeader = ({animatedValue, onCloseAnimation}: any) => {
+interface AnimatedHeaderProps {
+  isOpenBottom: boolean;
+  setIsOpenBottom: any;
+  animatedValue: any;
+  onCloseAnimation: any;
+  opacityAnimatedValue: any;
+}
+
+const AnimatedHeader = ({
+  isOpenBottom,
+  setIsOpenBottom,
+  animatedValue,
+  onCloseAnimation,
+  opacityAnimatedValue,
+}: AnimatedHeaderProps) => {
   const {top} = useSafeAreaInsets();
   const {t} = useTranslation();
-  const [isOpenBottom, setIsOpenBottom] = useState(false);
 
-  const _openBottomMenu = () => setIsOpenBottom(true);
+  const _openBottomMenu = () => {
+    setIsOpenBottom(true);
+  };
 
   return (
-    <Animated.View style={styles.animatedHeader({animatedValue, top}) as any}>
+    <Animated.View style={styles.animatedHeader({animatedValue, opacityAnimatedValue, top}) as any}>
       <Block
         absolute
         alignCenter

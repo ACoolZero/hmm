@@ -30,6 +30,8 @@ const MomentFullScreen = ({route}: any) => {
     topOffset: top + 50 + getSize.m(24),
     leftOffset: width * 0.1,
   };
+  const opacityAnimatedValue = useRef(new Animated.Value(1)).current;
+  const [isOpenBottom, setIsOpenBottom] = useState<boolean>(false);
   const {item, STORY_WIDTH, STORY_HEIGHT, setIsFullMode} = route.params;
   const {media, content, createdAt, type} = item;
 
@@ -110,12 +112,31 @@ const MomentFullScreen = ({route}: any) => {
           styles.animatedImageContainer({animatedValue, STORY_WIDTH, STORY_HEIGHT, originalDimensions, pan}) as any
         }
         {...panResponder.panHandlers}>
-        {type === mediaType.image ? <ImageFullScreen media={media} /> : <VideoFullScreen media={media} />}
+        {type === mediaType.image ? (
+          <ImageFullScreen media={media} />
+        ) : (
+          <VideoFullScreen
+            media={media}
+            isVisible={isVisible}
+            setIsVisible={setIsVisible}
+            opacityAnimatedValue={opacityAnimatedValue}
+            isOpenBottom={isOpenBottom}
+          />
+        )}
       </Animated.View>
       {isVisible && (
         <>
-          <AnimatedHeader animatedValue={animatedValue} onCloseAnimation={handleCloseAnimation} />
-          <Animated.View style={styles.animatedDetailText(animatedValue) as any}>
+          <AnimatedHeader
+            animatedValue={animatedValue}
+            onCloseAnimation={handleCloseAnimation}
+            opacityAnimatedValue={opacityAnimatedValue}
+            isOpenBottom={isOpenBottom}
+            setIsOpenBottom={setIsOpenBottom}
+          />
+          <Animated.View
+            style={
+              {...styles.animatedDetailText(animatedValue), ...styles.animatedOpacity(opacityAnimatedValue)} as any
+            }>
             <Block
               absolute
               width={width}

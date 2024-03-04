@@ -1,9 +1,12 @@
 import {getSize, width} from '@utils/responsive';
 
 const styles = {
-  animatedHeader: ({animatedValue, top}: any) => ({
+  animatedHeader: ({animatedValue, opacityAnimatedValue, top}: any) => ({
     position: 'absolute',
-    opacity: animatedValue,
+    opacity: opacityAnimatedValue.interpolate({
+      inputRange: [0, 0.5, 1],
+      outputRange: [0, 1, 1],
+    }),
     width: width,
     height: top + 50,
     top: animatedValue.interpolate({

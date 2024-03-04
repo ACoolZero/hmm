@@ -1,12 +1,12 @@
-import {Block, Text} from '@components';
+import {ICONS} from '@assets';
+import {Block, Image, Text} from '@components';
+import {useStore} from '@hooks';
 import {navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import {getSize} from '@utils/responsive';
 import dayjs from 'dayjs';
-import React, {createRef, useState} from 'react';
-import {Pressable, StyleSheet} from 'react-native';
-import Video from 'react-native-video';
-import PlaybackControl from '../PlaybackControl';
+import React, {useState} from 'react';
+import {Pressable} from 'react-native';
 
 interface MomentVideoProps {
   item: any;
@@ -16,13 +16,13 @@ interface MomentVideoProps {
   STORY_HEIGHT: number;
 }
 
-// uri for demo: https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4
-
 const MomentVideo = ({item, index, currentIndex, STORY_WIDTH, STORY_HEIGHT}: MomentVideoProps) => {
-  const {media, content, createdAt} = item;
-  const [isPaused, setIsPaused] = useState<boolean>(true);
+  const {content, createdAt, thumbnail} = item;
   const [isFullMode, setIsFullMode] = useState(false);
-  const VideoRef = createRef<any>();
+  const {useSelector} = useStore();
+  const {mode: data} = useSelector('theme');
+  const mode = data as keyof typeof ICONS.playback_control;
+
   const handlePress = () => {
     setIsFullMode(true);
     navigate(routes.MOMENT_FULL_SCREEN, {item, STORY_WIDTH, STORY_HEIGHT, setIsFullMode});
@@ -33,28 +33,23 @@ const MomentVideo = ({item, index, currentIndex, STORY_WIDTH, STORY_HEIGHT}: Mom
       <Pressable onPress={handlePress}>
         {isFullMode && currentIndex === index ? (
           <Block width={STORY_WIDTH} height={STORY_HEIGHT} radius={24} />
-        ) : currentIndex === index ? (
-          <Block width={STORY_WIDTH} height={STORY_HEIGHT}>
-            <Video
-              ref={VideoRef}
-              source={{uri: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4'}}
-              resizeMode="cover"
-              repeat
-              style={styles.video}
-              paused={isPaused}
-            />
-            <Block absolute top={0} left={0} right={0} bottom={0} justifyCenter alignCenter>
-              <PlaybackControl isPaused={isPaused} setIsPaused={setIsPaused} />
-            </Block>
-          </Block>
         ) : (
-          // TODO: get thumbnail
-          <Block width={STORY_WIDTH} height={STORY_HEIGHT} radius={24} backgroundColor="placeholder" />
+          <>
+            <Image
+              source={{uri: thumbnail}}
+              width={STORY_WIDTH}
+              height={STORY_HEIGHT}
+              style={{borderRadius: getSize.s(24)}}
+            />
+            <Block absolute top={12} right={12}>
+              <Image source={ICONS.playback_control[mode].isPaused} round={48} />
+            </Block>
+          </>
         )}
       </Pressable>
       <Block padding={24}>
         <Text center size={24} marginBottom={5} numberOfLines={2} type="semibold">
-          {content || 'Placeholder Text'}
+          {content}
         </Text>
         <Text sm center size={24} numberOfLines={1} color="light_text">
           {dayjs(createdAt).format('DD/MM/YYYY')}
@@ -65,10 +60,3 @@ const MomentVideo = ({item, index, currentIndex, STORY_WIDTH, STORY_HEIGHT}: Mom
 };
 
 export default MomentVideo;
-
-const styles = StyleSheet.create({
-  video: {
-    flex: 1,
-    borderRadius: getSize.s(24),
-  },
-});

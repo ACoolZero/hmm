@@ -28,6 +28,21 @@ const ActivityDetails: React.FC<ActivityDetailsProps> = ({route}) => {
   const carouselRef = useRef(null);
   const {momentIdx} = route.params;
   const {t} = useTranslation();
+  const fakeVideoData = [
+    {
+      content: 'long video testing',
+      media: 'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+      thumbnail: 'https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg',
+      type: 'VIDEO',
+    },
+    {
+      content: 'short video testing',
+      media: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+      thumbnail: 'https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg',
+      type: 'VIDEO',
+    },
+  ];
+  const fakeMomentsList = [...fakeVideoData, ...momentsList];
 
   useEffect(() => {
     sleep(200).then(() => {
@@ -43,7 +58,7 @@ const ActivityDetails: React.FC<ActivityDetailsProps> = ({route}) => {
 
   const _renderItem = ({item, index}: any) => {
     const {type} = item;
-    console.log('rendering item:', index);
+
     return (
       <>
         {type === mediaType.image ? (
@@ -73,7 +88,7 @@ const ActivityDetails: React.FC<ActivityDetailsProps> = ({route}) => {
       <Carousel
         useScrollView={true}
         ref={carouselRef}
-        data={momentsList}
+        data={fakeMomentsList}
         renderItem={({item, index}) => <_renderItem item={item} index={index} currentIndex={currentIndex} />}
         sliderWidth={width}
         itemWidth={width * 0.8}
