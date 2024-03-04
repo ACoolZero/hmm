@@ -17,7 +17,7 @@ const Header: React.FC<{selectedMileStone: IMilestone}> = ({selectedMileStone}) 
   const {data: userMomentsList} = useSelector('userMomentsList');
   const {top} = useSafeAreaInsets();
   const {COLORS, randomBackgroundColor} = useColors();
-  const {id, icon, content, milestoneTime, story, momentId} = selectedMileStone;
+  const {id, icon, title, milestoneTime, story, momentId} = selectedMileStone;
 
   return (
     <Block shadow style={styles.containerBorder} backgroundColor="#FF974A">
@@ -37,7 +37,7 @@ const Header: React.FC<{selectedMileStone: IMilestone}> = ({selectedMileStone}) 
                 <Text md>{icon}</Text>
               </Block>
               <Text flex marginHorizontal={12} type="semibold" numberOfLines={1} ellipsizeMode="tail">
-                {content}
+                {title}
               </Text>
             </Block>
             <Block row alignCenter>

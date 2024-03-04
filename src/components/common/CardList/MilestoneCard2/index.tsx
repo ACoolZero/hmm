@@ -13,7 +13,7 @@ interface MilestoneCardProps {
 
 const MilestoneCard2: React.FC<MilestoneCardProps> = ({item, selectedId, onPress}) => {
   const {COLORS, randomTextColor, randomBackgroundColor} = useColors();
-  const {id, icon, content, milestoneTime} = item;
+  const {id, icon, title, milestoneTime} = item;
   const isSelected = selectedId === id;
 
   return (
@@ -38,7 +38,7 @@ const MilestoneCard2: React.FC<MilestoneCardProps> = ({item, selectedId, onPress
             numberOfLines={1}
             color={isSelected ? 'white' : randomTextColor()}
             type="semibold">
-            {content}
+            {title}
           </Text>
         </Block>
         <Block row alignCenter>
