@@ -1,4 +1,5 @@
 export * from '@screens/Auth/action';
+export * from '@screens/Bottom/Chat/action';
 export * from '@screens/Bottom/Home/action';
 export * from '@screens/Bottom/Moments/action';
 export * from '@screens/Common/Feedback.SubmitForm/action';

@@ -1,4 +1,5 @@
 import authSaga from '@screens/Auth/saga';
+import chatSaga from '@screens/Bottom/Chat/saga';
 import homeSaga from '@screens/Bottom/Home/saga';
 import activitySaga from '@screens/Bottom/Moments/saga';
 import feedbackSaga from '@screens/Common/Feedback.SubmitForm/saga';
@@ -16,5 +17,6 @@ export default function* rootSaga() {
     ...momentSaga,
     ...customizationSaga,
     ...feedbackSaga,
+    ...chatSaga,
   ]);
 }

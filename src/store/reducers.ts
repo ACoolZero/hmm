@@ -1,4 +1,5 @@
 import authReducer from '@screens/Auth/reducer';
+import chatReducer from '@screens/Bottom/Chat/reducer';
 import homeReducer from '@screens/Bottom/Home/reducer';
 import activityReducer from '@screens/Bottom/Moments/reducer';
 import feedbackReducer from '@screens/Common/Feedback.SubmitForm/reducer';
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   ...momentReducer,
   ...customizationReducer,
   ...feedbackReducer,
+  ...chatReducer,
 });
 
 export default rootReducer;

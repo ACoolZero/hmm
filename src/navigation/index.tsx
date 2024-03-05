@@ -2,7 +2,7 @@ import {AlertDialog, NetWork} from '@components';
 import {PortalProvider} from '@gorhom/portal';
 import {useColors, useStore} from '@hooks';
 import {NavigationContainer} from '@react-navigation/native';
-import {GET_CURRENT_USER} from '@store/actions';
+import {GET_CURRENT_USER, SOCKET_CONNECT} from '@store/actions';
 import React, {useEffect} from 'react';
 import {StatusBar} from 'react-native';
 import RNBootSplash from 'react-native-bootsplash';
@@ -17,7 +17,10 @@ const RootNavigation = () => {
   const {isAuth} = useSelector('auth');
 
   useEffect(() => {
-    if (isAuth) dispatch({type: GET_CURRENT_USER});
+    if (isAuth) {
+      dispatch({type: GET_CURRENT_USER});
+      dispatch({type: SOCKET_CONNECT});
+    }
   }, [dispatch, isAuth]);
 
   return (

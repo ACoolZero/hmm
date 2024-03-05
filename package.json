@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "android:release": "react-native run-android --mode=release",
     "ios": "react-native run-ios --simulator=\"iPhone 15 Pro Max\"",
     "pins": "npx pod-install -ios",
     "apk:release": "cd android && ./gradlew clean && ./gradlew assembleRelease && cd ..",
+    "aab:release": "cd android && ./gradlew clean && ./gradlew bundleRelease && cd ..",
     "clean:android": "cd android && ./gradlew clean && cd ..",
     "clean:ios": "cd ios && xcodebuild clean && cd ..",
     "signingReport": "cd android && ./gradlew signingReport",
@@ -74,6 +76,7 @@
     "redux-persist-transform-filter": "^0.0.22",
     "redux-saga": "^1.2.3",
     "rn-emoji-keyboard": "^1.6.0",
+    "socket.io-client": "^4.7.4",
     "yup": "^1.2.0"
   },
   "devDependencies": {
