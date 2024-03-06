@@ -1,11 +1,12 @@
 import {Block, Text} from '@components';
 import {useBackHandler} from '@hooks';
 import {goBack} from '@navigation/NavigationServices';
-import {useNavigation} from '@react-navigation/native';
+import {RootStackParamList} from '@navigation/types';
+import {RouteProp, useNavigation} from '@react-navigation/native';
 import {getSize, height, width} from '@utils/responsive';
 import dayjs from 'dayjs';
 import React, {useEffect, useRef, useState} from 'react';
-import {Animated, PanResponder} from 'react-native';
+import {Animated, DeviceEventEmitter, PanResponder} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import AnimatedHeader from './components/AnimatedHeader';
 import ImageFullScreen from './components/ImageFullScreen';
@@ -20,7 +21,11 @@ const mediaType = {
 const SWIPING_BOUND = {x: width / 4, y: height / 4};
 const VELOCITY_BOUND = 1;
 
-const MomentFullScreen = ({route}: any) => {
+interface MomentFullScreenProps {
+  route: RouteProp<RootStackParamList, 'MOMENT_FULL_SCREEN'>;
+}
+
+const MomentFullScreen: React.FC<MomentFullScreenProps> = ({route}) => {
   const navigation = useNavigation();
   const {top} = useSafeAreaInsets();
   const [isVisible, setIsVisible] = useState<boolean>(true);
@@ -32,7 +37,7 @@ const MomentFullScreen = ({route}: any) => {
   };
   const opacityAnimatedValue = useRef(new Animated.Value(1)).current;
   const [isOpenBottom, setIsOpenBottom] = useState<boolean>(false);
-  const {item, STORY_WIDTH, STORY_HEIGHT, setIsFullMode} = route.params;
+  const {item, STORY_WIDTH, STORY_HEIGHT} = route.params;
   const {media, content, createdAt, type} = item;
 
   useEffect(() => {
@@ -54,9 +59,10 @@ const MomentFullScreen = ({route}: any) => {
   }, [animatedValue]);
 
   const handleClose = () => {
+    DeviceEventEmitter.emit('closeFullModeVideo');
     goBack();
-    setIsFullMode(false);
   };
+
   const closeAnimation = {
     animatedValue: Animated.timing(animatedValue, {
       toValue: 0,

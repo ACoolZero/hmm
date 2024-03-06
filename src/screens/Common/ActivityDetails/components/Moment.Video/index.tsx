@@ -6,7 +6,7 @@ import routes from '@navigation/routes';
 import {getSize} from '@utils/responsive';
 import dayjs from 'dayjs';
 import React, {useState} from 'react';
-import {Pressable} from 'react-native';
+import {DeviceEventEmitter, Pressable} from 'react-native';
 
 interface MomentVideoProps {
   item: any;
@@ -17,15 +17,19 @@ interface MomentVideoProps {
 }
 
 const MomentVideo = ({item, index, currentIndex, STORY_WIDTH, STORY_HEIGHT}: MomentVideoProps) => {
+  const {useSelector} = useStore();
   const {content, createdAt, thumbnail} = item;
   const [isFullMode, setIsFullMode] = useState(false);
-  const {useSelector} = useStore();
   const {mode: data} = useSelector('theme');
   const mode = data as keyof typeof ICONS.playback_control;
 
+  DeviceEventEmitter.addListener('closeFullModeVideo', () => {
+    setIsFullMode(false);
+  });
+
   const handlePress = () => {
     setIsFullMode(true);
-    navigate(routes.MOMENT_FULL_SCREEN, {item, STORY_WIDTH, STORY_HEIGHT, setIsFullMode});
+    navigate(routes.MOMENT_FULL_SCREEN, {item, STORY_WIDTH, STORY_HEIGHT});
   };
 
   return (

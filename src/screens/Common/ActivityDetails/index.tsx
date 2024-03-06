@@ -23,11 +23,11 @@ interface ActivityDetailsProps {
 }
 
 const ActivityDetails: React.FC<ActivityDetailsProps> = ({route}) => {
+  const {t} = useTranslation();
   const {useSelector} = useStore();
   const {data: momentsList} = useSelector('momentsList');
   const carouselRef = useRef(null);
   const {momentIdx} = route.params;
-  const {t} = useTranslation();
   const fakeVideoData = [
     {
       content: 'long video testing',
@@ -88,7 +88,7 @@ const ActivityDetails: React.FC<ActivityDetailsProps> = ({route}) => {
       <Carousel
         useScrollView={true}
         ref={carouselRef}
-        data={fakeMomentsList}
+        data={fakeMomentsList} //momentsList
         renderItem={({item, index}) => <_renderItem item={item} index={index} currentIndex={currentIndex} />}
         sliderWidth={width}
         itemWidth={width * 0.8}
