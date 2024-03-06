@@ -3,6 +3,7 @@ import {goBack, reset} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {api} from '@services';
+import store from '@store';
 import * as actions from '@store/actions';
 import {guard} from '@store/general/saga';
 import {ActionPayload} from '@store/general/types';
@@ -11,6 +12,7 @@ import Storage from '@utils/storage';
 import {AxiosResponse} from 'axios';
 import dayjs from 'dayjs';
 import FastImage from 'react-native-fast-image';
+import {persistStore} from 'redux-persist';
 import {call, delay, put, select, takeLatest} from 'redux-saga/effects';
 import {IUser, LoginPayload, RegisterPayload, UpdateUserPayload} from './types';
 
@@ -83,6 +85,7 @@ function* logout(action: ActionPayload<null>) {
     Storage.removeItem(REFRESH_TOKEN);
     FastImage.clearMemoryCache();
     FastImage.clearDiskCache();
+    persistStore(store).purge();
   }
 }
 

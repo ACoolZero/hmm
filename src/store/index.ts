@@ -25,7 +25,6 @@ const persistConfig = {
     'postsList',
     'customization',
     'momentsList',
-    'messages',
   ],
   transforms: [createBlacklistFilter('auth', ['isLoading'])],
 };

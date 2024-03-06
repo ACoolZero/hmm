@@ -18,9 +18,7 @@ function* connectSocket() {
     /**
      * Server received message from user
      */
-    socketInstance.on('SERVER_RECEIVED_USER', () => {
-      // console.log('SERVER_RECEIVED_USER', e);
-    });
+    socketInstance.on('SERVER_RECEIVED_USER', () => {});
 
     /**
      * Bot Typing
@@ -33,6 +31,7 @@ function* connectSocket() {
      * Message response from bot
      */
     socketInstance.on('MESSAGE_BOT', response => {
+      const {_id, content, senderId, senderAvatar, senderName, createdAt} = response.data;
       store.dispatch({
         type: actions.NEW_MESSAGES_COMING,
         payload: {
@@ -40,10 +39,10 @@ function* connectSocket() {
             Object.assign(
               {},
               {
-                _id: Math.random().toString(),
-                text: response.data.message,
-                createdAt: new Date(new Date()).toISOString(),
-                user: {_id: '#BOT', avatar: '', name: 'Sam'},
+                _id,
+                text: content,
+                createdAt: createdAt,
+                user: {_id: senderId, avatar: senderAvatar, name: senderName},
               },
             ),
           ],
@@ -55,10 +54,12 @@ function* connectSocket() {
      * Get list message paging response
      */
     socketInstance.on('USER_GET_MESSAGES_PAGING_RESPONSE', response => {
+      console.log('messages_list', response);
       store.dispatch({
         type: actions._onSuccess(actions.GET_MESSAGES),
         payload: {
-          data: response.data.messages.reverse().map((item: IMessage) =>
+          total: response.data.total,
+          data: response.data.messages.map((item: IMessage) =>
             Object.assign(
               {},
               {
@@ -89,7 +90,6 @@ function* sendMessage(action: ActionPayload<{message: string; channel: string}>)
   const {message, channel} = action.payload;
   const socket: Socket = yield select(state => state.socket.instance);
   yield socket.emit('MESSAGE_USER', {message, channel});
-  yield put({type: actions.GET_MESSAGES, payload: {page: 1}});
 }
 
 export default [

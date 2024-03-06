@@ -6,6 +6,7 @@ const INITIAL_STATE = {
   data: [],
   isTyping: null,
   isLoading: false,
+  total: null,
 };
 
 const messages = produce((state = INITIAL_STATE, action) => {
@@ -24,6 +25,7 @@ const messages = produce((state = INITIAL_STATE, action) => {
 
     case _onSuccess(GET_MESSAGES):
       state.data = unionBy([...state.data, ...action.payload.data], '_id');
+      state.total = action.payload.total;
       return state;
 
     case _onComplete(GET_MESSAGES):

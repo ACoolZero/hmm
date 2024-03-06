@@ -5,7 +5,7 @@ import {useCallback, useEffect} from 'react';
 const useChatRoom = () => {
   const {dispatch, useSelector} = useStore();
   const {userInfo} = useSelector('auth');
-  const {data: messages, isTyping} = useSelector('messages');
+  const {data: messages, isTyping, total} = useSelector('messages');
 
   useEffect(() => {
     dispatch({type: GET_MESSAGES, payload: {page: 1}});
@@ -41,6 +41,7 @@ const useChatRoom = () => {
   return {
     isTyping,
     messages,
+    total,
     _onSend,
   };
 };

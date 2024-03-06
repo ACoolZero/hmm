@@ -1,5 +1,6 @@
 import {ICONS} from '@assets';
 import {Block, Image, LazyImage, Text} from '@components';
+import {showMessage} from '@components/common/ToastMessage';
 import {useColors, useMediaPicker, useStore, useTranslation} from '@hooks';
 import {LOCALE, isIos} from '@utils/helper';
 import {getSize, width} from '@utils/responsive';
@@ -32,6 +33,7 @@ const GiftedChat: React.FC<any> = ({userId, chatColor, ...rest}) => {
   const {openCamera, openMultiPicker} = useMediaPicker({cropping: false});
   const {COLORS} = useColors();
   const {locale} = useSelector('general');
+  const {isTyping} = useSelector('messages');
 
   /**
    * Custom message bubble
@@ -133,24 +135,35 @@ const GiftedChat: React.FC<any> = ({userId, chatColor, ...rest}) => {
    */
   const _renderSend = (props: SendProps<any>) =>
     props.text ? (
-      <Pressable onPress={() => props.text?.trim().length && props.onSend?.({text: props.text.trim()}, true)}>
-        <Block alignCenter justifyCenter square={48} marginHorizontal={10}>
+      <Pressable
+        onPress={() => props.text?.trim().length && props.onSend?.({text: props.text.trim()}, true)}
+        disabled={isTyping}>
+        <Block opacity={isTyping ? 0.3 : 1} alignCenter justifyCenter square={48} marginHorizontal={10}>
           <Image source={ICONS.send} square={26} />
         </Block>
       </Pressable>
     ) : (
-      <Block row alignCenter paddingHorizontal={6}>
-        <TouchableOpacity onPress={() => {}}>
+      <Block row alignCenter paddingHorizontal={6} opacity={0.3}>
+        <TouchableOpacity
+          onPress={() => {
+            showMessage({type: 'info', message: 'Chức năng đang phát triển'});
+          }}>
           <Block alignCenter justifyCenter square={48}>
             <Image source={ICONS.voice} square={26} resizeMode="contain" />
           </Block>
         </TouchableOpacity>
-        <TouchableOpacity onPress={openCamera}>
+        <TouchableOpacity
+          onPress={() => {
+            showMessage({type: 'info', message: 'Chức năng đang phát triển'});
+          }}>
           <Block alignCenter justifyCenter square={48}>
             <Image source={ICONS.camera} square={26} resizeMode="contain" />
           </Block>
         </TouchableOpacity>
-        <Pressable onPress={openMultiPicker}>
+        <Pressable
+          onPress={() => {
+            showMessage({type: 'info', message: 'Chức năng đang phát triển'});
+          }}>
           <Block alignCenter justifyCenter square={48}>
             <Image source={ICONS.image} square={26} resizeMode="contain" />
           </Block>

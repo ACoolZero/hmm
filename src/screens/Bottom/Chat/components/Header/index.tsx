@@ -32,7 +32,7 @@ const Header: React.FC = () => {
           <Text sm marginRight={8}>
             {t('conversation.chat_mode')}
           </Text>
-          <GradientSwitch isOn={isEnabledSwitch} onToggle={_toggleSwitch} />
+          <GradientSwitch disabled isOn={isEnabledSwitch} onToggle={_toggleSwitch} />
         </Block>
       </Block>
     </Block>
