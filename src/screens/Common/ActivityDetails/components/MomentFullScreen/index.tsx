@@ -1,30 +1,44 @@
-import {ICONS} from '@assets';
-import {Block, Image, Text} from '@components';
-import {useBackHandler, useColors, useTranslation} from '@hooks';
-import {useNavigation} from '@react-navigation/native';
+import {Block, Text} from '@components';
+import {useBackHandler} from '@hooks';
+import {goBack} from '@navigation/NavigationServices';
+import {RootStackParamList} from '@navigation/types';
+import {RouteProp, useNavigation} from '@react-navigation/native';
 import {getSize, height, width} from '@utils/responsive';
 import dayjs from 'dayjs';
 import React, {useEffect, useRef, useState} from 'react';
-import {Animated, PanResponder, StyleProp, TouchableOpacity, ViewStyle} from 'react-native';
+import {Animated, DeviceEventEmitter, PanResponder} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import AnimatedHeader from './components/AnimatedHeader';
+import ImageFullScreen from './components/ImageFullScreen';
+import VideoFullScreen from './components/VideoFullScreen';
 import styles from './styles';
+
+const mediaType = {
+  image: 'IMAGE',
+  video: 'VIDEO',
+};
 
 const SWIPING_BOUND = {x: width / 4, y: height / 4};
 const VELOCITY_BOUND = 1;
 
-const DetailLayer = ({data, onPress, STORY_WIDTH, STORY_HEIGHT}: any) => {
-  const {t} = useTranslation();
+interface MomentFullScreenProps {
+  route: RouteProp<RootStackParamList, 'MOMENT_FULL_SCREEN'>;
+}
+
+const MomentFullScreen: React.FC<MomentFullScreenProps> = ({route}) => {
   const navigation = useNavigation();
-  const {COLORS} = useColors();
   const {top} = useSafeAreaInsets();
   const [isVisible, setIsVisible] = useState<boolean>(true);
   const animatedValue = useRef(new Animated.Value(0)).current;
   const pan = useRef(new Animated.ValueXY()).current;
-  const {media, creatorName, content, createdAt} = data;
   const originalDimensions = {
     topOffset: top + 50 + getSize.m(24),
     leftOffset: width * 0.1,
   };
+  const opacityAnimatedValue = useRef(new Animated.Value(1)).current;
+  const [isOpenBottom, setIsOpenBottom] = useState<boolean>(false);
+  const {item, STORY_WIDTH, STORY_HEIGHT} = route.params;
+  const {media, content, createdAt, type} = item;
 
   useEffect(() => {
     navigation.setOptions({gestureEnabled: false});
@@ -44,7 +58,11 @@ const DetailLayer = ({data, onPress, STORY_WIDTH, STORY_HEIGHT}: any) => {
     }).start();
   }, [animatedValue]);
 
-  const handleClose = () => onPress({fullMode: false, index: null});
+  const handleClose = () => {
+    DeviceEventEmitter.emit('closeFullModeVideo');
+    goBack();
+  };
+
   const closeAnimation = {
     animatedValue: Animated.timing(animatedValue, {
       toValue: 0,
@@ -100,45 +118,50 @@ const DetailLayer = ({data, onPress, STORY_WIDTH, STORY_HEIGHT}: any) => {
           styles.animatedImageContainer({animatedValue, STORY_WIDTH, STORY_HEIGHT, originalDimensions, pan}) as any
         }
         {...panResponder.panHandlers}>
-        <Image source={{uri: media}} style={styles.image} />
+        {type === mediaType.image ? (
+          <ImageFullScreen media={media} />
+        ) : (
+          <VideoFullScreen
+            media={media}
+            isVisible={isVisible}
+            setIsVisible={setIsVisible}
+            opacityAnimatedValue={opacityAnimatedValue}
+            isOpenBottom={isOpenBottom}
+          />
+        )}
       </Animated.View>
       {isVisible && (
         <>
-          <Animated.View style={styles.animatedHeader({top, animatedValue}) as any}>
+          <AnimatedHeader
+            animatedValue={animatedValue}
+            onCloseAnimation={handleCloseAnimation}
+            opacityAnimatedValue={opacityAnimatedValue}
+            isOpenBottom={isOpenBottom}
+            setIsOpenBottom={setIsOpenBottom}
+          />
+          <Animated.View
+            style={
+              {...styles.animatedDetailText(animatedValue), ...styles.animatedOpacity(opacityAnimatedValue)} as any
+            }>
             <Block
               absolute
-              alignCenter
-              justifyCenter
               width={width}
-              height={top + 50}
-              paddingTop={top}
-              backgroundColor="#00000090">
-              <Text center color={COLORS.white} type="semibold">
-                {t('moments.header')}
-              </Text>
-            </Block>
-            <TouchableOpacity
-              onPress={() => {
-                handleCloseAnimation();
-              }}
-              style={styles.closeButtonContainer(top) as StyleProp<ViewStyle>}>
-              <Image source={ICONS.close} square={16} tintColor={COLORS.white} />
-            </TouchableOpacity>
-          </Animated.View>
-          <Animated.View style={styles.animatedDetailText(animatedValue) as any}>
-            <Block absolute width={width} bottom={0} safeBottom padding={16} backgroundColor="#00000090">
-              <Block row alignCenter>
-                <Text color={COLORS.placeholder} type="medium">
-                  {creatorName}
-                </Text>
-                <Text color={COLORS.placeholder} marginHorizontal={8}>
-                  -
-                </Text>
-                <Text color={COLORS.placeholder}>{dayjs(createdAt).format('DD/MM/YYYY')}</Text>
-              </Block>
-              <Text marginVertical={8} color={COLORS.placeholder}>
+              height={height / 4}
+              bottom={0}
+              paddingHorizontal={24}
+              paddingVertical={1}
+              safeBottom
+              justifyCenter
+              backgroundColor="moment_full_screen">
+              <Text center size={24} marginBottom={15} color="text" type="semibold">
                 {content}
               </Text>
+              <Text sm center size={24} numberOfLines={1} color="light_text">
+                {dayjs(createdAt).format('DD/MM/YYYY')}
+              </Text>
+            </Block>
+            <Block alignCenter width={width} top={12}>
+              <Block width={50} height={2} radius={2} backgroundColor="text" />
             </Block>
           </Animated.View>
         </>
@@ -147,4 +170,4 @@ const DetailLayer = ({data, onPress, STORY_WIDTH, STORY_HEIGHT}: any) => {
   );
 };
 
-export default DetailLayer;
+export default MomentFullScreen;

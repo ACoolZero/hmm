@@ -33,6 +33,7 @@ import MomentDetails from './Common/Moments/DetailsScreen';
 import EditMoment from './Common/Moments/EditScreen';
 import Recall from './Common/Recall';
 import Suggest from './Common/Suggest';
+import MomentFullScreen from './Common/ActivityDetails/components/MomentFullScreen';
 
 export const auth = {
   [routes.LOGIN_SCREEN]: Login,
@@ -75,4 +76,5 @@ export const common = {
   [routes.RECALL_SCREEN]: Recall,
   [routes.ACTIVITY_DETAILS_SCREEN]: ActivityDetails,
   [routes.MOMENT_DETAILS_SCREEN]: MomentDetails,
+  [routes.MOMENT_FULL_SCREEN]: MomentFullScreen,
 };

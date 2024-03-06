@@ -27,4 +27,5 @@ export type RootStackParamList = {
   [routes.RECALL_SCREEN]: {momentIdx?: number};
   [routes.ACTIVITY_DETAILS_SCREEN]: {momentIdx: number};
   [routes.MOMENT_DETAILS_SCREEN]: {momentId: string};
+  [routes.MOMENT_FULL_SCREEN]: {item: any; STORY_WIDTH: number; STORY_HEIGHT: number};
 };

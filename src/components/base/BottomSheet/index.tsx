@@ -7,7 +7,16 @@ import {Modalize} from 'react-native-modalize';
 import styles from './styles';
 import {BottomSheetProps} from './types';
 
-const BottomSheet: React.FC<BottomSheetProps> = ({title, useBottomSheet, children, onCallback, ...rest}) => {
+const BottomSheet: React.FC<BottomSheetProps> = ({
+  title,
+  useBottomSheet,
+  children,
+  onCallback,
+  containerStyle,
+  contentStyle,
+  handleStyle,
+  ...rest
+}) => {
   const [isOpenBottom, setIsOpenBottom] = useBottomSheet;
   const modalizeRef = useRef<any>(null);
 
@@ -27,7 +36,13 @@ const BottomSheet: React.FC<BottomSheetProps> = ({title, useBottomSheet, childre
 
   return (
     <Portal>
-      <Modalize {...rest} ref={modalizeRef} onClose={_closeBottomSheet} adjustToContentHeight={true}>
+      <Modalize
+        {...rest}
+        ref={modalizeRef}
+        onClose={_closeBottomSheet}
+        adjustToContentHeight={true}
+        modalStyle={containerStyle}
+        handleStyle={handleStyle}>
         {title && (
           <Block
             justifyCenter
@@ -46,7 +61,12 @@ const BottomSheet: React.FC<BottomSheetProps> = ({title, useBottomSheet, childre
             </Pressable>
           </Block>
         )}
-        <Block safeBottom paddingHorizontal={16} paddingTop={16} backgroundColor="secondary_background">
+        <Block
+          safeBottom
+          paddingHorizontal={16}
+          paddingTop={16}
+          backgroundColor="secondary_background"
+          {...contentStyle}>
           {children}
         </Block>
       </Modalize>
