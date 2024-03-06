@@ -4,7 +4,7 @@ import {getSize} from '@utils/responsive';
 import React from 'react';
 import {DeviceEventEmitter, StyleSheet} from 'react-native';
 
-const OnTopButton: React.FC<{bottomOffset?: number}> = ({bottomOffset = 110}) => {
+const OnTopButton: React.FC<{bottomOffset?: number}> = ({bottomOffset = 180}) => {
   const {useSelector} = useStore();
   const {userInfo} = useSelector('auth');
 

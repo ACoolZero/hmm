@@ -3,6 +3,7 @@ import {goBack, reset} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {api} from '@services';
+import store from '@store';
 import * as actions from '@store/actions';
 import {guard} from '@store/general/saga';
 import {ActionPayload} from '@store/general/types';
@@ -11,6 +12,7 @@ import Storage from '@utils/storage';
 import {AxiosResponse} from 'axios';
 import dayjs from 'dayjs';
 import FastImage from 'react-native-fast-image';
+import {persistStore} from 'redux-persist';
 import {call, delay, put, select, takeLatest} from 'redux-saga/effects';
 import {IUser, LoginPayload, RegisterPayload, UpdateUserPayload} from './types';
 
@@ -66,12 +68,14 @@ function* getCurrentUser(action: ActionPayload<null>) {
 }
 
 function* logout(action: ActionPayload<null>) {
-  const {accessToken} = yield select(state => state.auth);
-  const response: AxiosResponse = yield call(api, `/auth/logout/${accessToken}`, {
-    method: 'delete',
-    headers: {Authorization: `Bearer ${accessToken}`},
-  });
-  if (response) {
+  try {
+    const {accessToken} = yield select(state => state.auth);
+    yield call(api, `/auth/logout/${accessToken}`, {
+      method: 'delete',
+      headers: {Authorization: `Bearer ${accessToken}`},
+    });
+  } catch (error) {
+  } finally {
     yield put({type: actions._onSuccess(action.type)});
     yield delay(500);
     reset(routes.LOGIN_SCREEN);
@@ -81,6 +85,7 @@ function* logout(action: ActionPayload<null>) {
     Storage.removeItem(REFRESH_TOKEN);
     FastImage.clearMemoryCache();
     FastImage.clearDiskCache();
+    persistStore(store).purge();
   }
 }
 
@@ -124,7 +129,7 @@ export default [
   takeLatest(actions.LOGIN_ACCOUNT, guard(login)),
   takeLatest(actions.LOGIN_GOOGLE, guard(loginGoogle)),
   takeLatest(actions.GET_CURRENT_USER, guard(getCurrentUser)),
-  takeLatest(actions.LOGOUT_ACCOUNT, guard(logout)),
+  takeLatest(actions.LOGOUT_ACCOUNT, logout),
   takeLatest(actions.GET_REFRESH_TOKEN, guard(getRefreshToken)),
   takeLatest(actions.UPDATE_USER_INFO, guard(updateUser)),
   takeLatest(actions.UPLOAD_FILE, guard(uploadFile)),

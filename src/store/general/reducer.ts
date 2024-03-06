@@ -63,4 +63,15 @@ const theme = produce((state = {mode: 'dark'}, action) => {
   }
 });
 
-export default {general, alert, theme};
+const socket = produce((state = {instance: null}, action) => {
+  switch (action.type) {
+    case actions.SOCKET_INSTANCE:
+      state.instance = action.payload.instance;
+      return state;
+
+    default:
+      return state;
+  }
+});
+
+export default {general, alert, theme, socket};

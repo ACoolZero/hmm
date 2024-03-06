@@ -19,3 +19,6 @@ export const HIDE_ALERT = 'HIDE_ALERT';
 
 /** THEME MODE */
 export const SWITCH_THEME_MODE = 'SWITCH_THEME_MODE';
+
+/** SOCKET */
+export const SOCKET_INSTANCE = 'SOCKET_INSTANCE';
