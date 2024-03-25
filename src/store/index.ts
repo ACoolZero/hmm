@@ -35,11 +35,6 @@ const middlewares = [];
 const sagaMiddleware = createSagaMiddleware();
 middlewares.push(sagaMiddleware);
 
-if (__DEV__) {
-  const createDebugger = require('redux-flipper').default;
-  middlewares.push(createDebugger());
-}
-
 const store = createStore(pReducer, applyMiddleware(...middlewares));
 
 sagaMiddleware.run(rootSaga);

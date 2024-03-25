@@ -21,7 +21,6 @@
 #### Development Tools
 
 - [Prettier](https://prettier.io/) for linting.
-- [Flipper](https://fbflipper.com/) for debugging.
 
 ## Directory Structure
 
