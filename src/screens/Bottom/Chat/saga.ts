@@ -3,8 +3,8 @@ import store from '@store';
 import * as actions from '@store/actions';
 import {guard} from '@store/general/saga';
 import {ActionPayload} from '@store/general/types';
-import {ITEM_LIMIT_PER_PAGE} from '@utils/constants';
-import {call, put, select, takeLeading} from 'redux-saga/effects';
+import {AppConfig, ITEM_LIMIT_PER_PAGE} from '@utils/constants';
+import {call, put, select, takeLatest, takeLeading} from 'redux-saga/effects';
 import {Socket} from 'socket.io-client';
 import {IMessage} from './types';
 
@@ -18,12 +18,15 @@ function* connectSocket() {
     /**
      * Server received message from user
      */
-    socketInstance.on('SERVER_RECEIVED_USER', () => {});
+    socketInstance.on('SERVER_RECEIVED_USER', () => {
+      console.log('SERVER_RECEIVED_USER event received');
+    });
 
     /**
      * Bot Typing
      */
     socketInstance.on('BOT_TYPING', response => {
+      console.log('BOT_TYPING event received');
       store.dispatch({type: actions.TYPING_LISTENING, payload: {data: response.data.typing}});
     });
 
@@ -31,6 +34,7 @@ function* connectSocket() {
      * Message response from bot
      */
     socketInstance.on('MESSAGE_BOT', response => {
+      console.log('MESSAGE_BOT event received');
       const {_id, content, senderId, senderAvatar, senderName, createdAt} = response.data;
       store.dispatch({
         type: actions.NEW_MESSAGES_COMING,
@@ -54,7 +58,7 @@ function* connectSocket() {
      * Get list message paging response
      */
     socketInstance.on('USER_GET_MESSAGES_PAGING_RESPONSE', response => {
-      console.log('messages_list', response);
+      console.log('USER_GET_MESSAGES_PAGING_RESPONSE event received');//, JSON.stringify(response));
       store.dispatch({
         type: actions._onSuccess(actions.GET_MESSAGES),
         payload: {
@@ -78,15 +82,24 @@ function* connectSocket() {
       });
     });
   }
+  else {
+    console.error("Socket could not be initialized.");
+  }
 }
 
 function* getMessages(action: ActionPayload<{page: string}>) {
+  if (__DEV__ && AppConfig.DEBUG_LOGGING_ENABLED) {
+    console.debug('Getting messages...');
+  }
   const {page} = action.payload;
   const socket: Socket = yield select(state => state.socket.instance);
   yield socket.emit('USER_GET_MESSAGES_PAGING', {limit: ITEM_LIMIT_PER_PAGE, page});
 }
 
 function* sendMessage(action: ActionPayload<{message: string; channel: string}>) {
+  if (__DEV__ && AppConfig.DEBUG_LOGGING_ENABLED) {
+    console.debug('Sending message...');
+  }
   const {message, channel} = action.payload;
   const socket: Socket = yield select(state => state.socket.instance);
   yield socket.emit('MESSAGE_USER', {message, channel});
@@ -94,6 +107,6 @@ function* sendMessage(action: ActionPayload<{message: string; channel: string}>)
 
 export default [
   takeLeading(actions.SOCKET_CONNECT, guard(connectSocket)),
-  takeLeading(actions.GET_MESSAGES, guard(getMessages)),
   takeLeading(actions.SEND_MESSAGE, guard(sendMessage)),
+  takeLeading(actions.GET_MESSAGES, guard(getMessages)),
 ];

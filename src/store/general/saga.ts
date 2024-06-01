@@ -10,10 +10,11 @@ export const guard = (saga: any, config?: any) =>
     try {
       const {timeout} = yield race({
         res: call(saga, action),
-        timeout: delay(30 * 1000),
+        timeout: delay(10 * 1000),
       });
       if (timeout) throw new Error('Request Timeout');
     } catch (error: any) {
+      console.log("ERROR: ", error.response?.data);
       if (CONFIG.message) {
         showMessage({type: 'error', message: CONFIG.message});
       } else {

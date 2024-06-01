@@ -7,7 +7,7 @@ import store from '@store';
 import * as actions from '@store/actions';
 import {guard} from '@store/general/saga';
 import {ActionPayload} from '@store/general/types';
-import {ACCESS_TOKEN, REFRESH_EXPIRES_AT, REFRESH_TOKEN} from '@utils/constants';
+import {ACCESS_TOKEN,REFRESH_EXPIRES_AT, REFRESH_TOKEN, AppConfig } from '@utils/constants';
 import Storage from '@utils/storage';
 import {AxiosResponse} from 'axios';
 import dayjs from 'dayjs';
@@ -15,6 +15,7 @@ import FastImage from 'react-native-fast-image';
 import {persistStore} from 'redux-persist';
 import {call, delay, put, select, takeLatest} from 'redux-saga/effects';
 import {IUser, LoginPayload, RegisterPayload, UpdateUserPayload} from './types';
+import { sleep } from '@utils/date';
 
 function* register(action: ActionPayload<RegisterPayload>) {
   const data = action.payload;
@@ -83,24 +84,46 @@ function* logout(action: ActionPayload<null>) {
     GoogleSignin.signOut();
     Storage.removeItem(ACCESS_TOKEN);
     Storage.removeItem(REFRESH_TOKEN);
+    Storage.removeItem(REFRESH_EXPIRES_AT);
     FastImage.clearMemoryCache();
     FastImage.clearDiskCache();
     persistStore(store).purge();
+    // sleep(500).then(() => reset(routes.LOGIN_SCREEN));
+
   }
 }
 
 function* getRefreshToken() {
-  const {accessToken, refreshToken} = yield select(state => state.auth);
-  const response: AxiosResponse = yield call(api, '/auth/refresh-token', {
-    method: 'post',
-    data: {accessToken, refreshToken},
-  });
-  Storage.setItem(ACCESS_TOKEN, response.data.accessToken);
-  Storage.setItem(REFRESH_TOKEN, response.data.refreshToken);
-  yield put({
-    type: actions._onSuccess(actions.LOGIN_ACCOUNT),
-    payload: {accessToken: response.data.accessToken, refreshToken: response.data.refreshToken},
-  });
+  try{
+    const {accessToken, refreshToken} = yield select(state => state.auth);
+    const response: AxiosResponse = yield call(api, '/auth/refresh-token', {
+      method: 'post',
+      data: { refreshToken },
+      // data: {accessToken, refreshToken},
+    });
+    if (__DEV__ && AppConfig.DEBUG_LOGGING_ENABLED) {
+      console.debug("[REFRESH_TOKEN] Response: ", response );
+    }
+    Storage.setItem(ACCESS_TOKEN, response.data.accessToken);
+    Storage.setItem(REFRESH_TOKEN, response.data.refreshToken);
+    yield Storage.setItem(REFRESH_EXPIRES_AT, dayjs().add(1, 'week').format('YYYY-MM-DD'));
+    yield put({
+      type: actions._onSuccess(actions.LOGIN_ACCOUNT),
+      payload: {accessToken: response.data.accessToken, refreshToken: response.data.refreshToken},
+    });
+    yield put({type: actions.GET_CURRENT_USER});
+    yield reset(routes.BOTTOM_TAB);
+  } catch (error) {
+    GoogleSignin.revokeAccess();
+    GoogleSignin.signOut();
+    Storage.removeItem(ACCESS_TOKEN);
+    Storage.removeItem(REFRESH_TOKEN);
+    Storage.removeItem(REFRESH_EXPIRES_AT);
+    FastImage.clearMemoryCache();
+    FastImage.clearDiskCache();
+    persistStore(store).purge();
+    sleep(500).then(() => reset(routes.LOGIN_SCREEN));
+  }
 }
 
 function* updateUser(action: ActionPayload<UpdateUserPayload>) {
@@ -130,7 +153,7 @@ export default [
   takeLatest(actions.LOGIN_GOOGLE, guard(loginGoogle)),
   takeLatest(actions.GET_CURRENT_USER, guard(getCurrentUser)),
   takeLatest(actions.LOGOUT_ACCOUNT, logout),
-  takeLatest(actions.GET_REFRESH_TOKEN, guard(getRefreshToken)),
+  takeLatest(actions.GET_REFRESH_TOKEN, getRefreshToken),
   takeLatest(actions.UPDATE_USER_INFO, guard(updateUser)),
   takeLatest(actions.UPLOAD_FILE, guard(uploadFile)),
 ];

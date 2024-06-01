@@ -1,5 +1,6 @@
 import {useStore} from '@hooks';
 import {GET_MESSAGES, NEW_MESSAGES_COMING, SEND_MESSAGE} from '@store/actions';
+import { AppConfig } from '@utils/constants';
 import {useCallback, useEffect} from 'react';
 
 const useChatRoom = () => {
@@ -17,6 +18,10 @@ const useChatRoom = () => {
   const _onSend = useCallback(
     (msg: any) => {
       const {text} = msg[0];
+      if (__DEV__ && AppConfig.DEBUG_LOGGING_ENABLED) {
+        console.debug("TEXT:", text);
+        console.debug("USERINFO:", userInfo);
+      }
       dispatch({type: SEND_MESSAGE, payload: {message: text, channel: 'BOT'}});
       dispatch({
         type: NEW_MESSAGES_COMING,

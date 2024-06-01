@@ -24,10 +24,11 @@ import {
 } from 'react-native-gifted-chat';
 import {UIActivityIndicator} from 'react-native-indicators';
 import styles from './styles';
+import { AppConfig } from '@utils/constants';
 
 LayoutAnimation.configureNext(LayoutAnimation.Presets.linear);
 
-const GiftedChat: React.FC<any> = ({userId, chatColor, ...rest}) => {
+const GiftedChat: React.FC<any> = ({userId, chatColor, messages, ...rest}) => {
   const {t} = useTranslation();
   const {useSelector} = useStore();
   const {openCamera, openMultiPicker} = useMediaPicker({cropping: false});
@@ -35,6 +36,9 @@ const GiftedChat: React.FC<any> = ({userId, chatColor, ...rest}) => {
   const {locale} = useSelector('general');
   const {isTyping} = useSelector('messages');
 
+  if (__DEV__ && AppConfig.DEBUG_LOGGING_ENABLED) {
+    console.debug("messages in GiftedChat", messages);
+  }
   /**
    * Custom message bubble
    */
@@ -59,7 +63,14 @@ const GiftedChat: React.FC<any> = ({userId, chatColor, ...rest}) => {
   /**
    * Custom message container
    */
-  const _renderMessage = (props: MessageProps<any>) => <Message {...props} />;
+  // const _renderMessage = (props: MessageProps<any>) => {<Message {...props} />;
+
+  const _renderMessage = (props: MessageProps<any>) => {
+    if (__DEV__ && AppConfig.DEBUG_LOGGING_ENABLED) {
+      console.debug("_renderMessage (current): ", props.currentMessage);
+    }
+    return <Message {...props} />;
+  }
 
   /**
    * Custom message text
@@ -69,10 +80,13 @@ const GiftedChat: React.FC<any> = ({userId, chatColor, ...rest}) => {
       currentMessage: {text},
       position,
     } = props;
+    // if (__DEV__ && AppConfig.DEBUG_LOGGING_ENABLED) {
+    //   console.debug("_renderMessageText: ", text);
+    // }
     return (
       <Pressable onPress={() => {}} onLongPress={() => {}}>
         <Block marginHorizontal={10} marginVertical={5}>
-          <Text color={position === 'left' ? 'text' : '#213138'}>{text}</Text>
+          <Text color={position === 'left' ? 'text' : '#1F2A30'}>{text}</Text>
         </Block>
       </Pressable>
     );
@@ -199,6 +213,7 @@ const GiftedChat: React.FC<any> = ({userId, chatColor, ...rest}) => {
   return (
     <RNGiftedChat
       {...rest}
+      messages={messages}
       infiniteScroll
       alwaysShowSend
       scrollToBottom

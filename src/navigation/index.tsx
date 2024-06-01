@@ -10,13 +10,18 @@ import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
 import {navigationRef} from './NavigationServices';
 import RootStack from './RootStack';
 import {linking} from './routes';
+import useHome from '@screens/Bottom/Home/useHome';
 
 const RootNavigation = () => {
   const {dispatch, useSelector} = useStore();
   const {COLORS} = useColors();
   const {isAuth} = useSelector('auth');
+  const {mode, fetchData} = useHome();
+
 
   useEffect(() => {
+    fetchData();
+  
     if (isAuth) {
       dispatch({type: GET_CURRENT_USER});
       dispatch({type: SOCKET_CONNECT});
@@ -26,7 +31,7 @@ const RootNavigation = () => {
   return (
     <NavigationContainer linking={linking} ref={navigationRef} onReady={() => RNBootSplash.hide()}>
       <PortalProvider>
-        <StatusBar backgroundColor={COLORS.background} barStyle="dark-content" />
+        <StatusBar backgroundColor={COLORS.background} barStyle= {`${mode === 'dark' ? 'dark' : 'light'}-content`}/>
         <RootStack />
       </PortalProvider>
       <AlertDialog />
