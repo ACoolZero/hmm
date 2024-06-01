@@ -21,7 +21,7 @@ const RootNavigation = () => {
 
   useEffect(() => {
     fetchData();
-  
+
     if (isAuth) {
       dispatch({type: GET_CURRENT_USER});
       dispatch({type: SOCKET_CONNECT});
@@ -31,7 +31,7 @@ const RootNavigation = () => {
   return (
     <NavigationContainer linking={linking} ref={navigationRef} onReady={() => RNBootSplash.hide()}>
       <PortalProvider>
-        <StatusBar backgroundColor={COLORS.background} barStyle= {`${mode === 'dark' ? 'dark' : 'light'}-content`}/>
+        <StatusBar backgroundColor={COLORS.background} barStyle= {`${mode === 'dark' ? 'dark' : 'light'}-content`} />
         <RootStack />
       </PortalProvider>
       <AlertDialog />

@@ -79,6 +79,7 @@ function* logout(action: ActionPayload<null>) {
   } finally {
     yield put({type: actions._onSuccess(action.type)});
     yield delay(500);
+    console.log("Logged out.");
     reset(routes.LOGIN_SCREEN);
     GoogleSignin.revokeAccess();
     GoogleSignin.signOut();

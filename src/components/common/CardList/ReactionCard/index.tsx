@@ -10,12 +10,12 @@ interface ReactionCardProps {
 
 const ReactionCard: React.FC<ReactionCardProps> = ({item}) => {
   const {COLORS} = useColors();
-  const {icon, name, color, percent} = item;
+  const {icon, name, color, percentage} = item;
 
   return (
     <Block flex>
       <ProgressCircle
-        percentage={percent}
+        percentage={percentage}
         size={REACTION_SIZE}
         color={color}
         radius={12}

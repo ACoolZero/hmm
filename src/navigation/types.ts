@@ -28,4 +28,15 @@ export type RootStackParamList = {
   [routes.ACTIVITY_DETAILS_SCREEN]: {momentIdx: number};
   [routes.MOMENT_DETAILS_SCREEN]: {momentId: string};
   [routes.MOMENT_FULL_SCREEN]: {item: any; STORY_WIDTH: number; STORY_HEIGHT: number};
+  
+  [routes.HOME_SCREEN]: undefined;
+  [routes.GADGETS_SCREEN]: undefined;
+  [routes.GADGETS_APPS_SCREEN]: undefined;
+  [routes.GADGETS_MOOD_HISTORY_SCREEN]: undefined;
+  [routes.GADGETS_FEEDBACK_SCREEN]: undefined;
+  [routes.GADGETS_FAQ_SCREEN]: undefined;
+  [routes.GADGETS_PRIVACY_SCREEN]: undefined;
+  [routes.GADGETS_DATA_PROTECTION_SCREEN]: undefined;
+  [routes.REGISTER_STEP1_SCREEN]: undefined;
+
 };

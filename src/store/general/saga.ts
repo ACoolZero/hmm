@@ -1,5 +1,6 @@
 import {showMessage} from '@components/common/ToastMessage';
 import {_onComplete} from '@store/actions';
+import { TOKEN_EXPIRED } from '@utils/constants';
 import {call, delay, put, race} from 'redux-saga/effects';
 
 const OPTION = {title: null, message: null, isToast: true, callback: null};
@@ -15,12 +16,15 @@ export const guard = (saga: any, config?: any) =>
       if (timeout) throw new Error('Request Timeout');
     } catch (error: any) {
       console.log("ERROR: ", error.response?.data);
-      if (CONFIG.message) {
-        showMessage({type: 'error', message: CONFIG.message});
-      } else {
-        CONFIG.isToast && showMessage({type: 'error', message: error.response.data.message || String(error)});
+      const statusCode = error?.response?.status;
+      if (statusCode !== TOKEN_EXPIRED) {
+        if (CONFIG.message) {
+          showMessage({type: 'error', message: CONFIG.message});
+        } else {
+          CONFIG.isToast && showMessage({type: 'error', message: error.response.data.message || String(error)});
+        }
       }
-      CONFIG.callback && CONFIG.callback();
+      CONFIG.callback && CONFIG.callback();    
     } finally {
       yield put({type: _onComplete(action?.type)});
     }

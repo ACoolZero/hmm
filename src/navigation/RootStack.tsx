@@ -23,7 +23,7 @@ const RootStack = () => {
       // animation: 'slide_from_right',
     }}>
       {/** Authentication flow */}
-      <Stack.Group>
+      <Stack.Group screenOptions={{animation: 'slide_from_right'}}>
         <Stack.Screen name={routes.LOGIN_SCREEN} component={auth[routes.LOGIN_SCREEN]} />
         <Stack.Screen name={routes.REGISTER_STEP1_SCREEN} component={auth[routes.REGISTER_STEP1_SCREEN]} />
         <Stack.Screen name={routes.REGISTER_STEP2_SCREEN} component={auth[routes.REGISTER_STEP2_SCREEN]} />
@@ -39,7 +39,7 @@ const RootStack = () => {
       {/** Modal screens */}
       {/* <Stack.Group screenOptions={{presentation: 'modal'}}></Stack.Group> */}
       {/** Common screens */}
-      <Stack.Group>
+      <Stack.Group screenOptions={{animation: 'slide_from_right'}}>
         <Stack.Screen name={routes.ARTICLE_DETAILS_SCREEN} component={common[routes.ARTICLE_DETAILS_SCREEN]} />
         <Stack.Screen name={routes.MILESTONE_DETAILS_SCREEN} component={common[routes.MILESTONE_DETAILS_SCREEN]} />
         <Stack.Screen name={routes.EDIT_PROFILE_SCREEN} component={common[routes.EDIT_PROFILE_SCREEN]} />
