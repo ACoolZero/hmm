@@ -36,9 +36,9 @@ const Language: React.FC = () => {
           width={width * 0.3}
           marginHorizontal={8}
           borderWidth={1}
-          borderColor={isSelected ? COLORS.primary : COLORS.light_text}
+          borderColor={isSelected ? COLORS.primary : COLORS.sub_text}
           backgroundColor={isSelected ? COLORS.primary : COLORS.secondary_background}>
-          <Text center color={isSelected ? '#FAFAFA' : COLORS.light_text}>
+          <Text center color={isSelected ? '#F5F5F5' : COLORS.sub_text}>
             {label}
           </Text>
         </Block>

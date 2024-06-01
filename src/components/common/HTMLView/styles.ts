@@ -4,7 +4,7 @@ import {StyleSheet} from 'react-native';
 export const NORMAL_STYLES = {
   fontSize: getSize.m(16),
   fontFamily: 'Poppins-Regular',
-  color: '#899A96',
+  color: '#A0A0A0',
   marginBottom: 0,
 };
 

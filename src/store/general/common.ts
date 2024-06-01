@@ -7,7 +7,7 @@ export const INITIAL_GENERAL_STATE = {
   deviceToken: '',
   locale: 'vi',
   isFirstLaunching: true,
-  chatColor: '#558EF9',
+  chatColor: '#1E90FF',
 };
 
 export const INITIAL_ALERT_STATE = {

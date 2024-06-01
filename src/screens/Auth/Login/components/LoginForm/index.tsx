@@ -38,7 +38,7 @@ const LoginForm: React.FC = () => {
         control={control}
         name="email"
         placeholder={t('placeholder.email')}
-        color="common_text"
+        color="text"
         containerInputStyle={styles.containerInputStyle}
       />
       <FormInput
@@ -47,7 +47,7 @@ const LoginForm: React.FC = () => {
         control={control}
         name="password"
         placeholder={t('placeholder.password')}
-        color="common_text"
+        color="text"
         containerInputStyle={styles.containerInputStyle}
       />
       <Block row alignCenter marginBottom={40} space="between">

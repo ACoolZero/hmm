@@ -22,7 +22,7 @@ const Gadgets: React.FC = () => {
           <GadgetsMenu />
           <Pressable
             onPress={() => setDialogVisible(true)}
-            style={{...styles.btnLogout, borderColor: COLORS.light_text}}>
+            style={{...styles.btnLogout, borderColor: COLORS.sub_text}}>
             <Image source={ICONS.logout} square={30} />
             <Text marginLeft={12}>{t('gadgets.logout.label')}</Text>
           </Pressable>

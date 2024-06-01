@@ -80,13 +80,13 @@ const GiftedChat: React.FC<any> = ({userId, chatColor, messages, ...rest}) => {
       currentMessage: {text},
       position,
     } = props;
-    // if (__DEV__ && AppConfig.DEBUG_LOGGING_ENABLED) {
-    //   console.debug("_renderMessageText: ", text);
-    // }
+    if (__DEV__ && AppConfig.DEBUG_LOGGING_ENABLED) {
+      console.debug("_renderMessageText: ", text);
+    }
     return (
       <Pressable onPress={() => {}} onLongPress={() => {}}>
         <Block marginHorizontal={10} marginVertical={5}>
-          <Text color={position === 'left' ? 'text' : '#1F2A30'}>{text}</Text>
+          <Text color={position === 'left' ? 'text' : '#213138'}>{text}</Text>
         </Block>
       </Pressable>
     );

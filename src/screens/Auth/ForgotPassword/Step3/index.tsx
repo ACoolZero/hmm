@@ -14,11 +14,11 @@ const ForgotPasswordStep3: React.FC = () => {
   const {t} = useTranslation();
 
   return (
-    <Block flex padding={24} backgroundColor="common_background">
+    <Block flex padding={24} backgroundColor="background">
       <Block justifyCenter paddingTop={top} marginBottom={60} space="between">
         <Pressable onPress={() => reset(routes.LOGIN_SCREEN)}>
           <Block marginBottom={40}>
-            <Image source={ICONS.close} square={14} tintColor="common_light_text" resizeMode="contain" />
+            <Image source={ICONS.close} square={14} tintColor="sub_text" resizeMode="contain" />
           </Block>
         </Pressable>
         <Header content={t('forgot_password.step_three_header')} />
@@ -28,14 +28,14 @@ const ForgotPasswordStep3: React.FC = () => {
           shadow
           isSecure
           placeholder={t('placeholder.password')}
-          color="common_text"
+          color="text"
           containerInputStyle={{marginBottom: getSize.m(16)}}
         />
         <TextInput
           shadow
           isSecure
           placeholder={t('placeholder.confirm_password')}
-          color="common_text"
+          color="text"
           containerInputStyle={{marginBottom: getSize.m(16)}}
         />
       </Block>

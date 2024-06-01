@@ -1,172 +1,179 @@
+import { common } from "@screens";
+
 const COLORS = {
-  primary: '#558EF9',
-  success: '#10B981',
-  error: '#FF4D4F',
-  placeholder: '#BFBFBF',
-  white: '#FAFAFA',
-  black: '#213138',
-  common_background: '#F3F3F3',
-  common_text: '#213138',
-  common_light_text: '#899A96',
-  common_border: '#DDDDDD',
+  primary: '#1E90FF', // Dodger Blue
+  // primary: '#FF6347', // Coral
+  success: '#00CED1', // Dark Turquoise
+  error: '#FF4500', // Orange Red
+  placeholder: '#BFBFBF', // Light Gray
+  white: '#FFFFFF',
+  black: '#000000',
+  // common_background: "#A0A0A0",
+  // common_light_background: '#F0FFFF', // Azure
+  // common_dark_background: '#483D8B', // Dark Slate Blue
+  // common_text: '#696969', // Dim Gray
+  // // common_light_text: '#808080', // Gray
+  // // common_dark_text: '#778899', // Light Slate Gray
+  // common_sub_text: '#A0A0A0',
+  // common_border: '#D3D3D3', // Light Gray
 
   /**
    * @gray
    */
-  gray_50: '#F9FAFB',
-  gray_100: '#F3F4F6',
-  gray_200: '#E5E7EB',
-  gray_300: '#D1D5DB',
-  gray_400: '#9CA3AF',
-  gray_500: '#6B7280',
-  gray_600: '#4B5563',
-  gray_700: '#374151',
-  gray_800: '#1F2937',
-  gray_900: '#111827',
+  gray_50: '#F5F5F5',
+  gray_100: '#E0E0E0', // Light Gray
+  gray_200: '#C0C0C0', // Silver
+  gray_300: '#A9A9A9', // Dark Gray
+  gray_400: '#808080', // Gray
+  gray_500: '#696969', // Dim Gray
+  gray_600: '#4F4F4F', // Dark Slate Gray
+  gray_700: '#2F4F4F', // Dark Slate Gray
+  gray_800: '#708090', // Slate Gray
+  gray_900: '#778899', // Light Slate Gray
 
   /**
    * @red
    */
-  red_50: '#FEF2F2',
-  red_100: '#FEE2E2',
-  red_200: '#FECACA',
-  red_300: '#FCA5A5',
-  red_400: '#F87171',
-  red_500: '#EF4444',
-  red_600: '#DC2626',
-  red_700: '#B91C1C',
-  red_800: '#991B1B',
-  red_900: '#7F1D1D',
+  red_50: '#FFC0CB', // Pink
+  red_100: '#FF69B4', // Hot Pink
+  red_200: '#FF1493', // Deep Pink
+  red_300: '#FF6347', // Tomato
+  red_400: '#DC143C', // Crimson
+  red_500: '#B22222', // Fire Brick
+  red_600: '#8B0000', // Dark Red
+  red_700: '#800000', // Maroon
+  red_800: '#FF0000', // Red
+  red_900: '#CD5C5C', // Indian Red
 
   /**
    * @yellow
    */
-  yellow_50: '#FFFBEB',
-  yellow_100: '#FEF3C7',
-  yellow_200: '#FDE68A',
-  yellow_300: '#FCD34D',
-  yellow_400: '#FBBF24',
-  yellow_500: '#F59E0B',
-  yellow_600: '#D97706',
-  yellow_700: '#B45309',
-  yellow_800: '#92400E',
-  yellow_900: '#78350F',
+  yellow_50: '#FFFF00', // Yellow
+  yellow_100: '#FFD700', // Gold
+  yellow_200: '#FFA500', // Orange
+  yellow_300: '#FF8C00', // Dark Orange
+  yellow_400: '#FF4500', // Orange Red
+  yellow_500: '#FF6347', // Tomato
+  yellow_600: '#FF0000', // Red
+  yellow_700: '#FF1493', // Deep Pink
+  yellow_800: '#FF69B4', // Hot Pink
+  yellow_900: '#FFC0CB', // Pink
 
   /**
    * @green
    */
-  green_50: '#ECFDF5',
-  green_100: '#D1FAE5',
-  green_200: '#A7F3D0',
-  green_300: '#6EE7B7',
-  green_400: '#34D399',
-  green_500: '#10B981',
-  green_600: '#059669',
-  green_700: '#047857',
-  green_800: '#065F46',
-  green_900: '#064E3B',
+  green_50: '#98FB98', // Pale Green
+  green_100: '#00FF00', // Lime
+  green_200: '#32CD32', // Lime Green
+  green_300: '#008000', // Green
+  green_400: '#008080', // Teal
+  green_500: '#00CED1', // Dark Turquoise
+  green_600: '#20B2AA', // Light Sea Green
+  green_700: '#3CB371', // Medium Sea Green
+  green_800: '#2E8B57', // Sea Green
+  green_900: '#228B22', // Forest Green
 
   /**
    * @blue
    */
-  blue_50: '#EFF6FF',
-  blue_100: '#DBEAFE',
-  blue_200: '#BFDBFE',
-  blue_300: '#93C5FD',
-  blue_400: '#60A5FA',
-  blue_500: '#3B82F6',
-  blue_600: '#2563EB',
-  blue_700: '#1D4ED8',
-  blue_800: '#1E40AF',
-  blue_900: '#1E3A8A',
+  blue_50: '#00BFFF', // Deep Sky Blue
+  blue_100: '#1E90FF', // Dodger Blue
+  blue_200: '#4169E1', // Royal Blue
+  blue_300: '#0000FF', // Blue
+  blue_400: '#0000CD', // Medium Blue
+  blue_500: '#00008B', // Dark Blue
+  blue_600: '#000080', // Navy
+  blue_700: '#6A5ACD', // Slate Blue
+  blue_800: '#483D8B', // Dark Slate Blue
+  blue_900: '#191970', // Midnight Blue
 
   /**
    * @indigo
    */
-  indigo_50: '#EEF2FF',
-  indigo_100: '#E0E7FF',
-  indigo_200: '#C7D2FE',
-  indigo_300: '#A5B4FC',
-  indigo_400: '#818CF8',
-  indigo_500: '#6366F1',
-  indigo_600: '#4F46E5',
-  indigo_700: '#4338CA',
-  indigo_800: '#3730A3',
-  indigo_900: '#312E81',
+  indigo_50: '#4B0082', // Indigo
+  indigo_100: '#800080', // Purple
+  indigo_200: '#9932CC', // Dark Orchid
+  indigo_300: '#8A2BE2', // Blue Violet
+  indigo_400: '#6A5ACD', // Slate Blue
+  indigo_500: '#483D8B', // Dark Slate Blue
+  indigo_600: '#8B008B', // Dark Magenta
+  indigo_700: '#9370DB', // Medium Purple
+  indigo_800: '#7B68EE', // Medium Slate Blue
+  indigo_900: '#483D8B', // Dark Slate Blue
 
   /**
    * @purple
    */
-  purple_50: '#F5F3FF',
-  purple_100: '#EDE9FE',
-  purple_200: '#DDD6FE',
-  purple_300: '#C4B5FD',
-  purple_400: '#A78BFA',
-  purple_500: '#8B5CF6',
-  purple_600: '#7C3AED',
-  purple_700: '#6D28D9',
-  purple_800: '#5B21B6',
-  purple_900: '#4C1D95',
+  purple_50: '#800080', // Purple
+  purple_100: '#9370DB', // Medium Purple
+  purple_200: '#BA55D3', // Medium Orchid
+  purple_300: '#8A2BE2', // Blue Violet
+  purple_400: '#6A5ACD', // Slate Blue
+  purple_500: '#483D8B', // Dark Slate Blue
+  purple_600: '#4B0082', // Indigo
+  purple_700: '#9932CC', // Dark Orchid
+  purple_800: '#8A2BE2', // Blue Violet
+  purple_900: '#800080', // Purple
 
   /**
    * @pink
    */
-  pink_50: '#FDF2F8',
-  pink_100: '#FCE7F3',
-  pink_200: '#FBCFE8',
-  pink_300: '#F9A8D4',
-  pink_400: '#F472B6',
-  pink_500: '#EC4899',
-  pink_600: '#DB2777',
-  pink_700: '#BE185D',
-  pink_800: '#9D174D',
-  pink_900: '#831843',
+  pink_50: '#FFC0CB', // Pink
+  pink_100: '#FF69B4', // Hot Pink
+  pink_200: '#FF1493', // Deep Pink
+  pink_300: '#FF6347', // Tomato
+  pink_400: '#DC143C', // Crimson
+  pink_500: '#B22222', // Fire Brick
+  pink_600: '#8B0000', // Dark Red
+  pink_700: '#800000', // Maroon
+  pink_800: '#FF0000', // Red
+  pink_900: '#CD5C5C', // Indian Red
 
   /**
    * @orange
    */
-  orange_50: '#FFF7ED',
-  orange_100: '#FFEDD5',
-  orange_200: '#FED7AA',
-  orange_300: '#FDBA74',
-  orange_400: '#FB923C',
-  orange_500: '#F97316',
-  orange_600: '#EA580C',
-  orange_700: '#C2410C',
-  orange_800: '#9A3412',
-  orange_900: '#7C2D12',
-};
-
-const dark = {
-  text: '#FAFAFA',
-  light_text: '#96A7AF',
-  article_text: '#FAFAFA',
+  orange_50: '#FFA500', // Orange
+  orange_100: '#FF8C00', // Dark Orange
+  orange_200: '#FF6347', // Tomato
+  orange_300: '#FF4500', // Orange Red
+  orange_400: '#FF0000', // Red
+  orange_500: '#DC143C', // Crimson
+  orange_600: '#B22222', // Fire Brick
+  orange_700: '#8B0000', // Dark Red
+  orange_800: '#FF69B4', // Hot Pink
+  orange_900: '#FFC0CB', // Pink
+  };
+  
+  const dark = {
+  text: '#FFFFFF',
+  sub_text: '#778899', // Light Slate Gray
+  article_text: '#FFFFFF',
   background: '#213138',
   secondary_background: '#2A3D45',
   feeling_background: '#2A3D4560',
   modal_feeling_background: '#21313850',
   card_background_one: '#475E69',
   card_background_two: '#2A3D45',
-  border: '#899A96',
+  border: '#A0A0A0',
   milestone_header: '#475E69',
   moment_full_screen: '#213138CC',
   ...COLORS,
-};
-
-const light = {
+  };
+  
+  const light = {
   text: '#213138',
-  light_text: '#899A96',
+  sub_text: '#A0A0A0', // Gray
   article_text: '#213138',
-  background: '#FAFAFA',
-  secondary_background: '#EEEEEE',
-  feeling_background: '#EEEEEE60',
-  modal_feeling_background: '#FAFAFA50',
+  background: '#F5F5F5',
+  secondary_background: '#EAEAEA',
+  feeling_background: '#EAEAEA60',
+  modal_feeling_background: '#F5F5F550',
   card_background_one: '#DDDDDD',
-  card_background_two: '#EEEEEE',
-  border: '#96A7AF',
+  card_background_two: '#EAEAEA',
+  border: '#A0A0A0',
   milestone_header: '#DDDDDD',
-  moment_full_screen: '#FAFAFACC',
+  moment_full_screen: '#F5F5F5CC',
   ...COLORS,
-};
-
-export default {light, dark};
+  };
+  
+  export default { light, dark };

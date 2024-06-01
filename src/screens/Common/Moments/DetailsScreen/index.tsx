@@ -38,7 +38,7 @@ const DetailsScreen: React.FC<DetailsScreenProps> = ({route}) => {
             <Text center size={24} marginBottom={5} numberOfLines={2} type="semibold">
               {momentDetails.content}
             </Text>
-            <Text sm center size={24} numberOfLines={1} color="light_text">
+            <Text sm center size={24} numberOfLines={1} color="sub_text">
               {dayjs(momentDetails.createdAt).format('DD/MM/YYYY')}
             </Text>
           </Block>

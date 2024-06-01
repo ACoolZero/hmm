@@ -13,15 +13,15 @@ const ForgotPasswordStep2: React.FC = () => {
   const {t} = useTranslation();
 
   return (
-    <Block flex padding={24} backgroundColor="common_background">
+    <Block flex padding={24} backgroundColor="background">
       <Block paddingTop={top} marginBottom={40}>
         <Pressable onPress={goBack}>
           <Block marginBottom={40}>
-            <Image source={ICONS.close} square={14} tintColor="common_light_text" resizeMode="contain" />
+            <Image source={ICONS.close} square={14} tintColor="sub_text" resizeMode="contain" />
           </Block>
         </Pressable>
         <Header content={t('forgot_password.otp_sent')} />
-        <Text md marginTop={8} color="common_light_text">
+        <Text md marginTop={8} color="sub_text">
           {t('forgot_password.otp_input_prompt')}
         </Text>
       </Block>
@@ -35,7 +35,7 @@ const ForgotPasswordStep2: React.FC = () => {
         onPress={() => {
           navigate(routes.FORGOT_PASSWORD_STEP3_SCREEN);
         }}>
-        <Text color="common_light_text">
+        <Text color="sub_text">
           {t('forgot_password.otp_didnt_receive')}{' '}
           <Text color="primary" type="medium">
             {t('forgot_password.try_again')}

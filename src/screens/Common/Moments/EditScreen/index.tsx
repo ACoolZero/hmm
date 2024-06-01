@@ -58,7 +58,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
         paddingVertical={16}
         backgroundColor={COLORS.background}
         borderTopWidth={1}
-        borderColor={COLORS.light_text}>
+        borderColor={COLORS.sub_text}>
         <TextInput
           placeholder={t('moment.input_placeholder')}
           inputStyle={{backgroundColor: COLORS.secondary_background, borderColor: COLORS.background}}
@@ -68,7 +68,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
           defaultValue={data?.content}
         />
         <Block alignEnd marginTop={8}>
-          <Text sm color={COLORS.light_text}>
+          <Text sm color={COLORS.sub_text}>
             {moment?.content?.length}/99
           </Text>
         </Block>
@@ -85,7 +85,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
                 round={20}
                 marginRight={10}
                 borderWidth={2}
-                borderColor={accessMode === 'PUBLIC' ? COLORS.primary : COLORS.light_text}>
+                borderColor={accessMode === 'PUBLIC' ? COLORS.primary : COLORS.sub_text}>
                 <Block
                   round={10}
                   backgroundColor={accessMode === 'PUBLIC' ? COLORS.primary : COLORS.secondary_background}
@@ -108,7 +108,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
                 round={20}
                 marginRight={10}
                 borderWidth={2}
-                borderColor={accessMode === 'PRIVATE' ? COLORS.primary : COLORS.light_text}>
+                borderColor={accessMode === 'PRIVATE' ? COLORS.primary : COLORS.sub_text}>
                 <Block
                   round={10}
                   backgroundColor={accessMode === 'PRIVATE' ? COLORS.primary : COLORS.secondary_background}

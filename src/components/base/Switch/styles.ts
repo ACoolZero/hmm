@@ -22,7 +22,7 @@ export default StyleSheet.create({
   highlightToggle: {
     height: getSize.s(8),
     width: getSize.s(2),
-    backgroundColor: '#FAFAFA',
+    backgroundColor: '#F5F5F5',
     position: 'absolute',
     left: getSize.m(10),
   },

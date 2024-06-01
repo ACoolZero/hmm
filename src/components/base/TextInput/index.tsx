@@ -20,7 +20,7 @@ const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
     autoCapitalize = 'none',
     type = 'semibold',
     color = 'text',
-    borderColor = 'common_border',
+    borderColor = 'border',
     size = 16,
     isSecure,
     rightIcon,
@@ -131,7 +131,7 @@ const TextInput = forwardRef<any, TextInputProps>((props, ref) => {
           styles.inputContainer,
           {
             borderColor: isError ? COLORS.error : (COLORS as any)[borderColor],
-            backgroundColor: disabled ? COLORS.gray_100 : COLORS.white,
+            backgroundColor: disabled ? COLORS.gray_100 : COLORS.background,
             borderWidth: disabled ? getSize.s(0) : getSize.s(1),
             paddingLeft: leftIcon ? getSize.m(4) : getSize.m(12),
             paddingRight: isSecure ? getSize.m(32) : getSize.m(12),

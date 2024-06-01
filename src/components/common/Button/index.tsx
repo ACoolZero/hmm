@@ -62,7 +62,7 @@ const Button: React.FC<ButtonProps> = ({
         {disabled ? (
           <UIActivityIndicator size={getSize.s(20)} color={loadingTintColor} />
         ) : (
-          <Text type="semibold" color={textColor ? textColor : isValid ? 'light_text' : 'white'} style={titleStyle}>
+          <Text type="semibold" color={textColor ? textColor : isValid ? 'sub_text' : 'white'} style={titleStyle}>
             {title}
           </Text>
         )}

@@ -64,7 +64,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({
   return (
     <Block style={containerStyles} row alignCenter>
       <AnimatedPressable style={styles.button(borderColor, scale, width)} onPress={_onChange}>
-        <Image source={ICONS.checkbox} tintColor="#FAFAFA" style={styles.icon(width)} />
+        <Image source={ICONS.checkbox} tintColor="#F5F5F5" style={styles.icon(width)} />
         <AnimatedView style={styles.background(widthIcon, activeColor)} />
       </AnimatedPressable>
       {title && (

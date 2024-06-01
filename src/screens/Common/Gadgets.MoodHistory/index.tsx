@@ -26,14 +26,14 @@ const MoodHistory: React.FC = () => {
           alignCenter
           paddingVertical={12}
           space="between"
-          style={{borderBottomWidth: getSize.s(1), borderColor: COLORS.light_text}}>
+          style={{borderBottomWidth: getSize.s(1), borderColor: COLORS.sub_text}}>
           <Block row alignCenter>
             <Image source={{uri: icon}} round={32} />
             <Text sm marginLeft={12} type="semibold" color={randomTextColor()}>
               {name}
             </Text>
           </Block>
-          <Text sm color="light_text">
+          <Text sm color="sub_text">
             {time}
           </Text>
         </Block>

@@ -56,7 +56,7 @@ const EditProfile: React.FC = () => {
         setInfo(oldValue => ({...oldValue, gender: value}));
       }}>
       <Block row alignCenter justifyCenter height={48} paddingHorizontal={16} space="between">
-        <Text type="semibold" color={gender === value ? COLORS.primary : COLORS.light_text}>
+        <Text type="semibold" color={gender === value ? COLORS.primary : COLORS.sub_text}>
           {value === 'MALE' ? 'Male' : 'Female'}
         </Text>
         <Block alignCenter justifyCenter height={36}>
@@ -65,7 +65,7 @@ const EditProfile: React.FC = () => {
             justifyCenter
             round={20}
             borderWidth={2}
-            borderColor={gender === value ? COLORS.primary : COLORS.light_text}>
+            borderColor={gender === value ? COLORS.primary : COLORS.sub_text}>
             <Block round={10} backgroundColor={gender === value ? COLORS.primary : COLORS.secondary_background} />
           </Block>
         </Block>
@@ -80,11 +80,11 @@ const EditProfile: React.FC = () => {
         <Block paddingHorizontal={16} paddingVertical={24}>
           <TouchableOpacity onPress={() => setOpenMediaPicker(true)}>
             <Block alignSelf="center">
-              <Block round={80} borderWidth={1} borderColor="light_text" overflow="hidden">
+              <Block round={80} borderWidth={1} borderColor="sub_text" overflow="hidden">
                 <Image source={{uri: info.avatar}} round={80} />
               </Block>
               <Block round={24} backgroundColor={COLORS.secondary_background} style={styles.btnCamera}>
-                <Image source={ICONS.camera} square={16} tintColor={COLORS.light_text} resizeMode="contain" />
+                <Image source={ICONS.camera} square={16} tintColor={COLORS.sub_text} resizeMode="contain" />
               </Block>
             </Block>
           </TouchableOpacity>
@@ -94,7 +94,7 @@ const EditProfile: React.FC = () => {
               defaultValue={info.fullName}
               inputStyle={{backgroundColor: COLORS.secondary_background, borderWidth: 0}}
               containerInputStyle={styles.containerInputStyle}
-              color={COLORS.light_text}
+              color={COLORS.sub_text}
               onChangeText={fullName => setInfo(oldValue => ({...oldValue, fullName}))}
             />
             <Block paddingHorizontal={3} style={styles.containerInputStyle}>
@@ -108,13 +108,13 @@ const EditProfile: React.FC = () => {
                   marginRight={8}
                   backgroundColor={COLORS.secondary_background}
                   style={styles.phoneInputStyle}>
-                  <Text color={COLORS.light_text} type="semibold">
+                  <Text color={COLORS.sub_text} type="semibold">
                     +84
                   </Text>
                   <Image
                     source={ICONS.arrow_down}
                     square={10}
-                    tintColor={COLORS.light_text}
+                    tintColor={COLORS.sub_text}
                     style={{marginLeft: getSize.m(12)}}
                   />
                 </Block>
@@ -123,7 +123,7 @@ const EditProfile: React.FC = () => {
                     defaultValue={info.phoneNumber}
                     inputStyle={{backgroundColor: COLORS.secondary_background, borderWidth: 0}}
                     containerInputStyle={styles.containerInputStyle}
-                    color={COLORS.light_text}
+                    color={COLORS.sub_text}
                     onChangeText={phoneNumber => setInfo(oldValue => ({...oldValue, phoneNumber}))}
                   />
                 </Block>
@@ -136,11 +136,11 @@ const EditProfile: React.FC = () => {
               inputStyle={{
                 backgroundColor: COLORS.secondary_background,
                 borderWidth: getSize.s(0.5),
-                borderColor: COLORS.light_text,
+                borderColor: COLORS.sub_text,
                 opacity: 0.5,
               }}
               containerInputStyle={styles.containerInputStyle}
-              color={COLORS.light_text}
+              color={COLORS.sub_text}
             />
             <Block paddingHorizontal={3} style={styles.containerInputStyle}>
               <Text sm marginBottom={8}>
@@ -148,7 +148,7 @@ const EditProfile: React.FC = () => {
               </Text>
               <Block radius={8} backgroundColor={COLORS.secondary_background}>
                 {_renderGender('MALE')}
-                <Block height={1} backgroundColor={COLORS.light_text} />
+                <Block height={1} backgroundColor={COLORS.sub_text} />
                 {_renderGender('FEMALE')}
               </Block>
             </Block>
@@ -164,7 +164,7 @@ const EditProfile: React.FC = () => {
                 flex: 1,
                 height: getSize.s(120),
                 fontSize: getSize.m(16),
-                color: COLORS.light_text,
+                color: COLORS.sub_text,
                 textAlignVertical: 'top',
                 fontWeight: '600',
               }}

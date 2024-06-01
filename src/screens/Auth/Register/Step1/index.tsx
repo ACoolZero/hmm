@@ -37,7 +37,7 @@ const RegisterStep1: React.FC = () => {
   };
 
   return (
-    <Block flex padding={24} paddingTop={top} backgroundColor="common_background">
+    <Block flex padding={24} paddingTop={top} backgroundColor="background">
       <FormContainer>
         <Header content={t('validate.step_one_header')} />
         <Block marginTop={24} height={200}>
@@ -46,7 +46,7 @@ const RegisterStep1: React.FC = () => {
             name="fullName"
             shadow
             placeholder={t('placeholder.name')}
-            color="common_text"
+            color="text"
             containerInputStyle={{marginBottom: getSize.m(16)}}
           />
           <FormInput
@@ -54,7 +54,7 @@ const RegisterStep1: React.FC = () => {
             name="email"
             shadow
             placeholder={t('placeholder.email')}
-            color="common_text"
+            color="text"
             containerInputStyle={{marginBottom: getSize.m(16)}}
           />
         </Block>

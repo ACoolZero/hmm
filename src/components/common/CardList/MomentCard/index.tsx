@@ -64,11 +64,11 @@ const MomentCard: React.FC<MomentCardProps> = ({item, index}) => {
           start={{x: 0, y: 0}}
           end={{x: 0, y: 1}}>
           <Block flex paddingHorizontal={16} paddingTop={12} paddingBottom={8} space="between">
-            <Text type="bold" color="#FAFAFA" numberOfLines={3}>
+            <Text type="bold" color="#F5F5F5" numberOfLines={3}>
               {content}
             </Text>
             <Block row alignCenter space="between">
-              <Text flex sm color="#FAFAFA" numberOfLines={1}>
+              <Text flex sm color="#F5F5F5" numberOfLines={1}>
                 {creatorName}
               </Text>
               <TouchableOpacity

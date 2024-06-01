@@ -156,7 +156,7 @@ const MomentFullScreen: React.FC<MomentFullScreenProps> = ({route}) => {
               <Text center size={24} marginBottom={15} color="text" type="semibold">
                 {content}
               </Text>
-              <Text sm center size={24} numberOfLines={1} color="light_text">
+              <Text sm center size={24} numberOfLines={1} color="sub_text">
                 {dayjs(createdAt).format('DD/MM/YYYY')}
               </Text>
             </Block>

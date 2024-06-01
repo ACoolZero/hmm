@@ -24,9 +24,9 @@ const Feedback: React.FC = () => {
             <Image source={icon} square={32} />
             <Text marginLeft={12}>{label}</Text>
           </Block>
-          <Image source={ICONS.arrow_right} square={14} tintColor="light_text" />
+          <Image source={ICONS.arrow_right} square={14} tintColor="sub_text" />
         </Block>
-        {!isLastItem && <Block height={1} marginHorizontal={16} backgroundColor={COLORS.light_text} />}
+        {!isLastItem && <Block height={1} marginHorizontal={16} backgroundColor={COLORS.sub_text} />}
       </Pressable>
     );
   };
@@ -38,7 +38,7 @@ const Feedback: React.FC = () => {
         <Block margin={16} radius={12} backgroundColor="secondary_background">
           {data.map(_renderItem)}
         </Block>
-        <Pressable style={{...styles.btnLogout, borderColor: COLORS.light_text}} onPress={() => Linking.openURL(url)}>
+        <Pressable style={{...styles.btnLogout, borderColor: COLORS.sub_text}} onPress={() => Linking.openURL(url)}>
           <Image source={ICONS.aboutUs} square={30} />
           <Text marginLeft={12}>{t('gadgets.FAQ/Feedback.about_us.label')}</Text>
         </Pressable>
@@ -46,7 +46,7 @@ const Feedback: React.FC = () => {
           <Text marginBottom={3}>
             {t('gadgets.FAQ/Feedback.version.label')} {version}
           </Text>
-          <Text color="light_text">{t('gadgets.FAQ/Feedback.version.latest_version')}</Text>
+          <Text color="sub_text">{t('gadgets.FAQ/Feedback.version.latest_version')}</Text>
         </Block>
       </FormContainer>
     </Block>

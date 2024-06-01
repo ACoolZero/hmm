@@ -9,7 +9,7 @@ const RegisterStep5: React.FC = () => {
   const {t} = useTranslation();
 
   return (
-    <Block flex justifyCenter padding={24} backgroundColor="common_background">
+    <Block flex justifyCenter padding={24} backgroundColor="background">
       <Header content={t('validate.step_five_header')} />
       <Text marginBottom={60} color="#96A7AF">
         {t('validate.welcome')}

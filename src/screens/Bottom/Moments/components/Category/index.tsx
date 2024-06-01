@@ -28,7 +28,7 @@ const Category: React.FC = () => {
     }
 
     const backgroundColor = selectedItem ? (tintColor ? tintColor : COLORS.primary) : COLORS.background;
-    const color = selectedItem ? COLORS.white : COLORS.light_text;
+    const color = selectedItem ? COLORS.white : COLORS.sub_text;
 
     const _filterMoments = () => {
       selectedId = taggingId;

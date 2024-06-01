@@ -22,10 +22,10 @@ const GadgetsMenu: React.FC = () => {
             </Text>
           </Block>
           <Block>
-            <Image source={ICONS.arrow_right} square={14} tintColor="light_text" />
+            <Image source={ICONS.arrow_right} square={14} tintColor="sub_text" />
           </Block>
         </Block>
-        {!isLastItem && <Block height={1} marginHorizontal={16} backgroundColor={COLORS.light_text} />}
+        {!isLastItem && <Block height={1} marginHorizontal={16} backgroundColor={COLORS.sub_text} />}
       </Pressable>
     );
   };

@@ -10,7 +10,7 @@ const Home: React.FC = () => {
   const {top} = useSafeAreaInsets();
   const {mode, fetchData} = useHome();
   const {COLORS} = useColors();
-  const barStyle: StatusBarStyle = `${mode === 'dark' ? 'light' : 'dark'}-content`;
+  const barStyle: StatusBarStyle = `${mode === 'dark' ? 'dark' : 'light'}-content`;
 
   useEffect(() => {
     fetchData();

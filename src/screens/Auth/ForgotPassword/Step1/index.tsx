@@ -14,11 +14,11 @@ const ForgotPasswordStep1: React.FC = () => {
   const {t} = useTranslation();
 
   return (
-    <Block flex padding={24} backgroundColor="common_background">
+    <Block flex padding={24} backgroundColor="background">
       <Block paddingTop={top} marginBottom={60}>
         <Pressable onPress={goBack}>
           <Block marginBottom={40}>
-            <Image source={ICONS.close} square={14} tintColor="common_light_text" resizeMode="contain" />
+            <Image source={ICONS.close} square={14} tintColor="sub_text" resizeMode="contain" />
           </Block>
         </Pressable>
         <Header content={t('forgot_password.step_one_header')} />
@@ -27,7 +27,7 @@ const ForgotPasswordStep1: React.FC = () => {
         <TextInput
           shadow
           placeholder={t('placeholder.email')}
-          color="common_text"
+          color="text"
           containerInputStyle={{marginBottom: getSize.m(40)}}
         />
         <GradientButton

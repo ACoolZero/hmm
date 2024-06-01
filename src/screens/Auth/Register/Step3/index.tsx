@@ -25,14 +25,14 @@ const RegisterStep3: React.FC = () => {
   };
 
   return (
-    <Block flex padding={24} paddingTop={top} backgroundColor="common_background">
+    <Block flex padding={24} paddingTop={top} backgroundColor="background">
       <FormContainer>
         <Header content={t('validate.step_three_header')} />
         <Block marginTop={24} height={200}>
-          <Block radius={8} borderWidth={1} borderColor="common_border" backgroundColor="white">
+          <Block radius={8} borderWidth={1} borderColor="border" backgroundColor="white">
             <Pressable onPress={() => setGender('MALE')}>
               <Block row alignCenter height={48} paddingHorizontal={16} space="between">
-                <Text color="common_text">{t('placeholder.male')}</Text>
+                <Text color="text">{t('placeholder.male')}</Text>
                 <Block
                   alignCenter
                   justifyCenter
@@ -43,10 +43,10 @@ const RegisterStep3: React.FC = () => {
                 </Block>
               </Block>
             </Pressable>
-            <Block height={1} backgroundColor="common_border" />
+            <Block height={1} backgroundColor="border" />
             <Pressable onPress={() => setGender('FEMALE')}>
               <Block row alignCenter height={48} paddingHorizontal={16} space="between">
-                <Text color="common_text">{t('placeholder.female')}</Text>
+                <Text color="text">{t('placeholder.female')}</Text>
                 <Block
                   alignCenter
                   justifyCenter

@@ -7,7 +7,7 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const BACKGROUND_COLOR = {
   success: '#3DD598',
-  info: '#558EF9',
+  info: '#1E90FF',
   warning: '#FF974A',
   error: '#FF575F',
 };

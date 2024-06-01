@@ -53,7 +53,7 @@ const FeedbackSubmitForm: React.FC = () => {
               flex: 1,
               height: getSize.s(120),
               fontSize: getSize.m(16),
-              color: COLORS.light_text,
+              color: COLORS.sub_text,
               textAlignVertical: 'top',
               fontWeight: '600',
             }}
@@ -63,16 +63,16 @@ const FeedbackSubmitForm: React.FC = () => {
             <Block alignCenter justifyCenter round={20} borderWidth={2} marginRight={8} borderColor="primary">
               <Block round={10} backgroundColor="primary" />
             </Block>
-            <Text sm color="light_text">
+            <Text sm color="sub_text">
               {t('gadgets.FAQ/Feedback.feedback.logs')}
             </Text>
           </Block>
           <TouchableOpacity onPress={openPicker}>
-            <Block row alignCenter justifyCenter borderColor={COLORS.light_text} style={styles.btnAddScreenshot}>
+            <Block row alignCenter justifyCenter borderColor={COLORS.sub_text} style={styles.btnAddScreenshot}>
               <Block alignCenter justifyCenter round={32} marginRight={8} backgroundColor={COLORS.card_background_one}>
-                <Image source={ICONS.camera} square={18} tintColor={COLORS.light_text} resizeMode="contain" />
+                <Image source={ICONS.camera} square={18} tintColor={COLORS.sub_text} resizeMode="contain" />
               </Block>
-              <Text sm color="light_text">
+              <Text sm color="sub_text">
                 {t('gadgets.FAQ/Feedback.feedback.add_screenshots')}
               </Text>
             </Block>

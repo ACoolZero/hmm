@@ -16,17 +16,17 @@ const GadgetsHeader: React.FC = () => {
     <Block padding={24}>
       <Block row space="between">
         <Block flex row>
-          <Block round={72} borderWidth={1} borderColor="light_text" overflow="hidden">
+          <Block round={72} borderWidth={1} borderColor="sub_text" overflow="hidden">
             <Image source={{uri: avatar}} round={72} />
           </Block>
           <Block flex marginLeft={12} space="between">
             <Text md type="semibold">
               {fullName}
             </Text>
-            <Text sm color="light_text">
+            <Text sm color="sub_text">
               {phoneNumber ? phoneNumber : '-'}
             </Text>
-            <Text sm color="light_text">
+            <Text sm color="sub_text">
               {email}
             </Text>
           </Block>

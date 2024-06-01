@@ -9,7 +9,7 @@ const ForgotPasswordStep4: React.FC = () => {
   const {t} = useTranslation();
 
   return (
-    <Block flex justifyCenter padding={24} backgroundColor="common_background">
+    <Block flex justifyCenter padding={24} backgroundColor="background">
       <Header content={t('forgot_password.welcome')} />
       <Block height={40} />
       <GradientButton

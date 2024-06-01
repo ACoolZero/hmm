@@ -57,7 +57,7 @@ const RegisterStep2: React.FC = () => {
   }, [birthday, dispatch, setValue, trigger]);
 
   return (
-    <Block flex padding={24} paddingTop={top} backgroundColor="common_background">
+    <Block flex padding={24} paddingTop={top} backgroundColor="background">
       <FormContainer>
         <Header content={t('validate.step_two_header')} />
         <Block marginTop={24} height={200}>
@@ -69,7 +69,7 @@ const RegisterStep2: React.FC = () => {
               pointerEvents="none"
               placeholder={t('placeholder.dob')}
               rightIcon={_rightIcon}
-              color="common_text"
+              color="text"
               containerInputStyle={{marginBottom: getSize.m(16)}}
             />
           </Pressable>

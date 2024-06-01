@@ -52,7 +52,7 @@ const Recall: React.FC<RecallProps> = ({route}) => {
           <Text center size={24} marginBottom={5} numberOfLines={2} type="semibold">
             {content}
           </Text>
-          <Text sm center size={24} numberOfLines={1} color="light_text">
+          <Text sm center size={24} numberOfLines={1} color="sub_text">
             {dayjs(createdAt).format('DD/MM/YYYY')}
           </Text>
         </Block>

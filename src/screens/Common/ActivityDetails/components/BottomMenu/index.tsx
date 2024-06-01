@@ -17,7 +17,7 @@ const BottomMenu: React.FC<BottomMenuProps> = ({isOpenBottom, setIsOpenBottom}) 
   return (
     <BottomSheet
       useBottomSheet={[isOpenBottom, setIsOpenBottom]}
-      handleStyle={{...styles.handleStyle, backgroundColor: COLORS.light_text}}
+      handleStyle={{...styles.handleStyle, backgroundColor: COLORS.sub_text}}
       containerStyle={styles.containerStyle}
       contentStyle={styles.contentStyle}>
       <TouchableOpacity disabled onPress={() => {}}>

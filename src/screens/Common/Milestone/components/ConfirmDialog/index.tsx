@@ -30,7 +30,7 @@ const ConfirmDialog: React.FC<ConfirmDialogProps> = ({useDialog, mileStone}) => 
             <Image source={IMAGES.confirm_icon_left} round={57} />
             <GradientButton
               title="Uh, no"
-              backgroundColor={['#FAFAFA', '#FAFAFA']}
+              backgroundColor={['#F5F5F5', '#F5F5F5']}
               textColor="primary"
               style={{
                 width: BUTTON_WIDTH,

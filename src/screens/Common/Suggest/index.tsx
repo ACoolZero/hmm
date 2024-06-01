@@ -30,14 +30,14 @@ const Suggest: React.FC = () => {
             multiline
             inputStyle={{...styles.multilineInputStyle, backgroundColor: COLORS.background}}
             containerInputStyle={styles.containerInputStyle}
-            color={COLORS.light_text}
+            color={COLORS.sub_text}
             value={t('suggest.input_placeholder')}
             height={120}
             style={{
               flex: 1,
               height: getSize.s(120),
               fontSize: getSize.m(16),
-              color: COLORS.light_text,
+              color: COLORS.sub_text,
               textAlignVertical: 'top',
               fontWeight: '600',
             }}
@@ -45,7 +45,7 @@ const Suggest: React.FC = () => {
           <Pressable>
             <Block row alignCenter justifyCenter borderWidth={1} style={styles.btnAddPhoto}>
               <Block alignCenter justifyCenter round={32} marginRight={8} backgroundColor="card_background_one">
-                <Image source={ICONS.camera} square={20} tintColor={COLORS.common_background} resizeMode="contain" />
+                <Image source={ICONS.camera} square={20} tintColor={COLORS.background} resizeMode="contain" />
               </Block>
               <Text sm>{t('suggest.add_photos')}</Text>
             </Block>

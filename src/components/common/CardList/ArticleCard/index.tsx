@@ -42,7 +42,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({item, index}) => {
           <Text md type="semibold">
             {title}
           </Text>
-          <Text marginVertical={12} color="light_text">
+          <Text marginVertical={12} color="sub_text">
             {shortDesc}
           </Text>
           <Block row alignCenter space="between">

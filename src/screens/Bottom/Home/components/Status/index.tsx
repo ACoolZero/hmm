@@ -39,7 +39,7 @@ const StatusInputComponent: React.FC<any> = ({endEditing, setEndEditing}) => {
         height: getSize.s(100),
       }}
       height={100}
-      color={COLORS.light_text}
+      color={COLORS.sub_text}
       blurOnSubmit={true}
       returnKeyType="done"
       onSubmitEditing={onSubmitEditing}

@@ -56,7 +56,7 @@ const ActionModal: React.FC = () => {
         }}>
         <Block alignCenter marginBottom={30} style={style} opacity={actiontype === 'MOODNOW' ? 0.7 : 1}>
           <Image source={icon} square={iconSize} resizeMode="contain" />
-          <Text marginTop={8} color="#FAFAFA" type="medium">
+          <Text marginTop={8} color="#F5F5F5" type="medium">
             {title}
           </Text>
         </Block>

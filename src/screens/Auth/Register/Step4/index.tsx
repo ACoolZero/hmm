@@ -37,7 +37,7 @@ const RegisterStep4: React.FC = () => {
   };
 
   return (
-    <Block flex padding={24} paddingTop={top} backgroundColor="common_background">
+    <Block flex padding={24} paddingTop={top} backgroundColor="background">
       <FormContainer>
         <Header content={t('validate.step_four_header')} />
         <Block marginTop={24} height={200}>
@@ -47,7 +47,7 @@ const RegisterStep4: React.FC = () => {
             shadow
             isSecure
             placeholder={t('placeholder.password')}
-            color="common_text"
+            color="text"
             containerInputStyle={{marginBottom: getSize.m(16)}}
           />
           <FormInput
@@ -56,7 +56,7 @@ const RegisterStep4: React.FC = () => {
             shadow
             isSecure
             placeholder={t('placeholder.confirm_password')}
-            color="common_text"
+            color="text"
             containerInputStyle={{marginBottom: getSize.m(16)}}
           />
         </Block>

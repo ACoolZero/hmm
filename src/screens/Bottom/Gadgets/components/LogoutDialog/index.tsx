@@ -39,7 +39,7 @@ const LogoutDialog: React.FC<LogoutDialogProps> = ({useDialog}) => {
             <Image source={IMAGES.logout_icon_left} round={57} />
             <GradientButton
               title={t('gadgets.logout.cancel')}
-              backgroundColor={['#FAFAFA', '#FAFAFA']}
+              backgroundColor={['#F5F5F5', '#F5F5F5']}
               textColor="primary"
               style={{
                 width: BUTTON_WIDTH,

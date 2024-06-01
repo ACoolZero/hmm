@@ -35,7 +35,7 @@ const DeleteDialog: React.FC<DeleteDialogProps> = ({useDialog}) => {
             <Image source={IMAGES.delete_moment_icon_left} round={57} />
             <GradientButton
               title={t('recall.delete_moment.no')}
-              backgroundColor={['#FAFAFA', '#FAFAFA']}
+              backgroundColor={['#F5F5F5', '#F5F5F5']}
               textColor="primary"
               style={{
                 width: BUTTON_WIDTH,

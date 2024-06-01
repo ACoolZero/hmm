@@ -37,7 +37,7 @@ const Moods: React.FC = () => {
             <Image source={{uri: icon}} square={SELECTED_ICON_SIZE} />
           </Block>
         </Block>
-        <Text sm center marginVertical={8} numberOfLines={1} type="semibold" color="light_text">
+        <Text sm center marginVertical={8} numberOfLines={1} type="semibold" color="sub_text">
           {name}
         </Text>
       </TouchableOpacity>
@@ -69,7 +69,7 @@ const Moods: React.FC = () => {
             <Image source={{uri: icon}} square={ICON_SIZE} />
           </Block>
         </Block>
-        <Text sm center marginVertical={8} numberOfLines={1} type="semibold" color="light_text">
+        <Text sm center marginVertical={8} numberOfLines={1} type="semibold" color="sub_text">
           {name}
         </Text>
       </TouchableOpacity>

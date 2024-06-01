@@ -11,9 +11,9 @@ const Login: React.FC = () => {
   const {t} = useTranslation();
 
   return (
-    <Block flex padding={24} paddingTop={width * 0.2} backgroundColor="common_background">
+    <Block flex padding={24} paddingTop={width * 0.2} backgroundColor="background">
       <Header content={t('login.welcome')} />
-      <Text md marginTop={6} color="common_light_text">
+      <Text md marginTop={6} color="text">
         {t('login.prompt')}
       </Text>
       <FormContainer>

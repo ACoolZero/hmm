@@ -43,7 +43,7 @@ const FAQCard: React.FC<FAQCardProps> = ({item, index, tintColor, isLastItem}) =
         <Animated.Image
           source={ICONS.arrow_right}
           style={{height: getSize.s(14), width: getSize.s(14), transform: [{rotate}]}}
-          tintColor={COLORS.light_text}
+          tintColor={COLORS.sub_text}
         />
       </Block>
       {isSelected && (
@@ -51,7 +51,7 @@ const FAQCard: React.FC<FAQCardProps> = ({item, index, tintColor, isLastItem}) =
           <Text sm>{description}</Text>
         </Block>
       )}
-      {!isLastItem && <Block height={1} marginHorizontal={16} backgroundColor={COLORS.light_text} />}
+      {!isLastItem && <Block height={1} marginHorizontal={16} backgroundColor={COLORS.sub_text} />}
     </Pressable>
   );
 };

@@ -4,7 +4,7 @@ import {CHANGE_CHAT_COLOR} from '@store/actions';
 import React, {useState} from 'react';
 import {Pressable} from 'react-native';
 
-const colors: string[] = ['#558EF9', '#00C0A6', '#FFE9A9', '#FF99FF', '#C070FF'];
+const colors: string[] = ['#1E90FF', '#00C0A6', '#FFE9A9', '#FF99FF', '#C070FF'];
 
 const ChatColor: React.FC = () => {
   const {dispatch, useSelector} = useStore();
@@ -33,7 +33,7 @@ const ChatColor: React.FC = () => {
               justifyCenter
               round={20}
               borderWidth={2}
-              borderColor={isSelected ? COLORS.primary : COLORS.light_text}>
+              borderColor={isSelected ? COLORS.primary : COLORS.sub_text}>
               <Block round={10} backgroundColor={isSelected ? COLORS.primary : COLORS.background} />
             </Block>
           </Block>

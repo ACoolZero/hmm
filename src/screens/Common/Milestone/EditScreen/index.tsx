@@ -40,7 +40,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
   const isValid = Object.values(mileStone).every(value => value !== '');
   const [isIconInputVisible, setIconInputVisibility] = useState<boolean>(false);
 
-  const _renderIconCalendar = () => <Image source={ICONS.calender} square={24} tintColor={COLORS.light_text} />;
+  const _renderIconCalendar = () => <Image source={ICONS.calender} square={24} tintColor={COLORS.sub_text} />;
 
   const _toggleDatePicker = () => setDatePickerVisibility(!isDatePickerVisible);
   const _handleDateConfirm = (e: Date) => {
@@ -78,7 +78,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
               <TextInput
                 inputStyle={{backgroundColor: COLORS.background, borderWidth: 0}}
                 containerInputStyle={styles.containerInputStyle}
-                color={COLORS.light_text}
+                color={COLORS.sub_text}
                 defaultValue={mileStone.title}
                 onFocus={() => scrollViewRef.current?.scrollTo({y: 0, animated: true})}
                 onChangeText={title => setMileStone({...mileStone, title})}
@@ -106,7 +106,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
                   <Text size={36}>{mileStone?.icon}</Text>
                 </Block>
                 <TouchableOpacity hitSlop={handleHitSlop(5)} onPress={_toggleIconInput}>
-                  <Image source={ICONS.edit} square={24} tintColor={COLORS.light_text} />
+                  <Image source={ICONS.edit} square={24} tintColor={COLORS.sub_text} />
                 </TouchableOpacity>
               </Block>
               <Text marginBottom={16} type="semibold">
@@ -117,7 +117,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
                   pointerEvents="none"
                   inputStyle={{backgroundColor: COLORS.background, borderWidth: 0}}
                   containerInputStyle={styles.containerInputStyle}
-                  color={COLORS.light_text}
+                  color={COLORS.sub_text}
                   rightIcon={_renderIconCalendar}
                   defaultValue={dayjs(mileStone.milestoneTime).format('DD/MM/YYYY')}
                 />
@@ -128,7 +128,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
               <TextInput
                 inputStyle={{backgroundColor: COLORS.background, borderWidth: 0}}
                 containerInputStyle={{...styles.containerInputStyle}}
-                color={COLORS.light_text}
+                color={COLORS.sub_text}
                 defaultValue={mileStone.location}
                 onFocus={() =>
                   sleep(100).then(() => scrollViewRef.current?.scrollTo({y: getSize.m(300), animated: true}))
@@ -148,7 +148,7 @@ const EditScreen: React.FC<EditScreenProps> = ({route}) => {
                   fontSize: getSize.m(16),
                   fontWeight: '600',
                   textAlignVertical: 'top',
-                  color: COLORS.light_text,
+                  color: COLORS.sub_text,
                 }}
                 defaultValue={mileStone.story}
                 onFocus={() => sleep(100).then(() => scrollViewRef.current?.scrollToEnd({animated: true}))}
