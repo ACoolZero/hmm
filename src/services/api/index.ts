@@ -98,7 +98,7 @@ const getAxiosInstance = async () => {
   instance.interceptors.response.use(
     async response => {
       if (__DEV__ && AppConfig.DEBUG_LOGGING_ENABLED) {
-        console.log(`%c[RESPONSE] ${response.config.url}`, 'color: #FBBF24; font-weight: bold', response);
+        console.debug(`%c[RESPONSE] ${response.config.url}`, 'color: #FBBF24; font-weight: bold', response);
       }
 
       return response.data;
@@ -123,13 +123,13 @@ const getAxiosInstance = async () => {
           return axios(config);
         } catch (error) {
           // Handle token refresh error
-          console.error("Refresh the access token failed");
+          console.error("Refresh the access token failed: ", error);
           // throw error;
           // NOTE: Use in dev when needed
           store.dispatch({
             type: SHOW_ALERT,
             customProps: {
-              message: 'Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại tài khoản',
+              message: error,
             },
             cancelable: false,
             onSubmit: () => {
@@ -181,8 +181,8 @@ const getAxiosInstance = async () => {
         
       }
 
-      if (__DEV__ && AppConfig.DEBUG_LOGGING_ENABLED) {
-        console.log(`%c[RESPONSE ERROR] ${config.url}`, 'color: #EF4444; font-weight: bold', response_error.response);
+      if (__DEV__) {
+        console.log(`%c[RESPONSE ERROR] ${statusCode}, ${config.url}`, 'color: #EF4444; font-weight: bold', response_error.response);
       }
 
       return Promise.reject(response_error);

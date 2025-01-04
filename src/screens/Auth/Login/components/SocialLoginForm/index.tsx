@@ -17,7 +17,8 @@ const SocialLoginForm: React.FC = () => {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
       const {accessToken} = await GoogleSignin.getTokens();
-      dispatch({type: LOGIN_GOOGLE, payload: {accessToken, email: userInfo.user.email}});
+      if (userInfo && accessToken) 
+        dispatch({type: LOGIN_GOOGLE, payload: {accessToken, email: userInfo.user.email}});
     } catch (error) {
       console.error(error);
     }

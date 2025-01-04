@@ -5,6 +5,7 @@ import {
   LOGIN_GOOGLE,
   LOGOUT_ACCOUNT,
   REGISTER_ACCOUNT,
+  FORGOT_PASSWORD,
   STORE_REGISTER_DATA,
   UPDATE_USER_INFO,
   UPLOAD_FILE,
@@ -29,6 +30,7 @@ const auth = produce((state = INITIAL_STATE, action) => {
     case GET_CURRENT_USER:
     case LOGOUT_ACCOUNT:
     case UPDATE_USER_INFO:
+    case FORGOT_PASSWORD:
     case LOGIN_GOOGLE:
       state.isLoading = true;
       return state;
@@ -43,7 +45,6 @@ const auth = produce((state = INITIAL_STATE, action) => {
       state.isAuth = true;
       state.userInfo = action.payload.userInfo;
       return state;
-
     case _onSuccess(LOGIN_GOOGLE):
       state.isLoading = false;
       return state;
@@ -52,6 +53,7 @@ const auth = produce((state = INITIAL_STATE, action) => {
       return INITIAL_STATE;
 
     case _onComplete(REGISTER_ACCOUNT):
+    case _onComplete(FORGOT_PASSWORD):
     case _onComplete(LOGIN_ACCOUNT):
     case _onComplete(GET_CURRENT_USER):
     case _onComplete(LOGOUT_ACCOUNT):

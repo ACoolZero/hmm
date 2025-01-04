@@ -1,9 +1,10 @@
 {
   "common": {
-    "app_name": "Hmm",
+    "app_name": "Moments",
+    "support": "Nếu lỗi khó hiểu xảy ra liên tục, hãy liên hệ đội ngũ hỗ trợ của chúng tôi tại [mm@reliable.io.vn]. Trân trọng cảm ơn sự đóng góp của bạn.",
     "notification": "Thông báo",
-    "cancel": "Cancel",
-    "submit": "Submit",
+    "cancel": "Huỷ",
+    "submit": "Đồng ý",
     "network_failure": "Please check your network connection and relaunch the application",
     "logout_request": "Would you like to sign out?",
     "login": "Sign in",

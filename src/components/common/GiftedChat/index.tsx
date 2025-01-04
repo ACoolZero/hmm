@@ -2,10 +2,10 @@ import {ICONS} from '@assets';
 import {Block, Image, LazyImage, Text} from '@components';
 import {showMessage} from '@components/common/ToastMessage';
 import {useColors, useMediaPicker, useStore, useTranslation} from '@hooks';
-import {LOCALE, isIos} from '@utils/helper';
+import {LOCALE} from '@utils/helper';
 import {getSize, width} from '@utils/responsive';
-import React from 'react';
-import {LayoutAnimation, Pressable, TouchableOpacity} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {Keyboard, LayoutAnimation, Pressable, TouchableOpacity} from 'react-native';
 import {
   Avatar,
   AvatarProps,
@@ -39,10 +39,15 @@ const GiftedChat: React.FC<any> = ({userId, chatColor, messages, ...rest}) => {
   if (__DEV__ && AppConfig.DEBUG_LOGGING_ENABLED) {
     console.debug("messages in GiftedChat", messages);
   }
+  
   /**
    * Custom message bubble
    */
   const _renderBubble = (props: BubbleProps<any>) => {
+    if (__DEV__ && AppConfig.DEBUG_LOGGING_ENABLED) {
+      console.debug("_renderBubble");
+    }
+    
     return (
       <Bubble
         {...props}
@@ -70,7 +75,7 @@ const GiftedChat: React.FC<any> = ({userId, chatColor, messages, ...rest}) => {
       console.debug("_renderMessage (current): ", props.currentMessage);
     }
     return <Message {...props} />;
-  }
+  };
 
   /**
    * Custom message text
@@ -109,6 +114,27 @@ const GiftedChat: React.FC<any> = ({userId, chatColor, messages, ...rest}) => {
    */
   const _renderTime = () => <Block />;
 
+
+  const [toolbarPadding, setToolbarPadding] = useState(60); // Default padding
+
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', _keyboardDidShow);
+    const keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', _keyboardDidHide);
+
+    return () => {
+      keyboardDidShowListener.remove();
+      keyboardDidHideListener.remove();
+    };
+  }, []);
+  
+  const _keyboardDidShow = () => {
+    setToolbarPadding(15); // Reduce padding when keyboard is shown
+  };
+
+  const _keyboardDidHide = () => {
+    setToolbarPadding(60); // Reset padding when keyboard is hidden
+  };
+  
   /**
    * Custom message composer container
    */
@@ -117,11 +143,13 @@ const GiftedChat: React.FC<any> = ({userId, chatColor, messages, ...rest}) => {
       {...props}
       containerStyle={{
         backgroundColor: COLORS.secondary_background,
-        paddingBottom: getSize.m(30),
+        // paddingBottom: getSize.m(30),
+        paddingBottom: toolbarPadding,
       }}
       primaryStyle={{...styles.inputToolbarStyle, backgroundColor: COLORS.secondary_background}}
     />
   );
+
 
   /**
    * Custom text input message composer
@@ -231,14 +259,14 @@ const GiftedChat: React.FC<any> = ({userId, chatColor, messages, ...rest}) => {
       onPressActionButton={_onPressActionButton}
       renderSend={_renderSend}
       scrollToBottomComponent={_scrollToBottomComponent}
-      listViewProps={{marginBottom: isIos ? getSize.m(50) : getSize.m(70)}}
+      listViewProps={{marginBottom: getSize.m(10)}} //{{marginBottom: isIos ? getSize.m(50) : getSize.m(70)}}
       renderLoadEarlier={_renderLoadEarlier}
       renderAvatar={_renderAvatar}
       lightboxProps={{underlayColor: COLORS.blue_100}}
       keyboardShouldPersistTaps="handled"
-      bottomOffset={getSize.m(24)}
+      // bottomOffset={getSize.m(24)}
       onLongPress={() => {}}
-      shouldUpdateMessage={() => true}
+      shouldUpdateMessage={() => false}
     />
   );
 };

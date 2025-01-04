@@ -14,7 +14,7 @@ const EditProfile: React.FC = () => {
   const {COLORS} = useColors();
   const {userInfo} = useSelector('auth');
   const {isLoading} = useSelector('uploadFile');
-  const {picture, openPicker, openCamera} = useMediaPicker({cropping: true});
+  const {media, openPicker, openCamera} = useMediaPicker({cropping: true});
   const [isOpenMediaPicker, setOpenMediaPicker] = useState<boolean>(false);
   const [gender, setGender] = useState<GenderType>(userInfo.gender);
   const [info, setInfo] = useState<UpdateUserPayload>({
@@ -28,12 +28,12 @@ const EditProfile: React.FC = () => {
   const {t} = useTranslation();
 
   useEffect(() => {
-    if (picture) {
+    if (media) {
       const form = new FormData();
       form.append('file', {
-        uri: (picture as any).path,
-        name: (picture as any).path.split('/').pop(),
-        type: (picture as any).mime,
+        uri: (media as any).path,
+        name: (media as any).path.split('/').pop(),
+        type: (media as any).mime,
       });
       dispatch({
         type: UPLOAD_FILE,
@@ -43,7 +43,7 @@ const EditProfile: React.FC = () => {
         },
       });
     }
-  }, [dispatch, picture]);
+  }, [dispatch, media]);
 
   const _handleSubmit = () => {
     dispatch({type: UPDATE_USER_INFO, payload: info});

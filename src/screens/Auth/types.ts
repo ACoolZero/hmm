@@ -19,6 +19,11 @@ export interface LoginPayload {
   password: string;
 }
 
+export interface ForgotPasswordPayload {
+  email: string;
+  type: 'FORGOT_PASSWORD';
+}
+
 export type GenderType = 'MALE' | 'FEMALE';
 
 export interface UpdateUserPayload {

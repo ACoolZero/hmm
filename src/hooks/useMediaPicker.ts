@@ -1,30 +1,30 @@
 import {isIos} from '@utils/helper';
 import {useCallback, useState} from 'react';
-import ImagePicker, {Image} from 'react-native-image-crop-picker';
+import ImagePicker, {Image, Video} from 'react-native-image-crop-picker';
 
 const COMPRESS_IMAGE_QUALITY = isIos ? 0.8 : 1;
 
 const useMediaPicker = ({cropping}: {cropping: boolean}) => {
-  const [picture, setPicture] = useState<Image | Image[] | null>(null);
+  const [media, setMedia] = useState<Image | Image[] | Video | Video[]| null>(null);
 
   const openPicker: () => void = useCallback(() => {
     ImagePicker.openPicker({
-      mediaType: 'photo',
+      // mediaType: 'photo',
       cropping,
       includeBase64: true,
       compressImageQuality: COMPRESS_IMAGE_QUALITY,
-    }).then((image: Image) => {
-      setPicture(image);
+    }).then((selection: Image | Video) => {
+      setMedia(selection);
     });
   }, [cropping]);
 
   const openMultiPicker: () => void = useCallback(() => {
     ImagePicker.openPicker({
-      mediaType: 'photo',
+      // mediaType: 'photo',
       multiple: true,
       compressImageQuality: COMPRESS_IMAGE_QUALITY,
-    }).then((images: Image[]) => {
-      setPicture(images);
+    }).then((selection: Image[] | Video[]) => {
+      setMedia(selection);
     });
   }, []);
 
@@ -33,18 +33,18 @@ const useMediaPicker = ({cropping}: {cropping: boolean}) => {
       cropping,
       includeBase64: true,
       compressImageQuality: COMPRESS_IMAGE_QUALITY,
-    }).then((image: Image) => {
-      setPicture(image);
+    }).then((selection: Image | Video) => {
+      setMedia(selection);
     });
   }, [cropping]);
 
   const cleanMediaPicker = useCallback(() => {
     ImagePicker.clean().then(() => {
-      setPicture(null);
+      setMedia(null);
     });
   }, []);
 
-  return {picture, openPicker, openMultiPicker, openCamera, cleanMediaPicker};
+  return {media, openPicker, openMultiPicker, openCamera, cleanMediaPicker};
 };
 
 export default useMediaPicker;

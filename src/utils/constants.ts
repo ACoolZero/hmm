@@ -1,5 +1,5 @@
 import Config from 'react-native-config';
-Config.NODE_ENV = 'development'; // Manually set NODE_ENV in case you can't use .env
+Config.NODE_ENV = 'production'; // Manually set NODE_ENV in case you can't use .env OR for quick app reload. Shall be commented before build
 console.log('Config:', Config);
 
 export const ENVIRONMENT = {
@@ -10,19 +10,28 @@ export const ENVIRONMENT = {
 
 export const BASE_URL = {
   development: 'http://172.21.41.251:3000',
-  test: 'http://172.21.41.251:3000', // 'https://hmm-beta.reliable.vn:3000',
-  production: 'http://172.21.41.251:3000', // https://hmm.reliable.vn:3000',
+  test: 'http://172.21.41.251:3000',
+  production: 'https://mm.reliable.io.vn/api/v1' 
 } as const;
 
+export const WS_BASE_URL = {
+  development: 'http://172.21.41.251:3000',
+  test: 'http://172.21.41.251:3000',
+  production: 'https://mm.reliable.io.vn' // Note: There is a path configured in service Socket for suffix
+} as const;
+
+export const WS_BASE_PATH = {
+  development: '/socket.io/',
+  test: '/socket.io/',
+  production: '/api/v1/socket.io/' // Note: There is a path configured in service Socket for suffix
+} as const;
+
+// 'https://mm.reliable.io.vn/api/v1','http://217.76.54.196:3000',
 export const DEBUG_LOGGING_ENABLED = {
   development: true,
-  test: true,
-  production: false,
+  test: false,
+  production: true,//false,
 } as const;
-
-export const TOKEN_EXPIRED = 401;
-export const INTERNAL_SERVER_ERROR = 500;
-export const NOT_FOUND = 404;
 
 /**
  * @todo use for storage
@@ -39,7 +48,10 @@ export const ITEM_LIMIT_PER_PAGE = 10;
 
 export const PHONE_REGEX = /^[+ 0-9]*$/g;
 
-export const AVATAR_DEFAULT = 'https://scr.vn/wp-content/uploads/2020/07/Avatar-Facebook-tr%E1%BA%AFng.jpg';
+// Add client IDs from .env
+export const GOOGLE_WEB_CLIENT_ID = Config.GOOGLE_WEB_CLIENT_ID;
+export const GOOGLE_ANDROID_CLIENT_ID = Config.GOOGLE_ANDROID_CLIENT_ID;
+export const GOOGLE_IOS_CLIENT_ID = Config.GOOGLE_IOS_CLIENT_ID;
 
 
 export const getEnvironment = (): keyof typeof ENVIRONMENT => {
@@ -54,9 +66,25 @@ export const getEnvironment = (): keyof typeof ENVIRONMENT => {
   }
 };
 
+/**
+ * @todo use for General App Config that changable
+ */
+export const AVATAR_DEFAULT = `${BASE_URL[getEnvironment()]}/file/image/common/default-profile-image.png`;
+
 export const AppConfig = {
   ENVIRONMENT: getEnvironment(),
   BASE_URL: BASE_URL[getEnvironment()],
+  WS_BASE_URL: WS_BASE_URL[getEnvironment()],
+  WS_BASE_PATH: WS_BASE_PATH[getEnvironment()],
   DEBUG_LOGGING_ENABLED: DEBUG_LOGGING_ENABLED[getEnvironment()],
   AVATAR_DEFAULT,
 };
+
+
+
+/**
+ * @todo use for HTTP status code
+ */
+export const TOKEN_EXPIRED = 401;
+export const INTERNAL_SERVER_ERROR = 500;
+export const NOT_FOUND = 404;

@@ -1,6 +1,7 @@
 {
   "common": {
-    "app_name": "Hmm",
+    "app_name": "Moments",
+    "support": "If the confused error happened many times, please contact our support team at [mm@reliable.io.vn]. Thank you for the contribution.",
     "notification": "Notification",
     "cancel": "Cancel",
     "submit": "Submit",

@@ -7,7 +7,7 @@ import {Linking, Pressable} from 'react-native';
 import data, {IFeedback} from './data';
 import styles from './styles';
 
-const url = 'https://reliable.vn/about-us';
+const url = 'https://reliable.io.vn/about-us';
 
 const Feedback: React.FC = () => {
   const {COLORS} = useColors();

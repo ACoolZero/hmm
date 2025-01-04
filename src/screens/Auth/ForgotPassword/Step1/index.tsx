@@ -1,18 +1,38 @@
 import {ICONS} from '@assets';
-import {Block, GradientButton, Image, TextInput} from '@components';
-import {useTranslation} from '@hooks';
+import {Block, FormInput, GradientButton, Image, TextInput} from '@components';
+import { yupResolver } from '@hookform/resolvers/yup';
+import {useStore, useTranslation} from '@hooks';
 import {goBack, navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
+import { validation } from '@screens/Auth/ForgotPassword/Step1/validation';
 import Header from '@screens/Auth/components/Header';
+import { FORGOT_PASSWORD } from '@store/actions';
 import {getSize} from '@utils/responsive';
-import React from 'react';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import {Pressable} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
+const INITIAL_VALUES = {email: '', type: 'FORGOT_PASSWORD'};
+
 const ForgotPasswordStep1: React.FC = () => {
+  const {dispatch} = useStore();
   const {top} = useSafeAreaInsets();
   const {t} = useTranslation();
+  const {
+    control,
+    handleSubmit,
+    formState: {isValid},
+  } = useForm({
+    resolver: yupResolver(validation),
+    mode: 'onChange',
+    defaultValues: INITIAL_VALUES,
+  });
 
+  const _onSubmit = (e: any) => {
+    dispatch({type: FORGOT_PASSWORD, payload: e});
+  };
+  
   return (
     <Block flex padding={24} backgroundColor="background">
       <Block paddingTop={top} marginBottom={60}>
@@ -23,18 +43,49 @@ const ForgotPasswordStep1: React.FC = () => {
         </Pressable>
         <Header content={t('forgot_password.step_one_header')} />
       </Block>
-      <Block>
-        <TextInput
+      <Block marginTop={24} height={100}>
+        <FormInput
+          control={control}
+          name="email"
           shadow
           placeholder={t('placeholder.email')}
           color="text"
+          containerInputStyle={{marginBottom: getSize.m(16)}}
+        />
+      </Block>
+      {/* <Block>
+        <TextInput
+          shadow
+          defaultValue={info?.email}
+          placeholder={t('placeholder.email')}
+          color="text"
           containerInputStyle={{marginBottom: getSize.m(40)}}
+          onChangeText={email => setInfo(oldValue => ({...oldValue, email}))}
         />
         <GradientButton
           title={t('button.continue')}
-          onPress={() => {
-            navigate(routes.FORGOT_PASSWORD_STEP2_SCREEN);
-          }}
+          onPress={handleSubmit(_onSubmit)}
+        />
+      </Block> */}
+      <Block row alignCenter>
+        <Pressable onPress={goBack}>
+          <Block
+            alignCenter
+            justifyCenter
+            square={50}
+            radius={8}
+            marginRight={8}
+            borderWidth={1}
+            borderColor="primary"
+            backgroundColor="white">
+            <Image source={ICONS.back} square={20} tintColor="primary" resizeMode="contain" />
+          </Block>
+        </Pressable>
+        <GradientButton
+          isValid={isValid}
+          title={t('button.continue')}
+          style={{flex: 1}}
+          onPress={handleSubmit(_onSubmit)}
         />
       </Block>
     </Block>

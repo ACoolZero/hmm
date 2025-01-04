@@ -1,4 +1,7 @@
+<!-- What is this use for? -->
 <resources>
     <string name="app_name">Moments</string>
-    <string name="server_client_id">1075938704086-nlge9ebfo356cvgbvss4issvnk9039vj.apps.googleusercontent.com</string>
+    <!-- <string name="server_client_id">1061059999890-n76rg3pccv3fg0mdavoejv6qlh27rt3u.apps.googleusercontent.com</string> -->
+    <!-- <string name="server_client_id">2290571597-eqbii1skh5crt336i03ptop0f39utbkg.apps.googleusercontent.com</string> -->
+    <string name="server_client_id">2290571597-tfk0rsb37nfd6gchoskigabruat2e25k.apps.googleusercontent.com</string>
 </resources>

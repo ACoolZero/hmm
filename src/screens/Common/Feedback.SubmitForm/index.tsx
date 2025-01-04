@@ -13,17 +13,17 @@ const FeedbackSubmitForm: React.FC = () => {
   const {isLoading: isUploading} = useSelector('uploadFile');
   const {isLoading: isSending} = useSelector('feedback');
   const {COLORS} = useColors();
-  const {picture, openPicker} = useMediaPicker({cropping: false});
+  const {media, openPicker} = useMediaPicker({cropping: false});
   const [feedback, setFeedback] = useState({content: '', attachment: ''});
   const {t} = useTranslation();
 
   useEffect(() => {
-    if (picture) {
+    if (media) {
       const form = new FormData();
       form.append('file', {
-        uri: (picture as any).path,
-        name: (picture as any).path.split('/').pop(),
-        type: (picture as any).mime,
+        uri: (media as any).path,
+        name: (media as any).path.split('/').pop(),
+        type: (media as any).mime,
       });
       dispatch({
         type: UPLOAD_FILE,
@@ -33,7 +33,7 @@ const FeedbackSubmitForm: React.FC = () => {
         },
       });
     }
-  }, [dispatch, picture]);
+  }, [dispatch, media]);
 
   const _onSubmit = () => dispatch({type: SEND_FEEDBACK, payload: feedback});
 
@@ -78,7 +78,7 @@ const FeedbackSubmitForm: React.FC = () => {
             </Block>
           </TouchableOpacity>
           <Block padding={24} overflow="hidden">
-            {(picture as any)?.path && <LazyImage source={(picture as any).path} square={width * 0.3} />}
+            {(media as any)?.path && <LazyImage source={(media as any).path} square={width * 0.3} />}
           </Block>
         </Block>
       </FormContainer>

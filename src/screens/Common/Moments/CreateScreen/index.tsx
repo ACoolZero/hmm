@@ -24,7 +24,7 @@ const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
   const {milestoneId} = route.params || {};
   const {COLORS} = useColors();
   const [accessMode, setAccessMode] = useState<AccessModeType>('PUBLIC');
-  const {picture, openPicker} = useMediaPicker({cropping: false});
+  const {media, openPicker} = useMediaPicker({cropping: false});
   const [moment, setMoment] = useState({
     media: '',
     content: '',
@@ -34,12 +34,12 @@ const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
   const {t} = useTranslation();
 
   useEffect(() => {
-    if (picture) {
+    if (media) {
       const form = new FormData();
       form.append('file', {
-        uri: (picture as any).path,
-        name: (picture as any).path.split('/').pop(),
-        type: (picture as any).mime,
+        uri: (media as any).path,
+        name: (media as any).path.split('/').pop(),
+        type: (media as any).mime,
       });
       dispatch({
         type: UPLOAD_FILE,
@@ -49,7 +49,7 @@ const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
         },
       });
     }
-  }, [dispatch, picture]);
+  }, [dispatch, media]);
 
   const _createMoment = () => {
     if (milestoneId) {
@@ -71,9 +71,9 @@ const CreateMoment: React.FC<CreateMomentProps> = ({route}) => {
             </Block>
           </TouchableOpacity>
           <Block flex shadow justifyCenter padding={16}>
-            {(picture as any)?.path ? (
+            {(media as any)?.path ? (
               <LazyImage
-                source={(picture as any).path}
+                source={(media as any).path}
                 width={IMAGE_WIDTH}
                 height={IMAGE_HEIGHT}
                 style={{borderRadius: getSize.s(24)}}

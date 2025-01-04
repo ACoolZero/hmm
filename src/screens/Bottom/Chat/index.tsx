@@ -45,6 +45,7 @@ const Chat = () => {
   // ]);
     // 2024-05-22T05:34:54.521Z Date - string error
     
+    // Note: This is sample message to know that there's an issue working with Socket.io server. The server has another initMessages.
     setInitMessages([       // In reversed
       {
         _id: '2',
@@ -53,7 +54,7 @@ const Chat = () => {
         user: {
           _id: userInfo.id,
           name: 'Me',
-          avatar: 'https://i.imgur.com/3Gv7J0U.png',
+          avatar: `${AppConfig.BASE_URL}/file/image/common/default-profile-image.png`,
         },
       },
       {
@@ -63,7 +64,7 @@ const Chat = () => {
         user: {
           _id: '1',
           name: 'BOT',
-          avatar: 'https://i.imgur.com/3Gv7J0U.png',
+          avatar: `${AppConfig.BASE_URL}/file/image/common/bot.png`,
         },
       },
       {
@@ -74,7 +75,7 @@ const Chat = () => {
         user: {
           _id: '0',
           name: 'Welcome',
-          avatar: 'https://i.imgur.com/3Gv7J0U.png',
+          avatar: `${AppConfig.BASE_URL}/file/image/common/bot.png`,
         }
       },
     ])
@@ -100,7 +101,7 @@ const Chat = () => {
 
   if ( messages && messages.length > 0 ) {
     return (
-      <Block flex paddingBottom={30} backgroundColor="background">
+      <Block flex backgroundColor="background">
         <Header />
         <GiftedChat
           loadEarlier={messages?.length < total}
@@ -116,7 +117,7 @@ const Chat = () => {
   } else {
     console.log("[Bottom/Chat] Error rendering return messages or no chat message, returned sample chat");
     return (
-      <Block flex paddingBottom={30} backgroundColor="background">
+      <Block flex backgroundColor="background">
         <Header />
         <GiftedChat
           loadEarlier={initMessages?.length < total}

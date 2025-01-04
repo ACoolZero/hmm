@@ -9,9 +9,16 @@ import {Socket} from 'socket.io-client';
 import {IMessage} from './types';
 
 function* connectSocket() {
+  if (__DEV__ && AppConfig.DEBUG_LOGGING_ENABLED) {
+    console.debug('Connecting socket...');
+  }
   const {accessToken} = yield select(state => state.auth);
+  if (!accessToken) {
+    console.error("Socket could not be initialized because the accessToken is null.");
+    return;
+  }
   const socketInstance: Socket = yield call(() => createSocket(accessToken));
-
+  
   if (socketInstance) {
     yield put({type: actions.SOCKET_INSTANCE, payload: {instance: socketInstance}});
 

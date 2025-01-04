@@ -1,4 +1,4 @@
-import {GET_MESSAGES, NEW_MESSAGES_COMING, TYPING_LISTENING, _onComplete, _onFail, _onSuccess, _onUnmount} from '@store/actions';
+import {GET_MESSAGES, NEW_MESSAGES_COMING, TYPING_LISTENING, _onComplete, _onFailure, _onSuccess, _onUnmount} from '@store/actions';
 import {produce} from 'immer';
 import {unionBy} from 'lodash';
 
@@ -22,7 +22,7 @@ const messages = produce((state = INITIAL_STATE, action) => {
       return state;
 
     case TYPING_LISTENING:
-      console.log('TYPING_LISTENING event deducer');
+      console.log('TYPING_LISTENING event deducer: ', action.payload.data);
       state.isTyping = action.payload.data;
       return state;
 
@@ -42,7 +42,7 @@ const messages = produce((state = INITIAL_STATE, action) => {
       console.log('_onUnmount event deducer');
       return INITIAL_STATE;
 
-    case _onFail(GET_MESSAGES):
+    case _onFailure(GET_MESSAGES):
       console.error('Failed to get messages:', action.payload.error);
       return state; // Handle failure state if needed
 

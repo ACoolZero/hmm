@@ -1,5 +1,6 @@
 import {IMAGES} from '@assets';
 import {Block, Image, Text} from '@components';
+import i18n from '@i18n';
 import {getSize} from '@utils/responsive';
 import React, {useEffect, useState} from 'react';
 import {DeviceEventEmitter, StyleSheet} from 'react-native';
@@ -23,6 +24,7 @@ export type MessageOptions = {
   type?: MessageType;
   message: string;
   duration?: number;
+  support?: string;
 };
 
 interface ToastMessageProps {
@@ -36,6 +38,7 @@ const ToastMessage: React.FC<ToastMessageProps> = ({position}) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [messageType, setMessageType] = useState<MessageType>('success');
   const [msg, setMsg] = useState<string>('');
+  const [support, setSupport] = useState<string>('');
 
   const positionStyle = {
     bottom: {bottom: bottom ? bottom : getSize.m(20)},
@@ -52,10 +55,11 @@ const ToastMessage: React.FC<ToastMessageProps> = ({position}) => {
     setIsVisible(false);
   });
 
-  const _showToastMessage = ({type = 'success', message, duration = 2000}: MessageOptions) => {
+  const _showToastMessage = ({type = 'success', message, duration = 5000}: MessageOptions) => {
     setIsVisible(true);
     setMessageType(type);
     setMsg(message);
+    setSupport(i18n.t('common.support'));
     timer = setTimeout(() => {
       setIsVisible(false);
     }, duration);
@@ -72,9 +76,16 @@ const ToastMessage: React.FC<ToastMessageProps> = ({position}) => {
   return (
     <Block backgroundColor={BACKGROUND_COLOR[messageType]} style={{...styles.container, ...positionStyle[position]}}>
       <Image source={ICON_TYPE[messageType]} square={24} resizeMode="contain" />
-      <Text flex sm marginLeft={12} numberOfLines={1} color="white">
-        {msg}
-      </Text>
+      <Block style={styles.textContainer}>
+        <Text flex sm marginLeft={12} numberOfLines={1} color="white">
+          {msg}
+        </Text>
+        {messageType === 'error' && (
+          <Text flex sm marginLeft={12} color="white">
+            {support}
+          </Text>
+        )}
+      </Block>
     </Block>
   );
 };
@@ -89,12 +100,17 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: getSize.s(48),
+    // height: getSize.s(48),
     borderRadius: getSize.s(12),
-    marginHorizontal: getSize.m(16),
-    paddingHorizontal: getSize.m(16),
+    // marginHorizontal: getSize.m(16),
+    // paddingHorizontal: getSize.m(16),
+    margin: getSize.m(16),
+    padding: getSize.m(16),
     position: 'absolute',
     right: 0,
     left: 0,
+  },
+  textContainer: {
+    flex: 1,
   },
 });

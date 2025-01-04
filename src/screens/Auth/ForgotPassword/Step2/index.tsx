@@ -33,7 +33,7 @@ const ForgotPasswordStep2: React.FC = () => {
       </Block>
       <Pressable
         onPress={() => {
-          navigate(routes.FORGOT_PASSWORD_STEP3_SCREEN);
+          navigate(routes.FORGOT_PASSWORD_STEP1_SCREEN);
         }}>
         <Text color="sub_text">
           {t('forgot_password.otp_didnt_receive')}{' '}

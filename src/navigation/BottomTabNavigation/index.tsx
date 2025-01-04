@@ -7,6 +7,7 @@ import TabBar from './TabBar';
 import {RootStackParamList} from '@navigation/types';
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { getSize } from '@utils/responsive';
 
 // const Tab = createBottomTabNavigator();
 const Tab = createMaterialTopTabNavigator();

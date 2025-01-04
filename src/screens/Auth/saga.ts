@@ -1,5 +1,5 @@
 import {showMessage} from '@components/common/ToastMessage';
-import {goBack, reset} from '@navigation/NavigationServices';
+import {goBack, navigate, reset} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import {api} from '@services';
@@ -14,7 +14,7 @@ import dayjs from 'dayjs';
 import FastImage from 'react-native-fast-image';
 import {persistStore} from 'redux-persist';
 import {call, delay, put, select, takeLatest} from 'redux-saga/effects';
-import {IUser, LoginPayload, RegisterPayload, UpdateUserPayload} from './types';
+import {ForgotPasswordPayload, IUser, LoginPayload, RegisterPayload, UpdateUserPayload} from './types';
 import { sleep } from '@utils/date';
 
 function* register(action: ActionPayload<RegisterPayload>) {
@@ -28,6 +28,14 @@ function* register(action: ActionPayload<RegisterPayload>) {
   yield put({type: actions._onSuccess(actions.LOGIN_ACCOUNT), payload: {accessToken, refreshToken}});
   yield put({type: actions.GET_CURRENT_USER});
   reset(routes.REGISTER_STEP5_SCREEN);
+}
+
+function* forgotPassword(action: ActionPayload<ForgotPasswordPayload>) {
+  const data = action.payload;
+  const response: AxiosResponse = yield call(api, '/auth/send-otp', {method: 'post', data});
+  const {isSuccess} = response.data;
+  yield put({type: actions._onSuccess(actions.FORGOT_PASSWORD), payload: {isSuccess}});
+  navigate(routes.FORGOT_PASSWORD_STEP2_SCREEN);
 }
 
 function* login(action: ActionPayload<LoginPayload>) {
@@ -144,12 +152,14 @@ function* uploadFile(action: ActionPayload<any>) {
     method: 'post',
     data,
     headers: {'Content-Type': 'multipart/form-data'},
+    timeout: 300000, // Set timeout to 5 minutes for short video background uploading
   });
   yield call(action.callback, response.data);
 }
 
 export default [
   takeLatest(actions.REGISTER_ACCOUNT, guard(register)),
+  takeLatest(actions.FORGOT_PASSWORD, guard(forgotPassword)),
   takeLatest(actions.LOGIN_ACCOUNT, guard(login)),
   takeLatest(actions.LOGIN_GOOGLE, guard(loginGoogle)),
   takeLatest(actions.GET_CURRENT_USER, guard(getCurrentUser)),
