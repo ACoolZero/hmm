@@ -1,5 +1,5 @@
 import Config from 'react-native-config';
-Config.NODE_ENV = 'production'; // Manually set NODE_ENV in case you can't use .env OR for quick app reload. Shall be commented before build
+// Config.NODE_ENV = 'development'; // Manually set NODE_ENV in case you can't use .env
 console.log('Config:', Config);
 
 export const ENVIRONMENT = {
@@ -10,8 +10,8 @@ export const ENVIRONMENT = {
 
 export const BASE_URL = {
   development: 'http://172.21.41.251:3000',
-  test: 'http://172.21.41.251:3000',
-  production: 'https://mm.reliable.io.vn/api/v1' 
+  test: 'http://172.21.41.251:3000', // 'https://hmm-beta.reliable.vn:3000',
+  production: 'https://mm.reliable.io.vn/api/v1',
 } as const;
 
 export const WS_BASE_URL = {

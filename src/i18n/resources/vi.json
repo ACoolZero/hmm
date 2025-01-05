@@ -1,203 +1,217 @@
 {
   "common": {
     "app_name": "Moments",
-    "support": "Nếu lỗi khó hiểu xảy ra liên tục, hãy liên hệ đội ngũ hỗ trợ của chúng tôi tại [mm@reliable.io.vn]. Trân trọng cảm ơn sự đóng góp của bạn.",
+    "support": "Nếu lỗi khó hiểu xuất hiện nhiều lần, hãy giúp chúng tôi bằng cách liên hệ tới đội ngũ hỗ trợ tại [mm@reliable.io.vn]. Chân thành cảm ơn sự đóng góp của bạn.",
     "notification": "Thông báo",
-    "cancel": "Huỷ",
-    "submit": "Đồng ý",
-    "network_failure": "Please check your network connection and relaunch the application",
-    "logout_request": "Would you like to sign out?",
-    "login": "Sign in",
-    "logout": "Sign out",
-    "empty_list": "There is no data to display at the moment",
-    "or": "Or"
+    "cancel": "Hủy",
+    "submit": "Gửi",
+    "try_again": "Thử lại",
+    "network_failure": "Vui lòng kiểm tra kết nối mạng và khởi động lại ứng dụng",
+    "logout_request": "Bạn có muốn đăng xuất không?",
+    "login": "Đăng nhập",
+    "logout": "Đăng xuất",
+    "empty_list": "Hiện tại không có dữ liệu để hiển thị",
+    "or": "Hoặc"
   },
   "placeholder": {
-    "email": "Your email",
-    "password": "Password",
-    "name": "Your name",
-    "dob": "Date of birth",
-    "confirm_password": "Confirm password",
-    "phone_number": "Phone number",
-    "male": "Male",
-    "female": "Female"
+    "email": "Email của bạn",
+    "password": "Mật khẩu",
+    "name": "Tên của bạn",
+    "dob": "Ngày sinh",
+    "confirm_password": "Xác nhận mật khẩu",
+    "phone_number": "Số điện thoại",
+    "male": "Nam",
+    "female": "Nữ"
   },
   "button": {
-    "edit": "Edit",
-    "save": "Save",
-    "continue": "Continue",
+    "edit": "Chỉnh sửa",
+    "save": "Lưu",
+    "continue": "Tiếp tục",
     "confirm": "Đồng ý",
     "close": "Đóng",
-    "share": "Share"
+    "share": "Chia sẻ"
   },
   "login": {
-    "welcome": "Welcome!",
-    "prompt": "Sign in to continue",
-    "register": "Register",
-    "forgot_password": "Forgot password?"
+    "header": "Chào mừng!",
+    "sub_header": "Đăng nhập để tiếp tục",
+    "register": "Đăng ký",
+    "forgot_password": "Quên mật khẩu?",
+    "login_issue": "Đăng nhập không được?",
+    "verify_header": "Xác minh bạn",
+    "verify_sub_header": "Hãy chọn 3 mục là các hoạt động gần đây nhất của bạn",
+    "verify_hint_1": "Vuốt sang trái nếu KHÔNG phải bạn,",
+    "verify_hint_2": "Nhấn đúp nếu là của bạn.",
+    "verify_didnt_work": "Không thể xác minh?"
   },
   "validate": {
-    "username_empty": "Username is required",
-    "password_empty": "Password is required",
-    "password_min_8": "Password must be at least 8 characters long",
-    "retypePassword_not_same": "Confirm password is not matched",
-    "fullName_empty": "Full name is required",
-    "phone_empty": "Phone number is required",
-    "phone_min_10": "Phone number must be at least 10 digits long",
-    "phone_max_16": "Phone number must not exceed 16 digits in length",
-    "wrong_phone": "Phone number format is not valid",
-    "email_empty": "Email is required",
-    "wrong_email": "Email format is not valid",
-    "birthDate_empty": "Date of birth is required",
-    "step_one_header": "First, we want to know you",
-    "step_two_header": "Sinh nhật của bạn là khi nào ?",
-    "step_three_header": "What is your gender ?",
-    "step_four_header": "Create your password",
-    "step_five_header": "It's all set up !!",
-    "create_password": "Create a password",
-    "welcome": "Thank you for using the app"
+    "username_empty": "Tên người dùng là bắt buộc",
+    "password_empty": "Mật khẩu là bắt buộc",
+    "password_min_8": "Mật khẩu phải có ít nhất 8 ký tự",
+    "retypePassword_not_same": "Xác nhận mật khẩu không khớp",
+    "fullName_empty": "Họ và tên là bắt buộc",
+    "phone_empty": "Số điện thoại là bắt buộc",
+    "phone_min_10": "Số điện thoại phải có ít nhất 10 số",
+    "phone_max_16": "Số điện thoại không được vượt quá 16 số",
+    "wrong_phone": "Định dạng số điện thoại không hợp lệ",
+    "email_empty": "Email là bắt buộc",
+    "wrong_email": "Định dạng email không hợp lệ",
+    "birthDate_empty": "Ngày sinh là bắt buộc",
+    "step_one_header": "Đầu tiên, chúng tôi muốn biết bạn",
+    "step_two_header": "Sinh nhật của bạn là khi nào?",
+    "step_three_header": "Giới tính của bạn là gì?",
+    "step_four_header": "Tạo mật khẩu của bạn",
+    "step_five_header": "Mọi thứ đã sẵn sàng!!",
+    "create_password": "Tạo mật khẩu",
+    "welcome": "Cảm ơn bạn đã sử dụng ứng dụng"
   },
   "forgot_password": {
-    "step_one_header": "Don’t remember ?",
-    "step_three_header": "Create your password",
-    "otp_sent": "OTP sent !!",
-    "otp_input_prompt": "Please enter the OTP sent to your email to reset your password",
-    "otp_didnt_receive": "Did not receive the OTP code?",
-    "try_again": "Try again",
-    "welcome": "You’re back !!"
+    "step_one_header": "Bạn không nhớ à?",
+    "step_three_header": "Tạo mật khẩu của bạn",
+    "otp_sent": "OTP đã được gửi!!",
+    "otp_input_prompt": "Vui lòng nhập mã OTP được gửi đến email của bạn để đặt lại mật khẩu",
+    "otp_didnt_receive": "Không nhận được mã OTP?",
+    "try_again": "Thử lại",
+    "welcome": "Chào mừng trở lại!!"
+  },
+  "login_issue": {
+    "step_one_header": "Bạn không vào được ?",
+    "step_three_header": "Tạo mật khẩu của bạn",
+    "otp_sent": "OTP đã được gửi!!",
+    "otp_input_prompt": "Vui lòng nhập mã OTP được gửi đến email của bạn để đặt lại mật khẩu",
+    "otp_didnt_receive": "Không nhận được mã OTP?",
+    "try_again": "Thử lại",
+    "welcome": "Chào mừng trở lại!!"
   },
   "conversation": {
-    "you": "You",
-    "send_input_holder": "Message",
-    "now": "Now",
-    "minutes_ago": "minutes ago",
-    "minute_ago": "minute ago",
-    "hours_ago": "hours ago",
-    "hour_ago": "hour ago",
-    "send_a_photo": "sent a photo",
-    "send_a_file": "sent a file",
-    "copy": "Copy",
-    "delete": "Unsend",
-    "recall_message": "Message is recalled",
-    "edit_message": "Edit message",
-    "click_to_view": "Click to view",
+    "you": "Bạn",
+    "send_input_holder": "Tin nhắn",
+    "now": "Bây giờ",
+    "minutes_ago": "phút trước",
+    "minute_ago": "phút trước",
+    "hours_ago": "giờ trước",
+    "hour_ago": "giờ trước",
+    "send_a_photo": "đã gửi một ảnh",
+    "send_a_file": "đã gửi một tập tin",
+    "copy": "Sao chép",
+    "delete": "Thu hồi",
+    "recall_message": "Tin nhắn đã được thu hồi",
+    "edit_message": "Chỉnh sửa tin nhắn",
+    "click_to_view": "Nhấn để xem",
     "bot_name": "Sam",
     "chat_mode": "Bot"
   },
   "gadgets": {
     "apps": {
-      "label": "Apps",
-      "community": "Community",
-      "exchange": "Exchange",
-      "market": "Market",
-      "music": "Music",
-      "game": "Game",
-      "shopping": "Shopping"
+      "label": "Ứng dụng",
+      "community": "Cộng đồng",
+      "exchange": "Trao đổi",
+      "market": "Chợ",
+      "music": "Âm nhạc",
+      "game": "Trò chơi",
+      "shopping": "Mua sắm"
     },
     "mood_history": {
-      "label": "Mood history"
+      "label": "Lịch sử tâm trạng"
     },
     "FAQ/Feedback": {
-      "label": "FAQ / Feedback",
+      "label": "FAQ / Góp ý",
       "about_us": {
-        "label": "About Us"
+        "label": "Về chúng tôi"
       },
       "version": {
-        "label": "Version:",
-        "latest_version": "You are using the latest version of the app."
+        "label": "Phiên bản:",
+        "latest_version": "Bạn đang sử dụng phiên bản mới nhất của ứng dụng."
       },
       "FAQ": {
-        "label": "FAQ"
+        "label": "Câu hỏi thường gặp"
       },
       "feedback": {
-        "label": "Feedback",
-        "prompt": "Something went wrong ?",
-        "logs": "Including logs",
-        "add_screenshots": "Add screenshots",
-        "submit": "Submit"
+        "label": "Phản hồi",
+        "prompt": "Có gì đó sai?",
+        "logs": "Bao gồm nhật ký",
+        "add_screenshots": "Thêm ảnh chụp màn hình",
+        "submit": "Gửi"
       },
       "data_protection": {
-        "label": "Data Protection",
-        "how_to_store_data": "How we store and process your data ?",
-        "way_to_store_data": "Here we store on a public cloud Then we process it in side VN country Sometimes we take you anonymous data to get insight for the app.",
-        "etc": "Together with a team of authors, Mike writes about various destinations in Africa, Asia, Oceania, Europe, Middle East and North America and targets quite a wide audience by providing versatile guides that you can filter by destination or trip type (active, city break, etc.).",
-        "effective_date": "Effective Date: July 01, 2023"
+        "label": "Bảo vệ dữ liệu",
+        "how_to_store_data": "Chúng tôi lưu trữ và xử lý dữ liệu của bạn như thế nào?",
+        "way_to_store_data": "Dữ liệu được lưu trên đám mây công cộng, sau đó được xử lý tại Việt Nam.",
+        "effective_date": "Ngày hiệu lực: 01/07/2023"
       },
       "privacy_agreement": {
-        "label": "Privacy Agreement",
-        "introduction": "Travel & Destinations is a travel resource designed to inspire people to travel the world and provide helpful tips and advice. It was created by Mike Clegg, a great traveler and photographer.",
-        "etc": "Together with a team of authors, Mike writes about various destinations in Africa, Asia, Oceania, Europe, Middle East and North America and targets quite a wide audience by providing versatile guides that you can filter by destination or trip type (active, city break, etc.).",
-        "effective_date": "Effective Date: July 01, 2023"
+        "label": "Thỏa thuận bảo mật",
+        "introduction": "Đây là nguồn tài nguyên du lịch với lời khuyên hữu ích.",
+        "effective_date": "Ngày hiệu lực: 01/07/2023"
       }
     },
     "customization": {
-      "label": "Customization",
+      "label": "Tùy chỉnh",
       "moods": {
-        "prompt": "Change the moods you frequently have",
-        "frequently_detected": "Frequently detected"
+        "prompt": "Thay đổi tâm trạng bạn thường có",
+        "frequently_detected": "Phát hiện thường xuyên"
       },
       "chat_color": {
-        "label": "Chat color",
-        "sample_text": "I feel very sad today"
+        "label": "Màu trò chuyện",
+        "sample_text": "Hôm nay tôi cảm thấy rất buồn"
       },
       "language": {
-        "label": "Language"
+        "label": "Ngôn ngữ"
       },
       "more": {
-        "label": "More",
-        "dark_mode": "Dark mode",
-        "sound_animation": "Sound animation",
-        "plan_to_calendar": "Plan to Calendar",
-        "record_reminder": "Record reminder"
+        "label": "Thêm",
+        "dark_mode": "Chế độ tối",
+        "sound_animation": "Âm thanh & hoạt ảnh",
+        "plan_to_calendar": "Lập kế hoạch",
+        "record_reminder": "Ghi nhắc"
       }
     },
     "logout": {
-      "label": "Sign out",
-      "prompt": "Don’t you say goodbye..",
-      "cancel": "Oh, my bad..",
-      "accept": "Yes, I'll be back"
+      "label": "Đăng xuất",
+      "prompt": "Bạn có chắc muốn rời đi không?",
+      "cancel": "Không, nhầm rồi...",
+      "accept": "Đúng, tôi sẽ quay lại"
     },
     "edit_profile": {
-      "header": "Edit Profile",
-      "gender_label": "Gender",
-      "slogan_label": "Slogan",
-      "avatar_picker_header": "Choose Avatar"
+      "header": "Chỉnh sửa hồ sơ",
+      "gender_label": "Giới tính",
+      "slogan_label": "Khẩu hiệu",
+      "avatar_picker_header": "Chọn Avatar"
     }
   },
   "home": {
     "status": {
-      "prompt": "How exactly you feel right now?"
+      "prompt": "Bạn đang cảm thấy thế nào ngay lúc này?"
     },
     "emotion_chart": {
-      "label": "Emotions flow",
-      "you": "You",
-      "your_past": "Your past"
+      "label": "Dòng chảy cảm xúc",
+      "you": "Bạn",
+      "your_past": "Quá khứ của bạn"
     },
     "milestones": {
-      "label": "Keep fighting !",
-      "see_more": "See more",
-      "header": "Milestones",
-      "recall_moment": "Oh my memories..."
+      "label": "Tiếp tục cố gắng nhé!",
+      "see_more": "Xem thêm",
+      "header": "Cột mốc",
+      "recall_moment": "Ôi, những ký ức của tôi..."
     },
     "articles": {
-      "label": "Reading list",
-      "viewed": "Viewed",
-      "views": "views",
+      "label": "Danh sách đọc",
+      "viewed": "Đã xem",
+      "views": "lượt xem",
       "rating": {
-        "greeting": "Hi,",
-        "prompt": "how good is this post to you ?"
+        "greeting": "Chào bạn,",
+        "prompt": "bài viết này có hay với bạn không?"
       }
     },
     "feeling": {
-      "prompt": "Hi, you good ?"
+      "prompt": "Chào bạn, bạn ổn chứ?"
     }
   },
   "moments": {
-    "header": "Moments",
+    "header": "Ghi dấu",
     "bottom_menu": {
-      "share": "Share to other apps",
-      "report": "Report illegal content",
-      "notice": "Notice us this meaningful moment"
+      "share": "Chia sẻ sang ứng dụng khác",
+      "report": "Báo cáo nội dung vi phạm",
+      "notice": "Gợi ý đến chúng tôi về khoảnh khắc ý nghĩa này"
     }
   },
   "image_picker": {
@@ -206,50 +220,50 @@
   },
   "moment": {
     "create": {
-      "header": "Create Moment",
-      "choose_a_photo": "Choose a photo"
+      "header": "Tạo Khoảnh Khắc",
+      "choose_a_photo": "Chọn một ảnh"
     },
     "edit": {
-      "header": "Edit Moment"
+      "header": "Chỉnh sửa Khoảnh Khắc"
     },
-    "input_placeholder": "How does this photo mean to you?",
-    "public": "Public",
-    "private": "Private"
+    "input_placeholder": "Bức ảnh này có ý nghĩa gì với bạn?",
+    "public": "Công khai",
+    "private": "Riêng tư"
   },
   "milestone": {
     "create": {
-      "header": "Create Milestone"
+      "header": "Tạo Cột Mốc"
     },
     "edit": {
-      "header": "Edit Milestone"
+      "header": "Chỉnh sửa Cột Mốc"
     },
-    "your_milestone": "Your milestone",
-    "icon": "Icon",
-    "time": "Time",
-    "location": "Location",
-    "your_story": "Your story"
+    "your_milestone": "Cột mốc của bạn",
+    "icon": "Biểu tượng",
+    "time": "Thời gian",
+    "location": "Địa điểm",
+    "your_story": "Câu chuyện của bạn"
   },
   "suggest": {
-    "header": "Suggest to experience",
-    "question": "What is in your mind, my friend ?",
-    "input_placeholder": "We can't contain our excitement to give it a go!",
-    "add_photos": "Add photos",
-    "thank": "A million thanks !",
-    "okay": "Okay"
+    "header": "Gợi ý để trải nghiệm",
+    "question": "Bạn đang nghĩ gì vậy, bạn của tôi?",
+    "input_placeholder": "Chúng tôi rất hào hứng để thử ngay đây!",
+    "add_photos": "Thêm ảnh",
+    "thank": "Cảm ơn bạn rất nhiều!",
+    "okay": "Được thôi"
   },
   "recall": {
-    "header": "Recall",
+    "header": "Hồi tưởng",
     "share": {
-      "label":"Share to other apps",
-      "message": "Copied to clipboard"
+      "label": "Chia sẻ sang ứng dụng khác",
+      "message": "Đã sao chép vào clipboard"
     },
-    "edit": "Edit title and privacy",
-    "delete": "Delete this moment",
-    "notice": "Notice us this meaningful moment",
+    "edit": "Chỉnh sửa tiêu đề và quyền riêng tư",
+    "delete": "Xóa khoảnh khắc này",
+    "notice": "Báo với chúng tôi về khoảnh khắc ý nghĩa này",
     "delete_moment": {
-      "question": "Delete it?",
-      "no": "No no",
-      "yes": "Yep !"
+      "question": "Xóa nó?",
+      "no": "Không không",
+      "yes": "Đồng ý!"
     }
   }
 }

@@ -4,7 +4,7 @@ import {useStore, useTranslation} from '@hooks';
 import {navigate} from '@navigation/NavigationServices';
 import routes from '@navigation/routes';
 import {LoginPayload} from '@screens/Auth/types';
-import {LOGIN_ACCOUNT} from '@store/actions';
+import {VERIFY_EMAIL} from '@store/actions';
 import React from 'react';
 import {useForm} from 'react-hook-form';
 import {Pressable} from 'react-native';
@@ -24,11 +24,12 @@ const LoginForm: React.FC = () => {
   } = useForm({
     resolver: yupResolver(validation),
     mode: 'onChange',
-    defaultValues: {email: email || '', password: ''},
+    defaultValues: {email: email || ''},
   });
 
   const _onSubmit = (e: LoginPayload) => {
-    dispatch({type: LOGIN_ACCOUNT, payload: e});
+    // dispatch({type: VERIFY_EMAIL, payload: e});
+    navigate(routes.LOGIN_VERIFY_SCREEN);
   };
 
   return (
@@ -41,24 +42,16 @@ const LoginForm: React.FC = () => {
         color="text"
         containerInputStyle={styles.containerInputStyle}
       />
-      <FormInput
-        isSecure
-        shadow
-        control={control}
-        name="password"
-        placeholder={t('placeholder.password')}
-        color="text"
-        containerInputStyle={styles.containerInputStyle}
-      />
+
       <Block row alignCenter marginBottom={40} space="between">
         <Pressable onPress={() => navigate(routes.REGISTER_STEP1_SCREEN)}>
-          <Text md color="primary">
+          <Text sm color="primary">
             {t('login.register')}
           </Text>
         </Pressable>
-        <Pressable onPress={() => navigate(routes.FORGOT_PASSWORD_STEP1_SCREEN)}>
-          <Text md color="primary">
-            {t('login.forgot_password')}
+        <Pressable onPress={() => navigate(routes.LOGIN_ISSUE_STEP1_SCREEN)}>
+          <Text sm color="red_900">
+            {t('login.login_issue')}
           </Text>
         </Pressable>
       </Block>

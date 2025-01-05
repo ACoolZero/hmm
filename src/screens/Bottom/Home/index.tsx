@@ -1,19 +1,24 @@
 import {Block} from '@components';
-import {useColors} from '@hooks';
+import {useStore, useColors} from '@hooks';
 import React, {useEffect} from 'react';
 import {RefreshControl, ScrollView, StatusBar, StatusBarStyle} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {EmotionChart, Milestones, PostList, Reaction, Status, Stories} from './components';
 import useHome from './useHome';
 
+
 const Home: React.FC = () => {
+  const {useSelector} = useStore();
+  const {isAuth} = useSelector('auth');
+
   const {top} = useSafeAreaInsets();
   const {mode, fetchData} = useHome();
   const {COLORS} = useColors();
   const barStyle: StatusBarStyle = `${mode === 'dark' ? 'dark' : 'light'}-content`;
 
   useEffect(() => {
-    fetchData();
+    if (isAuth)
+      fetchData();
   }, [fetchData]);
 
   const _onRefresh = () => {

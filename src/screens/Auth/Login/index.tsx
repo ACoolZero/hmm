@@ -12,9 +12,9 @@ const Login: React.FC = () => {
 
   return (
     <Block flex padding={24} paddingTop={width * 0.2} backgroundColor="background">
-      <Header content={t('login.welcome')} />
+      <Header content={t('login.header')} />
       <Text md marginTop={6} color="text">
-        {t('login.prompt')}
+        {t('login.sub_header')}
       </Text>
       <FormContainer>
         <LoginForm />

@@ -30,6 +30,7 @@ const RootStack = () => {
       {/** Authentication flow */}
       <Stack.Group screenOptions={{animation: 'slide_from_right'}}>
         <Stack.Screen name={routes.LOGIN_SCREEN} component={auth[routes.LOGIN_SCREEN]} />
+        <Stack.Screen name={routes.LOGIN_VERIFY_SCREEN} component={auth[routes.LOGIN_VERIFY_SCREEN]} />
         <Stack.Screen name={routes.REGISTER_STEP1_SCREEN} component={auth[routes.REGISTER_STEP1_SCREEN]} />
         <Stack.Screen name={routes.REGISTER_STEP2_SCREEN} component={auth[routes.REGISTER_STEP2_SCREEN]} />
         <Stack.Screen name={routes.REGISTER_STEP3_SCREEN} component={auth[routes.REGISTER_STEP3_SCREEN]} />
@@ -39,6 +40,10 @@ const RootStack = () => {
         <Stack.Screen name={routes.FORGOT_PASSWORD_STEP2_SCREEN} component={auth[routes.FORGOT_PASSWORD_STEP2_SCREEN]} />
         <Stack.Screen name={routes.FORGOT_PASSWORD_STEP3_SCREEN} component={auth[routes.FORGOT_PASSWORD_STEP3_SCREEN]} />
         <Stack.Screen name={routes.FORGOT_PASSWORD_STEP4_SCREEN} component={auth[routes.FORGOT_PASSWORD_STEP4_SCREEN]} />
+        <Stack.Screen name={routes.LOGIN_ISSUE_STEP1_SCREEN} component={auth[routes.LOGIN_ISSUE_STEP1_SCREEN]} />
+        <Stack.Screen name={routes.LOGIN_ISSUE_STEP2_SCREEN} component={auth[routes.LOGIN_ISSUE_STEP2_SCREEN]} />
+        <Stack.Screen name={routes.LOGIN_ISSUE_STEP3_SCREEN} component={auth[routes.LOGIN_ISSUE_STEP3_SCREEN]} />
+        <Stack.Screen name={routes.LOGIN_ISSUE_STEP4_SCREEN} component={auth[routes.LOGIN_ISSUE_STEP4_SCREEN]} />
       </Stack.Group>
     </Stack.Navigator>
   );

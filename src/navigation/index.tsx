@@ -17,14 +17,12 @@ const RootNavigation = () => {
   const {COLORS} = useColors();
   const {isAuth} = useSelector('auth');
   const {mode} = useHome();
-  // const {mode, fetchData} = useHome();
 
   const [retryCount, setRetryCount] = useState(0);
   const maxRetries = 3; // Set maximum number of retries
   const retryDelay = 300000; // Retry delay in milliseconds (5 minutes)
 
   useEffect(() => {
-    console.log("isAuth: ", isAuth);
     if (isAuth) {
       handleAuth();
     }

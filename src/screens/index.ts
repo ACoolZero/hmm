@@ -3,7 +3,12 @@ import ForgotPasswordStep1 from './Auth/ForgotPassword/Step1';
 import ForgotPasswordStep2 from './Auth/ForgotPassword/Step2';
 import ForgotPasswordStep3 from './Auth/ForgotPassword/Step3';
 import ForgotPasswordStep4 from './Auth/ForgotPassword/Step4';
+import LoginIssueStep1 from './Auth/LoginIssue/Step1';
+import LoginIssueStep2 from './Auth/LoginIssue/Step2';
+import LoginIssueStep3 from './Auth/LoginIssue/Step3';
+import LoginIssueStep4 from './Auth/LoginIssue/Step4';
 import Login from './Auth/Login';
+import LoginVerifyStep from './Auth/Login/components/LoginForm/VerifyStep';
 import RegisterStep1 from './Auth/Register/Step1';
 import RegisterStep2 from './Auth/Register/Step2';
 import RegisterStep3 from './Auth/Register/Step3';
@@ -37,6 +42,7 @@ import MomentFullScreen from './Common/ActivityDetails/components/MomentFullScre
 
 export const auth = {
   [routes.LOGIN_SCREEN]: Login,
+  [routes.LOGIN_VERIFY_SCREEN]: LoginVerifyStep,
   [routes.REGISTER_STEP1_SCREEN]: RegisterStep1,
   [routes.REGISTER_STEP2_SCREEN]: RegisterStep2,
   [routes.REGISTER_STEP3_SCREEN]: RegisterStep3,
@@ -46,6 +52,10 @@ export const auth = {
   [routes.FORGOT_PASSWORD_STEP2_SCREEN]: ForgotPasswordStep2,
   [routes.FORGOT_PASSWORD_STEP3_SCREEN]: ForgotPasswordStep3,
   [routes.FORGOT_PASSWORD_STEP4_SCREEN]: ForgotPasswordStep4,
+  [routes.LOGIN_ISSUE_STEP1_SCREEN]: LoginIssueStep1,
+  [routes.LOGIN_ISSUE_STEP2_SCREEN]: LoginIssueStep2,
+  [routes.LOGIN_ISSUE_STEP3_SCREEN]: LoginIssueStep3,
+  [routes.LOGIN_ISSUE_STEP4_SCREEN]: LoginIssueStep4,
 };
 
 export const bottom = {

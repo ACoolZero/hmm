@@ -53,6 +53,13 @@ function* login(action: ActionPayload<LoginPayload>) {
   reset(routes.BOTTOM_TAB);
 }
 
+function* verifyEmail(action: ActionPayload<LoginPayload>) {
+  const data = action.payload;
+  const response: AxiosResponse = yield call(api, '/auth/verify-email', {method: 'post', data});
+  const {email} = response.data;
+  yield put({type: actions._onSuccess(action.type), payload: {email}});
+}
+
 function* loginGoogle(action: ActionPayload<{accessToken: string; email: string}>) {
   const data = {
     accessToken: action.payload.accessToken,
@@ -162,6 +169,7 @@ export default [
   takeLatest(actions.FORGOT_PASSWORD, guard(forgotPassword)),
   takeLatest(actions.LOGIN_ACCOUNT, guard(login)),
   takeLatest(actions.LOGIN_GOOGLE, guard(loginGoogle)),
+  takeLatest(actions.VERIFY_EMAIL, guard(verifyEmail)),
   takeLatest(actions.GET_CURRENT_USER, guard(getCurrentUser)),
   takeLatest(actions.LOGOUT_ACCOUNT, logout),
   takeLatest(actions.GET_REFRESH_TOKEN, getRefreshToken),

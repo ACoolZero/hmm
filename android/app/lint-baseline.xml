@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.6.0" type="baseline" client="gradle" dependencies="false" name="AGP (8.6.0)" variant="all" version="8.6.0">
+
+    <issue
+        id="NotificationPermission"
+        message="When targeting Android 13 or higher, posting a permission requires holding the `POST_NOTIFICATIONS` permission (usage from com.bumptech.glide.request.target.NotificationTarget)">
+        <location
+            file="src/main/AndroidManifest.xml"/>
+    </issue>
+
+    <issue
+        id="RedundantLabel"
+        message="Redundant label can be removed"
+        errorLine1="        android:label=&quot;@string/app_name&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="16"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core-splashscreen than 1.0.0 is available: 1.0.1"
+        errorLine1="    implementation &quot;androidx.core:core-splashscreen:1.0.0&quot;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="136"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of com.google.android.gms:play-services-auth than 20.0.0 is available: 21.3.0"
+        errorLine1="    implementation &apos;com.google.android.gms:play-services-auth:20.0.0&apos;"
+        errorLine2="                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="138"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="LockedOrientationActivity"
+        message="Expecting `android:screenOrientation=&quot;unspecified&quot;` or `&quot;fullSensor&quot;` for this activity so the user can use the application in any orientation and provide a great experience on Chrome OS devices"
+        errorLine1="        android:screenOrientation=&quot;portrait&quot; "
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="19"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@dimen/abc_edit_text_inset_horizontal_material` is marked as private in androidx.appcompat:appcompat:1.6.1"
+        errorLine1="       android:insetLeft=&quot;@dimen/abc_edit_text_inset_horizontal_material&quot;"
+        errorLine2="                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/rn_edit_text_material.xml"
+            line="17"
+            column="27"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@dimen/abc_edit_text_inset_horizontal_material` is marked as private in androidx.appcompat:appcompat:1.6.1"
+        errorLine1="       android:insetRight=&quot;@dimen/abc_edit_text_inset_horizontal_material&quot;"
+        errorLine2="                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/rn_edit_text_material.xml"
+            line="18"
+            column="28"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@dimen/abc_edit_text_inset_top_material` is marked as private in androidx.appcompat:appcompat:1.6.1"
+        errorLine1="       android:insetTop=&quot;@dimen/abc_edit_text_inset_top_material&quot;"
+        errorLine2="                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/rn_edit_text_material.xml"
+            line="19"
+            column="26"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@dimen/abc_edit_text_inset_bottom_material` is marked as private in androidx.appcompat:appcompat:1.6.1"
+        errorLine1="       android:insetBottom=&quot;@dimen/abc_edit_text_inset_bottom_material&quot;"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/rn_edit_text_material.xml"
+            line="20"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@drawable/abc_textfield_default_mtrl_alpha` is marked as private in androidx.appcompat:appcompat:1.6.1"
+        errorLine1="        &lt;item android:state_enabled=&quot;false&quot; android:drawable=&quot;@drawable/abc_textfield_default_mtrl_alpha&quot;/>"
+        errorLine2="                                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/rn_edit_text_material.xml"
+            line="33"
+            column="63"/>
+    </issue>
+
+    <issue
+        id="PrivateResource"
+        message="The resource `@drawable/abc_textfield_activated_mtrl_alpha` is marked as private in androidx.appcompat:appcompat:1.6.1"
+        errorLine1="        &lt;item android:drawable=&quot;@drawable/abc_textfield_activated_mtrl_alpha&quot;/>"
+        errorLine2="                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/rn_edit_text_material.xml"
+            line="34"
+            column="33"/>
+    </issue>
+
+    <issue
+        id="DiscouragedApi"
+        message="Should not restrict activity to fixed orientation. This may not be suitable for different form factors, causing the app to be letterboxed."
+        errorLine1="        android:screenOrientation=&quot;portrait&quot; "
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="19"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="DataExtractionRules"
+        message="The attribute `android:allowBackup` is deprecated from Android 12 and higher and may be removed in future versions. Consider adding the attribute `android:dataExtractionRules` specifying an `@xml` resource which configures cloud backups and device transfers on Android 12 and higher."
+        errorLine1="      android:allowBackup=&quot;false&quot;"
+        errorLine2="                           ~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="10"
+            column="28"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.integer.react_native_dev_server_port` appears to be unused">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.integer.react_native_dev_server_port` appears to be unused">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.integer.react_native_dev_server_port` appears to be unused">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.GOOGLE_ANDROID_CLIENT_ID` appears to be unused">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.GOOGLE_ANDROID_CLIENT_ID` appears to be unused">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.GOOGLE_ANDROID_CLIENT_ID` appears to be unused">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.GOOGLE_IOS_CLIENT_ID` appears to be unused">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.GOOGLE_IOS_CLIENT_ID` appears to be unused">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.GOOGLE_IOS_CLIENT_ID` appears to be unused">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.GOOGLE_WEB_CLIENT_ID` appears to be unused">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.GOOGLE_WEB_CLIENT_ID` appears to be unused">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.GOOGLE_WEB_CLIENT_ID` appears to be unused">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.NODE_ENV` appears to be unused">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.NODE_ENV` appears to be unused">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.NODE_ENV` appears to be unused">
+        <location
+            file="build.gradle"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.mipmap.ic_launcher_round` appears to be unused">
+        <location
+            file="src/main/res/mipmap-hdpi/ic_launcher_round.png"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.server_client_id` appears to be unused"
+        errorLine1="    &lt;string name=&quot;server_client_id&quot;>1075938704086-nlge9ebfo356cvgbvss4issvnk9039vj.apps.googleusercontent.com&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="3"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="IconLauncherShape"
+        message="Launcher icon used as round icon did not have a circular shape">
+        <location
+            file="src/main/res/mipmap-hdpi/ic_launcher.png"/>
+    </issue>
+
+    <issue
+        id="IconLauncherShape"
+        message="Launcher icon used as round icon did not have a circular shape">
+        <location
+            file="src/main/res/mipmap-mdpi/ic_launcher.png"/>
+    </issue>
+
+    <issue
+        id="IconLauncherShape"
+        message="Launcher icon used as round icon did not have a circular shape">
+        <location
+            file="src/main/res/mipmap-xhdpi/ic_launcher.png"/>
+    </issue>
+
+    <issue
+        id="IconLauncherShape"
+        message="Launcher icon used as round icon did not have a circular shape">
+        <location
+            file="src/main/res/mipmap-xxhdpi/ic_launcher.png"/>
+    </issue>
+
+    <issue
+        id="IconLauncherShape"
+        message="Launcher icon used as round icon did not have a circular shape">
+        <location
+            file="src/main/res/mipmap-xxxhdpi/ic_launcher.png"/>
+    </issue>
+
+</issues>

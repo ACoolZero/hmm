@@ -28,7 +28,7 @@ const SocialLoginForm: React.FC = () => {
     <Block>
       <Block row alignCenter>
         <Block flex height={1} backgroundColor="#DDDDDD" />
-        <Text center marginVertical={24} marginHorizontal={12} color="primary">
+        <Text center md marginVertical={24} marginHorizontal={12} color="sub_text">
           {t('common.or')}
         </Text>
         <Block flex height={1} backgroundColor="#DDDDDD" />
@@ -36,14 +36,14 @@ const SocialLoginForm: React.FC = () => {
       <Block row alignCenter paddingHorizontal={width * 0.2} space="between">
         {isIos && (
           <TouchableOpacity>
-            <Image source={ICONS.apple} square={24} resizeMode="contain" />
+            <Image source={ICONS.apple} square={32} resizeMode="contain" />
           </TouchableOpacity>
         )}
         <TouchableOpacity onPress={_handleLoginGoogle}>
-          <Image source={ICONS.google} square={24} resizeMode="contain" />
+          <Image source={ICONS.google} square={32} resizeMode="contain" />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Image source={ICONS.twitter} square={24} resizeMode="contain" />
+          <Image source={ICONS.twitter} square={32} resizeMode="contain" />
         </TouchableOpacity>
       </Block>
     </Block>

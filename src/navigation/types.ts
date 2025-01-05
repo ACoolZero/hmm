@@ -4,6 +4,7 @@ import routes from './routes';
 export type RootStackParamList = {
   [routes.BOTTOM_TAB]: undefined;
   [routes.LOGIN_SCREEN]: undefined;
+  [routes.LOGIN_VERIFY_SCREEN]: undefined;
   [routes.REGISTER_STEP1_SCREEN]: undefined;
   [routes.REGISTER_STEP2_SCREEN]: undefined;
   [routes.REGISTER_STEP3_SCREEN]: undefined;
@@ -13,6 +14,10 @@ export type RootStackParamList = {
   [routes.FORGOT_PASSWORD_STEP2_SCREEN]: undefined;
   [routes.FORGOT_PASSWORD_STEP3_SCREEN]: undefined;
   [routes.FORGOT_PASSWORD_STEP4_SCREEN]: undefined;
+  [routes.LOGIN_ISSUE_STEP1_SCREEN]: undefined;
+  [routes.LOGIN_ISSUE_STEP2_SCREEN]: undefined;
+  [routes.LOGIN_ISSUE_STEP3_SCREEN]: undefined;
+  [routes.LOGIN_ISSUE_STEP4_SCREEN]: undefined;
   [routes.ARTICLE_DETAILS_SCREEN]: {details: IPost};
   [routes.ARTICLE_VIEWED_SCREEN]: undefined;
   [routes.MILESTONE_DETAILS_SCREEN]: undefined;

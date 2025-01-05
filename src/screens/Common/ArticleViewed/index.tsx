@@ -8,6 +8,8 @@ import {ListRenderItem} from 'react-native';
 
 const ArticleViewed: React.FC = () => {
   const {dispatch, useSelector} = useStore();
+  const {isAuth} = useSelector('auth');
+
   const {data: viewedPostsList} = useSelector('viewedPostsList');
   const {t} = useTranslation();
 
@@ -16,7 +18,8 @@ const ArticleViewed: React.FC = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    fetchData();
+    if (isAuth)
+      fetchData();
   }, [fetchData]);
 
   const _renderItem: ListRenderItem<IPost> = ({item, index}) => <ArticleCard item={item} index={index} />;

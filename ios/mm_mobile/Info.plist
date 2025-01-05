@@ -44,7 +44,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>GIDClientID</key>
-	<string>1061059999890-b3ae8s1hgfvkd4scdb9glp4koe7h3945.apps.googleusercontent.com</string>
+	<string>1075938704086-qrjotta8pdm3v981sveojhg8kti8468h.apps.googleusercontent.com</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -90,7 +90,7 @@
 	<string>BootSplash.storyboard</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
-		<string>armv7</string>
+		<string>armv64</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>

@@ -7,6 +7,7 @@ import { useFocusEffect } from '@react-navigation/native'; // Import useFocusEff
 
 
 const Moments = () => {
+
   const {top} = useSafeAreaInsets();
   const {fetchData} = useMoments();
 
@@ -14,7 +15,8 @@ const Moments = () => {
   const refreshInterval = 30000; // Set refresh interval (30 seconds)
 
   useEffect(() => {
-    fetchData();
+    // Users are allowed to view anonymously
+      fetchData();
   }, [fetchData]);
 
   useFocusEffect(

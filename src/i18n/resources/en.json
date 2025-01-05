@@ -5,6 +5,7 @@
     "notification": "Notification",
     "cancel": "Cancel",
     "submit": "Submit",
+    "try_again": "Try again",
     "network_failure": "Please check your network connection and relaunch the application",
     "logout_request": "Would you like to sign out?",
     "login": "Sign in",
@@ -31,10 +32,16 @@
     "share": "Share"
   },
   "login": {
-    "welcome": "Welcome!",
-    "prompt": "Sign in to continue",
+    "header": "Welcome!",
+    "sub_header": "Sign in to continue",
     "register": "Register",
-    "forgot_password": "Forgot password?"
+    "forgot_password": "Forgot password?",
+    "login_issue": "Login issue?",
+    "verify_header": "Verify you",
+    "verify_sub_text": "Please select 3 objects that is your latest activities",
+    "verify_hint_1": "Swipe left if it's NOT yours,",
+    "verify_hint_2": "Double touch if it's yours.",
+    "verify_didnt_work": "Verify didn't work?"
   },
   "validate": {
     "username_empty": "Username is required",
@@ -59,6 +66,15 @@
   },
   "forgot_password": {
     "step_one_header": "Don’t remember ?",
+    "step_three_header": "Create your password",
+    "otp_sent": "OTP sent !!",
+    "otp_input_prompt": "Please enter the OTP sent to your email to reset your password",
+    "otp_didnt_receive": "Did not receive the OTP code?",
+    "try_again": "Try again",
+    "welcome": "You’re back !!"
+  },
+  "login_issue": {
+    "step_one_header": "Can't you get in ?",
     "step_three_header": "Create your password",
     "otp_sent": "OTP sent !!",
     "otp_input_prompt": "Please enter the OTP sent to your email to reset your password",

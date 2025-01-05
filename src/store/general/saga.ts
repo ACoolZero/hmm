@@ -13,20 +13,16 @@ export const guard = (saga: any, config?: any) =>
         res: call(saga, action),
         timeout: delay(10 * 1000),
       });
+
       if (timeout) throw new Error('Request Timeout');
     } catch (error: any) {
-      console.log("ERROR: ", error.response?.data);
-      if (!error.response) {
-        // Network or server down error
-        yield put({ type: _onFailure(action.type), error: 'Network connection error' });
-        CONFIG.isToast && showMessage({type: 'error', message: 'Network connection error' });
-      }
+      console.log("ERROR: ", error, error?.response?.status, error.response?.data);
       const statusCode = error?.response?.status;
       if (statusCode !== TOKEN_EXPIRED) { // Show error message but not 401. To view 401, look for services/api.ts file
         if (CONFIG.message) {
           showMessage({type: 'error', message: CONFIG.message});
         } else {
-          CONFIG.isToast && showMessage({type: 'error', message: error.response.data.message || String(error)});
+          CONFIG.isToast && showMessage({type: 'error', message: error.response?.data?.message || String(error)});
         }
       }
       CONFIG.callback && CONFIG.callback();    
