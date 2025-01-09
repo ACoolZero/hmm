@@ -38,13 +38,13 @@ export interface FABProps extends TouchableOpacityProps {
    */
   backgroundColor?: string;
   /**
+   * @description Defines the initial bottom offset of the FAB.
+   */
+  initialBottomOffset?: number;
+  /**
    * @description Defines the top offset of the FAB.
    */
   topOffset?: number;
-  /**
-   * @description Defines the right offset of the FAB.
-   */
-  rightOffset?: number;
   /**
    * @description Defines the bottom offset of the FAB.
    */
@@ -53,6 +53,10 @@ export interface FABProps extends TouchableOpacityProps {
    * @description Defines the left offset of the FAB.
    */
   leftOffset?: number;
+  /**
+   * @description Defines the right offset of the FAB.
+   */
+  rightOffset?: number;
   /**
    * @description Specifies the opacity of the FAB when it is idle.
    */

@@ -66,7 +66,6 @@ const TabBar: React.FC<TabBarProps> = ({state, navigation}) => {
           );
         })}
       </Block>
-      <OnTopButton />
     </Block>
   );
 };

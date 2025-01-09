@@ -1,4 +1,4 @@
-import {ToastMessage} from '@components';
+import {ToastMessage, OnTopButton} from '@components';
 import i18n from '@i18n';
 import MainContainer from '@navigation';
 import ActionModal from '@screens/Common/OnTopButton.ActionModal';
@@ -28,6 +28,7 @@ const App = () => {
           <PersistGate loading={null} persistor={persistor}>
             <MainContainer />
             <ToastMessage position="top" />
+            <OnTopButton />
             <ActionModal />
             <MoodNowModal />
           </PersistGate>

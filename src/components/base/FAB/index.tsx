@@ -9,7 +9,7 @@ let timer: NodeJS.Timeout;
 
 const FAB: React.FC<FABProps> = ({
   renderSize,
-  draggable = false,
+  draggable = true,
   reversible = false,
   icon = ICONS.plus,
   iconSize = 24,
@@ -18,9 +18,10 @@ const FAB: React.FC<FABProps> = ({
   borderRadius,
   backgroundColor,
   topOffset = 60,
+  leftOffset = 16,
   rightOffset = 16,
   bottomOffset = 60,
-  leftOffset = 16,
+  initialBottomOffset = 60,
   idleOpacity = 0.5,
   idleDelayTime = 3000,
   children,
@@ -30,7 +31,7 @@ const FAB: React.FC<FABProps> = ({
   onDragEnd,
   ...touchableProps
 }) => {
-  const pan = useRef(new Animated.ValueXY()).current;
+  const pan = useRef(new Animated.ValueXY({ x: 0, y: -(initialBottomOffset - bottomOffset) })).current;
   const [opacity, setOpacity] = useState<number>(idleOpacity);
   const HORIZONTAL_BOUNDS = width - renderSize - (leftOffset + rightOffset);
   const VERTICAL_BOUNDS = height - renderSize - (bottomOffset + topOffset);
