@@ -4,16 +4,17 @@ import {getSize} from '@utils/responsive';
 import React from 'react';
 import {DeviceEventEmitter, StyleSheet} from 'react-native';
 
-const OnTopButton: React.FC<{bottomOffset?: number}> = ({bottomOffset = 180}) => {
+const OnTopButton: React.FC<{ bottomOffset?: number, initialBottomOffset?: number,  }> = ({bottomOffset = 120,  initialBottomOffset = 180}) => {
   const {useSelector} = useStore();
   const {userInfo} = useSelector('auth');
 
-  if (!userInfo) return null;
+  if (!userInfo || Object.keys(userInfo).length === 0) return null;
   return (
     <FAB
       renderSize={75}
       topOffset={80}
       bottomOffset={bottomOffset}
+      initialBottomOffset={initialBottomOffset}
       backgroundColor="transparent"
       onPress={() => {
         DeviceEventEmitter.emit('showActionModal');
